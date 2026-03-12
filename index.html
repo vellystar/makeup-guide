@@ -232,12 +232,12 @@ main{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 40px 1
 .section.visible{display:block;animation:sectionIn .6s cubic-bezier(.22,1,.36,1) forwards}
 .section.out{display:block;animation:sectionOut .28s ease forwards;pointer-events:none}
 @keyframes sectionIn{
-  from{opacity:0;transform:translateY(32px);filter:blur(6px)}
-  to  {opacity:1;transform:translateY(0);filter:blur(0)}
+  from{opacity:0;transform:translateY(32px)}
+  to  {opacity:1;transform:translateY(0)}
 }
 @keyframes sectionOut{
-  from{opacity:1;transform:translateY(0);filter:blur(0)}
-  to  {opacity:0;transform:translateY(-18px);filter:blur(4px)}
+  from{opacity:1;transform:translateY(0)}
+  to  {opacity:0;transform:translateY(-18px)}
 }
 
 /* ─── PRODUCT LAYOUT ─────────────────────────── */
@@ -415,6 +415,113 @@ main{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 40px 1
 .compat-item:last-child{border:none;padding-bottom:0}
 .ci-icon{font-size:.65rem;color:var(--gold);margin-top:5px;flex-shrink:0}
 
+/* ─── APPLICATION ORDER SECTION ─────────────────── */
+.look-toggle{
+  display:flex;gap:0;border:1px solid var(--border);border-radius:50px;
+  padding:4px;width:fit-content;margin-bottom:52px;background:var(--surface2);
+}
+.look-btn{
+  padding:10px 26px;border-radius:50px;border:none;background:transparent;
+  font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:500;color:var(--muted);cursor:pointer;
+  transition:all .35s cubic-bezier(.34,1.2,.64,1);white-space:nowrap;
+}
+.look-btn.active{
+  background:linear-gradient(135deg,var(--navy),var(--crimson));
+  color:#fff;box-shadow:0 4px 18px rgba(13,27,75,.25);
+}
+
+.look-panel{display:none}
+.look-panel.visible{display:block}
+
+.look-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;
+}
+@media(max-width:700px){.look-intro{grid-template-columns:1fr}}
+.look-intro-card{
+  padding:28px;border-radius:var(--r);border:1px solid var(--border);
+  background:var(--surface);position:relative;overflow:hidden;
+}
+.look-intro-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--navy),var(--crimson));
+}
+.lic-icon{font-size:1.6rem;margin-bottom:14px}
+.lic-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:7px}
+.lic-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;font-style:italic;color:var(--text);margin-bottom:10px}
+.lic-body{font-size:.85rem;line-height:1.75;color:var(--muted);font-weight:300}
+
+.order-timeline{
+  position:relative;
+  display:flex;flex-direction:column;gap:0;
+  padding-left:52px;
+  margin-bottom:48px;
+}
+.order-timeline::before{
+  content:'';position:absolute;left:19px;top:12px;bottom:12px;width:1px;
+  background:linear-gradient(to bottom,var(--navy),var(--crimson));
+  opacity:.25;
+}
+.ot-step{
+  position:relative;padding:0 0 32px 32px;
+  opacity:0;transform:translateX(-16px);
+  transition:opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1);
+}
+.ot-step.on{opacity:1;transform:translateX(0)}
+.ot-step:last-child{padding-bottom:0}
+.ot-num{
+  position:absolute;left:-32px;top:2px;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--surface);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:.85rem;
+  font-weight:400;color:var(--muted);
+  transition:all .35s ease;flex-shrink:0;
+  box-shadow:var(--shadow-sm);
+}
+.ot-step:hover .ot-num{
+  background:linear-gradient(135deg,var(--navy),var(--crimson));
+  border-color:transparent;color:#fff;
+  box-shadow:0 6px 18px rgba(13,27,75,.25);
+}
+.ot-header{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.ot-product-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:30px;
+  background:var(--surface2);border:1px solid var(--border);
+  font-size:.68rem;font-weight:500;letter-spacing:.05em;color:var(--text2);
+  transition:all .25s;
+}
+.ot-step:hover .ot-product-tag{border-color:var(--gold);color:var(--gold)}
+.ot-optional{
+  padding:3px 10px;border-radius:30px;
+  background:rgba(184,147,90,.1);border:1px solid rgba(184,147,90,.2);
+  font-size:.62rem;font-weight:500;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;
+}
+.ot-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:6px;
+}
+.ot-body{font-size:.87rem;line-height:1.75;color:var(--muted);font-weight:300;max-width:640px}
+.ot-tip{
+  display:inline-flex;align-items:flex-start;gap:8px;
+  margin-top:10px;padding:10px 14px;border-radius:var(--r-sm);
+  background:var(--surface2);border:1px solid var(--border2);
+  font-size:.80rem;line-height:1.6;color:var(--text2);font-weight:300;
+}
+.ot-tip-icon{flex-shrink:0;font-size:.75rem;margin-top:2px;color:var(--gold)}
+
+.look-note{
+  padding:28px 32px;border-radius:var(--r);
+  border:1px dashed var(--border);
+  background:linear-gradient(135deg,rgba(13,27,75,.03),rgba(139,26,46,.03));
+}
+.look-note-title{
+  font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;
+  color:var(--text2);margin-bottom:12px;
+}
+.look-note-body{font-size:.85rem;line-height:1.75;color:var(--muted);font-weight:300}
+
 /* ─── FOOTER ─────────────────────────────────── */
 footer{position:relative;z-index:2;border-top:1px solid var(--border2);padding:44px;text-align:center}
 .footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;font-style:italic;background:linear-gradient(135deg,var(--navy),var(--crimson));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
@@ -475,6 +582,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border2);padding:4
       <button class="tab-btn" data-tab="seconddate">Second Date</button>
       <button class="tab-btn" data-tab="onlyou">ONLYOU</button>
       <button class="tab-btn" data-tab="routine">Full Routine</button>
+      <button class="tab-btn" data-tab="application">Application Order</button>
     </div>
   </div>
 
@@ -895,6 +1003,193 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border2);padding:4
     </div>
   </div>
 
+  <!-- ─── APPLICATION ORDER ────────────────────── -->
+  <div class="section" id="application">
+
+    <!-- Look toggle -->
+    <div style="margin-bottom:14px">
+      <p class="prod-brand">Application Guide</p>
+      <h2 class="prod-name" style="font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px">Makeup Order<br/><em>by Occasion</em></h2>
+      <p class="prod-desc" style="max-width:560px">The order you apply products is just as important as the products themselves. Choose your look below — each guide uses only the products in your edit.</p>
+    </div>
+
+    <div class="look-toggle">
+      <button class="look-btn active" data-look="casual">☀ Daily / Casual</button>
+      <button class="look-btn" data-look="long">✦ Long-Wear / Event</button>
+    </div>
+
+    <!-- ── DAILY / CASUAL ── -->
+    <div class="look-panel visible" id="look-casual">
+      <div class="look-intro">
+        <div class="look-intro-card">
+          <div class="lic-icon">☀️</div>
+          <p class="lic-label">The Philosophy</p>
+          <p class="lic-title">Effortless & Breathable</p>
+          <p class="lic-body">For daily wear, less is more. The goal is to let skin breathe while evening the complexion and adding a natural brightness. Prioritise light textures, minimal layers, and products that also care for the skin beneath.</p>
+        </div>
+        <div class="look-intro-card">
+          <div class="lic-icon">🕐</div>
+          <p class="lic-label">Time Required</p>
+          <p class="lic-title">5 – 10 Minutes</p>
+          <p class="lic-body">This routine is designed to be quick. The ONLYOU BB Cream and ESQA Skin Tint both require no primer and minimal blending — ideal for mornings when time is short but you still want to look put-together.</p>
+        </div>
+      </div>
+
+      <p class="panel-label" style="margin-bottom:24px">Step-by-Step Order</p>
+      <div class="order-timeline">
+
+        <div class="ot-step">
+          <div class="ot-num">1</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">Skincare Base</span>
+          </div>
+          <p class="ot-title">Moisturiser & SPF</p>
+          <p class="ot-body">Always begin with a clean, moisturised face. Apply your regular moisturiser and let it absorb for 1–2 minutes. Follow with a dedicated SPF if your chosen base does not contain one — this is the most important skin-protection step.</p>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">2</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">ONLYOU — Concealer Brightening & Isolating BB Cream</span>
+            <span style="font-size:.72rem;color:var(--muted);align-self:center">or</span>
+            <span class="ot-product-tag">ESQA — Minimalist Serum Skin Tint</span>
+          </div>
+          <p class="ot-title">Choose Your Base — One Only</p>
+          <p class="ot-body">For daily use, pick just one lightweight base. The <strong style="color:var(--text2);font-weight:500">ONLYOU BB Cream</strong> is the most effortless option — it acts as primer, BB cream, and concealer in one, applied with fingers in under a minute. The <strong style="color:var(--text2);font-weight:500">ESQA Skin Tint</strong> is ideal for the most natural, skin-first look where you want barely-there coverage.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Apply with clean fingertips using patting motions from the centre outward. Warmth from your fingers helps the product melt in seamlessly.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">3</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">ONLYOU — Concealer (spot-use)</span>
+            <span class="ot-optional">Optional</span>
+          </div>
+          <p class="ot-title">Spot Concealing</p>
+          <p class="ot-body">If you used the ESQA Skin Tint as your base, you can use the ONLYOU product's brightening concealer properties on specific areas — under the eyes in a small inverted triangle, or directly on blemishes. Keep it minimal; over-layering on a casual day will look heavy.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Use your ring finger — it applies the lightest pressure and is best for delicate under-eye skin.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">4</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">Second Date — Silky Blur Loose Powder</span>
+          </div>
+          <p class="ot-title">Set & Blur</p>
+          <p class="ot-body">Lightly press the loose powder with the puff onto the T-zone and under-eye areas to lock in the base and prevent any creasing. For a casual look, keep the powder application light — over-powdering can flatten the natural glow of the skin tint or BB cream beneath.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>On days you want a dewy finish, press powder only on the T-zone and skip the cheeks entirely.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">5</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">Colour products</span>
+            <span class="ot-optional">Optional</span>
+          </div>
+          <p class="ot-title">Blush, Brows & Mascara</p>
+          <p class="ot-body">Add any colour products on top of the set base — blush, brow pencil, mascara, lip product. For a casual day, a cream blush tapped with fingers and a tinted lip balm is all you need to look polished without effort.</p>
+        </div>
+
+      </div>
+
+      <div class="look-note">
+        <p class="look-note-title">Daily Routine — Quick Summary</p>
+        <p class="look-note-body">Moisturiser + SPF → ONLYOU BB Cream <em>or</em> ESQA Skin Tint (fingers, centre-out) → Spot concealer under eyes if needed → Light press of Second Date Powder on T-zone → Optional blush & lip. Total products on face: 2–3. Total time: 5–10 minutes.</p>
+      </div>
+    </div>
+
+    <!-- ── LONG-WEAR / EVENT ── -->
+    <div class="look-panel" id="look-long">
+      <div class="look-intro">
+        <div class="look-intro-card">
+          <div class="lic-icon">✨</div>
+          <p class="lic-label">The Philosophy</p>
+          <p class="lic-title">Polished & Enduring</p>
+          <p class="lic-body">For long days, events, or photography, the goal is flawless staying power with layered, built-for-longevity products. Each step locks in the one beneath it. The TIRTIR Red Cushion is your anchor here — engineered to last up to 72 hours without touch-ups.</p>
+        </div>
+        <div class="look-intro-card">
+          <div class="lic-icon">🕐</div>
+          <p class="lic-label">Time Required</p>
+          <p class="lic-title">15 – 25 Minutes</p>
+          <p class="lic-body">This is a considered, layered routine. Each product is applied intentionally and allowed to set before the next. Do not rush the steps — the longevity of this routine depends on each layer being fully blended and set before continuing.</p>
+        </div>
+      </div>
+
+      <p class="panel-label" style="margin-bottom:24px">Step-by-Step Order</p>
+      <div class="order-timeline">
+
+        <div class="ot-step">
+          <div class="ot-num">1</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">Skincare Base</span>
+          </div>
+          <p class="ot-title">Moisturiser, Eye Cream & SPF</p>
+          <p class="ot-body">Begin with a full skincare routine — cleanser, toner, serum if you use one, eye cream, and moisturiser. Allow everything to absorb fully (5 minutes). Apply a dedicated SPF last and let it dry to a clear film before touching any makeup on top.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Avoid heavy or overly emollient moisturisers on long-wear days — too much slip will cause makeup to slide off by midday.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">2</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">ONLYOU — Concealer Brightening & Isolating BB Cream</span>
+          </div>
+          <p class="ot-title">Isolating Barrier Layer</p>
+          <p class="ot-body">Apply a thin, even layer of the ONLYOU BB Cream all over the face before the cushion. Its <em>isolating</em> formula creates a protective film that separates your skincare from the heavier cushion on top — this dramatically improves the cushion's longevity and prevents pilling or oxidation throughout the day.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Keep this layer very thin — it is a base, not coverage. One pump blended outward is sufficient.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">3</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">TIRTIR — Mask Fit Red Cushion</span>
+            <span style="font-size:.72rem;color:var(--muted);align-self:center">or</span>
+            <span class="ot-product-tag">Skintific — Cover Glow Perfect Cushion</span>
+          </div>
+          <p class="ot-title">Main Coverage Layer</p>
+          <p class="ot-body">Apply your cushion foundation on top of the ONLYOU barrier layer using the puff in pressing motions — never drag. For maximum longevity at events or in photos, use the <strong style="color:var(--text2);font-weight:500">TIRTIR Red Cushion</strong>. For long days where you still want a dewy glow, use the <strong style="color:var(--text2);font-weight:500">Skintific Cover Glow</strong> instead. Build coverage where needed.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Let the cushion sit for 30 seconds before moving to the next step — this allows the Film-Forming Technology to set properly.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">4</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">ONLYOU — Brightening Concealer (targeted)</span>
+          </div>
+          <p class="ot-title">Targeted Concealing</p>
+          <p class="ot-body">After the cushion is set, apply the ONLYOU product's brightening concealer over dark circles using the inverted triangle technique — from the inner corner of the eye down to the cheekbone, then back up. Pat gently with your ring finger until fully blended. Also dot onto any blemishes or discolouration that the cushion didn't fully cover.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Applying concealer after foundation means you use less product and get a more natural blend with fewer harsh edges.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">5</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">Second Date — Silky Blur Loose Powder</span>
+          </div>
+          <p class="ot-title">Setting & Baking</p>
+          <p class="ot-body">Press the loose powder generously over the under-eye concealer and T-zone — for long events, you can <em>bake</em> under the eyes by letting the powder sit for 2–3 minutes before dusting off the excess with a fluffy brush. This locks in the concealer and makes it crease-proof for hours. Follow with a lighter press all over the face to unify the finish.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>The zero-flashback formula means you can apply liberally without worrying about white cast in photos — a key benefit at events.</div>
+        </div>
+
+        <div class="ot-step">
+          <div class="ot-num">6</div>
+          <div class="ot-header">
+            <span class="ot-product-tag">Colour products</span>
+          </div>
+          <p class="ot-title">Blush, Contour, Eyes & Lips</p>
+          <p class="ot-body">Apply all colour products on top of the fully set powder base. For long wear, use powder-formula blush and contour — these adhere better over a powdered base. Set your eye makeup and finish lips last. A long-wear setting spray misted over the completed look will melt all the layers together and add several more hours of wear.</p>
+          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Mist a setting spray from arm's length in an X and T motion across the face for even coverage without disturbing the base.</div>
+        </div>
+
+      </div>
+
+      <div class="look-note">
+        <p class="look-note-title">Long-Wear Routine — Quick Summary</p>
+        <p class="look-note-body">Moisturiser + SPF (fully dry) → ONLYOU BB Cream thin layer (barrier) → TIRTIR or Skintific Cushion (pat, let set 30s) → ONLYOU Concealer under eyes & spots → Second Date Loose Powder (bake under eyes 2–3 min) → Colour products → Setting spray. Total time: 15–25 minutes.</p>
+      </div>
+    </div>
+
+  </div>
+
 </main>
 
 <footer>
@@ -946,12 +1241,30 @@ const sects=document.querySelectorAll('.section');
 let current='skintific';
 
 function revealAll(section){
-  const all=section.querySelectorAll('.feat,.ing,.stat,.step,.routine-card,.rr-step');
-  all.forEach((el,i)=>setTimeout(()=>el.classList.add('on'),50+i*35));
+  const all=section.querySelectorAll('.feat,.ing,.stat,.step,.routine-card,.rr-step,.ot-step');
+  all.forEach((el,i)=>setTimeout(()=>el.classList.add('on'),50+i*40));
 }
 function resetAll(section){
-  section.querySelectorAll('.feat,.ing,.stat,.step,.routine-card,.rr-step').forEach(el=>el.classList.remove('on'));
+  section.querySelectorAll('.feat,.ing,.stat,.step,.routine-card,.rr-step,.ot-step').forEach(el=>el.classList.remove('on'));
 }
+
+// Look toggle (daily / long-wear)
+document.querySelectorAll('.look-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const look=btn.dataset.look;
+    document.querySelectorAll('.look-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.look-panel').forEach(p=>{
+      if(p.id==='look-'+look){
+        p.classList.add('visible');
+        p.querySelectorAll('.ot-step').forEach((el,i)=>setTimeout(()=>el.classList.add('on'),60+i*55));
+      } else {
+        p.classList.remove('visible');
+        p.querySelectorAll('.ot-step').forEach(el=>el.classList.remove('on'));
+      }
+    });
+  });
+});
 
 function goTo(id){
   if(id===current)return;
@@ -960,7 +1273,15 @@ function goTo(id){
   resetAll(next);
   prev.classList.add('out');
   prev.addEventListener('animationend',()=>prev.classList.remove('out','visible'),{once:true});
-  setTimeout(()=>{next.classList.add('visible');revealAll(next);},220);
+  setTimeout(()=>{
+    next.classList.add('visible');
+    revealAll(next);
+    // For application tab, also trigger the visible look panel's ot-steps
+    if(id==='application'){
+      const activePanel=next.querySelector('.look-panel.visible');
+      if(activePanel) activePanel.querySelectorAll('.ot-step').forEach((el,i)=>setTimeout(()=>el.classList.add('on'),60+i*55));
+    }
+  },220);
   current=id;
 }
 
