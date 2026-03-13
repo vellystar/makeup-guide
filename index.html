@@ -450,10 +450,123 @@
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 
+  /* ── UNDERTONES SECTION ── */
+  .undertone-intro-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-top: 2.5rem; margin-bottom: 3rem;
+  }
+  .undertone-explainer {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 1.8rem;
+    box-shadow: 0 2px 16px var(--shadow);
+  }
+  .undertone-explainer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 500; color: var(--text-primary);
+    margin-bottom: 0.8rem;
+  }
+  .undertone-explainer p {
+    font-size: 0.82rem; font-weight: 300; line-height: 1.85; color: var(--text-secondary);
+  }
+  .identify-list { list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .identify-list li {
+    font-size: 0.8rem; font-weight: 300; color: var(--text-secondary);
+    line-height: 1.6; padding-left: 1.2rem; position: relative;
+  }
+  .identify-list li::before {
+    content: '◈'; position: absolute; left: 0;
+    color: var(--crimson); font-size: 0.55rem; top: 0.25em;
+  }
+
+  .undertone-cards-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.4rem;
+  }
+  .ut-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 2px 16px var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .ut-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px var(--shadow-deep); }
+  .ut-swatch {
+    height: 90px; position: relative; overflow: hidden;
+    display: flex; align-items: flex-end; padding: 0.8rem 1rem;
+  }
+  .ut-swatch-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,0.9);
+    letter-spacing: 0.04em; position: relative; z-index: 1;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+  }
+  .ut-warm .ut-swatch { background: linear-gradient(135deg, #C17B3E, #E8A050, #D4884A); }
+  .ut-cool .ut-swatch { background: linear-gradient(135deg, #7B8EC1, #9BAED8, #8BA0CC); }
+  .ut-neutral .ut-swatch { background: linear-gradient(135deg, #A89070, #C4A882, #B8987A); }
+  .ut-olive .ut-swatch { background: linear-gradient(135deg, #7A8C60, #9AA870, #8A9C68); }
+
+  .ut-body { padding: 1.2rem 1.3rem 1.3rem; }
+  .ut-subtitle {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--crimson); margin-bottom: 0.7rem;
+  }
+  .ut-section-title {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin: 0.9rem 0 0.4rem;
+  }
+  .ut-desc { font-size: 0.8rem; font-weight: 300; line-height: 1.75; color: var(--text-secondary); }
+  .ut-signals { display: flex; flex-direction: column; gap: 0.3rem; }
+  .ut-signal {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 300; color: var(--text-secondary);
+    line-height: 1.55;
+  }
+  .signal-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  .ut-best-for {
+    margin-top: 0.8rem; padding: 0.6rem 0.8rem;
+    background: var(--tag-bg); border-radius: 8px;
+    border: 1px solid var(--divider);
+    font-size: 0.76rem; font-weight: 300; color: var(--text-secondary); line-height: 1.65;
+  }
+  .ut-best-for strong {
+    font-weight: 500; color: var(--text-primary); font-size: 0.7rem;
+    display: block; letter-spacing: 0.06em; margin-bottom: 0.2rem;
+  }
+
+  /* Undertone fit block on product cards */
+  .undertone-fit {
+    border-top: 1px solid var(--divider); padding-top: 0.9rem; margin-top: 0.2rem;
+  }
+  .ut-fit-label {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--crimson); margin-bottom: 0.55rem;
+  }
+  .ut-fit-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.55rem; }
+  .ut-badge {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.06em;
+    padding: 0.22rem 0.65rem; border-radius: 99px;
+    border: 1px solid transparent;
+  }
+  .ut-badge-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .ut-warm-badge  { background: rgba(193,123,62,0.12); border-color: rgba(193,123,62,0.3); color: #8B5520; }
+  .ut-cool-badge  { background: rgba(123,142,193,0.12); border-color: rgba(123,142,193,0.3); color: #4A5F9A; }
+  .ut-neutral-badge { background: rgba(168,144,112,0.12); border-color: rgba(168,144,112,0.3); color: #7A6040; }
+  .ut-olive-badge { background: rgba(122,140,96,0.12); border-color: rgba(122,140,96,0.3); color: #4A6030; }
+  [data-theme="dark"] .ut-warm-badge  { color: #D4A070; }
+  [data-theme="dark"] .ut-cool-badge  { color: #90A8D8; }
+  [data-theme="dark"] .ut-neutral-badge { color: #C4A882; }
+  [data-theme="dark"] .ut-olive-badge { color: #9AB870; }
+  .ut-fit-note { font-size: 0.76rem; font-weight: 300; line-height: 1.7; color: var(--text-secondary); font-style: italic; }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .midday-grid { grid-template-columns: 1fr; }
+    .undertone-intro-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
     .products-grid { grid-template-columns: 1fr !important; }
@@ -469,6 +582,7 @@
     <a href="#hero" class="nav-brand">My <span>Makeup</span> Edit</a>
     <ul class="nav-links">
       <li><a href="#skin-guide">Skin Type</a></li>
+      <li><a href="#undertones">Undertones</a></li>
       <li><a href="#products">Products</a></li>
       <li><a href="#routine">Routine</a></li>
       <li><a href="#midday">Mid-day</a></li>
@@ -525,6 +639,140 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════ UNDERTONES ═══ -->
+  <section id="undertones">
+    <div class="section-label">Know Your Tone</div>
+    <h2 class="section-title">Understanding <em>Undertones</em></h2>
+    <div class="section-divider"></div>
+    <p class="section-intro reveal">Your skin tone is what you see on the surface — fair, medium, deep. Your <em>undertone</em> is the subtle hue beneath the surface that never changes, no matter how tan or pale you get. Choosing foundation, cushion, or BB cream shades that match your undertone is the difference between makeup that disappears into your skin and makeup that looks "off."</p>
+
+    <div class="undertone-intro-grid reveal">
+      <div class="undertone-explainer">
+        <div class="undertone-explainer-title">How to Identify Your Undertone</div>
+        <p>There are several reliable methods. Use more than one test — the more results that align, the more confident you can be in your undertone.</p>
+        <ul class="identify-list">
+          <li><strong>Vein test:</strong> Look at the veins on your inner wrist in natural light. Greenish veins indicate warm undertones; blue or purple veins indicate cool undertones; a mix of both indicates neutral. Olive-green veins with a muted tone suggest olive undertones.</li>
+          <li><strong>Jewellery test:</strong> Which metal makes your skin look more alive and luminous? Gold flatters warm and olive; silver flatters cool; both look good on neutral undertones.</li>
+          <li><strong>White paper test:</strong> Hold a plain white sheet of paper next to your bare face. If your skin appears yellowish or peachy next to white, you're warm. If it looks pinkish, bluish, or rosy, you're cool. If it looks greyish-green with little pink or yellow, you may be olive. If you can't tell, you're likely neutral.</li>
+          <li><strong>Sun test:</strong> Does your skin tan easily to a golden-brown (warm/olive), or does it burn and turn pink before tanning (cool)? Neutral skin does both moderately.</li>
+          <li><strong>Colours that flatter:</strong> Earthy tones, oranges, warm reds, and yellows look stunning on warm/olive undertones. Blues, purples, emerald greens, and cool pinks suit cool undertones. Neutrals can wear almost anything.</li>
+        </ul>
+      </div>
+      <div class="undertone-explainer">
+        <div class="undertone-explainer-title">Why Undertone Matters in Makeup</div>
+        <p>A foundation that matches your depth (lightness/darkness) but not your undertone will appear ashy, orange, too pink, or "mask-like." This is why two people with the same surface skin tone can wear completely different shades of the same product.</p>
+        <ul class="identify-list">
+          <li><strong>Cushion foundations:</strong> Shade letters like "C" (cool), "W" (warm), or "N" (neutral) indicate the undertone direction. Always match the letter to your undertone first, depth number second.</li>
+          <li><strong>BB creams and skin tints:</strong> Warm-named shades like "Vanilla," "Honey," or "Sand" typically carry a warm-neutral finish. "Ivory" or "Porcelain" shades are usually cool or neutral.</li>
+          <li><strong>Setting products:</strong> Translucent powders and clear mists are universally undertone-free. Tinted powders, however, can shift tone — always check if they're warm, cool, or neutral-tinted.</li>
+          <li><strong>Sunscreens:</strong> Physical/mineral sunscreens can leave a white cast on deeper or cool skin tones. Tinted physical SPFs exist to counteract this. Chemical sunscreens are generally cast-free.</li>
+          <li><strong>Layering effect:</strong> When layering products (BB cream + cushion + powder), undertone can stack and intensify. Mixing warm + warm layers can look overly orange; mixing warm + cool can neutralise to a clean finish.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="undertone-cards-grid">
+
+      <!-- WARM -->
+      <div class="ut-card ut-warm reveal">
+        <div class="ut-swatch">
+          <div class="ut-swatch-name">Warm</div>
+        </div>
+        <div class="ut-body">
+          <div class="ut-subtitle">Yellow · Peachy · Golden</div>
+          <p class="ut-desc">Warm undertones have a golden, peachy, or yellow cast beneath the skin surface. This is extremely common in Southeast Asian, South Asian, Middle Eastern, and Latin skin tones. The skin naturally appears sun-kissed and glowing even without makeup.</p>
+          <div class="ut-section-title">How to Identify</div>
+          <div class="ut-signals">
+            <div class="ut-signal"><span class="signal-dot" style="background:#6B9A5A;"></span>Veins appear green or yellow-green</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#D4A030;"></span>Gold jewellery makes skin look radiant</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#C17B3E;"></span>Skin tans to a warm, golden-brown</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#E8A050;"></span>Next to white paper, skin looks peachy or yellow</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#8B6040;"></span>Earth tones, oranges, and warm reds are most flattering</div>
+          </div>
+          <div class="ut-section-title">In Makeup</div>
+          <div class="ut-best-for">
+            <strong>Look For</strong>
+            Shades labelled "Vanilla," "Honey," "Beige," "Sand," "Golden," or with "W" undertone codes. Avoid shades with "C" codes or names like "Porcelain" (cool) — they may appear ashy, chalky, or overly pink on warm-toned skin.
+          </div>
+        </div>
+      </div>
+
+      <!-- COOL -->
+      <div class="ut-card ut-cool reveal reveal-delay-1">
+        <div class="ut-swatch">
+          <div class="ut-swatch-name">Cool</div>
+        </div>
+        <div class="ut-body">
+          <div class="ut-subtitle">Pink · Rose · Bluish</div>
+          <p class="ut-desc">Cool undertones carry a pinkish, rosy, or bluish hue beneath the skin. Though less common in Southeast Asia, cool-toned Indonesian skin does exist — particularly in those with fairer complexions, or where natural flushing and rosiness is visible.</p>
+          <div class="ut-section-title">How to Identify</div>
+          <div class="ut-signals">
+            <div class="ut-signal"><span class="signal-dot" style="background:#5A5AA0;"></span>Veins appear blue or purple</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#C0C0D8;"></span>Silver jewellery enhances the complexion</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#E8B0B8;"></span>Skin appears pink, rosy, or ruddy naturally</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#9898C8;"></span>Skin burns more easily before tanning</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#6070A8;"></span>Blues, purples, cool pinks, and emeralds flatter most</div>
+          </div>
+          <div class="ut-section-title">In Makeup</div>
+          <div class="ut-best-for">
+            <strong>Look For</strong>
+            Shades coded "C" (cool), or named "Porcelain," "Ivory," "Rose Beige," or "Blush." Avoid heavily warm shades like "Golden Vanilla" or "Honey" — they'll pull orange or too yellow on cool skin, making the complexion appear muddy.
+          </div>
+        </div>
+      </div>
+
+      <!-- NEUTRAL -->
+      <div class="ut-card ut-neutral reveal reveal-delay-2">
+        <div class="ut-swatch">
+          <div class="ut-swatch-name">Neutral</div>
+        </div>
+        <div class="ut-body">
+          <div class="ut-subtitle">Balanced · Beige · Balanced Mix</div>
+          <p class="ut-desc">Neutral undertones are an even balance of warm and cool — no single hue dominates. This is often described as the most "flexible" undertone category because a wide range of shades work well. Many people believe they're neutral when they may actually be olive — the two are often confused.</p>
+          <div class="ut-section-title">How to Identify</div>
+          <div class="ut-signals">
+            <div class="ut-signal"><span class="signal-dot" style="background:#6878A0;"></span>Veins appear blue-green — a mix of both</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#D4B870;"></span>Both gold and silver jewellery complement equally</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#C4A882;"></span>Skin doesn't skew noticeably pink, yellow, or green</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#A89070;"></span>Most clothing colours seem to work reasonably well</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#B89878;"></span>Skin tans moderately without burning or going golden</div>
+          </div>
+          <div class="ut-section-title">In Makeup</div>
+          <div class="ut-best-for">
+            <strong>Look For</strong>
+            Shades coded "N" (neutral) or labelled "Natural," "Nude," "Beige," or balanced "Vanilla." Neutral skin has the most flexibility — you can often wear both warm and cool shades depending on the look. When in doubt, "N" codes are always the safe starting point.
+          </div>
+        </div>
+      </div>
+
+      <!-- OLIVE -->
+      <div class="ut-card ut-olive reveal reveal-delay-3">
+        <div class="ut-swatch">
+          <div class="ut-swatch-name">Olive</div>
+        </div>
+        <div class="ut-body">
+          <div class="ut-subtitle">Green · Muted · Earthy</div>
+          <p class="ut-desc">Olive undertone is a distinct category often misclassified as neutral. It has a muted, greyish-green cast beneath the surface — common in Mediterranean, Southeast Asian, Middle Eastern, and mixed-heritage skin. Olive tones can appear either warm or cool depending on the light, making shade-matching particularly tricky.</p>
+          <div class="ut-section-title">How to Identify</div>
+          <div class="ut-signals">
+            <div class="ut-signal"><span class="signal-dot" style="background:#4A7040;"></span>Veins appear distinctly green, sometimes grey-green</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#9AA870;"></span>Skin has a greyish, earthy, or muted quality in certain light</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#8A7050;"></span>Gold and earth-tone jewellery is most flattering</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#7A8C60;"></span>Cool-toned shades make skin look sallow or ashy</div>
+            <div class="ut-signal"><span class="signal-dot" style="background:#A09060;"></span>Very warm shades can pull orange — balanced warmth is key</div>
+          </div>
+          <div class="ut-section-title">In Makeup</div>
+          <div class="ut-best-for">
+            <strong>Look For</strong>
+            Neutral-warm shades or shades specifically designed for "olive" tones. Avoid both extremes — very cool shades make olive skin look ashy and grey, while overly warm/orange shades clash with the greenish cast. A slightly warm neutral (like "Vanilla" or "Natural Beige") is often the best starting point.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ══════════════════════════════════════════════════════ -->
+
   <section id="products">
     <div class="section-label">The Collection</div>
     <h2 class="section-title">All <em>Products</em></h2>
@@ -556,6 +804,16 @@
             <span class="tag">SPF</span><span class="tag">Spray</span>
             <span class="tag">Lightweight</span><span class="tag">Reapplication-Friendly</span>
           </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive</span>
+            </div>
+            <p class="ut-fit-note">As a transparent chemical formula, Bening's Sunscreen Spray leaves no tint or cast — it is completely universal across all undertones. The spray settles invisibly over any skin tone, making it the ideal final SPF layer regardless of whether you're warm, cool, neutral, or olive.</p>
+          </div>
         </div>
       </div>
 
@@ -582,6 +840,16 @@
             <span class="tag">Physical SPF</span><span class="tag">Mineral</span>
             <span class="tag">Matte Finish</span><span class="tag">Primer-Like</span>
           </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Best</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Good</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool — Caution</span>
+            </div>
+            <p class="ut-fit-note">Physical/mineral sunscreens can leave a slight white or chalky cast before fully blending in, which may be more visible on cool-toned skin. On warm, neutral, and olive tones, this cast absorbs naturally and can even give a subtle brightening effect. If you have cool undertones, blend thoroughly and follow with your base before the cast sets. Look for a tinted version if white cast is a consistent concern.</p>
+          </div>
         </div>
       </div>
 
@@ -607,6 +875,16 @@
           <div class="product-tags">
             <span class="tag">2-in-1</span><span class="tag">Brightening</span>
             <span class="tag">BB Cream</span><span class="tag">Barrier</span>
+          </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Best</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Good</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool — Varies</span>
+            </div>
+            <p class="ut-fit-note">ONLYOU's BB cream is formulated for the Southeast Asian market, where warm-to-neutral undertones dominate. The brightening effect typically skews slightly warm-peachy, which blends seamlessly on warm, neutral, and olive complexions. For cool undertones, the formula may pull slightly peachy or yellow — layering with a cooler-toned cushion on top can counterbalance this. Check if ONLYOU offers multiple shade options that specify undertone codes for a more precise match.</p>
           </div>
         </div>
       </div>
@@ -639,6 +917,16 @@
             <span class="tag">Cushion</span><span class="tag">Full Coverage</span>
             <span class="tag">Glow Finish</span><span class="tag">SPF</span>
           </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility — Shade: Vanilla</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Best</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Good</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool — Not Ideal</span>
+            </div>
+            <p class="ut-fit-note">"Vanilla" in SKINTIFIC's range is a warm-neutral shade designed for light-to-medium skin with warm or neutral undertones — very typical of Indonesian complexions. On warm and neutral skin, it creates a seamless, natural finish with a beautiful golden glow. On olive skin, the warm base complements rather than clashes. For cool undertones, however, Vanilla's yellow-peachy cast can appear orange or muddy against pinkish skin — a cooler shade (if available in the range) would be a better starting point.</p>
+          </div>
         </div>
       </div>
 
@@ -669,6 +957,16 @@
           <div class="product-tags">
             <span class="tag">Mask Fit</span><span class="tag">K-Beauty</span>
             <span class="tag">SPF 40+</span><span class="tag">Long-wear</span>
+          </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility — Shade: 17C Porcelain</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool ✓ Best</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Good</span>
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm — Caution</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive — Not Ideal</span>
+            </div>
+            <p class="ut-fit-note">The "C" in 17C explicitly designates a cool undertone — this shade carries a subtle pinkish-beige cast designed for fair skin with cool or neutral tones. On cool-toned skin, it delivers a flawless, porcelain-like result. On neutral skin, it can work beautifully as a brightening, skin-perfecting layer. On warm undertones, 17C may appear slightly ashy, too pink, or lacking the warmth the face needs. On olive undertones, the cool formula can clash noticeably with the skin's natural greenish hue. If you have warm or olive undertones, consider TIRTIR's warmer shade options (e.g. 17N or 19N).</p>
           </div>
         </div>
       </div>
@@ -701,6 +999,16 @@
             <span class="tag">Serum</span><span class="tag">Skin Tint</span>
             <span class="tag">Blurring</span><span class="tag">Minimalist</span>
           </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility — Shade: Vanilla</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Best</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Best</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool — Light Caution</span>
+            </div>
+            <p class="ut-fit-note">ESQA's Vanilla is a warm-neutral skin tint — one of the most forgiving shades in the range because the sheer, serum-like formula is thin enough that undertone impact is minimal at low coverage. On warm and neutral skin, Vanilla adds a natural, warmed radiance that looks like your own skin enhanced. On olive tones, the warm base blends with the skin's earthy hue to create a natural finish. For cool undertones, the slight warmth may add a subtle peach wash at higher build-up — use a lighter layer or blend with a hydrating serum to sheer it out for a more neutral result.</p>
+          </div>
         </div>
       </div>
 
@@ -732,6 +1040,16 @@
             <span class="tag">Setting</span><span class="tag">Translucent</span>
             <span class="tag">Oil Control</span><span class="tag">Baking</span>
           </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility — Shade: Translucent</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Universal</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool ✓ Universal</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Universal</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Universal</span>
+            </div>
+            <p class="ut-fit-note">Truly translucent powders are the only genuinely universal makeup product — they contain no pigment and therefore impart no undertone whatsoever. Second Date's Translucent shade sets your base exactly as it is, locking the undertone of your foundation or skin tint without altering it. The one caveat: some "translucent" powders still contain white microspheres that, when over-applied, can briefly leave a slight brightening cast under flash photography (the "flashback" effect). Use lightly to avoid this, especially when photos are involved.</p>
+          </div>
         </div>
       </div>
 
@@ -757,6 +1075,16 @@
           <div class="product-tags">
             <span class="tag">Setting Mist</span><span class="tag">3-Second Fix</span>
             <span class="tag">Long-wear</span><span class="tag">Dewy Finish</span>
+          </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Universal</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool ✓ Universal</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Universal</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Universal</span>
+            </div>
+            <p class="ut-fit-note">As a clear water-based mist with no pigment, the L'Oréal Infallible Setting Mist has zero undertone impact — it is completely universal. What it does affect is finish: the mist adds a natural, dewy glow that benefits warm and olive undertones by enhancing the skin's natural warmth and radiance. For cool or neutral undertones, this added dewiness looks fresh and luminous rather than orange or warm — because it's the skin's own colour being revived, not a tint being applied.</p>
           </div>
         </div>
       </div>
@@ -784,6 +1112,16 @@
           <div class="product-tags">
             <span class="tag">Matte Mist</span><span class="tag">Aqua Tech</span>
             <span class="tag">Anti-Humidity</span><span class="tag">Protective</span>
+          </div>
+          <div class="undertone-fit">
+            <div class="ut-fit-label">Undertone Compatibility</div>
+            <div class="ut-fit-row">
+              <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Universal</span>
+              <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool ✓ Universal</span>
+              <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Universal</span>
+              <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Universal</span>
+            </div>
+            <p class="ut-fit-note">Like all clear setting mists, the PIXY Aqua-Beauty Mist is completely pigment-free and undertone-neutral. One subtle consideration: the matte-finish effect slightly flattens skin's natural luminosity, which can make warm and olive undertones look slightly more muted (less golden) compared to a dewy mist. This is usually desirable for oily T-zones — but if you prefer to keep warmth and glow on the cheeks, spritz only the T-zone with PIXY and let the cheeks retain their natural finish.</p>
           </div>
         </div>
       </div>
