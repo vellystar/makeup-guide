@@ -1,1309 +1,942 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Glow Atelier — My Makeup Edit</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Beauty Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
+  :root {
+    --burgundy:      #6B1A2A;
+    --crimson:       #9B2335;
+    --rose:          #C0475A;
+    --blush:         #E8A0A8;
+    --powder:        #F5DDE0;
+    --cream:         #FBF5F3;
+    --gold:          #C8A882;
+    --gold-light:    #EDD9BC;
+    --bg:            #FBF5F3;
+    --bg-card:       #FFFFFF;
+    --bg-nav:        rgba(251,245,243,0.9);
+    --text-primary:  #2A1215;
+    --text-secondary:#6B3A41;
+    --text-muted:    #9E7078;
+    --border:        rgba(107,26,42,0.12);
+    --shadow:        0 4px 32px rgba(107,26,42,0.08);
+    --shadow-hover:  0 8px 48px rgba(107,26,42,0.16);
+    --radius:        16px;
+    --radius-sm:     8px;
+    --transition:    0.4s cubic-bezier(0.25,0.8,0.25,1);
+  }
+  [data-theme="dark"] {
+    --bg:            #160A0C;
+    --bg-card:       #241115;
+    --bg-nav:        rgba(22,10,12,0.94);
+    --text-primary:  #F5E8EA;
+    --text-secondary:#D4A0A8;
+    --text-muted:    #8A6068;
+    --border:        rgba(192,71,90,0.18);
+    --shadow:        0 4px 32px rgba(0,0,0,0.4);
+    --shadow-hover:  0 8px 48px rgba(155,35,53,0.3);
+    --cream:         #1E0E11;
+    --powder:        #2E1820;
+  }
 
-/* ─── TOKENS ─────────────────────────────────── */
-:root {
-  --navy:    #0d1b4b;
-  --navy2:   #162060;
-  --crimson: #8b1a2e;
-  --crimson2:#a52035;
-  --gold:    #b8935a;
-  --gold-lt: #d4b07a;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    transition: background var(--transition), color var(--transition);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
 
-  --bg:        #faf8f5;
-  --bg2:       #f3efe9;
-  --surface:   #ffffff;
-  --surface2:  #f7f4ef;
-  --text:      #0f0e0c;
-  --text2:     #3d3830;
-  --muted:     #7a7068;
-  --border:    rgba(13,27,75,0.10);
-  --border2:   rgba(13,27,75,0.06);
-  --shadow-sm: 0 2px 12px rgba(13,27,75,0.07);
-  --shadow:    0 8px 40px rgba(13,27,75,0.10);
-  --shadow-lg: 0 20px 60px rgba(13,27,75,0.13);
-  --glass:     rgba(250,248,245,0.88);
-  --r:         16px;
-  --r-sm:      10px;
-}
-[data-theme="dark"] {
-  --bg:        #0a0c14;
-  --bg2:       #0f1220;
-  --surface:   #131826;
-  --surface2:  #1a1f32;
-  --text:      #ede8df;
-  --text2:     #c5bdb0;
-  --muted:     #7e7a8a;
-  --border:    rgba(184,147,90,0.14);
-  --border2:   rgba(184,147,90,0.07);
-  --shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
-  --shadow:    0 8px 40px rgba(0,0,0,0.35);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.45);
-  --glass:     rgba(13,14,20,0.90);
-}
+  /* HEADER */
+  header {
+    position: relative; text-align: center;
+    padding: 80px 24px 64px;
+    background: linear-gradient(155deg, var(--burgundy) 0%, var(--crimson) 52%, var(--rose) 100%);
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 25% 50%, rgba(200,168,130,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  }
+  header::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0; height: 60px;
+    background: var(--bg);
+    clip-path: ellipse(55% 100% at 50% 100%);
+    transition: background var(--transition);
+  }
+  .header-inner { position: relative; z-index: 1; }
+  .header-eyebrow {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    letter-spacing: 0.35em; font-size: 0.68rem; text-transform: uppercase;
+    color: var(--gold-light); opacity: 0.85; margin-bottom: 12px;
+    animation: fadeUp 0.8s ease both;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    font-weight: 300; color: #FFF5F6; letter-spacing: 0.02em; line-height: 1.1;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  header h1 em { font-style: italic; color: var(--gold-light); }
+  .header-sub {
+    margin-top: 14px; font-size: 0.82rem; font-weight: 300;
+    color: rgba(255,240,242,0.7); letter-spacing: 0.08em;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
 
-/* ─── RESET ──────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Jost',sans-serif;
-  font-weight:300;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
-  transition:background .5s ease,color .5s ease;
-}
+  /* DARK MODE TOGGLE */
+  .toggle-wrap { position: fixed; top: 18px; right: 18px; z-index: 1000; }
+  .toggle {
+    width: 52px; height: 28px; border-radius: 14px; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(12px);
+    position: relative; transition: background 0.4s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  [data-theme="dark"] .toggle { background: rgba(155,35,53,0.4); }
+  .toggle-knob {
+    position: absolute; top: 4px; left: 4px;
+    width: 20px; height: 20px; border-radius: 50%; background: #fff;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+  [data-theme="dark"] .toggle-knob { transform: translateX(24px); background: var(--blush); }
 
-/* ─── CUSTOM CURSOR ──────────────────────────── */
-.cursor{
-  position:fixed;width:8px;height:8px;
-  border-radius:50%;background:var(--crimson);
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:width .2s,height .2s;
-  mix-blend-mode:multiply;
-}
-[data-theme="dark"] .cursor{mix-blend-mode:screen;background:var(--gold)}
-.cursor-ring{
-  position:fixed;width:32px;height:32px;
-  border-radius:50%;border:1px solid var(--navy);
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  opacity:.4;
-}
-[data-theme="dark"] .cursor-ring{border-color:var(--gold)}
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-nav); backdrop-filter: blur(20px) saturate(160%);
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 16px;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0; padding: 16px 20px;
+    font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted); background: none; border: none; cursor: pointer;
+    position: relative; transition: color 0.3s; white-space: nowrap;
+  }
+  .nav-btn::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+    height: 2px; background: var(--crimson);
+    transition: left 0.35s cubic-bezier(0.25,0.8,0.25,1), right 0.35s cubic-bezier(0.25,0.8,0.25,1);
+  }
+  .nav-btn.active, .nav-btn:hover { color: var(--crimson); }
+  .nav-btn.active::after { left: 20px; right: 20px; }
 
-/* ─── PROGRESS BAR ───────────────────────────── */
-#progress{
-  position:fixed;top:0;left:0;height:1.5px;width:0;
-  background:linear-gradient(90deg,var(--navy),var(--crimson));
-  z-index:9000;transition:width .08s linear;
-}
+  /* MAIN */
+  main { max-width: 1100px; margin: 0 auto; padding: 0 20px 80px; }
+  section { padding-top: 60px; }
 
-/* ─── NOISE TEXTURE ──────────────────────────── */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity:.025;pointer-events:none;z-index:1;
-}
+  /* SECTION HEADINGS */
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400; color: var(--crimson); margin-bottom: 6px;
+  }
+  .section-title em { font-style: italic; color: var(--rose); }
+  .section-sub {
+    font-size: 0.78rem; font-weight: 300; color: var(--text-muted);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px;
+  }
+  .divider {
+    width: 48px; height: 1.5px;
+    background: linear-gradient(90deg, var(--crimson), var(--blush));
+    margin: 8px 0 24px; border-radius: 2px;
+  }
 
-/* ─── NAVBAR ─────────────────────────────────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;height:68px;
-  background:var(--glass);
-  border-bottom:1px solid var(--border2);
-  backdrop-filter:blur(24px) saturate(180%);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);
-  transition:background .4s,border-color .4s;
-}
-@media(max-width:600px){nav{padding:0 20px}}
-.nav-logo{
-  font-family:'Playfair Display',serif;
-  font-size:1.15rem;font-weight:500;letter-spacing:.02em;
-  background:linear-gradient(135deg,var(--navy),var(--crimson));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;user-select:none;
-}
-.nav-logo em{font-style:italic;font-weight:400}
-.nav-right{display:flex;align-items:center;gap:20px}
-.nav-tag{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
-@media(max-width:500px){.nav-tag{display:none}}
+  /* SKIN BANNER */
+  .skin-banner {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--crimson) 100%);
+    border-radius: var(--radius); padding: 34px 38px;
+    color: #FFF5F6; position: relative; overflow: hidden; margin-bottom: 24px;
+  }
+  .skin-banner::before {
+    content: ''; position: absolute; right: -40px; top: -40px;
+    width: 220px; height: 220px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .skin-banner::after {
+    content: ''; position: absolute; left: -30px; bottom: -50px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: rgba(200,168,130,0.07);
+  }
+  .skin-banner h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 300;
+    margin-bottom: 10px; position: relative; z-index: 1;
+  }
+  .skin-banner p { font-size: 0.88rem; opacity: 0.85; position: relative; z-index: 1; line-height: 1.7; }
 
-/* ─── DARK TOGGLE ────────────────────────────── */
-.theme-btn{
-  display:flex;align-items:center;gap:8px;
-  padding:7px 16px;border-radius:50px;
-  border:1px solid var(--border);background:transparent;
-  color:var(--muted);font-family:'Jost',sans-serif;
-  font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-  cursor:pointer;transition:all .3s ease;
-}
-.theme-btn:hover{border-color:var(--gold);color:var(--text)}
-.theme-icon{font-size:.9rem;display:inline-block;transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
-.theme-btn:hover .theme-icon{transform:rotate(20deg) scale(1.15)}
+  .skin-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px; margin-top: 20px;
+  }
+  .skin-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 20px;
+    transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+  }
+  .skin-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+  .skin-card-icon { font-size: 1.4rem; margin-bottom: 9px; }
+  .skin-card h4 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500;
+    color: var(--crimson); margin-bottom: 6px;
+  }
+  .skin-card p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
 
-/* ─── HERO ───────────────────────────────────── */
-.hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:120px 40px 80px;
-  position:relative;z-index:2;overflow:hidden;
-}
-.hero::after{
-  content:'';position:absolute;bottom:-1px;left:0;right:0;height:140px;
-  background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none;
-}
-.orb{position:absolute;border-radius:50%;pointer-events:none;}
-.orb-1{width:600px;height:600px;top:50%;left:50%;
-  transform:translate(-55%,-55%);
-  background:radial-gradient(circle,rgba(13,27,75,.09) 0%,transparent 70%);
-  animation:breathe 8s ease-in-out infinite;}
-.orb-2{width:380px;height:380px;top:65%;left:72%;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(139,26,46,.08) 0%,transparent 70%);
-  animation:breathe 11s 2s ease-in-out infinite reverse;}
-@keyframes breathe{
-  0%,100%{transform:translate(-50%,-50%) scale(1)}
-  50%{transform:translate(-50%,-50%) scale(1.14)}
-}
-.hero-eyebrow{
-  font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--gold);font-weight:600;margin-bottom:20px;
-  opacity:0;animation:rise .8s .1s ease forwards;
-}
-.hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3.2rem,8vw,6.5rem);
-  font-weight:400;line-height:1.0;letter-spacing:-.01em;color:var(--text);
-  opacity:0;animation:rise .9s .2s ease forwards;
-}
-.hero-title em{
-  font-style:italic;
-  background:linear-gradient(135deg,var(--navy) 20%,var(--crimson) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-sub{
-  margin-top:22px;font-size:.95rem;color:var(--muted);font-weight:300;line-height:1.75;max-width:420px;
-  opacity:0;animation:rise .8s .35s ease forwards;
-}
-.hero-line{
-  width:1px;height:52px;margin:36px auto 0;
-  background:linear-gradient(to bottom,transparent,var(--border),transparent);
-  opacity:0;animation:rise .6s .55s ease forwards;
-}
-.hero-scroll{
-  font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:14px;
-  opacity:0;animation:rise .6s .65s ease forwards;
-}
-@keyframes rise{
-  from{opacity:0;transform:translateY(22px)}
-  to{opacity:1;transform:translateY(0)}
-}
+  /* PRODUCT CARDS */
+  .product-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px;
+  }
+  .product-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: box-shadow var(--transition), transform var(--transition),
+                background var(--transition), border-color var(--transition);
+    display: flex; flex-direction: column;
+    animation: fadeUp 0.5s ease both; animation-play-state: paused;
+  }
+  .product-card:hover {
+    box-shadow: var(--shadow-hover); transform: translateY(-5px);
+    border-color: rgba(192,71,90,0.28);
+  }
+  .product-header {
+    padding: 20px 22px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 14px;
+    transition: border-color var(--transition);
+  }
+  .product-badge {
+    flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--powder), var(--blush));
+  }
+  [data-theme="dark"] .product-badge { background: linear-gradient(135deg,#3D1E25,#5A2A34); }
+  .product-info h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600;
+    color: var(--text-primary); line-height: 1.3; margin-bottom: 3px;
+    transition: color var(--transition);
+  }
+  .product-brand { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--crimson); }
+  .product-shade { display: inline-flex; align-items: center; gap: 5px; margin-top: 5px; font-size: 0.7rem; color: var(--text-muted); font-style: italic; }
+  .shade-dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg,#E8CFC0,#D4B49A); border: 1px solid var(--border); }
+  .product-body { padding: 18px 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 13px; }
+  .product-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; }
 
-/* ─── MAIN ───────────────────────────────────── */
-main{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 40px 120px}
-@media(max-width:700px){main{padding:0 20px 80px}}
+  .benefit-list { display: flex; flex-wrap: wrap; gap: 5px; }
+  .benefit-tag {
+    display: inline-block; padding: 3px 10px;
+    background: var(--powder); color: var(--burgundy);
+    border-radius: 20px; font-size: 0.68rem; font-weight: 500;
+    transition: background var(--transition), color var(--transition);
+  }
+  [data-theme="dark"] .benefit-tag { background: #3D1E25; color: var(--blush); }
 
-/* ─── TAB BAR ────────────────────────────────── */
-.tab-bar{
-  position:sticky;top:68px;z-index:400;
-  background:var(--glass);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border2);
-  margin-bottom:72px;
-  opacity:0;animation:rise .7s .7s ease forwards;
-}
-.tab-inner{
-  display:flex;overflow-x:auto;scrollbar-width:none;
-  max-width:1100px;margin:0 auto;padding:0 40px;
-}
-.tab-inner::-webkit-scrollbar{display:none}
-@media(max-width:700px){.tab-inner{padding:0 16px}}
-.tab-btn{
-  flex-shrink:0;padding:20px 22px;
-  border:none;background:transparent;
-  font-family:'Jost',sans-serif;
-  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
-  font-weight:500;color:var(--muted);
-  cursor:pointer;position:relative;
-  transition:color .3s ease;white-space:nowrap;
-}
-.tab-btn::after{
-  content:'';position:absolute;bottom:-1px;left:0;right:0;height:1.5px;
-  background:linear-gradient(90deg,var(--navy),var(--crimson));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s cubic-bezier(.22,1,.36,1);
-}
-.tab-btn:hover{color:var(--text2)}
-.tab-btn.active{color:var(--text)}
-.tab-btn.active::after{transform:scaleX(1)}
+  .benefit-label {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;
+  }
+  .product-tip {
+    margin-top: auto; padding: 10px 14px;
+    background: linear-gradient(135deg, var(--powder), rgba(232,160,168,0.12));
+    border-radius: var(--radius-sm); border-left: 3px solid var(--rose);
+    font-size: 0.77rem; color: var(--text-secondary); font-style: italic;
+    transition: background var(--transition);
+  }
+  [data-theme="dark"] .product-tip { background: linear-gradient(135deg,rgba(61,30,37,0.5),rgba(90,42,52,0.3)); }
+  .tip-label {
+    font-style: normal; font-weight: 600; color: var(--rose);
+    font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px;
+  }
 
-/* ─── SECTIONS ───────────────────────────────── */
-.section{display:none;opacity:0}
-.section.visible{display:block;animation:sectionIn .6s cubic-bezier(.22,1,.36,1) forwards}
-.section.out{display:block;animation:sectionOut .28s ease forwards;pointer-events:none}
-@keyframes sectionIn{
-  from{opacity:0;transform:translateY(32px)}
-  to  {opacity:1;transform:translateY(0)}
-}
-@keyframes sectionOut{
-  from{opacity:1;transform:translateY(0)}
-  to  {opacity:0;transform:translateY(-18px)}
-}
+  /* CATEGORY DIVIDER */
+  .category-label {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); margin: 30px 0 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .category-label::before, .category-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .category-label::before { max-width: 24px; }
 
-/* ─── PRODUCT LAYOUT ─────────────────────────── */
-.product-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:56px}
-@media(max-width:800px){.product-hero{grid-template-columns:1fr;gap:36px}}
+  /* STEPS */
+  .steps-container { display: flex; flex-direction: column; gap: 14px; }
+  .step-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px 24px; display: grid; grid-template-columns: 52px 1fr; gap: 18px;
+    transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+    animation: fadeUp 0.5s ease both; animation-play-state: paused;
+  }
+  .step-card:hover { box-shadow: var(--shadow-hover); transform: translateX(4px); }
+  .step-number {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; font-weight: 300; line-height: 1;
+    background: linear-gradient(135deg, var(--crimson), var(--rose));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .step-content h4 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 500;
+    color: var(--text-primary); margin-bottom: 5px;
+  }
+  .step-product-tag {
+    display: inline-block; padding: 2px 10px;
+    background: var(--crimson); color: #fff;
+    border-radius: 20px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .step-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; }
 
-.prod-brand{font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
-.prod-name{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:400;line-height:1.15;color:var(--text);margin-bottom:18px}
-.prod-name em{font-style:italic;color:var(--muted)}
-.shade-row{display:flex;align-items:center;gap:10px;margin-bottom:26px;flex-wrap:wrap}
-.shade-swatch{width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 1px var(--border),0 0 0 3px var(--bg);flex-shrink:0}
-.shade-label{font-size:.78rem;color:var(--muted);letter-spacing:.03em}
-.spf-chip{padding:3px 10px;border-radius:30px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:rgba(255,255,255,.85);font-size:.62rem;letter-spacing:.07em;font-weight:500}
-.prod-desc{font-size:.93rem;line-height:1.82;color:var(--text2);font-weight:300;border-left:2px solid var(--border);padding-left:20px;margin-bottom:32px}
+  /* REAPPLICATION */
+  .reapp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+  .reapp-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px; transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+    animation: fadeUp 0.5s ease both; animation-play-state: paused;
+  }
+  .reapp-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+  .reapp-icon { font-size: 1.7rem; margin-bottom: 11px; }
+  .reapp-card h4 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-weight: 500;
+    color: var(--crimson); margin-bottom: 7px;
+  }
+  .reapp-card p { font-size: 0.81rem; color: var(--text-secondary); line-height: 1.65; }
 
-.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.feat{
-  display:flex;align-items:flex-start;gap:10px;
-  padding:13px 15px;border-radius:var(--r-sm);
-  background:var(--surface2);border:1px solid var(--border2);
-  opacity:0;transform:translateY(14px);
-  transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,background .3s;
-}
-.feat.on{opacity:1;transform:translateY(0)}
-.feat:hover{background:var(--surface);box-shadow:var(--shadow-sm)}
-.feat-dot{width:5px;height:5px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--crimson));margin-top:5px;flex-shrink:0}
-.feat-text{font-size:.80rem;line-height:1.55;color:var(--text2);font-weight:300}
+  .reapp-timeline {
+    background: linear-gradient(135deg, var(--burgundy), var(--crimson));
+    border-radius: var(--radius); padding: 28px 32px; margin-top: 22px;
+    color: #fff5f6; position: relative; overflow: hidden;
+  }
+  .reapp-timeline::before {
+    content: ''; position: absolute; right: -20px; bottom: -20px;
+    width: 160px; height: 160px; border-radius: 50%; background: rgba(255,255,255,0.04);
+  }
+  .reapp-timeline h4 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300;
+    margin-bottom: 18px; position: relative; z-index: 1;
+  }
+  .timeline-row {
+    display: flex; align-items: flex-start; gap: 14px;
+    margin-bottom: 13px; position: relative; z-index: 1;
+  }
+  .timeline-time { flex-shrink: 0; width: 62px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; color: var(--gold-light); padding-top: 2px; }
+  .timeline-dot { flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--gold-light); margin-top: 6px; }
+  .timeline-text { font-size: 0.81rem; opacity: 0.88; line-height: 1.55; }
 
-/* ─── RIGHT PANEL ────────────────────────────── */
-.panel-label{
-  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--muted);font-weight:600;margin-bottom:14px;
-  display:flex;align-items:center;gap:10px;
-}
-.panel-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  footer {
+    text-align: center; padding: 38px 20px;
+    border-top: 1px solid var(--border); font-size: 0.73rem; color: var(--text-muted);
+    font-style: italic; letter-spacing: 0.05em; transition: border-color var(--transition);
+  }
 
-.ingredient-cloud{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:30px}
-.ing{
-  padding:6px 14px;border-radius:30px;
-  font-size:.73rem;font-weight:400;letter-spacing:.02em;
-  border:1px solid var(--border);color:var(--text2);background:var(--surface);
-  cursor:default;
-  transition:all .3s cubic-bezier(.34,1.4,.64,1);
-  opacity:0;transform:scale(.92);
-}
-.ing.on{opacity:1;transform:scale(1)}
-.ing:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:scale(1.05) translateY(-2px);box-shadow:0 6px 18px rgba(13,27,75,.22)}
-.ing.accent:hover{background:var(--crimson);border-color:var(--crimson)}
-.ing.gold-h:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:30px}
-.stat{
-  text-align:center;padding:16px 10px;
-  border-radius:var(--r-sm);border:1px solid var(--border2);background:var(--surface2);
-  opacity:0;transform:translateY(10px);
-  transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1);
-}
-.stat.on{opacity:1;transform:translateY(0)}
-.stat-num{
-  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;
-  background:linear-gradient(135deg,var(--navy),var(--crimson));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  line-height:1.1;margin-bottom:4px;
-}
-.stat-desc{font-size:.63rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-
-/* ─── DIVIDER ────────────────────────────────── */
-.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:56px 0}
-
-/* ─── TWO-COL ────────────────────────────────── */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-@media(max-width:800px){.two-col{grid-template-columns:1fr;gap:36px}}
-
-.block-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;font-style:italic;color:var(--text);margin-bottom:28px}
-
-/* ─── STEPS ──────────────────────────────────── */
-.step{
-  display:flex;gap:0;padding-bottom:28px;
-  border-left:1px solid var(--border);margin-left:14px;padding-left:28px;
-  position:relative;
-  opacity:0;transform:translateX(-12px);
-  transition:opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1);
-}
-.step.on{opacity:1;transform:translateX(0)}
-.step:last-child{border-color:transparent;padding-bottom:0}
-.step-num{
-  position:absolute;left:-14px;top:0;
-  width:28px;height:28px;border-radius:50%;
-  background:var(--surface);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.68rem;font-weight:600;color:var(--muted);
-  transition:all .3s ease;flex-shrink:0;
-}
-.step:hover .step-num{background:linear-gradient(135deg,var(--navy),var(--crimson));border-color:transparent;color:#fff;transform:scale(1.1)}
-.step-content{padding-top:2px}
-.step-title{font-size:.73rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;color:var(--text2);margin-bottom:5px}
-.step-body{font-size:.87rem;line-height:1.72;color:var(--muted);font-weight:300}
-
-/* ─── REAPPLY CARD ───────────────────────────── */
-.reapply-card{
-  border-radius:var(--r);padding:32px;
-  background:linear-gradient(135deg,var(--navy),var(--navy2) 60%,var(--crimson));
-  color:rgba(255,255,255,.9);position:relative;overflow:hidden;
-}
-.reapply-card::before{
-  content:'✦';position:absolute;right:-10px;top:-20px;
-  font-size:7rem;opacity:.06;font-family:'Playfair Display',serif;line-height:1;pointer-events:none;
-}
-.reapply-eyebrow{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:600;margin-bottom:10px}
-.reapply-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;font-style:italic;color:#fff;margin-bottom:16px}
-.reapply-body{font-size:.87rem;line-height:1.78;color:rgba(255,255,255,.72);font-weight:300}
-.reapply-tip{margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.65;font-weight:300}
-.reapply-tip strong{color:rgba(255,255,255,.75);font-weight:500}
-
-/* ─── ROUTINE ────────────────────────────────── */
-.routine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
-@media(max-width:700px){.routine-grid{grid-template-columns:1fr}}
-.routine-card{
-  padding:28px 24px;border-radius:var(--r);
-  border:1px solid var(--border);background:var(--surface);
-  position:relative;overflow:hidden;
-  opacity:0;transform:translateY(18px);
-  transition:opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1),box-shadow .3s;
-}
-.routine-card.on{opacity:1;transform:translateY(0)}
-.routine-card:hover{box-shadow:var(--shadow)}
-.routine-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--navy),var(--crimson));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s cubic-bezier(.22,1,.36,1);
-}
-.routine-card:hover::before{transform:scaleX(1)}
-.rc-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:var(--border);line-height:1;margin-bottom:12px;transition:color .3s}
-.routine-card:hover .rc-num{color:var(--border2)}
-.rc-brand{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:5px}
-.rc-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;font-style:italic;color:var(--text);margin-bottom:8px;line-height:1.3}
-.rc-note{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
-
-.routine-refresh{border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
-.rr-header{
-  padding:24px 32px;
-  background:linear-gradient(135deg,rgba(13,27,75,.05),rgba(139,26,46,.05));
-  border-bottom:1px solid var(--border2);
-  display:flex;align-items:center;gap:16px;
-}
-.rr-icon{font-size:1.3rem}
-.rr-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
-.rr-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;font-style:italic;color:var(--text)}
-.rr-body{display:grid;grid-template-columns:1fr 1fr}
-@media(max-width:700px){.rr-body{grid-template-columns:1fr}}
-.rr-step{
-  padding:24px 32px;border-right:1px solid var(--border2);border-bottom:1px solid var(--border2);
-  display:flex;gap:16px;align-items:flex-start;
-  opacity:0;transform:translateY(10px);
-  transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1),background .2s;
-}
-.rr-step.on{opacity:1;transform:translateY(0)}
-.rr-step:hover{background:var(--surface2)}
-.rr-step:nth-child(even){border-right:none}
-.rr-step:nth-last-child(-n+2){border-bottom:none}
-.rr-n{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--border);font-weight:400;flex-shrink:0;line-height:1;margin-top:2px}
-.rr-step-title{font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--text2);margin-bottom:5px}
-.rr-step-body{font-size:.84rem;line-height:1.68;color:var(--muted);font-weight:300}
-
-.compat{margin-top:40px;padding:32px;border-radius:var(--r);border:1px solid var(--border);background:var(--surface)}
-.compat-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--text);margin-bottom:20px}
-.compat-list{display:flex;flex-direction:column;gap:0}
-.compat-item{
-  display:flex;gap:14px;align-items:flex-start;
-  font-size:.87rem;line-height:1.68;color:var(--muted);font-weight:300;
-  padding:14px 0;border-bottom:1px solid var(--border2);
-}
-.compat-item:first-child{padding-top:0}
-.compat-item:last-child{border:none;padding-bottom:0}
-.ci-icon{font-size:.65rem;color:var(--gold);margin-top:5px;flex-shrink:0}
-
-/* ─── APPLICATION ORDER SECTION ─────────────────── */
-.look-toggle{
-  display:flex;gap:0;border:1px solid var(--border);border-radius:50px;
-  padding:4px;width:fit-content;margin-bottom:52px;background:var(--surface2);
-}
-.look-btn{
-  padding:10px 26px;border-radius:50px;border:none;background:transparent;
-  font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.1em;
-  text-transform:uppercase;font-weight:500;color:var(--muted);cursor:pointer;
-  transition:all .35s cubic-bezier(.34,1.2,.64,1);white-space:nowrap;
-}
-.look-btn.active{
-  background:linear-gradient(135deg,var(--navy),var(--crimson));
-  color:#fff;box-shadow:0 4px 18px rgba(13,27,75,.25);
-}
-
-.look-panel{display:none}
-.look-panel.visible{display:block}
-
-.look-intro{
-  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;
-}
-@media(max-width:700px){.look-intro{grid-template-columns:1fr}}
-.look-intro-card{
-  padding:28px;border-radius:var(--r);border:1px solid var(--border);
-  background:var(--surface);position:relative;overflow:hidden;
-}
-.look-intro-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--navy),var(--crimson));
-}
-.lic-icon{font-size:1.6rem;margin-bottom:14px}
-.lic-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:7px}
-.lic-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;font-style:italic;color:var(--text);margin-bottom:10px}
-.lic-body{font-size:.85rem;line-height:1.75;color:var(--muted);font-weight:300}
-
-.order-timeline{
-  position:relative;
-  display:flex;flex-direction:column;gap:0;
-  padding-left:52px;
-  margin-bottom:48px;
-}
-.order-timeline::before{
-  content:'';position:absolute;left:19px;top:12px;bottom:12px;width:1px;
-  background:linear-gradient(to bottom,var(--navy),var(--crimson));
-  opacity:.25;
-}
-.ot-step{
-  position:relative;padding:0 0 32px 32px;
-  opacity:0;transform:translateX(-16px);
-  transition:opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1);
-}
-.ot-step.on{opacity:1;transform:translateX(0)}
-.ot-step:last-child{padding-bottom:0}
-.ot-num{
-  position:absolute;left:-32px;top:2px;
-  width:38px;height:38px;border-radius:50%;
-  background:var(--surface);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:.85rem;
-  font-weight:400;color:var(--muted);
-  transition:all .35s ease;flex-shrink:0;
-  box-shadow:var(--shadow-sm);
-}
-.ot-step:hover .ot-num{
-  background:linear-gradient(135deg,var(--navy),var(--crimson));
-  border-color:transparent;color:#fff;
-  box-shadow:0 6px 18px rgba(13,27,75,.25);
-}
-.ot-header{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:8px}
-.ot-product-tag{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:4px 12px;border-radius:30px;
-  background:var(--surface2);border:1px solid var(--border);
-  font-size:.68rem;font-weight:500;letter-spacing:.05em;color:var(--text2);
-  transition:all .25s;
-}
-.ot-step:hover .ot-product-tag{border-color:var(--gold);color:var(--gold)}
-.ot-optional{
-  padding:3px 10px;border-radius:30px;
-  background:rgba(184,147,90,.1);border:1px solid rgba(184,147,90,.2);
-  font-size:.62rem;font-weight:500;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;
-}
-.ot-title{
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:6px;
-}
-.ot-body{font-size:.87rem;line-height:1.75;color:var(--muted);font-weight:300;max-width:640px}
-.ot-tip{
-  display:inline-flex;align-items:flex-start;gap:8px;
-  margin-top:10px;padding:10px 14px;border-radius:var(--r-sm);
-  background:var(--surface2);border:1px solid var(--border2);
-  font-size:.80rem;line-height:1.6;color:var(--text2);font-weight:300;
-}
-.ot-tip-icon{flex-shrink:0;font-size:.75rem;margin-top:2px;color:var(--gold)}
-
-.look-note{
-  padding:28px 32px;border-radius:var(--r);
-  border:1px dashed var(--border);
-  background:linear-gradient(135deg,rgba(13,27,75,.03),rgba(139,26,46,.03));
-}
-.look-note-title{
-  font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;
-  color:var(--text2);margin-bottom:12px;
-}
-.look-note-body{font-size:.85rem;line-height:1.75;color:var(--muted);font-weight:300}
-
-/* ─── FOOTER ─────────────────────────────────── */
-footer{position:relative;z-index:2;border-top:1px solid var(--border2);padding:44px;text-align:center}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;font-style:italic;background:linear-gradient(135deg,var(--navy),var(--crimson));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
-.footer-note{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
-
-/* ─── THEME SWEEP ────────────────────────────── */
-#sweep{
-  position:fixed;top:34px;right:80px;
-  width:0;height:0;border-radius:50%;
-  pointer-events:none;z-index:8000;
-  transform:translate(50%,-50%);
-}
-#sweep.active{animation:sweepGrow .65s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes sweepGrow{
-  0%  {width:0;height:0;opacity:.18;border-radius:50%}
-  100%{width:300vmax;height:300vmax;opacity:0}
-}
+  @media (max-width: 640px) {
+    header { padding: 62px 18px 50px; }
+    .nav-btn { padding: 14px 13px; font-size: 0.7rem; }
+    .skin-banner { padding: 24px 20px; }
+    .step-card { grid-template-columns: 40px 1fr; gap: 12px; padding: 18px 18px; }
+    .product-grid { grid-template-columns: 1fr; }
+    .reapp-grid { grid-template-columns: 1fr; }
+    .reapp-timeline { padding: 22px 22px; }
+  }
+  @media (min-width: 641px) and (max-width: 900px) {
+    .product-grid { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
 
-<div id="progress"></div>
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="ring"></div>
-<div id="sweep"></div>
+<div class="toggle-wrap">
+  <button class="toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="toggle-knob" id="toggleKnob">☀️</span>
+  </button>
+</div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo"><em>Glow</em> Atelier</div>
-  <div class="nav-right">
-    <span class="nav-tag">My Beauty Edit</span>
-    <button class="theme-btn" id="themeBtn">
-      <span class="theme-icon" id="themeIcon">🌙</span>
-      <span id="themeLabel">Dark</span>
-    </button>
+<header>
+  <div class="header-inner">
+    <p class="header-eyebrow">Personal Beauty Collection</p>
+    <h1>My <em>Curated</em> Routine</h1>
+    <p class="header-sub">Crafted for Combination Skin &nbsp;·&nbsp; Complete Product Guide</p>
+  </div>
+</header>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-target="skin">Skin Type</button>
+    <button class="nav-btn" data-target="base">Base</button>
+    <button class="nav-btn" data-target="setting">Mist & Setting</button>
+    <button class="nav-btn" data-target="sun">Sun Care</button>
+    <button class="nav-btn" data-target="application">Application</button>
+    <button class="nav-btn" data-target="reapplication">Mid-Day</button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <p class="hero-eyebrow">Complexion · Coverage · Care</p>
-  <h1 class="hero-title">Your<br/><em>Curated</em><br/>Makeup Edit</h1>
-  <p class="hero-sub">Five thoughtfully selected complexion products — their benefits, how to apply them, and how to refresh throughout the day.</p>
-  <div class="hero-line"></div>
-  <p class="hero-scroll">Scroll to explore</p>
-</section>
-
 <main>
 
-  <!-- TAB BAR -->
-  <div class="tab-bar">
-    <div class="tab-inner">
-      <button class="tab-btn active" data-tab="skintific">Skintific</button>
-      <button class="tab-btn" data-tab="tirtir">TIRTIR</button>
-      <button class="tab-btn" data-tab="esqa">ESQA</button>
-      <button class="tab-btn" data-tab="seconddate">Second Date</button>
-      <button class="tab-btn" data-tab="onlyou">ONLYOU</button>
-      <button class="tab-btn" data-tab="routine">Full Routine</button>
-      <button class="tab-btn" data-tab="application">Application Order</button>
-    </div>
-  </div>
+  <!-- SKIN TYPE -->
+  <section id="skin">
+    <p class="section-title">Combination <em>Skin</em></p>
+    <p class="section-sub">Understanding your canvas</p>
+    <div class="divider"></div>
 
-  <!-- ─── SKINTIFIC ──────────────────────────── -->
-  <div class="section" id="skintific">
-    <div class="product-hero">
-      <div>
-        <p class="prod-brand">Skintific</p>
-        <h2 class="prod-name">Cover Glow<br/><em>Perfect Cushion</em><br/>Foundation</h2>
-        <div class="shade-row">
-          <div class="shade-swatch" style="background:#f0dfc6"></div>
-          <span class="shade-label">Vanilla &nbsp;·&nbsp; Warm Neutral</span>
-          <span class="spf-chip">SPF 50 PA+++</span>
-        </div>
-        <p class="prod-desc">A radiance-first cushion delivering medium-to-full buildable coverage while actively treating your skin. Powered by WKPep® Peptide Complex and Hydrolyzed Hyaluronic Acid, it blurs pores and lasts up to 10 hours without heaviness.</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">10-hour long-lasting wear</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Medium-to-full buildable coverage</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Quadruple Film-Forming Technology</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Crystal dewy glow finish</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Antibacterial Bouncy-Touch puff</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Ultraf Lap™ poreless blur</div></div>
-        </div>
-      </div>
-      <div>
-        <p class="panel-label">Active Ingredients</p>
-        <div class="ingredient-cloud">
-          <span class="ing">WKPep® Peptide Complex</span>
-          <span class="ing accent">Hydrolyzed Hyaluronic Acid</span>
-          <span class="ing">Resveratrol</span>
-          <span class="ing gold-h">Vitamin E</span>
-          <span class="ing">Ultraf Lap™ Powder</span>
-          <span class="ing accent">Antioxidant Complex</span>
-        </div>
-        <p class="panel-label">At a Glance</p>
-        <div class="stat-row">
-          <div class="stat"><div class="stat-num">10h</div><div class="stat-desc">Wear Time</div></div>
-          <div class="stat"><div class="stat-num">SPF 50</div><div class="stat-desc">UV-B Guard</div></div>
-          <div class="stat"><div class="stat-num">PA+++</div><div class="stat-desc">UV-A Shield</div></div>
-        </div>
-        <p class="panel-label">Key Benefits</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Deep hydration via peptide complex</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Antioxidant defence against dullness</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Strengthens skin barrier over time</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Suitable for all skin types</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="section-divider"></div>
-    <div class="two-col">
-      <div>
-        <p class="block-title">How to Apply</p>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-content"><p class="step-title">Prep</p><p class="step-body">Cleanse, tone, and moisturise. Primer is optional but improves longevity on oilier skin types.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-content"><p class="step-title">Load the Puff</p><p class="step-body">Press the Bouncy-Touch puff gently into the cushion pan. Do not overload or drag the puff.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-content"><p class="step-title">Pat Outward</p><p class="step-body">Start at the centre of the face and pat outward using gentle pressing motions. Never rub.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-content"><p class="step-title">Build & Blend</p><p class="step-body">Layer on areas needing extra coverage. Blend the edges carefully for a seamless, skin-like finish.</p></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="reapply-card">
-          <p class="reapply-eyebrow">Mid-Day Refresh</p>
-          <p class="reapply-title">Reviving Your Glow</p>
-          <p class="reapply-body">Blot excess oil with a tissue first — this is essential so you are not pushing sebum back into the product. Then press the puff (do not drag) lightly over the T-zone and any areas that have faded.</p>
-          <p class="reapply-tip">The <strong>Film-Forming Technology</strong> means a single gentle press is enough to re-activate coverage without a cakey build-up. Finish with a light dusting of loose powder to lock in the refresh.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── TIRTIR ──────────────────────────────── -->
-  <div class="section" id="tirtir">
-    <div class="product-hero">
-      <div>
-        <p class="prod-brand">TIRTIR</p>
-        <h2 class="prod-name">Mask Fit<br/><em>Red Cushion</em></h2>
-        <div class="shade-row">
-          <div class="shade-swatch" style="background:#f2ddd6"></div>
-          <span class="shade-label">17C Porcelain &nbsp;·&nbsp; Cool Undertone</span>
-          <span class="spf-chip">SPF 40 PA++</span>
-        </div>
-        <p class="prod-desc">Korea's iconic full-coverage cushion, engineered for up to 72-hour wear. The egg-shaped puff delivers a satin glass-skin finish, while a Red Ingredient Trio — propolis, hibiscus, astaxanthin — actively treats skin beneath the surface.</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Up to 72-hour staying power</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Full-coverage, buildable formula</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Smudge-proof & transfer-resistant</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Satin glass-skin finish</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Dermatologist-tested, hypoallergenic</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Safe for acne-prone skin</div></div>
-        </div>
-      </div>
-      <div>
-        <p class="panel-label">The Red Ingredient Trio</p>
-        <div class="ingredient-cloud">
-          <span class="ing accent">Red Propolis Extract</span>
-          <span class="ing accent">Hibiscus Sabdariffa</span>
-          <span class="ing accent">Astaxanthin</span>
-          <span class="ing">Niacinamide</span>
-          <span class="ing gold-h">Hyaluronic Acid</span>
-          <span class="ing">Adenosine</span>
-          <span class="ing">Egg-Shaped Puff Technology</span>
-        </div>
-        <p class="panel-label">At a Glance</p>
-        <div class="stat-row">
-          <div class="stat"><div class="stat-num">72h</div><div class="stat-desc">Wear Time</div></div>
-          <div class="stat"><div class="stat-num">SPF 40</div><div class="stat-desc">UV-B Guard</div></div>
-          <div class="stat"><div class="stat-num">PA++</div><div class="stat-desc">UV-A Shield</div></div>
-        </div>
-        <p class="panel-label">Key Benefits</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Propolis soothes & supports cell renewal</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Astaxanthin shields against free radicals</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Hibiscus keeps skin supple & radiant</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Niacinamide brightens & evens tone</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="section-divider"></div>
-    <div class="two-col">
-      <div>
-        <p class="block-title">How to Apply</p>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-content"><p class="step-title">Load the Puff</p><p class="step-body">Press the unique egg-shaped puff into the cushion to pick up a moderate, even amount of product.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-content"><p class="step-title">Pat onto Face</p><p class="step-body">Use the rounded tip of the puff to tap coverage from the centre of the face outward in gentle presses.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-content"><p class="step-title">Build & Blend</p><p class="step-body">Layer for your desired coverage intensity. The formula builds flawlessly without creasing or heaviness.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-content"><p class="step-title">Set & Seal</p><p class="step-body">Optional: finish with a fine setting mist to lock in coverage and enhance the satin glass-skin effect.</p></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="reapply-card">
-          <p class="reapply-eyebrow">Mid-Day Refresh</p>
-          <p class="reapply-title">Keeping It Flawless</p>
-          <p class="reapply-body">Because this formula is engineered for 72-hour wear, mid-day touch-ups should be minimal — spot-treat only where needed. Blot any oilier areas first, then lightly press the puff over those zones only.</p>
-          <p class="reapply-tip">17C Porcelain is a very fair, cool-toned shade. <strong>Over-applying mid-day</strong> can grey the complexion under warm light. A single light press over the T-zone is typically more than enough.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── ESQA ─────────────────────────────────── -->
-  <div class="section" id="esqa">
-    <div class="product-hero">
-      <div>
-        <p class="prod-brand">ESQA Cosmetics</p>
-        <h2 class="prod-name">Minimalist<br/><em>Blurring Serum</em><br/>Skin Tint</h2>
-        <div class="shade-row">
-          <div class="shade-swatch" style="background:#f0dfc8"></div>
-          <span class="shade-label">Vanilla &nbsp;·&nbsp; Neutral Warm</span>
-          <span class="spf-chip">SPF 35 PA++</span>
-        </div>
-        <p class="prod-desc">Where skincare and coverage converge. Blurring Metagram™ Technology blurs pores and fine lines on contact while five active ingredients hydrate, smooth, and protect the barrier beneath the finish.</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Feather-light serum texture</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">24-hour wear, natural velvet finish</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Blurring Metagram™ Technology</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Self-setting — no primer needed</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">12-hour oil control</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Fragrance-free, non-comedogenic</div></div>
-        </div>
-      </div>
-      <div>
-        <p class="panel-label">5X Active Complex</p>
-        <div class="ingredient-cloud">
-          <span class="ing">Copper Tripeptide-1</span>
-          <span class="ing gold-h">Acetyl Hexapeptide-8</span>
-          <span class="ing accent">Sodium Hyaluronate</span>
-          <span class="ing">Camellia Sinensis</span>
-          <span class="ing">Allantoin</span>
-          <span class="ing gold-h">Panthenol (B5)</span>
-          <span class="ing">Tocopherol (Vit E)</span>
-        </div>
-        <p class="panel-label">Clinically Proven</p>
-        <div class="stat-row">
-          <div class="stat"><div class="stat-num">100%</div><div class="stat-desc">Feel lightweight</div></div>
-          <div class="stat"><div class="stat-num">98%</div><div class="stat-desc">Smoother texture</div></div>
-          <div class="stat"><div class="stat-num">94%</div><div class="stat-desc">Blurs pores</div></div>
-        </div>
-        <p class="panel-label">Key Benefits</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Zero white cast, zero cakey finish</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Acne-safe & talc-free formula</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Skin looks instantly healthier</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Shake before use for best results</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="section-divider"></div>
-    <div class="two-col">
-      <div>
-        <p class="block-title">How to Apply</p>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-content"><p class="step-title">Shake</p><p class="step-body">Always shake the bottle gently before use to re-emulsify the serum actives and coverage pigments.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-content"><p class="step-title">Dispense</p><p class="step-body">Press a small amount onto fingertips or apply directly onto the face in three to four dots.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-content"><p class="step-title">Blend Outward</p><p class="step-body">Work outward from the centre with fingers, a brush, or a damp sponge for a second-skin finish.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-content"><p class="step-title">Let It Set</p><p class="step-body">The formula self-sets on blending. No additional setting step is required — it is ready in 30 seconds.</p></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="reapply-card">
-          <p class="reapply-eyebrow">Mid-Day Refresh</p>
-          <p class="reapply-title">The Skin-Tint Touch-Up</p>
-          <p class="reapply-body">As a serum-type base, reapplication should be light. Blot any shine first, then pat a tiny amount on fingertips and press only onto areas that have faded — typically the nose and chin.</p>
-          <p class="reapply-tip">For a quicker option, skip reapplying the tint entirely and simply <strong>dust Second Date Loose Powder</strong> over existing coverage. It resets the matte-velvet look without disturbing the serum layer beneath.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── SECOND DATE ──────────────────────────── -->
-  <div class="section" id="seconddate">
-    <div class="product-hero">
-      <div>
-        <p class="prod-brand">Second Date (Secondate)</p>
-        <h2 class="prod-name">Silky Blur<br/><em>Loose Powder</em></h2>
-        <div class="shade-row">
-          <div class="shade-swatch" style="background:#f9f5ef;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 0 0 3px var(--bg)"></div>
-          <span class="shade-label">N00 Translucent &nbsp;·&nbsp; Universal</span>
-        </div>
-        <p class="prod-desc">The finishing step that elevates everything beneath it. Microscopic feather-like particles create a cloud-skin airbrushed effect — absorbing oil, blurring pores, and extending any base product's wear without looking flat or cakey.</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Feather-light, breathable formula</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Hazy pore-blurring airbrushed finish</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">All-day oil control & shine absorption</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Zero photo flashback, any lighting</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Translucent — suits all skin tones</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Suitable for all skin types</div></div>
-        </div>
-      </div>
-      <div>
-        <p class="panel-label">Nourishing Actives</p>
-        <div class="ingredient-cloud">
-          <span class="ing gold-h">Plant-Derived Squalane</span>
-          <span class="ing">Multipeptide Blend</span>
-          <span class="ing accent">Hydrating Oil Complex</span>
-          <span class="ing">Shine Control Agents</span>
-          <span class="ing">Pore-Minimising Powders</span>
-          <span class="ing gold-h">Feather-Fine Particles</span>
-        </div>
-        <p class="panel-label">At a Glance</p>
-        <div class="stat-row">
-          <div class="stat"><div class="stat-num">0%</div><div class="stat-desc">Flashback</div></div>
-          <div class="stat"><div class="stat-num">All Day</div><div class="stat-desc">Oil Control</div></div>
-          <div class="stat"><div class="stat-num">Universal</div><div class="stat-desc">All Tones</div></div>
-        </div>
-        <p class="panel-label">Key Benefits</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Squalane moisturises without clogging</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Peptides enhance radiance & smoothness</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Extends wear of every base beneath</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Best-in-bag mid-day refresh tool</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="section-divider"></div>
-    <div class="two-col">
-      <div>
-        <p class="block-title">How to Apply</p>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-content"><p class="step-title">Tap</p><p class="step-body">Gently tap a small amount of powder onto a fluffy setting brush or the included powder puff.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-content"><p class="step-title">Remove Excess</p><p class="step-body">Tap off excess to prevent over-application and fall-out onto clothing or under-eye areas.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-content"><p class="step-title">Press & Set</p><p class="step-body">Press lightly onto skin — focus on T-zone, under-eyes, and any areas prone to creasing or shine.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-content"><p class="step-title">Buff</p><p class="step-body">Sweep the brush in soft circular motions across the rest of the face for a seamless cloud-skin finish.</p></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="reapply-card">
-          <p class="reapply-eyebrow">Mid-Day Refresh</p>
-          <p class="reapply-title">Your Handbag Essential</p>
-          <p class="reapply-body">This is the easiest mid-day refresh in your entire routine. Blot any visible oil first, then press a small amount of powder with the puff or a travel brush onto shiny zones — forehead, nose, chin.</p>
-          <p class="reapply-tip">Because it is fully <strong>translucent with zero flashback</strong>, it layers confidently over all three of your base products in any lighting — no colour mismatch, no white cast.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── ONLYOU ───────────────────────────────── -->
-  <div class="section" id="onlyou">
-    <div class="product-hero">
-      <div>
-        <p class="prod-brand">ONLYOU</p>
-        <h2 class="prod-name">Concealer<br/><em>Brightening &</em><br/>Isolating BB Cream</h2>
-        <div class="shade-row">
-          <div class="shade-swatch" style="background:#edd9be"></div>
-          <span class="shade-label">Available in C01 Fair · C02 Beige · C03 Peach</span>
-        </div>
-        <p class="prod-desc">A multi-tasking hybrid that combines a brightening concealer and an isolating BB cream in a single formula. It creates a protective barrier between skin and makeup, evens tone, conceals dark circles and blemishes, and delivers a naturally dewy finish — all in one lightweight step.</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Concealer + BB Cream + Primer in one</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Brightening luminous finish</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Isolating barrier protects skin</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Waterproof & transfer-resistant</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Minimal oxidation throughout the day</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">BPOM certified & cruelty-free</div></div>
-        </div>
-      </div>
-      <div>
-        <p class="panel-label">Key Actives</p>
-        <div class="ingredient-cloud">
-          <span class="ing gold-h">Vitamin C Derivative</span>
-          <span class="ing">Niacinamide</span>
-          <span class="ing accent">Hyaluronic Acid</span>
-          <span class="ing gold-h">Vitamin E (Tocopherol)</span>
-          <span class="ing accent">Ceramide Complex</span>
-          <span class="ing gold-h">Olive Oil & Cocoa Butter</span>
-          <span class="ing">Light-Reflecting Pigments</span>
-          <span class="ing">Skin-Isolating Film Agents</span>
-        </div>
-        <p class="panel-label">At a Glance</p>
-        <div class="stat-row">
-          <div class="stat"><div class="stat-num">3-in-1</div><div class="stat-desc">Concealer · BB · Primer</div></div>
-          <div class="stat"><div class="stat-num">H₂O</div><div class="stat-desc">Waterproof</div></div>
-          <div class="stat"><div class="stat-num">BPOM</div><div class="stat-desc">Certified</div></div>
-        </div>
-        <p class="panel-label">Key Benefits</p>
-        <div class="feat-grid">
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Brightens under-eye area & conceals blemishes</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Ceramide reinforces the skin barrier</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Vitamin C derivative visibly fades dark spots</div></div>
-          <div class="feat"><div class="feat-dot"></div><div class="feat-text">Olive oil & cocoa butter provide deep moisture</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="section-divider"></div>
-    <div class="two-col">
-      <div>
-        <p class="block-title">How to Apply</p>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-content"><p class="step-title">After Skincare</p><p class="step-body">Apply directly after moisturiser. The isolating formula acts as its own primer — no separate primer step needed.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-content"><p class="step-title">Dot & Blend</p><p class="step-body">Dot across forehead, cheeks, nose, and chin, then blend outward with fingertips or a damp sponge in quick patting motions.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-content"><p class="step-title">Spot Conceal</p><p class="step-body">For dark circles, apply in an inverted triangle beneath each eye and pat gently. For blemishes, dot directly on the spot and tap to blend edges — never drag.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-content"><p class="step-title">Set</p><p class="step-body">Press Second Date Loose Powder over the formula — especially under the eyes — to lock in brightness and prevent any creasing.</p></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="reapply-card">
-          <p class="reapply-eyebrow">Mid-Day Refresh</p>
-          <p class="reapply-title">The Dewy Reset</p>
-          <p class="reapply-body">Because the formula is waterproof with minimal oxidation, the base holds well. For under-eye creasing or any faded areas, blot first, then tap a tiny amount with your ring finger and re-blend gently outward.</p>
-          <p class="reapply-tip">The quickest mid-day option is to skip reapplying entirely and simply <strong>press Second Date Loose Powder</strong> all over — it resets shine and refreshes the look without disturbing the isolating barrier beneath.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── FULL ROUTINE ─────────────────────────── -->
-  <div class="section" id="routine">
-    <div style="margin-bottom:52px">
-      <p class="prod-brand">Your Complete Edit</p>
-      <h2 class="prod-name" style="font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px">How to Layer<br/><em>Your Collection</em></h2>
-      <p class="prod-desc" style="max-width:540px">Choose one complexion base for your coverage mood, then finish with the Loose Powder. The three-step mid-day ritual works over any combination from your edit.</p>
-    </div>
-    <p class="panel-label" style="margin-bottom:18px">Step 1 — Choose Your Base</p>
-    <div class="routine-grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="routine-card">
-        <div class="rc-num">01</div>
-        <p class="rc-brand">ESQA</p>
-        <p class="rc-name">Minimalist Serum Skin Tint</p>
-        <p class="rc-note">Lightest finish. Perfect for skin-forward looks and effortless no-makeup days. Apply with fingers in under a minute.</p>
-      </div>
-      <div class="routine-card">
-        <div class="rc-num">02</div>
-        <p class="rc-brand">ONLYOU</p>
-        <p class="rc-name">Concealer Brightening & Isolating BB Cream</p>
-        <p class="rc-note">Light-medium, dewy, waterproof. Concealer + BB + primer in one step. Ideal for minimal-fuss routines and humid days.</p>
-      </div>
-      <div class="routine-card">
-        <div class="rc-num">03</div>
-        <p class="rc-brand">Skintific</p>
-        <p class="rc-name">Cover Glow Perfect Cushion</p>
-        <p class="rc-note">Medium-to-full glowy coverage. Best for everyday wear when you want radiance, polish, and a luminous dewy result.</p>
-      </div>
-      <div class="routine-card">
-        <div class="rc-num">04</div>
-        <p class="rc-brand">TIRTIR</p>
-        <p class="rc-name">Mask Fit Red Cushion</p>
-        <p class="rc-note">Full coverage semi-matte. Best for long events, photography, or days when you need flawless, all-day staying power.</p>
-      </div>
-    </div>
-    <p class="panel-label" style="margin-bottom:18px;margin-top:36px">Step 2 — Always Finish With</p>
-    <div class="routine-grid" style="grid-template-columns:1fr">
-      <div class="routine-card" style="display:flex;gap:24px;align-items:flex-start">
-        <div class="rc-num" style="flex-shrink:0">05</div>
-        <div>
-          <p class="rc-brand">Second Date</p>
-          <p class="rc-name">Silky Blur Loose Powder</p>
-          <p class="rc-note">Apply over your chosen base. Focus on T-zone and undereye to lock coverage and blur pores, then dust lightly across the rest of the face. Works flawlessly over all three base options — zero flashback, zero colour shift.</p>
-        </div>
-      </div>
-    </div>
-    <div class="section-divider"></div>
-    <p class="block-title" style="margin-bottom:24px">Mid-Day Refresh Ritual</p>
-    <div class="routine-refresh">
-      <div class="rr-header">
-        <div class="rr-icon">✦</div>
-        <div>
-          <p class="rr-label">3-Step Touch-Up</p>
-          <p class="rr-title">Works over any combination from your edit</p>
-        </div>
-      </div>
-      <div class="rr-body">
-        <div class="rr-step"><div class="rr-n">1</div><div><p class="rr-step-title">Blot First</p><p class="rr-step-body">Use oil-blotting paper or a tissue to lift excess sebum. Press and lift — never rub. This prevents product from moving across the face.</p></div></div>
-        <div class="rr-step"><div class="rr-n">2</div><div><p class="rr-step-title">Spot-Cover</p><p class="rr-step-body">If redness or blemishes have surfaced, lightly pat your cushion or skin tint only on those areas. Avoid full re-application.</p></div></div>
-        <div class="rr-step"><div class="rr-n">3</div><div><p class="rr-step-title">Set & Blur</p><p class="rr-step-body">Press Second Date Loose Powder all over with the puff to reset shine control and restore the airbrushed, soft-focus finish.</p></div></div>
-        <div class="rr-step"><div class="rr-n">4</div><div><p class="rr-step-title">Optional Mist</p><p class="rr-step-body">Spritz a fine setting mist after the powder to melt everything together for a fresh, lived-in, skin-like result.</p></div></div>
-      </div>
-    </div>
-    <div class="compat">
-      <p class="compat-title">Compatibility & Notes</p>
-      <div class="compat-list">
-        <div class="compat-item"><span class="ci-icon">✦</span>All five products share lightweight, non-comedogenic formulas — they layer together without pilling or interference.</div>
-        <div class="compat-item"><span class="ci-icon">✦</span>The ONLYOU BB Cream works as a standalone base on low-effort days, or as a primer underneath a cushion for extra coverage and longevity.</div>
-        <div class="compat-item"><span class="ci-icon">✦</span>The ESQA Skin Tint pairs beautifully under the TIRTIR cushion for buildable coverage that still reads as real skin.</div>
-        <div class="compat-item"><span class="ci-icon">✦</span>Second Date Powder works over every base in your edit — no colour shift, no flashback in photographs.</div>
-        <div class="compat-item"><span class="ci-icon">✦</span>SPF is present in several products. For adequate sun protection, reapply a dedicated SPF every two hours — makeup SPF alone is rarely applied in a sufficient quantity.</div>
-        <div class="compat-item"><span class="ci-icon">✦</span>All products are suitable for sensitive skin. Patch-test on the inner arm before first use if your skin is particularly reactive.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── APPLICATION ORDER ────────────────────── -->
-  <div class="section" id="application">
-
-    <!-- Look toggle -->
-    <div style="margin-bottom:14px">
-      <p class="prod-brand">Application Guide</p>
-      <h2 class="prod-name" style="font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px">Makeup Order<br/><em>by Occasion</em></h2>
-      <p class="prod-desc" style="max-width:560px">The order you apply products is just as important as the products themselves. Choose your look below — each guide uses only the products in your edit.</p>
+    <div class="skin-banner">
+      <h3>What is Combination Skin?</h3>
+      <p>Combination skin features an oily T-zone (forehead, nose, chin) alongside normal-to-dry cheeks. It is the most common skin type and requires a balanced approach — controlling shine in oil-prone zones while keeping other areas properly hydrated. Every product in this collection has been thoughtfully chosen to serve both needs simultaneously, without over-drying or overloading the complexion.</p>
     </div>
 
-    <div class="look-toggle">
-      <button class="look-btn active" data-look="casual">☀ Daily / Casual</button>
-      <button class="look-btn" data-look="long">✦ Long-Wear / Event</button>
-    </div>
-
-    <!-- ── DAILY / CASUAL ── -->
-    <div class="look-panel visible" id="look-casual">
-      <div class="look-intro">
-        <div class="look-intro-card">
-          <div class="lic-icon">☀️</div>
-          <p class="lic-label">The Philosophy</p>
-          <p class="lic-title">Effortless & Breathable</p>
-          <p class="lic-body">For daily wear, less is more. The goal is to let skin breathe while evening the complexion and adding a natural brightness. Prioritise light textures, minimal layers, and products that also care for the skin beneath.</p>
-        </div>
-        <div class="look-intro-card">
-          <div class="lic-icon">🕐</div>
-          <p class="lic-label">Time Required</p>
-          <p class="lic-title">5 – 10 Minutes</p>
-          <p class="lic-body">This routine is designed to be quick. The ONLYOU BB Cream and ESQA Skin Tint both require no primer and minimal blending — ideal for mornings when time is short but you still want to look put-together.</p>
-        </div>
+    <div class="skin-grid">
+      <div class="skin-card">
+        <div class="skin-card-icon">✨</div>
+        <h4>T-Zone Oiliness</h4>
+        <p>Forehead, nose, and chin overproduce sebum — causing shine, enlarged pores, and faster makeup breakdown. Matte-finish and oil-controlling products are key for these areas.</p>
       </div>
+      <div class="skin-card">
+        <div class="skin-card-icon">💧</div>
+        <h4>Dry Cheeks</h4>
+        <p>Cheeks can feel tight, look dull, or flake — especially in air-conditioning or cool weather. Serum-infused and hydrating formulas help maintain moisture balance here.</p>
+      </div>
+      <div class="skin-card">
+        <div class="skin-card-icon">🔬</div>
+        <h4>Enlarged Pores</h4>
+        <p>Visible mainly on the nose and chin. Blurring serums, pore-minimizing tints, and finely-milled translucent powder help create a smooth, refined appearance.</p>
+      </div>
+      <div class="skin-card">
+        <div class="skin-card-icon">⚖️</div>
+        <h4>Balancing Act</h4>
+        <p>Avoid heavy, occlusive formulas on the T-zone and harsh drying agents on the cheeks. Multi-tasking hybrid formulas work best overall for combination skin.</p>
+      </div>
+      <div class="skin-card">
+        <div class="skin-card-icon">☀️</div>
+        <h4>Sun Protection</h4>
+        <p>Lightweight, non-comedogenic SPF is essential. Combination skin benefits from both physical mineral sunscreens and convenient spray formats that won't block pores.</p>
+      </div>
+      <div class="skin-card">
+        <div class="skin-card-icon">🌿</div>
+        <h4>Key Routine Tips</h4>
+        <p>Apply heavier coverage selectively, concentrate translucent powder mainly on the T-zone, and use setting mists that lock makeup without amplifying shine-prone areas.</p>
+      </div>
+    </div>
+  </section>
 
-      <p class="panel-label" style="margin-bottom:24px">Step-by-Step Order</p>
-      <div class="order-timeline">
+  <!-- BASE PRODUCTS -->
+  <section id="base">
+    <p class="section-title">Base <em>Products</em></p>
+    <p class="section-sub">Foundation, tint, concealer & powder</p>
+    <div class="divider"></div>
 
-        <div class="ot-step">
-          <div class="ot-num">1</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">Skincare Base</span>
+    <p class="category-label">Foundations & Skin Tints</p>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">🌸</div>
+          <div class="product-info">
+            <span class="product-brand">SKINTIFIC</span>
+            <h3>Cover Glow Perfect Cushion Foundation</h3>
+            <span class="product-shade"><span class="shade-dot"></span> Shade: Vanilla</span>
           </div>
-          <p class="ot-title">Moisturiser & SPF</p>
-          <p class="ot-body">Always begin with a clean, moisturised face. Apply your regular moisturiser and let it absorb for 1–2 minutes. Follow with a dedicated SPF if your chosen base does not contain one — this is the most important skin-protection step.</p>
         </div>
-
-        <div class="ot-step">
-          <div class="ot-num">2</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">ONLYOU — Concealer Brightening & Isolating BB Cream</span>
-            <span style="font-size:.72rem;color:var(--muted);align-self:center">or</span>
-            <span class="ot-product-tag">ESQA — Minimalist Serum Skin Tint</span>
+        <div class="product-body">
+          <p class="product-desc">A cushion foundation that merges skincare and makeup into one lightweight, dewy-finish formula. Delivers buildable coverage — from a natural veil to medium-full — while treating the complexion with skincare actives for a healthy "glass skin" glow.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Buildable Coverage</span>
+              <span class="benefit-tag">Dewy Glow Finish</span>
+              <span class="benefit-tag">SPF Protection</span>
+              <span class="benefit-tag">Skincare-Infused</span>
+              <span class="benefit-tag">Lightweight</span>
+              <span class="benefit-tag">Pore-Blurring</span>
+              <span class="benefit-tag">Long-Wearing</span>
+            </div>
           </div>
-          <p class="ot-title">Choose Your Base — One Only</p>
-          <p class="ot-body">For daily use, pick just one lightweight base. The <strong style="color:var(--text2);font-weight:500">ONLYOU BB Cream</strong> is the most effortless option — it acts as primer, BB cream, and concealer in one, applied with fingers in under a minute. The <strong style="color:var(--text2);font-weight:500">ESQA Skin Tint</strong> is ideal for the most natural, skin-first look where you want barely-there coverage.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Apply with clean fingertips using patting motions from the centre outward. Warmth from your fingers helps the product melt in seamlessly.</div>
-        </div>
-
-        <div class="ot-step">
-          <div class="ot-num">3</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">ONLYOU — Concealer (spot-use)</span>
-            <span class="ot-optional">Optional</span>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            Apply on cheeks and outer areas for the dewy effect; press more lightly on the T-zone to control shine. Build a second press on blemish-prone spots for extra coverage.
           </div>
-          <p class="ot-title">Spot Concealing</p>
-          <p class="ot-body">If you used the ESQA Skin Tint as your base, you can use the ONLYOU product's brightening concealer properties on specific areas — under the eyes in a small inverted triangle, or directly on blemishes. Keep it minimal; over-layering on a casual day will look heavy.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Use your ring finger — it applies the lightest pressure and is best for delicate under-eye skin.</div>
         </div>
-
-        <div class="ot-step">
-          <div class="ot-num">4</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">Second Date — Silky Blur Loose Powder</span>
-          </div>
-          <p class="ot-title">Set & Blur</p>
-          <p class="ot-body">Lightly press the loose powder with the puff onto the T-zone and under-eye areas to lock in the base and prevent any creasing. For a casual look, keep the powder application light — over-powdering can flatten the natural glow of the skin tint or BB cream beneath.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>On days you want a dewy finish, press powder only on the T-zone and skip the cheeks entirely.</div>
-        </div>
-
-        <div class="ot-step">
-          <div class="ot-num">5</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">Colour products</span>
-            <span class="ot-optional">Optional</span>
-          </div>
-          <p class="ot-title">Blush, Brows & Mascara</p>
-          <p class="ot-body">Add any colour products on top of the set base — blush, brow pencil, mascara, lip product. For a casual day, a cream blush tapped with fingers and a tinted lip balm is all you need to look polished without effort.</p>
-        </div>
-
       </div>
 
-      <div class="look-note">
-        <p class="look-note-title">Daily Routine — Quick Summary</p>
-        <p class="look-note-body">Moisturiser + SPF → ONLYOU BB Cream <em>or</em> ESQA Skin Tint (fingers, centre-out) → Spot concealer under eyes if needed → Light press of Second Date Powder on T-zone → Optional blush & lip. Total products on face: 2–3. Total time: 5–10 minutes.</p>
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">🔴</div>
+          <div class="product-info">
+            <span class="product-brand">TIRTIR</span>
+            <h3>Mask Fit Red Cushion</h3>
+            <span class="product-shade"><span class="shade-dot"></span> Shade: 17C Porcelain</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">The iconic Korean cushion engineered for extraordinary staying power and seamless blendability. Originally formulated to survive wearing face masks, it delivers a luminous, natural finish that resists heat, humidity, and sebum throughout the entire day.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Full Coverage</span>
+              <span class="benefit-tag">Long-Wearing</span>
+              <span class="benefit-tag">Mask-Proof</span>
+              <span class="benefit-tag">Luminous Finish</span>
+              <span class="benefit-tag">Sebum-Resistant</span>
+              <span class="benefit-tag">Heat-Stable</span>
+              <span class="benefit-tag">Seamless Blend</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            Its sebum-resistant formula is ideal for the T-zone. Use a tapping — not swiping — motion with the puff for the most seamless, pore-minimizing application.
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">💎</div>
+          <div class="product-info">
+            <span class="product-brand">ESQA</span>
+            <h3>Minimalist Blurring Serum Skin Tint</h3>
+            <span class="product-shade"><span class="shade-dot"></span> Shade: Vanilla</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">A feather-light serum-tint hybrid that gives a natural, skin-like finish with just a breath of coverage. Packed with skincare actives that actively treat your complexion while worn — perfect for no-makeup makeup looks, lighter days, or as a base layer under a cushion.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Serum-Infused</span>
+              <span class="benefit-tag">Pore-Blurring</span>
+              <span class="benefit-tag">Natural Finish</span>
+              <span class="benefit-tag">Treats While Worn</span>
+              <span class="benefit-tag">Feather-Light</span>
+              <span class="benefit-tag">Buildable</span>
+              <span class="benefit-tag">Non-Comedogenic</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            Excellent as a standalone for light-coverage days. Layer under a cushion on heavier days for a serum-perfected base. The blurring agents help minimize T-zone pores without clogging.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="category-label">Concealer & Powder</p>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">✦</div>
+          <div class="product-info">
+            <span class="product-brand">ONLYOU</span>
+            <h3>Concealer Brightening & Isolating BB Cream</h3>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">A clever dual-purpose product that functions as both a brightening concealer and an isolating BB cream in one single formula. It corrects, covers, and creates a smooth base — acting as a primer-concealer hybrid that prepares the skin and helps other makeup adhere evenly and last longer.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Dual Function</span>
+              <span class="benefit-tag">Brightening</span>
+              <span class="benefit-tag">Isolating Formula</span>
+              <span class="benefit-tag">Spot Coverage</span>
+              <span class="benefit-tag">Even Canvas</span>
+              <span class="benefit-tag">Primer-Like Grip</span>
+              <span class="benefit-tag">Lightweight BB</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            Use as a primer-concealer under foundation on blemishes, dark spots, and under the eyes. The isolating property helps other layers sit better and last longer on combination skin.
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">🌫️</div>
+          <div class="product-info">
+            <span class="product-brand">Second Date</span>
+            <h3>Loose Powder</h3>
+            <span class="product-shade"><span class="shade-dot" style="background:linear-gradient(135deg,#F5F0EC,#EAE4DE)"></span> Shade: Translucent</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">A finely-milled translucent loose powder that sets any base product without adding colour, cakiness, or visible residue. Absorbs excess oil, minimizes the appearance of pores, and extends makeup wear time — finishing with a luminous soft-focus, satin effect on the skin.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Translucent Formula</span>
+              <span class="benefit-tag">Sets Makeup</span>
+              <span class="benefit-tag">Oil Control</span>
+              <span class="benefit-tag">Finely Milled</span>
+              <span class="benefit-tag">Soft-Focus Effect</span>
+              <span class="benefit-tag">Extends Wear</span>
+              <span class="benefit-tag">No Colour Shift</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            Focus on the T-zone only — forehead, nose, and chin. Avoid heavy powder on cheeks to preserve natural hydration. Use a fluffy brush and tap off excess before applying.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SETTING & MIST -->
+  <section id="setting">
+    <p class="section-title">Mist <em>& Setting</em></p>
+    <p class="section-sub">Lock, protect & refresh</p>
+    <div class="divider"></div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">💨</div>
+          <div class="product-info">
+            <span class="product-brand">L'ORÉAL PARIS</span>
+            <h3>Infallible 3-Second Setting Mist</h3>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">A fast-acting setting spray engineered to lock your entire look in just 3 seconds. Creates an invisible, flexible film over all makeup layers to dramatically extend wear time and impart a refreshed, just-applied appearance that lasts up to 24 hours.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Sets in 3 Seconds</span>
+              <span class="benefit-tag">24hr Wear Lock</span>
+              <span class="benefit-tag">Refreshing Mist</span>
+              <span class="benefit-tag">Non-Sticky Formula</span>
+              <span class="benefit-tag">Flexible Film</span>
+              <span class="benefit-tag">Melds Layers</span>
+              <span class="benefit-tag">Fine Mist</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            Spritz in a T, Z, or X motion 8–10 inches from the face after full makeup. Helps control oil oxidation on the T-zone while keeping foundation seamless on the drier cheek zones.
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">💦</div>
+          <div class="product-info">
+            <span class="product-brand">PIXY</span>
+            <h3>Aqua-Beauty Protecting Mist</h3>
+            <span class="product-shade" style="font-style:normal"><span class="shade-dot" style="background:linear-gradient(135deg,#d0e8f5,#b8d4e4)"></span> Matte-Finish</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">A protective hydrating mist with a unique matte-finish formula that keeps skin looking fresh and refined. Aqua actives replenish moisture without contributing to oiliness, creating a balanced finish that is ideal for refreshing and protecting the complexion throughout the day.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Matte Finish</span>
+              <span class="benefit-tag">Aqua Protection</span>
+              <span class="benefit-tag">Hydrating Mist</span>
+              <span class="benefit-tag">Anti-Pollution</span>
+              <span class="benefit-tag">Oil Control</span>
+              <span class="benefit-tag">Refreshing</span>
+              <span class="benefit-tag">Mid-Day Refresh</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            The matte-finish formula simultaneously hydrates dry cheek areas and controls T-zone shine — making it uniquely suited for combination skin. Excellent for humid climates.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUN CARE -->
+  <section id="sun">
+    <p class="section-title">Sun <em>Care</em></p>
+    <p class="section-sub">Daily protection, always first</p>
+    <div class="divider"></div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">🌞</div>
+          <div class="product-info">
+            <span class="product-brand">Dr. Oky Pratama</span>
+            <h3>Bening's Sunscreen Spray</h3>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">A convenient spray-on sunscreen by trusted Indonesian dermatologist Dr. Oky Pratama, formulated for effortless application and seamless reapplication over makeup. Delivers broad-spectrum UV protection in a lightweight, non-greasy mist that doesn't disturb your base.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Spray Format</span>
+              <span class="benefit-tag">Broad Spectrum</span>
+              <span class="benefit-tag">UVA + UVB Shield</span>
+              <span class="benefit-tag">Non-Greasy</span>
+              <span class="benefit-tag">Over-Makeup Safe</span>
+              <span class="benefit-tag">Lightweight</span>
+              <span class="benefit-tag">Dermatologist Formula</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            The spray format requires zero rubbing, making it perfect for mid-day SPF top-ups without disrupting base makeup. Especially useful on the T-zone where reapplication cream can cause pilling.
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-badge">🛡️</div>
+          <div class="product-info">
+            <span class="product-brand">YOU</span>
+            <h3>Sunbrella Physical Sunscreen</h3>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-desc">A mineral (physical) sunscreen using zinc oxide and titanium dioxide — UV filters that sit on the skin's surface and reflect rays rather than absorbing them chemically. Provides immediate, broad-spectrum protection upon application and is gentler and less irritating than chemical filters.</p>
+          <div>
+            <p class="benefit-label">Key Benefits</p>
+            <div class="benefit-list">
+              <span class="benefit-tag">Physical / Mineral</span>
+              <span class="benefit-tag">Immediate Protection</span>
+              <span class="benefit-tag">Zinc Oxide</span>
+              <span class="benefit-tag">Titanium Dioxide</span>
+              <span class="benefit-tag">Gentle Formula</span>
+              <span class="benefit-tag">Broad Spectrum</span>
+              <span class="benefit-tag">Blemish-Safe</span>
+            </div>
+          </div>
+          <div class="product-tip">
+            <span class="tip-label">For Combination Skin</span>
+            Apply as the final skincare step before makeup — it also creates a priming layer. Preferred on sensitive or breakout days as mineral filters are less likely to irritate active blemishes than chemical alternatives.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- APPLICATION -->
+  <section id="application">
+    <p class="section-title">Full <em>Application</em></p>
+    <p class="section-sub">Morning routine, step by step</p>
+    <div class="divider"></div>
+
+    <div class="steps-container">
+
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <span class="step-product-tag">Sunscreen First</span>
+          <h4>Apply YOU Sunbrella Physical Sunscreen</h4>
+          <p class="step-desc">Begin with clean, moisturized skin. Apply <strong>YOU Sunbrella Physical Sunscreen</strong> evenly across the entire face and neck as the absolute last skincare step. Use gentle upward spreading motions or light patting. Wait 1–2 minutes for it to fully set — it creates a subtle priming base that helps makeup adhere better. Apply slightly less to the T-zone if concerned about extra oiliness.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <span class="step-product-tag">Optional Pre-Base</span>
+          <h4>Apply ONLYOU BB Concealer as a Base Layer</h4>
+          <p class="step-desc">Using a fingertip or small brush, dab the <strong>ONLYOU Concealer Brightening & Isolating BB Cream</strong> onto key areas — blemishes, redness patches, and under the eyes. Blend outward gently. As an isolating formula, it also creates a subtle priming layer across the T-zone that helps all subsequent products adhere evenly and last longer throughout the day.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <span class="step-product-tag">Choose Your Base</span>
+          <h4>Apply Your Foundation or Skin Tint</h4>
+          <p class="step-desc">
+            <strong>Full Coverage / Glam Day:</strong> Use the <strong>TIRTIR Mask Fit Red Cushion (17C Porcelain)</strong> for maximum staying power and a luminous finish, or the <strong>SKINTIFIC Cover Glow Cushion (Vanilla)</strong> for a dewy, glowing look. Press the puff onto the cushion, then apply by dabbing gently from the centre of the face outward and blending at the hairline and jaw.
+            <br /><br />
+            <strong>Natural / Minimal Day:</strong> Apply the <strong>ESQA Minimalist Blurring Serum Skin Tint (Vanilla)</strong> using fingertips or a damp beauty sponge. Blend evenly for a skin-like, pore-blurred finish. The serum actives continue treating your skin throughout wear.
+          </p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <span class="step-product-tag">Spot Conceal</span>
+          <h4>Touch Up Targeted Areas with ONLYOU</h4>
+          <p class="step-desc">After foundation, revisit any areas that still show discolouration, active spots, or dark circles using the <strong>ONLYOU BB Concealer</strong>. Use a fingertip with light stippling motions to blend the edges seamlessly. For under-eye application, gently tap — never drag — to prevent creasing. Set these areas immediately with a small amount of powder to lock them in place.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">05</div>
+        <div class="step-content">
+          <span class="step-product-tag">Powder Setting</span>
+          <h4>Set the T-Zone with Second Date Loose Powder</h4>
+          <p class="step-desc">Load a fluffy powder brush, tap off the excess, and apply the <strong>Second Date Loose Powder (Translucent)</strong> with light sweeping then pressing motions over the forehead, nose, and chin. For combination skin, intentionally skip heavy powder on the cheeks — allow them to retain their natural glow or the dewy finish of the cushion. This step is crucial for preventing mid-day T-zone oil breakthrough.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">06</div>
+        <div class="step-content">
+          <span class="step-product-tag">Final Lock-In</span>
+          <h4>Set the Look with Mist</h4>
+          <p class="step-desc">Hold <strong>L'Oréal Infallible 3-Second Setting Mist</strong> 8–10 inches from your face, close your eyes and mouth, and spray in a T or figure-8 motion for full coverage. Let it air-dry completely — do not fan, touch, or pat. This step melds all layers together, minimizes any powder patchiness, and locks the entire look. Optionally follow with 1–2 sprays of <strong>PIXY Aqua-Beauty Matte Mist</strong> if you want an extra matte-fresh, oil-controlled finish on top.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MID-DAY REAPPLICATION -->
+  <section id="reapplication">
+    <p class="section-title">Mid-Day <em>Refresh</em></p>
+    <p class="section-sub">Reapplication & touch-up strategy</p>
+    <div class="divider"></div>
+
+    <div class="reapp-grid">
+      <div class="reapp-card">
+        <div class="reapp-icon">🧴</div>
+        <h4>1. Blot First — Always</h4>
+        <p>Before adding any new product, gently press a blotting paper or folded tissue onto the T-zone to absorb excess sebum. Use a pressing motion — never wipe — to remove oil without disturbing the foundation underneath. Skipping this step causes product build-up and patchy reapplication.</p>
+      </div>
+      <div class="reapp-card">
+        <div class="reapp-icon">☀️</div>
+        <h4>2. Reapply SPF</h4>
+        <p>Sunscreen effectiveness diminishes within 2 hours, especially with sweating or touching. Spray <strong>Bening's Sunscreen Spray</strong> from about 8–10 inches away in a circular motion across the face. It glides over makeup without disturbing the base. Pat gently after misting to help absorption. Do this even on cloudy days.</p>
+      </div>
+      <div class="reapp-card">
+        <div class="reapp-icon">💦</div>
+        <h4>3. Refresh with PIXY Mist</h4>
+        <p>Spritz the <strong>PIXY Aqua-Beauty Matte Mist</strong> 2–3 times in a broad arc across the face to revive moisture on dry cheek areas while simultaneously controlling new oil on the T-zone. The matte finish formula re-balances combination skin beautifully. Allow to dry naturally for 20–30 seconds.</p>
+      </div>
+      <div class="reapp-card">
+        <div class="reapp-icon">🌫️</div>
+        <h4>4. Light Powder Touch-Up</h4>
+        <p>If the T-zone remains visibly shiny after blotting and misting, press a very small amount of <strong>Second Date Loose Powder (Translucent)</strong> onto the forehead and nose only. Use a compact brush or the container's sponge. One light pass is enough — over-powdering creates a cakey, unnatural finish that is harder to correct.</p>
+      </div>
+      <div class="reapp-card">
+        <div class="reapp-icon">🔴</div>
+        <h4>5. Targeted Cushion Touch-Up</h4>
+        <p>For areas where foundation has worn away or faded — typically around the nose crease, chin, or any high-movement areas — lightly tap the <strong>TIRTIR Red Cushion</strong> or <strong>SKINTIFIC Cushion</strong> once onto those spots only. Blend edges with a clean fingertip. Avoid a full re-application over the whole face, which causes uneven layering.</p>
+      </div>
+      <div class="reapp-card">
+        <div class="reapp-icon">💨</div>
+        <h4>6. Re-Seal Everything</h4>
+        <p>Finish the touch-up routine with 1–2 mists of <strong>L'Oréal 3-Second Setting Mist</strong> to re-seal all layers and restore the cohesive, fresh-from-application look. Hold 8–10 inches away, mist lightly, and allow to air-dry. Your refreshed look should last another 3–4 hours.</p>
       </div>
     </div>
 
-    <!-- ── LONG-WEAR / EVENT ── -->
-    <div class="look-panel" id="look-long">
-      <div class="look-intro">
-        <div class="look-intro-card">
-          <div class="lic-icon">✨</div>
-          <p class="lic-label">The Philosophy</p>
-          <p class="lic-title">Polished & Enduring</p>
-          <p class="lic-body">For long days, events, or photography, the goal is flawless staying power with layered, built-for-longevity products. Each step locks in the one beneath it. The TIRTIR Red Cushion is your anchor here — engineered to last up to 72 hours without touch-ups.</p>
-        </div>
-        <div class="look-intro-card">
-          <div class="lic-icon">🕐</div>
-          <p class="lic-label">Time Required</p>
-          <p class="lic-title">15 – 25 Minutes</p>
-          <p class="lic-body">This is a considered, layered routine. Each product is applied intentionally and allowed to set before the next. Do not rush the steps — the longevity of this routine depends on each layer being fully blended and set before continuing.</p>
-        </div>
+    <div class="reapp-timeline">
+      <h4>⏱ Recommended Reapplication Timeline</h4>
+      <div class="timeline-row">
+        <span class="timeline-time">Morning</span>
+        <span class="timeline-dot"></span>
+        <span class="timeline-text">Complete morning application — YOU Sunscreen → ONLYOU BB → Foundation → Concealer → Second Date Powder → L'Oréal Setting Mist</span>
       </div>
-
-      <p class="panel-label" style="margin-bottom:24px">Step-by-Step Order</p>
-      <div class="order-timeline">
-
-        <div class="ot-step">
-          <div class="ot-num">1</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">Skincare Base</span>
-          </div>
-          <p class="ot-title">Moisturiser, Eye Cream & SPF</p>
-          <p class="ot-body">Begin with a full skincare routine — cleanser, toner, serum if you use one, eye cream, and moisturiser. Allow everything to absorb fully (5 minutes). Apply a dedicated SPF last and let it dry to a clear film before touching any makeup on top.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Avoid heavy or overly emollient moisturisers on long-wear days — too much slip will cause makeup to slide off by midday.</div>
-        </div>
-
-        <div class="ot-step">
-          <div class="ot-num">2</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">ONLYOU — Concealer Brightening & Isolating BB Cream</span>
-          </div>
-          <p class="ot-title">Isolating Barrier Layer</p>
-          <p class="ot-body">Apply a thin, even layer of the ONLYOU BB Cream all over the face before the cushion. Its <em>isolating</em> formula creates a protective film that separates your skincare from the heavier cushion on top — this dramatically improves the cushion's longevity and prevents pilling or oxidation throughout the day.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Keep this layer very thin — it is a base, not coverage. One pump blended outward is sufficient.</div>
-        </div>
-
-        <div class="ot-step">
-          <div class="ot-num">3</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">TIRTIR — Mask Fit Red Cushion</span>
-            <span style="font-size:.72rem;color:var(--muted);align-self:center">or</span>
-            <span class="ot-product-tag">Skintific — Cover Glow Perfect Cushion</span>
-          </div>
-          <p class="ot-title">Main Coverage Layer</p>
-          <p class="ot-body">Apply your cushion foundation on top of the ONLYOU barrier layer using the puff in pressing motions — never drag. For maximum longevity at events or in photos, use the <strong style="color:var(--text2);font-weight:500">TIRTIR Red Cushion</strong>. For long days where you still want a dewy glow, use the <strong style="color:var(--text2);font-weight:500">Skintific Cover Glow</strong> instead. Build coverage where needed.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Let the cushion sit for 30 seconds before moving to the next step — this allows the Film-Forming Technology to set properly.</div>
-        </div>
-
-        <div class="ot-step">
-          <div class="ot-num">4</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">ONLYOU — Brightening Concealer (targeted)</span>
-          </div>
-          <p class="ot-title">Targeted Concealing</p>
-          <p class="ot-body">After the cushion is set, apply the ONLYOU product's brightening concealer over dark circles using the inverted triangle technique — from the inner corner of the eye down to the cheekbone, then back up. Pat gently with your ring finger until fully blended. Also dot onto any blemishes or discolouration that the cushion didn't fully cover.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Applying concealer after foundation means you use less product and get a more natural blend with fewer harsh edges.</div>
-        </div>
-
-        <div class="ot-step">
-          <div class="ot-num">5</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">Second Date — Silky Blur Loose Powder</span>
-          </div>
-          <p class="ot-title">Setting & Baking</p>
-          <p class="ot-body">Press the loose powder generously over the under-eye concealer and T-zone — for long events, you can <em>bake</em> under the eyes by letting the powder sit for 2–3 minutes before dusting off the excess with a fluffy brush. This locks in the concealer and makes it crease-proof for hours. Follow with a lighter press all over the face to unify the finish.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>The zero-flashback formula means you can apply liberally without worrying about white cast in photos — a key benefit at events.</div>
-        </div>
-
-        <div class="ot-step">
-          <div class="ot-num">6</div>
-          <div class="ot-header">
-            <span class="ot-product-tag">Colour products</span>
-          </div>
-          <p class="ot-title">Blush, Contour, Eyes & Lips</p>
-          <p class="ot-body">Apply all colour products on top of the fully set powder base. For long wear, use powder-formula blush and contour — these adhere better over a powdered base. Set your eye makeup and finish lips last. A long-wear setting spray misted over the completed look will melt all the layers together and add several more hours of wear.</p>
-          <div class="ot-tip"><span class="ot-tip-icon">✦</span>Mist a setting spray from arm's length in an X and T motion across the face for even coverage without disturbing the base.</div>
-        </div>
-
+      <div class="timeline-row">
+        <span class="timeline-time">~10 AM</span>
+        <span class="timeline-dot"></span>
+        <span class="timeline-text">First SPF reapplication with Bening's Sunscreen Spray, especially if you've been near windows or outdoors</span>
       </div>
-
-      <div class="look-note">
-        <p class="look-note-title">Long-Wear Routine — Quick Summary</p>
-        <p class="look-note-body">Moisturiser + SPF (fully dry) → ONLYOU BB Cream thin layer (barrier) → TIRTIR or Skintific Cushion (pat, let set 30s) → ONLYOU Concealer under eyes & spots → Second Date Loose Powder (bake under eyes 2–3 min) → Colour products → Setting spray. Total time: 15–25 minutes.</p>
+      <div class="timeline-row">
+        <span class="timeline-time">12 PM</span>
+        <span class="timeline-dot"></span>
+        <span class="timeline-text">Blot T-zone → PIXY Mist refresh → Light powder if needed → Second SPF spray → Re-seal with L'Oréal Setting Mist</span>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-time">~2–3 PM</span>
+        <span class="timeline-dot"></span>
+        <span class="timeline-text">Third SPF spray reapplication + selective cushion touch-up on worn areas only if needed</span>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-time">5 PM+</span>
+        <span class="timeline-dot"></span>
+        <span class="timeline-text">Full mid-day routine: blot → PIXY mist → powder T-zone → Bening's SPF spray → seal with L'Oréal mist</span>
       </div>
     </div>
-
-  </div>
+  </section>
 
 </main>
 
 <footer>
-  <p class="footer-logo">Glow Atelier</p>
-  <p class="footer-note">A personal beauty edit</p>
+  <p>A personal collection crafted with care &nbsp;·&nbsp; Always patch-test new products &nbsp;·&nbsp; Adjust application to your skin's needs on any given day</p>
 </footer>
 
 <script>
-// Custom cursor
-const cur = document.getElementById('cur');
-const ring = document.getElementById('ring');
-let mx=window.innerWidth/2, my=window.innerHeight/2, rx=mx, ry=my;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX; my=e.clientY;
-  cur.style.left=mx+'px'; cur.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
+  // Dark Mode Toggle
+  const toggle = document.getElementById('themeToggle');
+  const knob   = document.getElementById('toggleKnob');
+  const html   = document.documentElement;
+  toggle.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    knob.textContent = isDark ? '☀️' : '🌙';
+  });
 
-// Theme toggle
-const themeBtn=document.getElementById('themeBtn');
-const themeIcon=document.getElementById('themeIcon');
-const themeLabel=document.getElementById('themeLabel');
-const sweep=document.getElementById('sweep');
-const html=document.documentElement;
-
-themeBtn.addEventListener('click',()=>{
-  const dark=html.getAttribute('data-theme')==='dark';
-  sweep.style.background=dark?'#faf8f5':'#0a0c14';
-  sweep.classList.remove('active');
-  void sweep.offsetWidth;
-  sweep.classList.add('active');
-  setTimeout(()=>{
-    html.setAttribute('data-theme',dark?'light':'dark');
-    themeIcon.textContent=dark?'🌙':'☀️';
-    themeLabel.textContent=dark?'Dark':'Light';
-    themeIcon.style.transform='rotate(360deg)';
-    setTimeout(()=>themeIcon.style.transform='',600);
-  },220);
-  sweep.addEventListener('animationend',()=>sweep.classList.remove('active'),{once:true});
-});
-
-// Tabs
-const tabs=document.querySelectorAll('.tab-btn');
-const sects=document.querySelectorAll('.section');
-let current='skintific';
-
-function revealAll(section){
-  const all=section.querySelectorAll('.feat,.ing,.stat,.step,.routine-card,.rr-step,.ot-step');
-  all.forEach((el,i)=>setTimeout(()=>el.classList.add('on'),50+i*40));
-}
-function resetAll(section){
-  section.querySelectorAll('.feat,.ing,.stat,.step,.routine-card,.rr-step,.ot-step').forEach(el=>el.classList.remove('on'));
-}
-
-// Look toggle (daily / long-wear)
-document.querySelectorAll('.look-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const look=btn.dataset.look;
-    document.querySelectorAll('.look-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.look-panel').forEach(p=>{
-      if(p.id==='look-'+look){
-        p.classList.add('visible');
-        p.querySelectorAll('.ot-step').forEach((el,i)=>setTimeout(()=>el.classList.add('on'),60+i*55));
-      } else {
-        p.classList.remove('visible');
-        p.querySelectorAll('.ot-step').forEach(el=>el.classList.remove('on'));
-      }
+  // Section Nav Click
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(btn.dataset.target);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-});
 
-function goTo(id){
-  if(id===current)return;
-  const prev=document.getElementById(current);
-  const next=document.getElementById(id);
-  resetAll(next);
-  prev.classList.add('out');
-  prev.addEventListener('animationend',()=>prev.classList.remove('out','visible'),{once:true});
-  setTimeout(()=>{
-    next.classList.add('visible');
-    revealAll(next);
-    // For application tab, also trigger the visible look panel's ot-steps
-    if(id==='application'){
-      const activePanel=next.querySelector('.look-panel.visible');
-      if(activePanel) activePanel.querySelectorAll('.ot-step').forEach((el,i)=>setTimeout(()=>el.classList.add('on'),60+i*55));
-    }
-  },220);
-  current=id;
-}
+  // Active Nav on Scroll
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('main section');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navBtns.forEach(b => b.classList.remove('active'));
+        const a = document.querySelector(`.nav-btn[data-target="${e.target.id}"]`);
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-38% 0px -57% 0px' });
+  sections.forEach(s => io.observe(s));
 
-tabs.forEach(btn=>btn.addEventListener('click',()=>{
-  tabs.forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  goTo(btn.dataset.tab);
-  document.querySelector('.tab-bar').scrollIntoView({behavior:'smooth',block:'nearest'});
-}));
+  // Scroll-Triggered Animations
+  const ao = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animationPlayState = 'running';
+        ao.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
 
-// Initial load
-window.addEventListener('load',()=>{
-  const first=document.getElementById('skintific');
-  first.classList.add('visible');
-  revealAll(first);
-});
-
-// Progress bar
-window.addEventListener('scroll',()=>{
-  const max=document.body.scrollHeight-window.innerHeight;
-  document.getElementById('progress').style.width=(max>0?window.scrollY/max*100:0)+'%';
-});
+  document.querySelectorAll('.product-card, .step-card, .reapp-card, .skin-card')
+    .forEach((el, i) => {
+      el.style.animationDelay = (i % 4) * 0.07 + 's';
+      ao.observe(el);
+    });
 </script>
 </body>
 </html>
