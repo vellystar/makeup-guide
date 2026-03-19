@@ -76,6 +76,7 @@
     color: var(--text-primary);
     transition: background var(--transition), color var(--transition);
     overflow-x: hidden;
+    overscroll-behavior-y: auto;
   }
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--ink-mid); }
@@ -86,9 +87,11 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: var(--nav-bg);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--divider);
     padding: 0 clamp(1rem, 4vw, 3rem);
     transition: background var(--transition), border-color var(--transition);
+    will-change: transform;
   }
   .nav-inner {
     max-width: 1200px; margin: 0 auto;
@@ -140,6 +143,7 @@
     background: linear-gradient(160deg, #080408 0%, #18080E 40%, #2A1020 70%, #1A0C14 100%);
     position: relative; overflow: hidden;
     padding: 5rem 2rem 3rem;
+    overscroll-behavior: none;
   }
   #hero::before {
     content: '';
@@ -284,7 +288,7 @@
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 12px; overflow: hidden;
     box-shadow: 0 1px 10px var(--shadow);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex; flex-direction: row; align-items: stretch;
     position: relative;
   }
@@ -297,7 +301,7 @@
   }
   .product-card:hover {
     box-shadow: 0 6px 28px var(--shadow-deep);
-    border-color: rgba(212,168,88,0.32); transform: translateX(2px);
+    border-color: rgba(212,168,88,0.32);
   }
   .product-card:hover::before { opacity: 1; }
   .product-header {
@@ -364,8 +368,10 @@
     display: flex; gap: 0.4rem;
     border-bottom: 1px solid var(--divider);
     margin-bottom: 2rem; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .routine-tabs::-webkit-scrollbar { display: none; }
+  button, a { touch-action: manipulation; }
   .rtab {
     font-size: 0.72rem; font-weight: 400; letter-spacing: 0.12em;
     text-transform: uppercase; padding: 0.6rem 1.2rem;
@@ -661,7 +667,7 @@
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 12px; overflow: hidden;
     box-shadow: 0 1px 10px var(--shadow);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex; flex-direction: row; align-items: stretch;
     position: relative;
   }
@@ -673,7 +679,7 @@
   }
   .lip-card:hover {
     box-shadow: 0 6px 28px var(--shadow-deep);
-    border-color: rgba(212,168,88,0.28); transform: translateX(2px);
+    border-color: rgba(212,168,88,0.28);
   }
   .lip-card:hover::before { opacity: 1; }
   .lip-swatch-header {
@@ -904,22 +910,23 @@
   .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   .mobile-menu {
-    display: none;
+    display: flex;
     position: fixed; top: 62px; left: 0; right: 0; z-index: 99;
     background: var(--nav-bg);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-bottom: 1px solid var(--divider);
     padding: 0.6rem 1.2rem 1rem;
     flex-direction: column; gap: 0.2rem;
-    transform: translateY(-8px);
+    transform: translateY(-4px);
     opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    visibility: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
     pointer-events: none;
   }
   .mobile-menu.open {
-    display: flex;
     opacity: 1; transform: translateY(0);
-    pointer-events: auto;
+    visibility: visible; pointer-events: auto;
   }
   .mobile-menu a {
     display: block; padding: 0.55rem 0.8rem;
@@ -1011,7 +1018,7 @@
   @media (max-width: 520px) {
     /* Nav */
     .nav-inner { height: 56px; }
-    .mobile-menu { top: 56px; }
+    .mobile-menu { top: 56px !important; }
     .nav-brand { font-size: 0.88rem; }
     .toggle-btn span#themeLabel { display: none; }
     .toggle-btn { padding: 0.3rem 0.6rem; }
@@ -1046,7 +1053,8 @@
 
     /* Routine steps */
     .routine-tabs { gap: 0.15rem; margin-bottom: 1.2rem; }
-    .rtab { font-size: 0.6rem; padding: 0.5rem 0.8rem; letter-spacing: 0.08em; }
+    button, a { touch-action: manipulation; }
+  .rtab { font-size: 0.6rem; padding: 0.5rem 0.8rem; letter-spacing: 0.08em; }
     .steps-list { gap: 0.75rem; }
     .step { grid-template-columns: 2.2rem 1fr; gap: 0.6rem; padding: 0.85rem; }
     .step-num { width: 2rem; height: 2rem; font-size: 0.82rem; }
@@ -1107,7 +1115,8 @@
 
     /* Routine tabs */
     .routine-tabs { gap: 0.2rem; }
-    .rtab { font-size: 0.65rem; padding: 0.5rem 0.85rem; }
+    button, a { touch-action: manipulation; }
+  .rtab { font-size: 0.65rem; padding: 0.5rem 0.85rem; }
 
     /* Lip layer tip */
     .lip-layer-tip { font-size: 0.72rem; }
@@ -1241,6 +1250,18 @@
     .shade-swatch-name { font-size: 0.42rem; max-width: 30px; }
   }
 
+
+  /* Touch devices: disable hover effects that cause scroll jank */
+  @media (hover: none) and (pointer: coarse) {
+    .product-card:hover,
+    .lip-card:hover,
+    .skin-card:hover,
+    .step:hover,
+    .tip-card:hover { transform: none; box-shadow: 0 1px 10px var(--shadow); border-color: var(--card-border); }
+    .product-card:hover::before,
+    .lip-card:hover::before { opacity: 0; }
+    .skin-card:hover::before { transform: scaleX(0); }
+  }
 </style>
 </head>
 <body>
@@ -2610,23 +2631,33 @@ function toggleTheme() {
   document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
 }
 
+function lockScroll() {
+  document.body.style.overflow = 'hidden';
+  document.body.style.touchAction = 'none';
+}
+
+function unlockScroll() {
+  document.body.style.overflow = '';
+  document.body.style.touchAction = '';
+}
+
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn  = document.getElementById('hamburger');
   const open = menu.classList.toggle('open');
   btn.classList.toggle('open', open);
   btn.setAttribute('aria-expanded', open);
-  // Prevent body scroll when menu open
-  document.body.style.overflow = open ? 'hidden' : '';
+  if (open) { lockScroll(); } else { unlockScroll(); }
 }
 
 function closeMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn  = document.getElementById('hamburger');
+  const wasOpen = menu.classList.contains('open');
   menu.classList.remove('open');
   btn.classList.remove('open');
   btn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
+  if (wasOpen) { unlockScroll(); }
 }
 
 // Close mobile menu on outside tap
