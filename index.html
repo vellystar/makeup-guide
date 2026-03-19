@@ -176,7 +176,7 @@
     animation: fadeUp 0.9s 0.55s ease both;
   }
   .hero-scroll {
-    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
     color: rgba(255,248,245,0.4); font-size: 0.62rem; letter-spacing: 0.2em;
     text-transform: uppercase; z-index: 1; animation: fadeUp 0.9s 0.7s ease both;
@@ -289,7 +289,7 @@
     font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em; color: var(--text-muted);
   }
   .shade-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.12); }
-  .product-body { padding: 1.2rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+  .product-body { padding: 1.2rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.85rem; }
   .product-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.8; color: var(--text-secondary); }
   .benefit-label {
     font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em;
@@ -303,7 +303,7 @@
   .benefits-list li::before {
     content: '—'; position: absolute; left: 0; color: var(--rose); font-size: 0.7rem;
   }
-  .product-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.7rem; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag {
     font-size: 0.6rem; font-weight: 400; letter-spacing: 0.1em;
     text-transform: uppercase; padding: 0.22rem 0.6rem;
@@ -538,7 +538,7 @@
 
   /* Undertone fit block on product cards */
   .undertone-fit {
-    border-top: 1px solid var(--divider); padding-top: 0.9rem; margin-top: 0.2rem;
+    border-top: 1px solid var(--divider); padding-top: 0.9rem;
   }
   .ut-fit-label {
     font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em;
@@ -663,7 +663,7 @@
   }
   .lip-body {
     padding: 1.2rem 1.5rem 1.5rem; flex: 1;
-    display: flex; flex-direction: column; gap: 0.9rem;
+    display: flex; flex-direction: column; gap: 0.85rem;
   }
   .lip-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.8; color: var(--text-secondary); }
   .lip-benefit-label {
@@ -727,17 +727,346 @@
   }
   .lct-name { font-weight: 400; color: var(--text-primary); }
 
-  /* RESPONSIVE */
+  /* ── PRICE TIER BADGES ── */
+  .price-tier,
+  .lip-price-tier {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .price-tier {
+    display: inline-flex; align-items: center; gap: 0.38rem;
+    margin-top: 0.55rem;
+    padding: 0.26rem 0.75rem;
+    border-radius: 99px; width: fit-content;
+  }
+  .price-tier-dot {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  }
+  .tier-budget {
+    background: rgba(46,125,82,0.10);
+    border: 1px solid rgba(46,125,82,0.28);
+    color: #256845;
+  }
+  .tier-affordable {
+    background: rgba(30,110,160,0.10);
+    border: 1px solid rgba(30,110,160,0.28);
+    color: #1A6090;
+  }
+  .tier-midrange {
+    background: rgba(160,120,30,0.10);
+    border: 1px solid rgba(160,120,30,0.28);
+    color: #8A6510;
+  }
+  .tier-premium {
+    background: rgba(139,26,42,0.10);
+    border: 1px solid rgba(139,26,42,0.28);
+    color: #7A1020;
+  }
+  [data-theme="dark"] .tier-budget   { color: #6DDFAA; border-color: rgba(80,180,120,0.35); background: rgba(46,125,82,0.15); }
+  [data-theme="dark"] .tier-affordable { color: #70C0E8; border-color: rgba(60,150,200,0.35); background: rgba(30,110,160,0.15); }
+  [data-theme="dark"] .tier-midrange { color: #D4AA40; border-color: rgba(180,140,40,0.35); background: rgba(140,100,20,0.15); }
+  [data-theme="dark"] .tier-premium  { color: #E07080; border-color: rgba(196,67,90,0.35); background: rgba(139,26,42,0.15); }
+
+  /* Lip price tier */
+  .lip-price-tier {
+    display: inline-flex; align-items: center; gap: 0.38rem;
+    margin-top: 0.5rem;
+    padding: 0.24rem 0.72rem;
+    border-radius: 99px; width: fit-content;
+  }
+
+  /* ── CATEGORY SECTION HEADERS (products page) ── */
+  .cat-section-header {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 0 0.6rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--divider);
+  }
+  .cat-section-header:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .csh-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .csh-text { flex: 1; min-width: 0; }
+  .csh-label {
+    font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--crimson); margin-bottom: 0.1rem;
+  }
+  .csh-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 500; color: var(--text-primary);
+    line-height: 1.2;
+  }
+  .csh-sub {
+    font-size: 0.7rem; font-weight: 300; color: var(--text-muted);
+    letter-spacing: 0.04em; margin-top: 0.15rem;
+  }
+  .csh-count {
+    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    white-space: nowrap; flex-shrink: 0;
+    padding: 0.2rem 0.7rem;
+    border: 1px solid var(--divider);
+    border-radius: 99px;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     RESPONSIVE — MOBILE HAMBURGER NAV
+  ══════════════════════════════════════════════════════ */
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    cursor: pointer; background: none;
+    border: none; padding: 0.3rem;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--crimson);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 62px; left: 0; right: 0; z-index: 99;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--divider);
+    padding: 0.6rem 1.2rem 1rem;
+    flex-direction: column; gap: 0.2rem;
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+  .mobile-menu.open {
+    display: flex;
+    opacity: 1; transform: translateY(0);
+    pointer-events: auto;
+  }
+  .mobile-menu a {
+    display: block; padding: 0.55rem 0.8rem;
+    font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-secondary);
+    text-decoration: none; border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  .mobile-menu a:hover { color: var(--crimson); background: var(--tag-bg); }
+  .mobile-menu a.active { color: var(--crimson); }
+  .mobile-menu-divider {
+    height: 1px; background: var(--divider); margin: 0.4rem 0.8rem;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     BREAKPOINT: TABLET (≤ 900px)
+  ══════════════════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    /* Products + lip grids → 2 col on tablets */
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .lip-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .undertone-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .tips-grid { grid-template-columns: repeat(2, 1fr); }
+    .skin-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ══════════════════════════════════════════════════════
+     BREAKPOINT: TABLET PORTRAIT + LARGE MOBILE (≤ 768px)
+  ══════════════════════════════════════════════════════ */
   @media (max-width: 768px) {
+    /* Nav — show hamburger, hide inline links */
     .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    /* Nav brand smaller */
+    .nav-brand { font-size: 0.95rem; }
+
+    /* Section padding reduced */
+    section { padding: 3.5rem 0; }
+
+    /* Hero tightening */
+    #hero { padding: 5rem 1.5rem 3rem; }
+    .hero-desc { font-size: 0.83rem; }
+
+    /* Single column grids */
     .midday-grid { grid-template-columns: 1fr; }
     .undertone-intro-grid { grid-template-columns: 1fr; }
     .lip-intro-row { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr; }
+    .lip-cards-grid { grid-template-columns: 1fr; }
+    .undertone-cards-grid { grid-template-columns: 1fr; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .skin-grid { grid-template-columns: 1fr; }
+
+    /* Category filter bar — horizontal scroll pill bar */
+
+    /* Product & lip cards — tighter padding */
+    .product-header { padding: 1.1rem 1.1rem 0.8rem; }
+    .product-body { padding: 1rem 1.1rem 1.2rem; }
+    .lip-swatch-header { padding: 1.1rem 1.1rem 0.8rem; }
+    .lip-body { padding: 1rem 1.1rem 1.2rem; }
+
+    /* Midday cards */
+    .midday-card { padding: 1.3rem; }
+
+    /* Undertone explainer cards */
+    .undertone-explainer { padding: 1.3rem; }
+    .lip-explainer { padding: 1.3rem; }
+
+    /* Undertone card bodies */
+    .ut-body { padding: 1rem; }
+
+    /* Routine step */
+    .step { grid-template-columns: 2.8rem 1fr; gap: 0.8rem; padding: 1rem; }
+
+    /* Compare table — hide least critical columns on tablet */
+    .lip-compare-table th:nth-child(5),
+    .lip-compare-table td:nth-child(5) { display: none; }
+
+    /* Category section headers */
+    .cat-section-header { gap: 0.6rem; padding: 0.8rem 0 0.5rem; }
+    .csh-icon { width: 34px; height: 34px; font-size: 0.9rem; border-radius: 10px; }
+    .csh-title { font-size: 1.05rem; }
+    .csh-sub { font-size: 0.65rem; }
+    .csh-count { display: none; }
   }
+
+  /* ══════════════════════════════════════════════════════
+     BREAKPOINT: MOBILE (≤ 520px)
+  ══════════════════════════════════════════════════════ */
   @media (max-width: 520px) {
-    .products-grid { grid-template-columns: 1fr !important; }
-    .step { grid-template-columns: 2.5rem 1fr; }
-    .step-num { width: 2.3rem; height: 2.3rem; font-size: 0.9rem; }
+    /* Nav */
+    .nav-inner { height: 56px; }
+    .mobile-menu { top: 56px; }
+    .nav-brand { font-size: 0.88rem; }
+    .toggle-btn span#themeLabel { display: none; }
+    .toggle-btn { padding: 0.3rem 0.6rem; }
+
+    /* Section padding */
+    section { padding: 2.8rem 0; }
+
+    /* Hero */
+    #hero { padding: 4.5rem 1.2rem 2.5rem; }
+    .hero-eyebrow { font-size: 0.6rem; margin-bottom: 0.8rem; }
+    .hero-subtitle { font-size: 0.72rem; }
+    .hero-desc { font-size: 0.8rem; }
+    .hero-line { margin: 1.5rem auto; }
+
+    /* Section titles */
+    .section-title { font-size: 1.6rem; }
+    .section-intro { font-size: 0.85rem; }
+
+    /* Product / lip cards */
+    .product-header { padding: 1rem; }
+    .product-body { padding: 0.9rem 1rem 1rem; gap: 0.8rem; }
+    .product-name { font-size: 1.05rem; }
+    .product-desc { font-size: 0.79rem; }
+    .benefits-list li { font-size: 0.76rem; }
+    .lip-swatch-header { padding: 1rem; }
+    .lip-body { padding: 0.9rem 1rem 1rem; gap: 0.8rem; }
+    .lip-name { font-size: 1.05rem; }
+    .lip-desc { font-size: 0.79rem; }
+    .lip-benefits li { font-size: 0.76rem; }
+
+    /* Undertone badges — wrap tighter */
+    .ut-fit-row { gap: 0.3rem; }
+    .ut-badge { font-size: 0.58rem; padding: 0.18rem 0.5rem; }
+    .ut-fit-note { font-size: 0.73rem; }
+
+    /* Routine steps */
+    .step { grid-template-columns: 2.3rem 1fr; gap: 0.7rem; padding: 0.9rem; }
+    .step-num { width: 2.1rem; height: 2.1rem; font-size: 0.85rem; }
+    .step-desc { font-size: 0.77rem; }
+    .step-tip { font-size: 0.72rem; padding: 0.45rem 0.7rem; }
+
+    /* Midday */
+    .midday-card { padding: 1.1rem; }
+    .midday-step { font-size: 0.78rem; }
+    .midday-prod-item { padding: 0.65rem 0.85rem; font-size: 0.77rem; }
+    .midday-prod-name { font-size: 0.88rem; }
+
+    /* Tips */
+    .tip-num { font-size: 2rem; }
+    .tip-title { font-size: 0.75rem; }
+    .tip-desc { font-size: 0.76rem; }
+
+    /* Undertone cards */
+    .ut-swatch { height: 75px; }
+    .ut-swatch-name { font-size: 1.2rem; }
+    .ut-desc { font-size: 0.77rem; }
+    .ut-signal { font-size: 0.74rem; }
+    .ut-best-for { font-size: 0.72rem; }
+
+    /* Lip compare table — stack as cards via display block */
+    .lip-compare-table,
+    .lip-compare-table thead,
+    .lip-compare-table tbody,
+    .lip-compare-table tr { display: block; width: 100%; }
+    .lip-compare-table thead { display: none; }
+    .lip-compare-table td {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      border-bottom: none;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+    }
+    .lip-compare-table td::before {
+      content: attr(data-label);
+      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--crimson);
+      min-width: 72px; flex-shrink: 0; margin-top: 0.05em;
+    }
+    .lip-compare-table tr {
+      border: 1px solid var(--divider);
+      border-radius: 10px; padding: 0.5rem 0;
+      margin-bottom: 0.8rem;
+      background: var(--card-bg);
+    }
+    .lct-name { font-size: 0.82rem; }
+
+    /* Group headers */
+
+    /* Lip type tabs — scrollable */
+    .lip-type-tabs { gap: 0.2rem; }
+    .lptab { font-size: 0.65rem; padding: 0.5rem 0.85rem; }
+
+    /* Routine tabs */
+    .routine-tabs { gap: 0.2rem; }
+    .rtab { font-size: 0.65rem; padding: 0.5rem 0.85rem; }
+
+    /* Lip layer tip */
+    .lip-layer-tip { font-size: 0.72rem; }
+
+    /* Lip application box */
+    .lip-application p { font-size: 0.76rem; }
+
+    /* Category section headers */
+    .cat-section-header { gap: 0.5rem; padding: 0.6rem 0 0.4rem; margin-top: 2rem; }
+    .csh-icon { width: 30px; height: 30px; font-size: 0.8rem; border-radius: 8px; }
+    .csh-title { font-size: 0.98rem; }
+    .csh-sub { font-size: 0.62rem; }
+    .csh-label { font-size: 0.52rem; }
+
+    /* Price tier badges — wrap more gracefully */
+    .price-tier { font-size: 0.58rem; padding: 0.2rem 0.6rem; }
+    .lip-price-tier { font-size: 0.58rem; padding: 0.18rem 0.58rem; }
+  }
+
+  /* ══════════════════════════════════════════════════════
+     BREAKPOINT: VERY SMALL PHONES (≤ 380px)
+  ══════════════════════════════════════════════════════ */
+  @media (max-width: 380px) {
+    main { padding: 0 0.9rem; }
+    .hero-title { font-size: 2rem; }
+    .section-title { font-size: 1.45rem; }
+    .product-name, .lip-name { font-size: 0.98rem; }
+    .lip-shade-row { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    .lip-finish-badge { margin-left: 0; }
   }
 </style>
 </head>
@@ -755,12 +1084,29 @@
       <li><a href="#midday">Mid-day</a></li>
       <li><a href="#tips">Tips</a></li>
     </ul>
-    <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
-      <span class="toggle-icon" id="themeIcon">☽</span>
-      <span id="themeLabel">Dark</span>
-    </button>
+    <div style="display:flex;align-items:center;gap:0.6rem;flex-shrink:0;">
+      <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <span class="toggle-icon" id="themeIcon">☀</span>
+        <span id="themeLabel">Light</span>
+      </button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#skin-guide" onclick="closeMenu()">Skin Type</a>
+  <a href="#undertones" onclick="closeMenu()">Undertones</a>
+  <a href="#products" onclick="closeMenu()">Products</a>
+  <a href="#lips" onclick="closeMenu()">Lip Edit</a>
+  <div class="mobile-menu-divider"></div>
+  <a href="#routine" onclick="closeMenu()">Routine</a>
+  <a href="#midday" onclick="closeMenu()">Mid-day</a>
+  <a href="#tips" onclick="closeMenu()">Tips</a>
+</div>
 
 <section id="hero">
   <div class="hero-ornament">Beauty</div>
@@ -938,21 +1284,31 @@
 
     </div>
   </section>
-  <!-- ══════════════════════════════════════════════════════ -->
 
   <section id="products">
     <div class="section-label">The Collection</div>
     <h2 class="section-title">All <em>Products</em></h2>
     <div class="section-divider"></div>
-    <p class="section-intro reveal">Nine products working in harmony — from SPF base to setting mist — each selected for compatibility with combination skin.</p>
+    <p class="section-intro reveal">Nine products across three categories — from SPF base to setting mist — each selected for compatibility with combination skin and your undertone.</p>
 
+    <!-- ══ CATEGORY 1: SUN PROTECTION ══ -->
+    <div class="cat-section-header reveal">
+      <div class="csh-icon" style="background:rgba(212,136,74,0.14);">☀</div>
+      <div class="csh-text">
+        <div class="csh-label">Category 01</div>
+        <div class="csh-title">Sun Protection</div>
+        <div class="csh-sub">Chemical &amp; Physical SPF</div>
+      </div>
+      <div class="csh-count">2 products</div>
+    </div>
     <div class="products-grid">
 
-      <div class="product-card reveal">
+<div class="product-card reveal">
         <div class="product-header">
           <div class="product-cat">☀ Sun Protection · Spray</div>
           <div class="product-brand">Dr. Oky Pratama</div>
           <div class="product-name">Bening's Sunscreen Spray</div>
+          <div class="price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 50.000–80.000</div>
         </div>
         <div class="product-body">
           <p class="product-desc">A lightweight, fast-absorbing chemical sunscreen in an innovative spray format. Formulated for everyday Indonesian use, it delivers broad-spectrum UV protection without heaviness — and doubles as a midday SPF refresh over makeup.</p>
@@ -984,11 +1340,12 @@
         </div>
       </div>
 
-      <div class="product-card reveal reveal-delay-1">
+<div class="product-card reveal reveal-delay-1">
         <div class="product-header">
           <div class="product-cat">☀ Sun Protection · Physical</div>
           <div class="product-brand">YOU Beauty</div>
           <div class="product-name">Sunbrella Physical Sunscreen</div>
+          <div class="price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 65.000–119.000</div>
         </div>
         <div class="product-body">
           <p class="product-desc">A mineral sunscreen using zinc oxide and/or titanium dioxide to reflect UV rays. Gentle enough for sensitive combination skin, it creates a protective veil that also primes the skin for a smoother, longer-lasting makeup base.</p>
@@ -1020,11 +1377,26 @@
         </div>
       </div>
 
-      <div class="product-card reveal reveal-delay-2">
+    </div>
+
+    <!-- ══ CATEGORY 2: BASE &AMP; COVERAGE ══ -->
+    <div class="cat-section-header reveal">
+      <div class="csh-icon" style="background:rgba(196,67,90,0.14);">◇</div>
+      <div class="csh-text">
+        <div class="csh-label">Category 02</div>
+        <div class="csh-title">Base &amp; Coverage</div>
+        <div class="csh-sub">BB Cream · Cushion Foundations · Serum Skin Tint</div>
+      </div>
+      <div class="csh-count">4 products</div>
+    </div>
+    <div class="products-grid">
+
+<div class="product-card reveal">
         <div class="product-header">
           <div class="product-cat">◈ Concealer + BB Cream · 2-in-1</div>
           <div class="product-brand">ONLYOU</div>
           <div class="product-name">Concealer Brightening &amp; Isolating BB Cream</div>
+          <div class="price-tier tier-budget"><span class="price-tier-dot" style="background:#256845;"></span>Budget-Friendly · Rp 40.000–85.000</div>
         </div>
         <div class="product-body">
           <p class="product-desc">A multi-tasking hybrid that combines brightening concealer precision with the skin-evening coverage of a BB cream — all in one product. The isolating (barrier) function protects skin from environmental stressors throughout the day.</p>
@@ -1056,7 +1428,7 @@
         </div>
       </div>
 
-      <div class="product-card reveal">
+<div class="product-card reveal reveal-delay-1">
         <div class="product-header">
           <div class="product-cat">◇ Cushion Foundation</div>
           <div class="product-brand">SKINTIFIC</div>
@@ -1065,6 +1437,7 @@
             <span class="shade-dot" style="background:#F5E0C0;"></span>
             Shade: Vanilla
           </div>
+          <div class="price-tier tier-midrange"><span class="price-tier-dot" style="background:#8A6510;"></span>Mid-Range · Rp 158.990–189.000</div>
         </div>
         <div class="product-body">
           <p class="product-desc">SKINTIFIC's skincare-infused cushion delivers full coverage with a luminous glass-skin glow. The Cover Glow formula combines high-performance pigment with skin-loving actives that strengthen the moisture barrier while you wear it.</p>
@@ -1097,7 +1470,7 @@
         </div>
       </div>
 
-      <div class="product-card reveal reveal-delay-1">
+<div class="product-card reveal reveal-delay-2">
         <div class="product-header">
           <div class="product-cat">◇ Cushion Foundation</div>
           <div class="product-brand">TIRTIR</div>
@@ -1106,6 +1479,7 @@
             <span class="shade-dot" style="background:#F7E8DC;"></span>
             Shade: 17C Porcelain
           </div>
+          <div class="price-tier tier-midrange"><span class="price-tier-dot" style="background:#8A6510;"></span>Mid-Range · Rp 252.900 (18g)</div>
         </div>
         <div class="product-body">
           <p class="product-desc">The cult-favourite Korean cushion famous for its mask-like adhesion. 17C Porcelain is the lightest cool-toned shade, offering porcelain-perfect coverage with zero cakey texture — exceptionally resistant to heat and humidity.</p>
@@ -1138,7 +1512,7 @@
         </div>
       </div>
 
-      <div class="product-card reveal reveal-delay-2">
+<div class="product-card reveal reveal-delay-3">
         <div class="product-header">
           <div class="product-cat">❋ Serum Skin Tint</div>
           <div class="product-brand">ESQA</div>
@@ -1147,6 +1521,7 @@
             <span class="shade-dot" style="background:#F5DFC0;"></span>
             Shade: Vanilla
           </div>
+          <div class="price-tier tier-midrange"><span class="price-tier-dot" style="background:#8A6510;"></span>Mid-Range · Rp 169.000</div>
         </div>
         <div class="product-body">
           <p class="product-desc">ESQA's answer to effortless, skin-first beauty. This serum-foundation hybrid delivers a soft-focus blurred finish while treating skin with active ingredients — perfect for combination skin that needs coverage and care simultaneously.</p>
@@ -1179,7 +1554,21 @@
         </div>
       </div>
 
-      <div class="product-card reveal">
+    </div>
+
+    <!-- ══ CATEGORY 3: SETTING &AMP; FINISHING ══ -->
+    <div class="cat-section-header reveal">
+      <div class="csh-icon" style="background:rgba(139,26,42,0.12);">✦</div>
+      <div class="csh-text">
+        <div class="csh-label">Category 03</div>
+        <div class="csh-title">Setting &amp; Finishing</div>
+        <div class="csh-sub">Loose Powder · Setting Mists</div>
+      </div>
+      <div class="csh-count">3 products</div>
+    </div>
+    <div class="products-grid">
+
+<div class="product-card reveal">
         <div class="product-header">
           <div class="product-cat">✦ Setting · Loose Powder</div>
           <div class="product-brand">Second Date</div>
@@ -1188,6 +1577,7 @@
             <span class="shade-dot" style="background:#FFF8F0; border-color:#ccc;"></span>
             Shade: Translucent
           </div>
+          <div class="price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 128.000–149.000</div>
         </div>
         <div class="product-body">
           <p class="product-desc">A finely milled translucent loose powder that sets any base without adding colour. A non-negotiable step in any combination skin routine for locking in the base, controlling T-zone oil, and creating a smooth, flawless finish.</p>
@@ -1220,11 +1610,12 @@
         </div>
       </div>
 
-      <div class="product-card reveal reveal-delay-1">
+<div class="product-card reveal reveal-delay-1">
         <div class="product-header">
           <div class="product-cat">◈ Setting Mist · Fast-Fix</div>
           <div class="product-brand">L'ORÉAL Paris</div>
           <div class="product-name">Infallible 3-Second Setting Mist</div>
+          <div class="price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 115.000</div>
         </div>
         <div class="product-body">
           <p class="product-desc">L'Oréal's iconic setting mist that locks in your complete makeup look in just 3 seconds. A globally recognised staple for extending wear and fusing powder and liquid products together for a seamless, natural finish.</p>
@@ -1256,11 +1647,12 @@
         </div>
       </div>
 
-      <div class="product-card reveal reveal-delay-2">
+<div class="product-card reveal reveal-delay-2">
         <div class="product-header">
           <div class="product-cat">◈ Protecting Mist · Matte-Finish</div>
           <div class="product-brand">PIXY</div>
           <div class="product-name">Aqua-Beauty Protecting Mist Matte-Finish</div>
+          <div class="price-tier tier-budget"><span class="price-tier-dot" style="background:#256845;"></span>Budget-Friendly · Rp 32.000 (60ml)</div>
         </div>
         <div class="product-body">
           <p class="product-desc">PIXY's water-based protecting mist formulated specifically for Asian climates. Aqua-Beauty technology keeps skin hydrated underneath while the surface remains shine-free and controlled — perfect for combination skin's T-zone concerns.</p>
@@ -1294,6 +1686,7 @@
       </div>
 
     </div>
+
   </section>
 
   <!-- ══════════════════════════════ LIP EDIT ══════════════ -->
@@ -1337,7 +1730,6 @@
     <!-- ALL PRODUCTS PANEL -->
     <div id="lp-all" class="lip-panel active">
       <div class="lip-cards-grid">
-
         <div class="lip-card reveal">
           <div class="lip-swatch-header">
             <div class="lip-swatch-bar" style="background:linear-gradient(90deg,#E8885A,#F0A878,#E89A60);"></div>
@@ -1349,6 +1741,7 @@
               <span class="lip-shade-name">Pumpkin Frost</span>
               <span class="lip-finish-badge">Glossy Satin</span>
             </div>
+            <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 59.000</div>
           </div>
           <div class="lip-body">
             <p class="lip-desc">A dual-action lip serum that brightens dark, pigmented lips while delivering intense hydration. Pumpkin Frost is a warm burnt-orange coral with a frosty luminous finish — wearable on its own daily, and a perfect treatment base under deeper shades.</p>
@@ -1379,7 +1772,7 @@
               </div>
               <p class="ut-fit-note">Pumpkin Frost is an unambiguously warm shade — the burnt-orange coral base reads as energising and natural on warm and neutral undertones, amplifying the golden quality of Indonesian complexions. On olive skin, the warmth harmonises with the earthy base tone. For cool undertones, the orange-coral direction can feel brash or clash with pinkish natural lips — if you're cool-toned, apply very sparingly as a sheer treatment wash rather than full colour coverage, or layer a thin pass of Nivea Smoky Rose on top to cool and mute the warmth.</p>
             </div>
-            <div class="product-tags" style="padding-top:0.7rem;">
+            <div class="product-tags">
               <span class="tag">Brightening</span><span class="tag">Lip Serum</span>
               <span class="tag">Plumping</span><span class="tag">Warm Coral</span>
             </div>
@@ -1397,6 +1790,7 @@
               <span class="lip-shade-name">Marigold Peach</span>
               <span class="lip-finish-badge">High Gloss</span>
             </div>
+            <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 54.000</div>
           </div>
           <div class="lip-body">
             <p class="lip-desc">A luxuriously glossy lip oil from NPure's Power Series delivering intense, non-sticky shine with genuine nourishment. Marigold Peach is a warm golden-peach with translucent depth — giving lips a plump, glossy, "just-bitten peach" appearance that photographs stunningly in warm light.</p>
@@ -1427,13 +1821,12 @@
               </div>
               <p class="ut-fit-note">Marigold Peach is the most undertone-flexible shade in this lip collection, primarily because the translucent oil formula means the golden-peach reads as a glow enhancement rather than a solid warm colour statement. On warm and neutral undertones, it adds gorgeous golden luminosity. On olive skin, the peachy-gold tone harmonises with the earthy base. Even cool undertones can wear this comfortably — the sheer formula means the natural cool lip pigment softens the warmth, producing a peachy-neutral result rather than an overtly orange effect.</p>
             </div>
-            <div class="product-tags" style="padding-top:0.7rem;">
+            <div class="product-tags">
               <span class="tag">Lip Oil</span><span class="tag">High Gloss</span>
               <span class="tag">Plumping</span><span class="tag">Golden Peach</span>
             </div>
           </div>
         </div>
-
         <div class="lip-card reveal reveal-delay-2">
           <div class="lip-swatch-header">
             <div class="lip-swatch-bar" style="background:linear-gradient(90deg,#7A5060,#A07080,#8A6070);"></div>
@@ -1445,6 +1838,7 @@
               <span class="lip-shade-name">Smoky Rose</span>
               <span class="lip-finish-badge">Satin Tint</span>
             </div>
+            <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 89.900–120.000</div>
           </div>
           <div class="lip-body">
             <p class="lip-desc">Nivea's Rich Care &amp; Color in Smoky Rose — a sophisticated muted rose-mauve with smoky depth. This formula bridges lip treatment and tinted product, delivering NIVEA's signature intensive moisture care while giving lips a sheer, flattering wash of colour. The most universally wearable shade in this entire collection.</p>
@@ -1475,7 +1869,7 @@
               </div>
               <p class="ut-fit-note">Smoky Rose is the most versatile shade in this collection — the muted rose-mauve occupies the neutral-cool sweet spot that flatters almost every undertone. On cool undertones, the pink-mauve harmonises naturally with pinkish lip pigment. On neutral and olive tones, the smokiness reads as a sophisticated earthy rose rather than a stark cool pink. On warm undertones, the highly muted, desaturated quality means it creates a soft grown-up contrast rather than clashing — a gentle cool note that elevates rather than conflicts. This is the shade to reach for when you want effortless, polished versatility above all else.</p>
             </div>
-            <div class="product-tags" style="padding-top:0.7rem;">
+            <div class="product-tags">
               <span class="tag">Tinted Balm</span><span class="tag">Hydrating</span>
               <span class="tag">Muted Rose</span><span class="tag">Universal Shade</span>
             </div>
@@ -1493,6 +1887,7 @@
               <span class="lip-shade-name">04 — Cherrion</span>
               <span class="lip-finish-badge">Matte Stain</span>
             </div>
+            <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 109.000–119.000</div>
           </div>
           <div class="lip-body">
             <p class="lip-desc">Time Phoria's Stellar Dust Lip Stain in 04 Cherrion — a deep, saturated cherry-red with cool-leaning depth and a velvety matte finish. The stain technology means colour holds for hours even through eating and drinking. Cherrion is the bold statement of this collection — effortlessly dramatic, deeply flattering, and transformative on any skin tone.</p>
@@ -1523,7 +1918,7 @@
               </div>
               <p class="ut-fit-note">Cherrion sits in the cool-to-neutral cherry-red category — the blue-based cherry depth makes it a natural favourite for cool and neutral undertones, where it reads as a rich, sophisticated red-berry that harmonises with pinkish natural lip pigment. On warm undertones, the shade may initially appear dark or slightly cool, but warm skin's higher natural pigmentation creates a beautiful high-contrast result that makes Cherrion look striking and intentional. On olive tones, the cool-red plays against the earthy undertone for a bold, fashion-forward look. The pro tip for warm and olive wearers: apply a layer of Nivea Smoky Rose underneath first to add warmth and softness to the base, creating a more integrated and harmonious final colour.</p>
             </div>
-            <div class="product-tags" style="padding-top:0.7rem;">
+            <div class="product-tags">
               <span class="tag">Lip Stain</span><span class="tag">High Pigment</span>
               <span class="tag">Cherry Red</span><span class="tag">Long-Wear</span>
             </div>
@@ -1674,40 +2069,40 @@
           </thead>
           <tbody>
             <tr>
-              <td><span class="lct-name">Glad2Glow Brightening Lip Serum</span></td>
-              <td><span class="lct-swatch" style="background:#E8885A;"></span>Pumpkin Frost</td>
-              <td>Glossy Satin</td>
-              <td>Sheer</td>
-              <td>2–3 hrs</td>
-              <td>Warm · Neutral</td>
-              <td>Treatment base — Step 1 always</td>
+              <td data-label="Product"><span class="lct-name">Glad2Glow Brightening Lip Serum</span></td>
+              <td data-label="Shade"><span class="lct-swatch" style="background:#E8885A;"></span>Pumpkin Frost</td>
+              <td data-label="Finish">Glossy Satin</td>
+              <td data-label="Coverage">Sheer</td>
+              <td data-label="Wear">2–3 hrs</td>
+              <td data-label="Undertone">Warm · Neutral</td>
+              <td data-label="Best For">Treatment base — Step 1 always</td>
             </tr>
             <tr>
-              <td><span class="lct-name">NPure Power Series Glow Up Oil</span></td>
-              <td><span class="lct-swatch" style="background:#F0B458;"></span>Marigold Peach</td>
-              <td>High Gloss</td>
-              <td>Translucent</td>
-              <td>1–2 hrs</td>
-              <td>All Undertones</td>
-              <td>Gloss topper · Overnight treatment</td>
+              <td data-label="Product"><span class="lct-name">NPure Power Series Glow Up Oil</span></td>
+              <td data-label="Shade"><span class="lct-swatch" style="background:#F0B458;"></span>Marigold Peach</td>
+              <td data-label="Finish">High Gloss</td>
+              <td data-label="Coverage">Translucent</td>
+              <td data-label="Wear">1–2 hrs</td>
+              <td data-label="Undertone">All Undertones</td>
+              <td data-label="Best For">Gloss topper · Overnight treatment</td>
             </tr>
             <tr>
-              <td><span class="lct-name">Nivea Rich Care &amp; Color</span></td>
-              <td><span class="lct-swatch" style="background:#7A5060;"></span>Smoky Rose</td>
-              <td>Satin Tint</td>
-              <td>Sheer–Medium</td>
-              <td>3–4 hrs</td>
-              <td>All Undertones</td>
-              <td>Everyday tinted balm · Base under stain</td>
+              <td data-label="Product"><span class="lct-name">Nivea Rich Care &amp; Color</span></td>
+              <td data-label="Shade"><span class="lct-swatch" style="background:#7A5060;"></span>Smoky Rose</td>
+              <td data-label="Finish">Satin Tint</td>
+              <td data-label="Coverage">Sheer–Medium</td>
+              <td data-label="Wear">3–4 hrs</td>
+              <td data-label="Undertone">All Undertones</td>
+              <td data-label="Best For">Everyday tinted balm · Base under stain</td>
             </tr>
             <tr>
-              <td><span class="lct-name">Time Phoria Stellar Dust Lip Stain</span></td>
-              <td><span class="lct-swatch" style="background:#8B1830;"></span>04 Cherrion</td>
-              <td>Matte Stain</td>
-              <td>Full</td>
-              <td>6–8 hrs</td>
-              <td>Cool · Neutral · Warm</td>
-              <td>Statement colour — Final colour step</td>
+              <td data-label="Product"><span class="lct-name">Time Phoria Stellar Dust Lip Stain</span></td>
+              <td data-label="Shade"><span class="lct-swatch" style="background:#8B1830;"></span>04 Cherrion</td>
+              <td data-label="Finish">Matte Stain</td>
+              <td data-label="Coverage">Full</td>
+              <td data-label="Wear">6–8 hrs</td>
+              <td data-label="Undertone">Cool · Neutral · Warm</td>
+              <td data-label="Best For">Statement colour — Final colour step</td>
             </tr>
           </tbody>
         </table>
@@ -2008,6 +2403,34 @@ function toggleTheme() {
   document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
 }
 
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  const open = menu.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+  // Prevent body scroll when menu open
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+function closeMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  menu.classList.remove('open');
+  btn.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+// Close mobile menu on outside tap
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+    closeMenu();
+  }
+});
+
 function switchTab(e, name) {
   document.querySelectorAll('.routine-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.rtab').forEach(t => t.classList.remove('active'));
@@ -2029,12 +2452,13 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
 const navObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-      });
+      const id = '#' + entry.target.id;
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
+      mobileLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
     }
   });
 }, { rootMargin: '-40% 0px -55% 0px' });
