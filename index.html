@@ -284,9 +284,9 @@
      PRODUCT CARDS — redesigned
   ══════════════════════════════════════════════════ */
   .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
     margin-top: 1.4rem;
   }
 
@@ -294,12 +294,13 @@
   .pc {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
+    border-radius: 14px;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: stretch;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 2px 14px var(--shadow);
+    box-shadow: 0 2px 12px var(--shadow);
   }
   .pc:hover {
     box-shadow: 0 8px 32px var(--shadow-deep);
@@ -308,18 +309,22 @@
 
   /* Card top — identity block */
   .pc-top {
-    padding: 1.2rem 1.3rem 1rem;
-    border-bottom: 1px solid var(--divider);
+    width: 230px; flex-shrink: 0;
+    padding: 1.2rem 1.2rem 1.1rem;
+    border-right: 1px solid var(--divider); border-bottom: none;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    overflow-y: auto; max-height: 650px;
     background: linear-gradient(160deg, rgba(212,168,88,0.06) 0%, transparent 70%);
   }
+  .pc-top::-webkit-scrollbar { width: 3px; }
+  .pc-top::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 3px; }
   [data-theme="dark"] .pc-top {
     background: linear-gradient(160deg, rgba(212,168,88,0.08) 0%, transparent 70%);
   }
   .pc-meta {
-    display: flex; align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem; margin-bottom: 0.55rem;
-    flex-wrap: wrap;
+    display: flex; align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem; margin-bottom: 0.5rem;
   }
   .pc-cat {
     font-family: 'Marcellus SC', serif;
@@ -369,7 +374,8 @@
   /* Card body — content stack */
   .pc-body {
     padding: 1.1rem 1.3rem 1.3rem;
-    flex: 1; display: flex; flex-direction: column; gap: 0.9rem;
+    flex: 1; min-width: 0;
+    display: flex; flex-direction: column; gap: 0.9rem;
   }
   .pc-desc {
     font-size: 0.8rem; font-weight: 300; line-height: 1.85;
@@ -427,53 +433,83 @@
     color: var(--text-muted);
   }
 
-  /* Shade gallery (pc-shades) */
-  .pc-shades { padding-top: 0.7rem; border-top: 1px solid var(--divider); }
+  /* ── SHADE GALLERY ── */
+  .pc-shades {
+    margin-top: 0.8rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--divider);
+  }
+  /* "Your Shade" hero */
   .pc-shade-hero {
-    display: flex; align-items: center; gap: 0.7rem;
-    padding: 0.5rem 0.65rem;
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.45rem 0.65rem;
     background: var(--gold-subtle);
-    border: 1px solid rgba(212,168,88,0.22);
-    border-radius: 8px; margin-bottom: 0.65rem;
+    border: 1px solid rgba(212,168,88,0.25);
+    border-radius: 8px; margin-bottom: 0.6rem;
   }
   .pc-shade-owned {
-    width: 30px; height: 30px; border-radius: 50%;
+    width: 26px; height: 26px; border-radius: 50%;
     border: 2px solid var(--gold);
     box-shadow: 0 0 0 2px var(--gold-subtle);
     flex-shrink: 0;
   }
-  .pc-shade-owned-info { display: flex; flex-direction: column; gap: 0.1rem; }
+  .pc-shade-owned-info { display: flex; flex-direction: column; gap: 0.08rem; }
   .pc-shade-eyebrow {
     font-family: 'Marcellus SC', serif;
-    font-size: 0.46rem; letter-spacing: 0.2em;
+    font-size: 0.45rem; letter-spacing: 0.22em;
     text-transform: uppercase; color: var(--gold);
   }
   .pc-shade-name {
     font-family: 'Fraunces', serif;
-    font-size: 0.88rem; font-weight: 300; color: var(--text-primary);
+    font-size: 0.85rem; font-weight: 300; color: var(--text-primary);
+    line-height: 1.2;
   }
+  /* Full range — labelled shade pills */
   .pc-dots-wrap { }
   .pc-dots-label {
     font-family: 'Marcellus SC', serif;
-    font-size: 0.46rem; letter-spacing: 0.2em;
+    font-size: 0.45rem; letter-spacing: 0.22em;
     text-transform: uppercase; color: var(--text-muted);
-    display: block; margin-bottom: 0.38rem;
+    display: block; margin-bottom: 0.4rem;
   }
-  .pc-dots { display: flex; flex-wrap: wrap; gap: 0.28rem; }
+  .pc-dots {
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+  }
+  /* Each shade = a small pill: swatch circle + name */
   .pc-dot, .pc-dotpc-dot-owned {
-    width: 20px; height: 20px; border-radius: 50%;
-    border: 1.5px solid rgba(0,0,0,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 9px; font-weight: 700; color: transparent;
-    cursor: default;
-    transition: transform 0.15s ease;
+    display: inline-flex; align-items: center; gap: 0.28rem;
+    padding: 0.16rem 0.5rem 0.16rem 0.2rem;
+    border-radius: 99px;
+    border: 1px solid var(--divider);
+    background: var(--card-bg);
+    font-size: 0.58rem; font-weight: 300; letter-spacing: 0.03em;
+    color: var(--text-muted);
+    cursor: default; transition: border-color 0.15s ease;
+    white-space: nowrap;
+  }
+  .pc-shade-pill-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.12);
+    flex-shrink: 0; display: inline-block;
   }
   .pc-dotpc-dot-owned {
-    border: 2px solid var(--gold);
-    box-shadow: 0 0 0 2px var(--gold-subtle);
-    color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    border-color: var(--gold);
+    background: var(--gold-subtle);
+    color: var(--gold);
+    font-weight: 500;
   }
-  .pc-dot:hover { transform: scale(1.3); }
+  .pc-dot:hover { border-color: var(--text-muted); }
+  .pc-dot:hover .pc-shade-pill-dot { transform: scale(1.15); }
+
+  @media (max-width: 640px) {
+    .pc-shade-owned { width: 22px; height: 22px; }
+    .pc-shade-name { font-size: 0.78rem; }
+    .pc-dot, .pc-dotpc-dot-owned { font-size: 0.55rem; padding: 0.15rem 0.45rem 0.15rem 0.2rem; }
+    .pc-shade-pill-dot { width: 9px; height: 9px; }
+  }
+  @media (max-width: 380px) {
+    .pc-dot, .pc-dotpc-dot-owned { font-size: 0.52rem; }
+  }
 
   /* Where to buy */
   .pc-buy { padding-top: 0.7rem; border-top: 1px solid var(--divider); }
@@ -540,12 +576,16 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .products-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 640px) {
-    /* Product cards */
-    .products-grid { grid-template-columns: 1fr; }
-    .pc-top { padding: 1rem 1.1rem 0.9rem; }
+    /* Product cards — revert to vertical */
+    .pc { flex-direction: column; }
+    .pc-top {
+      width: auto; max-height: none; overflow-y: visible;
+      border-right: none; border-bottom: 1px solid var(--divider);
+      padding: 1rem 1.1rem 0.9rem;
+    }
+    .pc-meta { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 0.35rem; }
     .pc-body { padding: 0.9rem 1.1rem 1.1rem; gap: 0.75rem; }
     .pc-name { font-size: 1.05rem; }
     .pc-desc { font-size: 0.77rem; }
@@ -1507,6 +1547,7 @@
     .shade-swatch-name { font-size: 0.38rem; max-width: 28px; }
   }
 
+
   /* Touch devices: disable hover effects that cause scroll jank */
   @media (hover: none) and (pointer: coarse) {
     .pc:hover,
@@ -1816,13 +1857,14 @@
           <div class="pc-brand">ONLYOU</div>
           <h3 class="pc-name">Concealer Brightening & Isolating BB Cream</h3>
           <div class="pc-shade-tag"><span class="pc-shade-swatch" style="background:#E8C89A;"></span><span>B10 Natural</span></div>
+          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#E8C89A;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">B10 Natural</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="B10 Natural"><span class="pc-shade-pill-dot" style="background:#E8C89A;"></span>B10 Natural</span></div></div>
         </div>
         <div class="pc-body">
           <p class="pc-desc">A multi-tasking hybrid combining brightening concealer precision with BB cream coverage. The isolating (barrier) function protects skin from environmental stressors while the formula evens tone and brightens.</p>
           <div class="pc-benefits"><span class="pc-section-label">Key Benefits</span><ul><li>Brightens under-eye and dark spot areas with targeted precision</li><li>BB cream evens overall skin tone for a natural, radiant finish</li><li>Isolating barrier reduces pore-clogging and contact with makeup</li><li>Lightweight, buildable — ideal for combination skin that overheats under heavy base</li><li>Hydrating formula prevents caking on dry cheek zones</li></ul></div>
           <div class="pc-tags"><span class="pc-tag">BB Cream</span><span class="pc-tag">2-in-1</span><span class="pc-tag">Brightening</span><span class="pc-tag">Barrier</span></div>
           <div class="pc-undertone"><span class="pc-section-label">Undertone Fit</span><div class="pc-ut-row"><span class="pc-ut-badge pc-ut-warm"><span class="pc-ut-dot" style="background:#C17B3E;"></span>Warm ✓</span><span class="pc-ut-badge pc-ut-neutral"><span class="pc-ut-dot" style="background:#A89070;"></span>Neutral ✓</span><span class="pc-ut-badge pc-ut-olive"><span class="pc-ut-dot" style="background:#7A8C60;"></span>Olive ✓</span><span class="pc-ut-badge pc-ut-cool"><span class="pc-ut-dot" style="background:#7B8EC1;"></span>Cool — Varies</span></div><p class="pc-ut-note">Formulated for Southeast Asian warm-to-neutral undertones. May pull peachy on cool skin — layer a cooler cushion on top to counterbalance.</p></div>
-          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#E8C89A;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">B10 Natural</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="B10 Natural" style="background:#E8C89A;">✓</div></div></div></div>
+          
           <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=ONLYOU+BB+Cream+Concealer" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=ONLYOU+BB+Cream+Concealer" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
         </div>
       </div>
@@ -1835,13 +1877,14 @@
           <div class="pc-brand">SKINTIFIC</div>
           <h3 class="pc-name">Cover Glow Perfect Cushion Foundation</h3>
           <div class="pc-shade-tag"><span class="pc-shade-swatch" style="background:#F2DEC0;"></span><span>Shade: 01 Vanilla</span></div>
+          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F2DEC0;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">01 Vanilla</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dot" title="00 Porcelain"><span class="pc-shade-pill-dot" style="background:#F5EAE2;"></span>00 Porcelain</span><span class="pc-dotpc-dot-owned" title="01 Vanilla"><span class="pc-shade-pill-dot" style="background:#F2DEC0;"></span>01 Vanilla</span><span class="pc-dot" title="02 Ivory"><span class="pc-shade-pill-dot" style="background:#EDD3AC;"></span>02 Ivory</span><span class="pc-dot" title="03 Petal"><span class="pc-shade-pill-dot" style="background:#E4C49A;"></span>03 Petal</span><span class="pc-dot" title="03A Almond"><span class="pc-shade-pill-dot" style="background:#D9B488;"></span>03A Almond</span><span class="pc-dot" title="04 Beige"><span class="pc-shade-pill-dot" style="background:#CEA474;"></span>04 Beige</span><span class="pc-dot" title="05 Sand"><span class="pc-shade-pill-dot" style="background:#BE9060;"></span>05 Sand</span><span class="pc-dot" title="06 Honey"><span class="pc-shade-pill-dot" style="background:#B07848;"></span>06 Honey</span></div></div>
         </div>
         <div class="pc-body">
           <p class="pc-desc">SKINTIFIC's skincare-infused cushion delivers full coverage with a luminous glass-skin glow. The Cover Glow formula combines high-performance pigment with skin-loving actives that strengthen the moisture barrier while you wear it.</p>
           <div class="pc-benefits"><span class="pc-section-label">Key Benefits</span><ul><li>Full coverage with a radiant glow-from-within finish — luminous, not glittery</li><li>Skincare actives hydrate and strengthen the barrier with continued use</li><li>Cushion applicator creates an airbrushed, blended finish effortlessly</li><li>SPF built in for an additional UV protection layer</li><li>Buildable from light to full coverage without caking or creasing</li><li>Long-wearing — engineered to resist tropical humidity and heat</li></ul></div>
           <div class="pc-tags"><span class="pc-tag">Cushion</span><span class="pc-tag">Full Coverage</span><span class="pc-tag">Glow Finish</span><span class="pc-tag">SPF</span><span class="pc-tag">K-Beauty</span></div>
           <div class="pc-undertone"><span class="pc-section-label">Undertone Fit</span><div class="pc-ut-row"><span class="pc-ut-badge pc-ut-warm"><span class="pc-ut-dot" style="background:#C17B3E;"></span>Warm ✓ Best</span><span class="pc-ut-badge pc-ut-neutral"><span class="pc-ut-dot" style="background:#A89070;"></span>Neutral ✓ Good</span><span class="pc-ut-badge pc-ut-olive"><span class="pc-ut-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span><span class="pc-ut-badge pc-ut-cool"><span class="pc-ut-dot" style="background:#7B8EC1;"></span>Cool — Caution</span></div><p class="pc-ut-note">Vanilla is a warm-neutral shade ideal for light-to-medium warm or neutral skin. On cool undertones, the yellow-peachy cast may appear muddy — a cooler shade in the range is recommended.</p></div>
-          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F2DEC0;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">01 Vanilla</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dot" title="00 Porcelain" style="background:#F5EAE2;"></div><div class="pc-dotpc-dot-owned" title="01 Vanilla" style="background:#F2DEC0;">✓</div><div class="pc-dot" title="02 Ivory" style="background:#EDD3AC;"></div><div class="pc-dot" title="03 Petal" style="background:#E4C49A;"></div><div class="pc-dot" title="03A Almond" style="background:#D9B488;"></div><div class="pc-dot" title="04 Beige" style="background:#CEA474;"></div><div class="pc-dot" title="05 Sand" style="background:#BE9060;"></div><div class="pc-dot" title="06 Honey" style="background:#B07848;"></div></div></div></div>
+          
           <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=SKINTIFIC+Cover+Glow+Cushion" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=SKINTIFIC+Cover+Glow+Cushion" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
         </div>
       </div>
@@ -1854,13 +1897,14 @@
           <div class="pc-brand">TIRTIR</div>
           <h3 class="pc-name">Mask Fit Red Cushion</h3>
           <div class="pc-shade-tag"><span class="pc-shade-swatch" style="background:#F5EAE4;"></span><span>Shade: 17C Porcelain</span></div>
+          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F5EAE4;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">17C Porcelain</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="17C Porcelain"><span class="pc-shade-pill-dot" style="background:#F5EAE4;"></span>17C Porcelain</span><span class="pc-dot" title="17N Vanilla"><span class="pc-shade-pill-dot" style="background:#F2E2C8;"></span>17N Vanilla</span><span class="pc-dot" title="17W Fr.Vanilla"><span class="pc-shade-pill-dot" style="background:#F0DABC;"></span>17W Fr.Vanilla</span><span class="pc-dot" title="21C Cool Ivory"><span class="pc-shade-pill-dot" style="background:#EDD8C8;"></span>21C Cool Ivory</span><span class="pc-dot" title="21N Ivory"><span class="pc-shade-pill-dot" style="background:#ECCAB0;"></span>21N Ivory</span><span class="pc-dot" title="21W Nat.Ivory"><span class="pc-shade-pill-dot" style="background:#E9C4A4;"></span>21W Nat.Ivory</span><span class="pc-dot" title="22C Peach Beige"><span class="pc-shade-pill-dot" style="background:#E8C0A8;"></span>22C Peach Beige</span><span class="pc-dot" title="22N Shell Beige"><span class="pc-shade-pill-dot" style="background:#E0B898;"></span>22N Shell Beige</span><span class="pc-dot" title="23N Sand"><span class="pc-shade-pill-dot" style="background:#D8AC88;"></span>23N Sand</span><span class="pc-dot" title="24N Latte"><span class="pc-shade-pill-dot" style="background:#CCA07A;"></span>24N Latte</span><span class="pc-dot" title="24W Soft Beige"><span class="pc-shade-pill-dot" style="background:#C89870;"></span>24W Soft Beige</span><span class="pc-dot" title="25N Mocha"><span class="pc-shade-pill-dot" style="background:#BE9068;"></span>25N Mocha</span><span class="pc-dot" title="27C Cool Beige"><span class="pc-shade-pill-dot" style="background:#B88C68;"></span>27C Cool Beige</span><span class="pc-dot" title="27N Camel"><span class="pc-shade-pill-dot" style="background:#B28460;"></span>27N Camel</span><span class="pc-dot" title="28N Oat"><span class="pc-shade-pill-dot" style="background:#C0A880;"></span>28N Oat</span><span class="pc-dot" title="29N Nat.Beige"><span class="pc-shade-pill-dot" style="background:#A87C58;"></span>29N Nat.Beige</span><span class="pc-dot" title="30N Rich Honey"><span class="pc-shade-pill-dot" style="background:#A07250;"></span>30N Rich Honey</span><span class="pc-dot" title="31N Fr.Beige"><span class="pc-shade-pill-dot" style="background:#B08468;"></span>31N Fr.Beige</span><span class="pc-dot" title="33C Hazel"><span class="pc-shade-pill-dot" style="background:#906040;"></span>33C Hazel</span><span class="pc-dot" title="33N Macchiato"><span class="pc-shade-pill-dot" style="background:#885840;"></span>33N Macchiato</span><span class="pc-dot" title="33W Ginger"><span class="pc-shade-pill-dot" style="background:#8A6040;"></span>33W Ginger</span><span class="pc-dot" title="35N Walnut"><span class="pc-shade-pill-dot" style="background:#7A5038;"></span>35N Walnut</span><span class="pc-dot" title="43N Deep Cocoa"><span class="pc-shade-pill-dot" style="background:#604028;"></span>43N Deep Cocoa</span><span class="pc-dot" title="51N Fudge"><span class="pc-shade-pill-dot" style="background:#503020;"></span>51N Fudge</span><span class="pc-dot" title="55N Espresso"><span class="pc-shade-pill-dot" style="background:#402018;"></span>55N Espresso</span></div></div>
         </div>
         <div class="pc-body">
           <p class="pc-desc">The cult-favourite Korean cushion famous for its mask-like adhesion. 17C Porcelain is the lightest cool-toned shade — porcelain-perfect coverage with zero cakey texture and exceptional resistance to heat and humidity.</p>
           <div class="pc-benefits"><span class="pc-section-label">Key Benefits</span><ul><li>Mask Fit technology — second-skin adhesion for all-day, transferproof wear</li><li>High coverage that feels invisible without suffocating combination skin</li><li>Microparticle formula blurs pores and texture for an airbrushed finish</li><li>SPF 40+ PA+++ built in — strong sun protection every application</li><li>Outstanding longevity in humid tropical climates</li><li>Dewy-natural finish that photographs beautifully in all lighting</li></ul></div>
           <div class="pc-tags"><span class="pc-tag">Mask Fit</span><span class="pc-tag">K-Beauty</span><span class="pc-tag">SPF 40+</span><span class="pc-tag">Long-Wear</span><span class="pc-tag">High Coverage</span></div>
           <div class="pc-undertone"><span class="pc-section-label">Undertone Fit</span><div class="pc-ut-row"><span class="pc-ut-badge pc-ut-cool"><span class="pc-ut-dot" style="background:#7B8EC1;"></span>Cool ✓ Best</span><span class="pc-ut-badge pc-ut-neutral"><span class="pc-ut-dot" style="background:#A89070;"></span>Neutral ✓ Good</span><span class="pc-ut-badge pc-ut-warm"><span class="pc-ut-dot" style="background:#C17B3E;"></span>Warm — Caution</span><span class="pc-ut-badge pc-ut-olive"><span class="pc-ut-dot" style="background:#7A8C60;"></span>Olive — Avoid</span></div><p class="pc-ut-note">17C designates a cool undertone. Ideal for fair cool or neutral skin. On warm/olive undertones, this shade can appear ashy — consider 17N or warmer options.</p></div>
-          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F5EAE4;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">17C Porcelain</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="17C Porcelain" style="background:#F5EAE4;">✓</div><div class="pc-dot" title="17N Vanilla" style="background:#F2E2C8;"></div><div class="pc-dot" title="17W Fr.Vanilla" style="background:#F0DABC;"></div><div class="pc-dot" title="21C Cool Ivory" style="background:#EDD8C8;"></div><div class="pc-dot" title="21N Ivory" style="background:#ECCAB0;"></div><div class="pc-dot" title="21W Nat.Ivory" style="background:#E9C4A4;"></div><div class="pc-dot" title="22C Peach Beige" style="background:#E8C0A8;"></div><div class="pc-dot" title="22N Shell Beige" style="background:#E0B898;"></div><div class="pc-dot" title="23N Sand" style="background:#D8AC88;"></div><div class="pc-dot" title="24N Latte" style="background:#CCA07A;"></div><div class="pc-dot" title="24W Soft Beige" style="background:#C89870;"></div><div class="pc-dot" title="25N Mocha" style="background:#BE9068;"></div><div class="pc-dot" title="27C Cool Beige" style="background:#B88C68;"></div><div class="pc-dot" title="27N Camel" style="background:#B28460;"></div><div class="pc-dot" title="28N Oat" style="background:#C0A880;"></div><div class="pc-dot" title="29N Nat.Beige" style="background:#A87C58;"></div><div class="pc-dot" title="30N Rich Honey" style="background:#A07250;"></div><div class="pc-dot" title="31N Fr.Beige" style="background:#B08468;"></div><div class="pc-dot" title="33C Hazel" style="background:#906040;"></div><div class="pc-dot" title="33N Macchiato" style="background:#885840;"></div><div class="pc-dot" title="33W Ginger" style="background:#8A6040;"></div><div class="pc-dot" title="35N Walnut" style="background:#7A5038;"></div><div class="pc-dot" title="43N Deep Cocoa" style="background:#604028;"></div><div class="pc-dot" title="51N Fudge" style="background:#503020;"></div><div class="pc-dot" title="55N Espresso" style="background:#402018;"></div></div></div></div>
+          
           <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=TIRTIR+Mask+Fit+Red+Cushion" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=TIRTIR+Mask+Fit+Red+Cushion" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
         </div>
       </div>
@@ -1873,13 +1917,14 @@
           <div class="pc-brand">ESQA</div>
           <h3 class="pc-name">Minimalist Blurring Serum Skin Tint</h3>
           <div class="pc-shade-tag"><span class="pc-shade-swatch" style="background:#F5E0C0;"></span><span>Shade: Vanilla</span></div>
+          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F5E0C0;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Vanilla</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="Vanilla"><span class="pc-shade-pill-dot" style="background:#F5E0C0;"></span>Vanilla</span><span class="pc-dot" title="Custard"><span class="pc-shade-pill-dot" style="background:#EDD0A8;"></span>Custard</span><span class="pc-dot" title="Granola"><span class="pc-shade-pill-dot" style="background:#E5C898;"></span>Granola</span><span class="pc-dot" title="Caramel"><span class="pc-shade-pill-dot" style="background:#C89868;"></span>Caramel</span><span class="pc-dot" title="Biscuit"><span class="pc-shade-pill-dot" style="background:#D4A878;"></span>Biscuit</span><span class="pc-dot" title="Pancake"><span class="pc-shade-pill-dot" style="background:#C49060;"></span>Pancake</span><span class="pc-dot" title="Truffle"><span class="pc-shade-pill-dot" style="background:#B08058;"></span>Truffle</span><span class="pc-dot" title="Toffee"><span class="pc-shade-pill-dot" style="background:#A87050;"></span>Toffee</span><span class="pc-dot" title="Latte"><span class="pc-shade-pill-dot" style="background:#986848;"></span>Latte</span></div></div>
         </div>
         <div class="pc-body">
           <p class="pc-desc">ESQA's answer to effortless skin-first beauty. This serum-foundation hybrid delivers a soft-focus blurred finish while treating skin with active ingredients — perfect for combination skin that needs coverage and care simultaneously.</p>
           <div class="pc-benefits"><span class="pc-section-label">Key Benefits</span><ul><li>Serum actives deliver hydration and coverage — skin improves over time</li><li>Blurring technology diffuses light to smooth pores and uneven texture</li><li>Lightweight serum texture sits comfortably on both oily and dry zones</li><li>Minimalist formula reduces risk of pore-clogging on acne-prone T-zones</li><li>Buildable from sheer to medium coverage depending on technique</li><li>Perfect worn alone for an effortless no-makeup-makeup look</li></ul></div>
           <div class="pc-tags"><span class="pc-tag">Serum</span><span class="pc-tag">Skin Tint</span><span class="pc-tag">Blurring</span><span class="pc-tag">Minimalist</span><span class="pc-tag">Buildable</span></div>
           <div class="pc-undertone"><span class="pc-section-label">Undertone Fit</span><div class="pc-ut-row"><span class="pc-ut-badge pc-ut-warm"><span class="pc-ut-dot" style="background:#C17B3E;"></span>Warm ✓ Best</span><span class="pc-ut-badge pc-ut-neutral"><span class="pc-ut-dot" style="background:#A89070;"></span>Neutral ✓ Best</span><span class="pc-ut-badge pc-ut-olive"><span class="pc-ut-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span><span class="pc-ut-badge pc-ut-cool"><span class="pc-ut-dot" style="background:#7B8EC1;"></span>Cool — Light Caution</span></div><p class="pc-ut-note">Vanilla is a warm-neutral skin tint — forgiving because the sheer formula is thin enough that undertone impact is minimal. Cool undertones may notice a subtle peach wash at higher build-up — use a lighter layer.</p></div>
-          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F5E0C0;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Vanilla</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="Vanilla" style="background:#F5E0C0;">✓</div><div class="pc-dot" title="Custard" style="background:#EDD0A8;"></div><div class="pc-dot" title="Granola" style="background:#E5C898;"></div><div class="pc-dot" title="Caramel" style="background:#C89868;"></div><div class="pc-dot" title="Biscuit" style="background:#D4A878;"></div><div class="pc-dot" title="Pancake" style="background:#C49060;"></div><div class="pc-dot" title="Truffle" style="background:#B08058;"></div><div class="pc-dot" title="Toffee" style="background:#A87050;"></div><div class="pc-dot" title="Latte" style="background:#986848;"></div></div></div></div>
+          
           <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=ESQA+Skin+Tint+Minimalist" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=ESQA+Skin+Tint+Minimalist" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
         </div>
       </div>
@@ -1904,13 +1949,14 @@
           <div class="pc-brand">Second Date</div>
           <h3 class="pc-name">Silky Blur Loose Powder</h3>
           <div class="pc-shade-tag"><span class="pc-shade-swatch" style="background:#F0EDE8;"></span><span>Shade: N00 Translucent</span></div>
+          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F0EDE8;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">N00 Translucent</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="N00 Translucent"><span class="pc-shade-pill-dot" style="background:#F0EDE8;"></span>N00 Translucent</span><span class="pc-dot" title="N00P Rose Radiance"><span class="pc-shade-pill-dot" style="background:#F0E0E4;"></span>N00P Rose Radiance</span><span class="pc-dot" title="C10 Light Ivory"><span class="pc-shade-pill-dot" style="background:#EDE0D4;"></span>C10 Light Ivory</span><span class="pc-dot" title="N10 Light Beige"><span class="pc-shade-pill-dot" style="background:#E8D4BE;"></span>N10 Light Beige</span><span class="pc-dot" title="W20 Warm Beige"><span class="pc-shade-pill-dot" style="background:#DFCAAA;"></span>W20 Warm Beige</span></div></div>
         </div>
         <div class="pc-body">
           <p class="pc-desc">A finely milled loose powder with a silky, blurring finish. Translucent N00 sets makeup without adding colour, controls T-zone shine, and smooths pores — the essential bridge between base and setting mist.</p>
           <div class="pc-benefits"><span class="pc-section-label">Key Benefits</span><ul><li>Finely milled silica-based formula blurs pores and fine lines into a soft-focus finish</li><li>Controls sebum on the T-zone without mattifying or drying the dry cheeks</li><li>Translucent formula adds no colour — works across all skin tones and undertones</li><li>Sets foundation and cushion without lifting or disturbing the base beneath</li><li>Long-wearing setting creates a stable base for setting mist to lock into</li><li>Lightweight — never heavy, cakey, or powdery on the skin surface</li></ul></div>
           <div class="pc-tags"><span class="pc-tag">Loose Powder</span><span class="pc-tag">Translucent</span><span class="pc-tag">Setting</span><span class="pc-tag">Oil Control</span><span class="pc-tag">Blurring</span></div>
           <div class="pc-undertone"><span class="pc-section-label">Undertone Fit</span><div class="pc-ut-row"><span class="pc-ut-badge pc-ut-warm"><span class="pc-ut-dot" style="background:#C17B3E;"></span>Warm</span><span class="pc-ut-badge pc-ut-cool"><span class="pc-ut-dot" style="background:#7B8EC1;"></span>Cool</span><span class="pc-ut-badge pc-ut-neutral"><span class="pc-ut-dot" style="background:#A89070;"></span>Neutral</span><span class="pc-ut-badge pc-ut-olive"><span class="pc-ut-dot" style="background:#7A8C60;"></span>Olive</span></div><p class="pc-ut-note">N00 Translucent adds no pigment — completely universal. The silica particles scatter light without tinting, making this the one setting powder that works equally for warm, cool, neutral, and olive undertones.</p></div>
-          <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F0EDE8;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">N00 Translucent</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="N00 Translucent" style="background:#F0EDE8;">✓</div><div class="pc-dot" title="N00P Rose Radiance" style="background:#F0E0E4;"></div><div class="pc-dot" title="C10 Light Ivory" style="background:#EDE0D4;"></div><div class="pc-dot" title="N10 Light Beige" style="background:#E8D4BE;"></div><div class="pc-dot" title="W20 Warm Beige" style="background:#DFCAAA;"></div></div></div></div>
+          
           <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=Second+Date+Loose+Powder+Translucent" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=Second+Date+Loose+Powder" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
         </div>
       </div>
@@ -1996,7 +2042,8 @@
               <span class="lip-finish-badge">Glossy Satin</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 59.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#E8885A;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Pumpkin Frost</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="Pumpkin Frost"><span class="pc-shade-pill-dot" style="background:#E8885A;"></span>Pumpkin Frost</span><span class="pc-dot" title="Berry Soda"><span class="pc-shade-pill-dot" style="background:#C05882;"></span>Berry Soda</span><span class="pc-dot" title="Strawberry Glaze"><span class="pc-shade-pill-dot" style="background:#E07090;"></span>Strawberry Glaze</span><span class="pc-dot" title="Peach Bliss"><span class="pc-shade-pill-dot" style="background:#F0A878;"></span>Peach Bliss</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">A dual-action lip serum that brightens dark, pigmented lips while delivering intense hydration. Pumpkin Frost is a warm burnt-orange coral with a frosty luminous finish — wearable daily and a perfect treatment base under deeper shades.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>Brightening actives target lip hyperpigmentation and dark borders with consistent daily use</li><li>Serum-weight hydration penetrates the lip barrier for lasting softness and a natural plumping effect</li><li>Pumpkin Frost enhances the natural warmth of Southeast Asian complexions</li><li>Glossy satin finish catches light beautifully — creates the illusion of fuller, more defined lips</li><li>Works standalone daily OR as a conditioning base under deeper lip colours</li><li>Non-sticky, comfortable formula — no anxious reapplication needed</li></ul></div>
@@ -2008,7 +2055,7 @@
               <p class="ut-fit-note">Pumpkin Frost is an unambiguously warm shade — the burnt-orange coral amplifies the golden quality of Indonesian complexions. On cool undertones, the orange-coral can feel brash — apply sparingly as a sheer treatment wash, or layer Nivea Smoky Rose on top to mute the warmth.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Brightening</span><span class="pc-tag">Lip Serum</span><span class="pc-tag">Plumping</span><span class="pc-tag">Warm Coral</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#E8885A;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Pumpkin Frost</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="Pumpkin Frost" style="background:#E8885A;">✓</div><div class="pc-dot" title="Berry Soda" style="background:#C05882;"></div><div class="pc-dot" title="Strawberry Glaze" style="background:#E07090;"></div><div class="pc-dot" title="Peach Bliss" style="background:#F0A878;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=Glad2Glow+Brightening+Lip+Serum" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=Glad2Glow+Lip+Serum" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2024,7 +2071,8 @@
               <span class="lip-finish-badge">High Gloss</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 54.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F0B458;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Marigold Peach</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="Marigold Peach"><span class="pc-shade-pill-dot" style="background:#F0B458;"></span>Marigold Peach</span><span class="pc-dot" title="Rose Pink"><span class="pc-shade-pill-dot" style="background:#E87090;"></span>Rose Pink</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">A luxuriously glossy lip oil delivering intense, non-sticky shine with genuine nourishment. Marigold Peach is a warm golden-peach with translucent depth — giving lips a plump, glossy appearance that photographs stunningly in warm light.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>High-gloss oil creates the illusion of significantly plumper, fuller lips with zero heaviness</li><li>Plant oil complex seals moisture and softens the lip surface with every application</li><li>Antioxidant-rich formula protects lips from environmental dryness and UV-related darkening</li><li>Non-sticky, lightweight — comfortable to wear all day without constant reapplication</li><li>Translucent formula lets your natural lip colour blend through for a personalised shade</li><li>Doubles as a nourishing overnight lip treatment when applied as the last skincare step</li></ul></div>
@@ -2036,7 +2084,7 @@
               <p class="ut-fit-note">Marigold Peach is the most undertone-flexible shade in this collection — the translucent oil formula reads as a glow enhancement rather than a solid warm colour statement. Even cool undertones can wear this comfortably.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Lip Oil</span><span class="pc-tag">High Gloss</span><span class="pc-tag">Plumping</span><span class="pc-tag">Golden Peach</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F0B458;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Marigold Peach</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="Marigold Peach" style="background:#F0B458;">✓</div><div class="pc-dot" title="Rose Pink" style="background:#E87090;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=NPure+Glow+Up+Oil+Marigold" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=NPure+Glow+Up+Oil" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2052,7 +2100,8 @@
               <span class="lip-finish-badge">Satin Tint</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 89.900–120.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#7A5060;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Smoky Rose</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="Smoky Rose"><span class="pc-shade-pill-dot" style="background:#7A5060;"></span>Smoky Rose</span><span class="pc-dot" title="Bordeaux"><span class="pc-shade-pill-dot" style="background:#6B1F3A;"></span>Bordeaux</span><span class="pc-dot" title="Sheer Red"><span class="pc-shade-pill-dot" style="background:#C04050;"></span>Sheer Red</span><span class="pc-dot" title="French Pink"><span class="pc-shade-pill-dot" style="background:#D898A8;"></span>French Pink</span><span class="pc-dot" title="Ruby Red"><span class="pc-shade-pill-dot" style="background:#A82030;"></span>Ruby Red</span><span class="pc-dot" title="Raspberry Pink"><span class="pc-shade-pill-dot" style="background:#C05070;"></span>Raspberry Pink</span><span class="pc-dot" title="Cherry Brown"><span class="pc-shade-pill-dot" style="background:#803040;"></span>Cherry Brown</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">Nivea's Rich Care & Color in Smoky Rose — a sophisticated muted rose-mauve bridging lip treatment and tinted product. NIVEA's signature intensive moisture care delivers a sheer, flattering wash of colour. The most universally wearable shade in this collection.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>Intensive moisture complex with shea butter and vitamin E — lips soft for up to 8 hours</li><li>Smoky Rose muted rose-mauve sits at a neutral-cool point that flatters all undertones</li><li>Sheer tint adapts to your natural lip pigment — final colour is uniquely yours</li><li>Rich emollient texture slides on without dragging, actively repairs dark lip borders</li><li>Buildable from 1 layer (natural wash) to 3 layers (intentional visible colour)</li><li>Works standalone OR as a conditioning base layer before the Time Phoria stain</li></ul></div>
@@ -2064,7 +2113,7 @@
               <p class="ut-fit-note">Smoky Rose is the most versatile shade in this collection — the muted rose-mauve flatters almost every undertone. The smokiness reads as a sophisticated earthy rose on neutral/olive skin, and as a gentle cool note on warm skin.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Tinted Balm</span><span class="pc-tag">Hydrating</span><span class="pc-tag">Muted Rose</span><span class="pc-tag">Universal Shade</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#7A5060;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Smoky Rose</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="Smoky Rose" style="background:#7A5060;">✓</div><div class="pc-dot" title="Bordeaux" style="background:#6B1F3A;"></div><div class="pc-dot" title="Sheer Red" style="background:#C04050;"></div><div class="pc-dot" title="French Pink" style="background:#D898A8;"></div><div class="pc-dot" title="Ruby Red" style="background:#A82030;"></div><div class="pc-dot" title="Raspberry Pink" style="background:#C05070;"></div><div class="pc-dot" title="Cherry Brown" style="background:#803040;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=Nivea+Rich+Care+Color+Smoky+Rose" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=Nivea+Rich+Care+Color" target="_blank" rel="noopener"><span>🛒</span>Shopee</a><a class="pc-store-btn" href="https://www.watsons.co.id/search?q=Nivea+lip" target="_blank" rel="noopener"><span>🛒</span>Watsons</a><a class="pc-store-btn" href="https://www.guardian.co.id/search?q=Nivea+lip" target="_blank" rel="noopener"><span>🛒</span>Guardian</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2080,7 +2129,8 @@
               <span class="lip-finish-badge">Matte Stain</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 109.000–119.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#A01830;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">04 Cherrion</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dot" title="01 Calyptra"><span class="pc-shade-pill-dot" style="background:#D87090;"></span>01 Calyptra</span><span class="pc-dot" title="02 Solaris"><span class="pc-shade-pill-dot" style="background:#E08050;"></span>02 Solaris</span><span class="pc-dot" title="03 Luxia"><span class="pc-shade-pill-dot" style="background:#E85870;"></span>03 Luxia</span><span class="pc-dotpc-dot-owned" title="04 Cherrion"><span class="pc-shade-pill-dot" style="background:#A01830;"></span>04 Cherrion</span><span class="pc-dot" title="05 Electra"><span class="pc-shade-pill-dot" style="background:#C03858;"></span>05 Electra</span><span class="pc-dot" title="06 Nerose"><span class="pc-shade-pill-dot" style="background:#804060;"></span>06 Nerose</span><span class="pc-dot" title="07 Quanta"><span class="pc-shade-pill-dot" style="background:#B83060;"></span>07 Quanta</span><span class="pc-dot" title="08 Rubion"><span class="pc-shade-pill-dot" style="background:#C02050;"></span>08 Rubion</span><span class="pc-dot" title="09 Enigma"><span class="pc-shade-pill-dot" style="background:#703050;"></span>09 Enigma</span><span class="pc-dot" title="10 Axion"><span class="pc-shade-pill-dot" style="background:#D06080;"></span>10 Axion</span><span class="pc-dot" title="11 Futura"><span class="pc-shade-pill-dot" style="background:#E07080;"></span>11 Futura</span><span class="pc-dot" title="12 Pulse"><span class="pc-shade-pill-dot" style="background:#C04870;"></span>12 Pulse</span><span class="pc-dot" title="001 Nova"><span class="pc-shade-pill-dot" style="background:#F0A8B0;"></span>001 Nova</span><span class="pc-dot" title="002 Gemini"><span class="pc-shade-pill-dot" style="background:#E090A0;"></span>002 Gemini</span><span class="pc-dot" title="003 Lynn"><span class="pc-shade-pill-dot" style="background:#D07888;"></span>003 Lynn</span><span class="pc-dot" title="004 Mauvion"><span class="pc-shade-pill-dot" style="background:#A05878;"></span>004 Mauvion</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">Time Phoria's Stellar Dust Lip Stain in 04 Cherrion — a deep, saturated cherry-red with cool-leaning depth and a velvety matte finish. The stain technology means colour holds for hours even through eating and drinking. Cherrion is the bold statement of this collection.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>Stellar Dust long-wearing formula holds for 6–8 hours with minimal fading</li><li>Velvety matte finish is comfortable when properly prepped — never dry or flaking with a base underneath</li><li>04 Cherrion deep cherry-red is a universally flattering bold colour across all skin tones</li><li>Stain technology means lip-shaped colour pigmentation even after the gloss fades</li><li>Micro-particles add subtle soft-focus depth to the finish</li><li>Pairs beautifully with NPure Glow Up Oil on top for a glossy-stain hybrid</li></ul></div>
@@ -2092,7 +2142,7 @@
               <p class="ut-fit-note">04 Cherrion's cool-leaning cherry-red makes it particularly stunning on cool undertones, but the deep universality of cherry-red means it photographs beautifully on all skin tones. On warm/olive skin it creates a striking cool contrast that reads as editorial and intentional.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Lip Stain</span><span class="pc-tag">High Pigment</span><span class="pc-tag">Cherry Red</span><span class="pc-tag">Long-Wear</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#A01830;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">04 Cherrion</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dot" title="01 Calyptra" style="background:#D87090;"></div><div class="pc-dot" title="02 Solaris" style="background:#E08050;"></div><div class="pc-dot" title="03 Luxia" style="background:#E85870;"></div><div class="pc-dotpc-dot-owned" title="04 Cherrion" style="background:#A01830;">✓</div><div class="pc-dot" title="05 Electra" style="background:#C03858;"></div><div class="pc-dot" title="06 Nerose" style="background:#804060;"></div><div class="pc-dot" title="07 Quanta" style="background:#B83060;"></div><div class="pc-dot" title="08 Rubion" style="background:#C02050;"></div><div class="pc-dot" title="09 Enigma" style="background:#703050;"></div><div class="pc-dot" title="10 Axion" style="background:#D06080;"></div><div class="pc-dot" title="11 Futura" style="background:#E07080;"></div><div class="pc-dot" title="12 Pulse" style="background:#C04870;"></div><div class="pc-dot" title="001 Nova" style="background:#F0A8B0;"></div><div class="pc-dot" title="002 Gemini" style="background:#E090A0;"></div><div class="pc-dot" title="003 Lynn" style="background:#D07888;"></div><div class="pc-dot" title="004 Mauvion" style="background:#A05878;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=Time+Phoria+Stellar+Dust+Lip+Stain" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=Time+Phoria+Lip+Stain" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2108,7 +2158,9 @@
               <span class="lip-finish-badge">Glossy Balm</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 99.000–149.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#C84068;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Valentine</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dot" title="Rabbit"><span class="pc-shade-pill-dot" style="background:#E8C4BE;"></span>Rabbit</span><span class="pc-dot" title="Sorbet"><span class="pc-shade-pill-dot" style="background:#F0A8A0;"></span>Sorbet</span><span class="pc-dot" title="Pecan"><span class="pc-shade-pill-dot" style="background:#D4A090;"></span>Pecan</span><span class="pc-dot" title="Lace"><span class="pc-shade-pill-dot" style="background:#EBC8C4;"></span>Lace</span><span class="pc-dot" title="Sangria"><span class="pc-shade-pill-dot" style="background:#9B3050;"></span>Sangria</span><span class="pc-dotpc-dot-owned" title="Valentine"><span class="pc-shade-pill-dot" style="background:#C84068;"></span>Valentine</span><span class="pc-dot" title="Ballet"><span class="pc-shade-pill-dot" style="background:#E8A8B8;"></span>Ballet</span><span class="pc-dot" title="Ribbon"><span class="pc-shade-pill-dot" style="background:#D88898;"></span>Ribbon</span><span class="pc-dot" title="Sakura"><span class="pc-shade-pill-dot" style="background:#EAB0C0;"></span>Sakura</span><span class="pc-dot" title="Walnut"><span class="pc-shade-pill-dot" style="background:#9E6055;"></span>Walnut</span><span class="pc-dot" title="Raisin"><span class="pc-shade-pill-dot" style="background:#7A3548;"></span>Raisin</span><span class="pc-dot" title="Coquette"><span class="pc-shade-pill-dot" style="background:#C07888;"></span>Coquette</span></div></div>
+            </div>
           <div class="lip-body">
             <p class="lip-desc">A ceramide-powered SPF tinted lip balm that does triple duty — protecting lips from UV damage, strengthening the lip barrier, and delivering juicy buildable colour. Valentine is a versatile rosy-red that flatters almost every undertone.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>SPF 25 PA++++ UV protection — the only lip product in this collection that actively shields lips from sun damage</li><li>Ceramide complex strengthens the lip barrier with every use — reduces dryness and long-term hyperpigmentation</li><li>Peptide and Vitamin C brighten natural lip tone over time while Laminaria extract plumps</li><li>Avocado Oil and Hyaluronic Acid deliver immediate deep moisture — lips feel soft and plump within minutes</li><li>Buildable from a sheer rosy flush (1 layer) to a rich juicy berry-red (3 layers)</li><li>100% Vegan formula — gentle on sensitive lips</li></ul></div>
@@ -2120,7 +2172,7 @@
               <p class="ut-fit-note">Valentine sits at the cool-leaning rosy-red point of the spectrum — the blue-red undertone reads as vibrant and fresh rather than warm-orange. On cool and neutral undertones, the rosy quality harmonises beautifully. On warm/olive undertones it creates a sophisticated cool contrast.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">SPF 25</span><span class="pc-tag">PA++++</span><span class="pc-tag">Ceramide</span><span class="pc-tag">Tinted Balm</span><span class="pc-tag">UV Protection</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#C84068;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Valentine</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dot" title="Rabbit" style="background:#E8C4BE;"></div><div class="pc-dot" title="Sorbet" style="background:#F0A8A0;"></div><div class="pc-dot" title="Pecan" style="background:#D4A090;"></div><div class="pc-dot" title="Lace" style="background:#EBC8C4;"></div><div class="pc-dot" title="Sangria" style="background:#9B3050;"></div><div class="pc-dotpc-dot-owned" title="Valentine" style="background:#C84068;">✓</div><div class="pc-dot" title="Ballet" style="background:#E8A8B8;"></div><div class="pc-dot" title="Ribbon" style="background:#D88898;"></div><div class="pc-dot" title="Sakura" style="background:#EAB0C0;"></div><div class="pc-dot" title="Walnut" style="background:#9E6055;"></div><div class="pc-dot" title="Raisin" style="background:#7A3548;"></div><div class="pc-dot" title="Coquette" style="background:#C07888;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=SOMETHINC+Ceraplump+Tinted+Lip+Balm+SPF25" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=SOMETHINC+Ceraplump+Tinted+Lip+Balm" target="_blank" rel="noopener"><span>🛒</span>Shopee</a><a class="pc-store-btn" href="https://www.watsons.co.id/search?q=SOMETHINC+Ceraplump" target="_blank" rel="noopener"><span>🛒</span>Watsons</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2142,7 +2194,8 @@
               <span class="lip-finish-badge">Glossy Satin</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 59.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#E8885A;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Pumpkin Frost</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="Pumpkin Frost"><span class="pc-shade-pill-dot" style="background:#E8885A;"></span>Pumpkin Frost</span><span class="pc-dot" title="Berry Soda"><span class="pc-shade-pill-dot" style="background:#C05882;"></span>Berry Soda</span><span class="pc-dot" title="Strawberry Glaze"><span class="pc-shade-pill-dot" style="background:#E07090;"></span>Strawberry Glaze</span><span class="pc-dot" title="Peach Bliss"><span class="pc-shade-pill-dot" style="background:#F0A878;"></span>Peach Bliss</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">A dual-action lip serum that brightens dark, pigmented lips while delivering intense hydration. Pumpkin Frost is a warm burnt-orange coral with a frosty luminous finish — wearable daily and a perfect treatment base under deeper shades.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>Brightening actives target lip hyperpigmentation and dark borders with consistent daily use</li><li>Serum-weight hydration penetrates the lip barrier for lasting softness and a natural plumping effect</li><li>Pumpkin Frost enhances the natural warmth of Southeast Asian complexions</li><li>Glossy satin finish catches light beautifully — creates the illusion of fuller, more defined lips</li><li>Works standalone daily OR as a conditioning base under deeper lip colours</li><li>Non-sticky, comfortable formula — no anxious reapplication needed</li></ul></div>
@@ -2154,7 +2207,7 @@
               <p class="ut-fit-note">Pumpkin Frost is an unambiguously warm shade — the burnt-orange coral amplifies the golden quality of Indonesian complexions. On cool undertones, the orange-coral can feel brash — apply sparingly as a sheer treatment wash, or layer Nivea Smoky Rose on top to mute the warmth.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Brightening</span><span class="pc-tag">Lip Serum</span><span class="pc-tag">Plumping</span><span class="pc-tag">Warm Coral</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#E8885A;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Pumpkin Frost</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="Pumpkin Frost" style="background:#E8885A;">✓</div><div class="pc-dot" title="Berry Soda" style="background:#C05882;"></div><div class="pc-dot" title="Strawberry Glaze" style="background:#E07090;"></div><div class="pc-dot" title="Peach Bliss" style="background:#F0A878;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=Glad2Glow+Brightening+Lip+Serum" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=Glad2Glow+Lip+Serum" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2170,7 +2223,8 @@
               <span class="lip-finish-badge">High Gloss</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 54.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F0B458;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Marigold Peach</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="Marigold Peach"><span class="pc-shade-pill-dot" style="background:#F0B458;"></span>Marigold Peach</span><span class="pc-dot" title="Rose Pink"><span class="pc-shade-pill-dot" style="background:#E87090;"></span>Rose Pink</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">A luxuriously glossy lip oil delivering intense, non-sticky shine with genuine nourishment. Marigold Peach is a warm golden-peach with translucent depth — giving lips a plump, glossy appearance that photographs stunningly in warm light.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>High-gloss oil creates the illusion of significantly plumper, fuller lips with zero heaviness</li><li>Plant oil complex seals moisture and softens the lip surface with every application</li><li>Antioxidant-rich formula protects lips from environmental dryness and UV-related darkening</li><li>Non-sticky, lightweight — comfortable to wear all day without constant reapplication</li><li>Translucent formula lets your natural lip colour blend through for a personalised shade</li><li>Doubles as a nourishing overnight lip treatment when applied as the last skincare step</li></ul></div>
@@ -2182,7 +2236,7 @@
               <p class="ut-fit-note">Marigold Peach is the most undertone-flexible shade in this collection — the translucent oil formula reads as a glow enhancement rather than a solid warm colour statement. Even cool undertones can wear this comfortably.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Lip Oil</span><span class="pc-tag">High Gloss</span><span class="pc-tag">Plumping</span><span class="pc-tag">Golden Peach</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#F0B458;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Marigold Peach</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="Marigold Peach" style="background:#F0B458;">✓</div><div class="pc-dot" title="Rose Pink" style="background:#E87090;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=NPure+Glow+Up+Oil+Marigold" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=NPure+Glow+Up+Oil" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2204,7 +2258,8 @@
               <span class="lip-finish-badge">Satin Tint</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 89.900–120.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#7A5060;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Smoky Rose</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dotpc-dot-owned" title="Smoky Rose"><span class="pc-shade-pill-dot" style="background:#7A5060;"></span>Smoky Rose</span><span class="pc-dot" title="Bordeaux"><span class="pc-shade-pill-dot" style="background:#6B1F3A;"></span>Bordeaux</span><span class="pc-dot" title="Sheer Red"><span class="pc-shade-pill-dot" style="background:#C04050;"></span>Sheer Red</span><span class="pc-dot" title="French Pink"><span class="pc-shade-pill-dot" style="background:#D898A8;"></span>French Pink</span><span class="pc-dot" title="Ruby Red"><span class="pc-shade-pill-dot" style="background:#A82030;"></span>Ruby Red</span><span class="pc-dot" title="Raspberry Pink"><span class="pc-shade-pill-dot" style="background:#C05070;"></span>Raspberry Pink</span><span class="pc-dot" title="Cherry Brown"><span class="pc-shade-pill-dot" style="background:#803040;"></span>Cherry Brown</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">Nivea's Rich Care & Color in Smoky Rose — a sophisticated muted rose-mauve bridging lip treatment and tinted product. NIVEA's signature intensive moisture care delivers a sheer, flattering wash of colour. The most universally wearable shade in this collection.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>Intensive moisture complex with shea butter and vitamin E — lips soft for up to 8 hours</li><li>Smoky Rose muted rose-mauve sits at a neutral-cool point that flatters all undertones</li><li>Sheer tint adapts to your natural lip pigment — final colour is uniquely yours</li><li>Rich emollient texture slides on without dragging, actively repairs dark lip borders</li><li>Buildable from 1 layer (natural wash) to 3 layers (intentional visible colour)</li><li>Works standalone OR as a conditioning base layer before the Time Phoria stain</li></ul></div>
@@ -2216,7 +2271,7 @@
               <p class="ut-fit-note">Smoky Rose is the most versatile shade in this collection — the muted rose-mauve flatters almost every undertone. The smokiness reads as a sophisticated earthy rose on neutral/olive skin, and as a gentle cool note on warm skin.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Tinted Balm</span><span class="pc-tag">Hydrating</span><span class="pc-tag">Muted Rose</span><span class="pc-tag">Universal Shade</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#7A5060;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Smoky Rose</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dotpc-dot-owned" title="Smoky Rose" style="background:#7A5060;">✓</div><div class="pc-dot" title="Bordeaux" style="background:#6B1F3A;"></div><div class="pc-dot" title="Sheer Red" style="background:#C04050;"></div><div class="pc-dot" title="French Pink" style="background:#D898A8;"></div><div class="pc-dot" title="Ruby Red" style="background:#A82030;"></div><div class="pc-dot" title="Raspberry Pink" style="background:#C05070;"></div><div class="pc-dot" title="Cherry Brown" style="background:#803040;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=Nivea+Rich+Care+Color+Smoky+Rose" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=Nivea+Rich+Care+Color" target="_blank" rel="noopener"><span>🛒</span>Shopee</a><a class="pc-store-btn" href="https://www.watsons.co.id/search?q=Nivea+lip" target="_blank" rel="noopener"><span>🛒</span>Watsons</a><a class="pc-store-btn" href="https://www.guardian.co.id/search?q=Nivea+lip" target="_blank" rel="noopener"><span>🛒</span>Guardian</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2232,7 +2287,8 @@
               <span class="lip-finish-badge">Matte Stain</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 109.000–119.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#A01830;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">04 Cherrion</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dot" title="01 Calyptra"><span class="pc-shade-pill-dot" style="background:#D87090;"></span>01 Calyptra</span><span class="pc-dot" title="02 Solaris"><span class="pc-shade-pill-dot" style="background:#E08050;"></span>02 Solaris</span><span class="pc-dot" title="03 Luxia"><span class="pc-shade-pill-dot" style="background:#E85870;"></span>03 Luxia</span><span class="pc-dotpc-dot-owned" title="04 Cherrion"><span class="pc-shade-pill-dot" style="background:#A01830;"></span>04 Cherrion</span><span class="pc-dot" title="05 Electra"><span class="pc-shade-pill-dot" style="background:#C03858;"></span>05 Electra</span><span class="pc-dot" title="06 Nerose"><span class="pc-shade-pill-dot" style="background:#804060;"></span>06 Nerose</span><span class="pc-dot" title="07 Quanta"><span class="pc-shade-pill-dot" style="background:#B83060;"></span>07 Quanta</span><span class="pc-dot" title="08 Rubion"><span class="pc-shade-pill-dot" style="background:#C02050;"></span>08 Rubion</span><span class="pc-dot" title="09 Enigma"><span class="pc-shade-pill-dot" style="background:#703050;"></span>09 Enigma</span><span class="pc-dot" title="10 Axion"><span class="pc-shade-pill-dot" style="background:#D06080;"></span>10 Axion</span><span class="pc-dot" title="11 Futura"><span class="pc-shade-pill-dot" style="background:#E07080;"></span>11 Futura</span><span class="pc-dot" title="12 Pulse"><span class="pc-shade-pill-dot" style="background:#C04870;"></span>12 Pulse</span><span class="pc-dot" title="001 Nova"><span class="pc-shade-pill-dot" style="background:#F0A8B0;"></span>001 Nova</span><span class="pc-dot" title="002 Gemini"><span class="pc-shade-pill-dot" style="background:#E090A0;"></span>002 Gemini</span><span class="pc-dot" title="003 Lynn"><span class="pc-shade-pill-dot" style="background:#D07888;"></span>003 Lynn</span><span class="pc-dot" title="004 Mauvion"><span class="pc-shade-pill-dot" style="background:#A05878;"></span>004 Mauvion</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">Time Phoria's Stellar Dust Lip Stain in 04 Cherrion — a deep, saturated cherry-red with cool-leaning depth and a velvety matte finish. The stain technology means colour holds for hours even through eating and drinking. Cherrion is the bold statement of this collection.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>Stellar Dust long-wearing formula holds for 6–8 hours with minimal fading</li><li>Velvety matte finish is comfortable when properly prepped — never dry or flaking with a base underneath</li><li>04 Cherrion deep cherry-red is a universally flattering bold colour across all skin tones</li><li>Stain technology means lip-shaped colour pigmentation even after the gloss fades</li><li>Micro-particles add subtle soft-focus depth to the finish</li><li>Pairs beautifully with NPure Glow Up Oil on top for a glossy-stain hybrid</li></ul></div>
@@ -2244,7 +2300,7 @@
               <p class="ut-fit-note">04 Cherrion's cool-leaning cherry-red makes it particularly stunning on cool undertones, but the deep universality of cherry-red means it photographs beautifully on all skin tones. On warm/olive skin it creates a striking cool contrast that reads as editorial and intentional.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">Lip Stain</span><span class="pc-tag">High Pigment</span><span class="pc-tag">Cherry Red</span><span class="pc-tag">Long-Wear</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#A01830;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">04 Cherrion</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dot" title="01 Calyptra" style="background:#D87090;"></div><div class="pc-dot" title="02 Solaris" style="background:#E08050;"></div><div class="pc-dot" title="03 Luxia" style="background:#E85870;"></div><div class="pc-dotpc-dot-owned" title="04 Cherrion" style="background:#A01830;">✓</div><div class="pc-dot" title="05 Electra" style="background:#C03858;"></div><div class="pc-dot" title="06 Nerose" style="background:#804060;"></div><div class="pc-dot" title="07 Quanta" style="background:#B83060;"></div><div class="pc-dot" title="08 Rubion" style="background:#C02050;"></div><div class="pc-dot" title="09 Enigma" style="background:#703050;"></div><div class="pc-dot" title="10 Axion" style="background:#D06080;"></div><div class="pc-dot" title="11 Futura" style="background:#E07080;"></div><div class="pc-dot" title="12 Pulse" style="background:#C04870;"></div><div class="pc-dot" title="001 Nova" style="background:#F0A8B0;"></div><div class="pc-dot" title="002 Gemini" style="background:#E090A0;"></div><div class="pc-dot" title="003 Lynn" style="background:#D07888;"></div><div class="pc-dot" title="004 Mauvion" style="background:#A05878;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=Time+Phoria+Stellar+Dust+Lip+Stain" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=Time+Phoria+Lip+Stain" target="_blank" rel="noopener"><span>🛒</span>Shopee</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
@@ -2260,7 +2316,8 @@
               <span class="lip-finish-badge">Glossy Balm</span>
             </div>
             <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 99.000–149.000</div>
-          </div>
+          
+            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#C84068;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Valentine</span></div></div><span class="pc-dots-label">Full Range</span><div class="pc-dots"><span class="pc-dot" title="Rabbit"><span class="pc-shade-pill-dot" style="background:#E8C4BE;"></span>Rabbit</span><span class="pc-dot" title="Sorbet"><span class="pc-shade-pill-dot" style="background:#F0A8A0;"></span>Sorbet</span><span class="pc-dot" title="Pecan"><span class="pc-shade-pill-dot" style="background:#D4A090;"></span>Pecan</span><span class="pc-dot" title="Lace"><span class="pc-shade-pill-dot" style="background:#EBC8C4;"></span>Lace</span><span class="pc-dot" title="Sangria"><span class="pc-shade-pill-dot" style="background:#9B3050;"></span>Sangria</span><span class="pc-dotpc-dot-owned" title="Valentine"><span class="pc-shade-pill-dot" style="background:#C84068;"></span>Valentine</span><span class="pc-dot" title="Ballet"><span class="pc-shade-pill-dot" style="background:#E8A8B8;"></span>Ballet</span><span class="pc-dot" title="Ribbon"><span class="pc-shade-pill-dot" style="background:#D88898;"></span>Ribbon</span><span class="pc-dot" title="Sakura"><span class="pc-shade-pill-dot" style="background:#EAB0C0;"></span>Sakura</span><span class="pc-dot" title="Walnut"><span class="pc-shade-pill-dot" style="background:#9E6055;"></span>Walnut</span><span class="pc-dot" title="Raisin"><span class="pc-shade-pill-dot" style="background:#7A3548;"></span>Raisin</span><span class="pc-dot" title="Coquette"><span class="pc-shade-pill-dot" style="background:#C07888;"></span>Coquette</span></div></div></div>
           <div class="lip-body">
             <p class="lip-desc">A ceramide-powered SPF tinted lip balm that does triple duty — protecting lips from UV damage, strengthening the lip barrier, and delivering juicy buildable colour. Valentine is a versatile rosy-red that flatters almost every undertone.</p>
             <div><div class="lip-benefit-label">Key Benefits</div><ul class="lip-benefits"><li>SPF 25 PA++++ UV protection — the only lip product in this collection that actively shields lips from sun damage</li><li>Ceramide complex strengthens the lip barrier with every use — reduces dryness and long-term hyperpigmentation</li><li>Peptide and Vitamin C brighten natural lip tone over time while Laminaria extract plumps</li><li>Avocado Oil and Hyaluronic Acid deliver immediate deep moisture — lips feel soft and plump within minutes</li><li>Buildable from a sheer rosy flush (1 layer) to a rich juicy berry-red (3 layers)</li><li>100% Vegan formula — gentle on sensitive lips</li></ul></div>
@@ -2272,7 +2329,7 @@
               <p class="ut-fit-note">Valentine sits at the cool-leaning rosy-red point of the spectrum — the blue-red undertone reads as vibrant and fresh rather than warm-orange. On cool and neutral undertones, the rosy quality harmonises beautifully. On warm/olive undertones it creates a sophisticated cool contrast.</p>
             </div>
             <div class="pc-tags"><span class="pc-tag">SPF 25</span><span class="pc-tag">PA++++</span><span class="pc-tag">Ceramide</span><span class="pc-tag">Tinted Balm</span><span class="pc-tag">UV Protection</span></div>
-            <div class="pc-shades"><div class="pc-shade-hero"><div class="pc-shade-owned" style="background:#C84068;"></div><div class="pc-shade-owned-info"><span class="pc-shade-eyebrow">Your Shade</span><span class="pc-shade-name">Valentine</span></div></div><div class="pc-dots-wrap"><span class="pc-dots-label">Full Range</span><div class="pc-dots"><div class="pc-dot" title="Rabbit" style="background:#E8C4BE;"></div><div class="pc-dot" title="Sorbet" style="background:#F0A8A0;"></div><div class="pc-dot" title="Pecan" style="background:#D4A090;"></div><div class="pc-dot" title="Lace" style="background:#EBC8C4;"></div><div class="pc-dot" title="Sangria" style="background:#9B3050;"></div><div class="pc-dotpc-dot-owned" title="Valentine" style="background:#C84068;">✓</div><div class="pc-dot" title="Ballet" style="background:#E8A8B8;"></div><div class="pc-dot" title="Ribbon" style="background:#D88898;"></div><div class="pc-dot" title="Sakura" style="background:#EAB0C0;"></div><div class="pc-dot" title="Walnut" style="background:#9E6055;"></div><div class="pc-dot" title="Raisin" style="background:#7A3548;"></div><div class="pc-dot" title="Coquette" style="background:#C07888;"></div></div></div></div>
+            
             <div class="pc-buy"><span class="pc-buy-label">Where to Buy</span><div class="pc-stores"><a class="pc-store-btn" href="https://www.tokopedia.com/search?st=product&q=SOMETHINC+Ceraplump+Tinted+Lip+Balm+SPF25" target="_blank" rel="noopener"><span>🛒</span>Tokopedia</a><a class="pc-store-btn" href="https://shopee.co.id/search?keyword=SOMETHINC+Ceraplump+Tinted+Lip+Balm" target="_blank" rel="noopener"><span>🛒</span>Shopee</a><a class="pc-store-btn" href="https://www.watsons.co.id/search?q=SOMETHINC+Ceraplump" target="_blank" rel="noopener"><span>🛒</span>Watsons</a></div><p class="pc-disclaimer">Prices are approximate and may vary. Always verify on the official store.</p></div>
           </div>
         </div>
