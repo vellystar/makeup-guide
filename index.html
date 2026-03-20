@@ -226,7 +226,7 @@
 
   /* LAYOUT */
   main { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 3rem); }
-  section { padding: 5rem 0; }
+  section { padding: 1.8rem 0 3.5rem; }
 
   /* SECTION HEADERS */
   .section-label {
@@ -244,18 +244,18 @@
   .section-divider {
     width: 36px; height: 1px;
     background: linear-gradient(90deg, var(--gold), transparent);
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.9rem;
   }
   .section-intro {
     font-size: 0.9rem; font-weight: 300; line-height: 1.9;
     color: var(--text-secondary); max-width: 680px;
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.6rem;
   }
 
   /* SKIN GUIDE CARDS */
   .skin-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem; margin-top: 2.5rem;
+    gap: 1.2rem; margin-top: 1.8rem;
   }
   .skin-card {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -282,7 +282,7 @@
   /* PRODUCTS GRID — single column, horizontal cards */
   .products-grid {
     display: flex; flex-direction: column;
-    gap: 0.85rem; margin-top: 2rem;
+    gap: 0.85rem; margin-top: 1.4rem;
   }
   .product-card {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -367,7 +367,7 @@
   .routine-tabs {
     display: flex; gap: 0.4rem;
     border-bottom: 1px solid var(--divider);
-    margin-bottom: 2rem; overflow-x: auto; scrollbar-width: none;
+    margin-bottom: 1.5rem; overflow-x: auto; scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
   .routine-tabs::-webkit-scrollbar { display: none; }
@@ -427,7 +427,7 @@
   /* MIDDAY */
   .midday-grid {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; margin-top: 2.5rem;
+    gap: 1.5rem; margin-top: 1.8rem;
   }
   .midday-card {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -464,7 +464,7 @@
   /* TIPS */
   .tips-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem; margin-top: 2.5rem;
+    gap: 1.2rem; margin-top: 1.8rem;
   }
   .tip-card {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -507,7 +507,7 @@
   /* ── UNDERTONES SECTION ── */
   .undertone-intro-grid {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; margin-top: 2.5rem; margin-bottom: 3rem;
+    gap: 1.5rem; margin-top: 1.8rem; margin-bottom: 1.8rem;
   }
   .undertone-explainer {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -619,7 +619,7 @@
   /* ── LIP PRODUCTS SECTION ── */
   .lip-intro-row {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; margin-bottom: 3rem; margin-top: 0.5rem;
+    gap: 1.5rem; margin-bottom: 1.8rem; margin-top: 0.5rem;
   }
   .lip-explainer {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -639,7 +639,8 @@
   .lip-type-tabs {
     display: flex; gap: 0.4rem;
     border-bottom: 1px solid var(--divider);
-    margin-bottom: 2rem; overflow-x: auto; scrollbar-width: none;
+    margin-bottom: 1.5rem; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .lip-type-tabs::-webkit-scrollbar { display: none; }
   .lptab {
@@ -962,7 +963,7 @@
     .nav-brand { font-size: 0.95rem; }
 
     /* Section padding reduced */
-    section { padding: 3.5rem 0; }
+    section { padding: 1.2rem 0 2.5rem; }
 
     /* Hero tightening */
     #hero { padding: 5rem 1.5rem 3rem; }
@@ -997,8 +998,6 @@
     /* Undertone card bodies */
     .ut-body { padding: 1rem; }
 
-    /* Routine step */
-    .step { grid-template-columns: 2.8rem 1fr; gap: 0.8rem; padding: 1rem; }
 
     /* Compare table — hide least critical columns on tablet */
     .lip-compare-table th:nth-child(5),
@@ -1024,7 +1023,7 @@
     .toggle-btn { padding: 0.3rem 0.6rem; }
 
     /* Section padding */
-    section { padding: 2.8rem 0; }
+    section { padding: 0.8rem 0 2rem; }
 
     /* Hero */
     #hero { padding: 4.5rem 1.2rem 2.5rem; }
@@ -1053,8 +1052,6 @@
 
     /* Routine steps */
     .routine-tabs { gap: 0.15rem; margin-bottom: 1.2rem; }
-    button, a { touch-action: manipulation; }
-  .rtab { font-size: 0.6rem; padding: 0.5rem 0.8rem; letter-spacing: 0.08em; }
     .steps-list { gap: 0.75rem; }
     .step { grid-template-columns: 2.2rem 1fr; gap: 0.6rem; padding: 0.85rem; }
     .step-num { width: 2rem; height: 2rem; font-size: 0.82rem; }
@@ -1109,14 +1106,12 @@
 
     /* Group headers */
 
-    /* Lip type tabs — scrollable */
+    /* Tabs — lip + routine */
     .lip-type-tabs { gap: 0.2rem; }
     .lptab { font-size: 0.65rem; padding: 0.5rem 0.85rem; }
+    .routine-tabs { gap: 0.15rem; }
+    .rtab { font-size: 0.65rem; padding: 0.5rem 0.85rem; }
 
-    /* Routine tabs */
-    .routine-tabs { gap: 0.2rem; }
-    button, a { touch-action: manipulation; }
-  .rtab { font-size: 0.65rem; padding: 0.5rem 0.85rem; }
 
     /* Lip layer tip */
     .lip-layer-tip { font-size: 0.72rem; }
@@ -1143,6 +1138,10 @@
     main { padding: 0 0.9rem; }
     .hero-title { font-size: 2rem; }
     .section-title { font-size: 1.45rem; }
+    .shade-swatches { gap: 0.2rem; }
+    .shade-swatch-circle { width: 13px; height: 13px; }
+    .product-header, .lip-swatch-header { padding: 0.85rem 0.9rem 0.8rem; }
+    .product-body, .lip-body { padding: 0.8rem 0.9rem; }
     .product-name, .lip-name { font-size: 0.98rem; }
     .lip-shade-row { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
     .lip-finish-badge { margin-left: 0; }
@@ -1226,13 +1225,13 @@
   }
   .shade-swatch-circle:hover { transform: scale(1.25); }
   .shade-swatch-item.owned .shade-swatch-circle {
-    border: 2px solid var(--crimson);
-    box-shadow: 0 0 0 1px var(--crimson);
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 1.5px var(--gold);
   }
   .shade-swatch-item.owned .shade-swatch-circle::after {
     content: ''; position: absolute;
     width: 5px; height: 5px; border-radius: 50%;
-    background: var(--crimson);
+    background: var(--gold);
     top: 50%; left: 50%; transform: translate(-50%,-50%);
   }
   .shade-swatch-name {
@@ -1241,7 +1240,7 @@
     max-width: 36px; line-height: 1.2; word-break: break-word;
   }
   .shade-swatch-item.owned .shade-swatch-name {
-    color: var(--crimson); font-weight: 500;
+    color: var(--gold); font-weight: 500;
   }
 
   @media (max-width: 640px) {
@@ -1902,7 +1901,7 @@
     <div class="section-label">The Lip Edit</div>
     <h2 class="section-title">Lip <em>Collection</em></h2>
     <div class="section-divider"></div>
-    <p class="section-intro">Four lip products spanning treatments, colour, and gloss — from a brightening serum to a high-pigment stain. Layered thoughtfully, they cover every occasion from your most effortless daily look to a polished full-colour lip.</p>
+    <p class="section-intro">Five lip products spanning treatments, colour, gloss, and SPF care — from a brightening serum to a high-pigment stain. Layered thoughtfully, they cover every occasion from your most effortless daily look to a polished full-colour lip.</p>
 
     <div class="lip-intro-row reveal">
       <div class="lip-explainer">
@@ -2141,6 +2140,57 @@
           </div>
         </div>
 
+        <div class="lip-card reveal">
+          <div class="lip-swatch-header">
+            <div class="lip-swatch-bar" style="background:linear-gradient(90deg,#9B3050,#C84068,#E8A8B8);"></div>
+            <div class="lip-cat">◈ SPF Tinted · Lip Balm</div>
+            <div class="lip-brand">SOMETHINC</div>
+            <div class="lip-name">Ceraplump Tinted Lip Balm SPF 25 PA+++</div>
+            <div class="lip-shade-row">
+              <div class="lip-shade-swatch" style="background:linear-gradient(135deg,#C84068,#D85878);"></div>
+              <span class="lip-shade-name">Valentine</span>
+              <span class="lip-finish-badge">Glossy Balm</span>
+            </div>
+            <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 99.000–149.000</div>
+            <div class="shade-gallery"><span class="shade-gallery-label">Available Shades</span><div class="shade-swatches"><div class="shade-swatch-item" title="Rabbit"><div class="shade-swatch-circle" style="background:#E8C4BE;"></div><span class="shade-swatch-name">Rabbit</span></div><div class="shade-swatch-item" title="Sorbet"><div class="shade-swatch-circle" style="background:#F0A8A0;"></div><span class="shade-swatch-name">Sorbet</span></div><div class="shade-swatch-item" title="Pecan"><div class="shade-swatch-circle" style="background:#D4A090;"></div><span class="shade-swatch-name">Pecan</span></div><div class="shade-swatch-item" title="Lace"><div class="shade-swatch-circle" style="background:#EBC8C4;"></div><span class="shade-swatch-name">Lace</span></div><div class="shade-swatch-item" title="Sangria"><div class="shade-swatch-circle" style="background:#9B3050;"></div><span class="shade-swatch-name">Sangria</span></div><div class="shade-swatch-item owned" title="Valentine"><div class="shade-swatch-circle" style="background:#C84068;"></div><span class="shade-swatch-name">Valentine</span></div><div class="shade-swatch-item" title="Ballet"><div class="shade-swatch-circle" style="background:#E8A8B8;"></div><span class="shade-swatch-name">Ballet</span></div><div class="shade-swatch-item" title="Ribbon"><div class="shade-swatch-circle" style="background:#D88898;"></div><span class="shade-swatch-name">Ribbon</span></div><div class="shade-swatch-item" title="Sakura"><div class="shade-swatch-circle" style="background:#EAB0C0;"></div><span class="shade-swatch-name">Sakura</span></div><div class="shade-swatch-item" title="Walnut"><div class="shade-swatch-circle" style="background:#9E6055;"></div><span class="shade-swatch-name">Walnut</span></div><div class="shade-swatch-item" title="Raisin"><div class="shade-swatch-circle" style="background:#7A3548;"></div><span class="shade-swatch-name">Raisin</span></div><div class="shade-swatch-item" title="Coquette"><div class="shade-swatch-circle" style="background:#C07888;"></div><span class="shade-swatch-name">Coquette</span></div></div></div>
+          </div>
+          <div class="lip-body">
+            <p class="lip-desc">A ceramide-powered SPF tinted lip balm that does triple duty — protecting lips from UV damage, strengthening the lip barrier, and delivering a juicy buildable colour. Valentine is a versatile rosy-red that flatters almost every undertone, making it the most wearable bold shade in this collection. With Peptide, Vitamin C, and Laminaria extract, every swipe is a treatment.</p>
+            <div>
+              <div class="lip-benefit-label">Key Benefits</div>
+              <ul class="lip-benefits">
+                <li>SPF 25 PA+++ UV protection makes this the only lip product in the collection that actively shields lips from sun damage and UV-induced darkening</li>
+                <li>Ceramide complex strengthens the lip barrier with every use — reducing dryness, cracking, and long-term hyperpigmentation</li>
+                <li>Peptide and Vitamin C brighten natural lip tone over time while Laminaria extract plumps the lip surface</li>
+                <li>Avocado Oil and Hyaluronic Acid deliver immediate deep moisture — lips feel soft and plump within minutes of application</li>
+                <li>Buildable from a sheer rosy flush (1 layer) to a rich, juicy berry-red (3 layers) — adapts to any occasion</li>
+                <li>100% Vegan formula — no animal-derived ingredients, gentle on sensitive lips</li>
+                <li>The clicker applicator dispenses minimal product (0.1 cm) for precise, waste-free application</li>
+              </ul>
+            </div>
+            <div class="lip-application">
+              <div class="lip-application-title">✦ Application &amp; Routine</div>
+              <p><strong>Everyday SPF lip:</strong> Apply over the Glad2Glow serum as your colour + SPF step. Valentine's rosy-red provides enough colour payoff to work as a standalone lip look while simultaneously protecting lips from UV exposure — uniquely valuable in Indonesia's year-round sun.<br><br><strong>Layered look:</strong> Apply 1 layer of Ceraplump as a tinted base, allow 30 seconds to set, then apply Time Phoria Cherrion on top for a deeply pigmented cherry-red with the moisturising comfort of the balm underneath. This combination eliminates the dryness that matte stains can cause.</p>
+            </div>
+            <div class="lip-layer-tip">💡 Because this contains SPF, it works best as your midday lip refresh — reapply Ceraplump over any faded colour to simultaneously restore colour, hydration, and UV protection in a single step.</div>
+            <div class="lip-undertone-fit">
+              <div class="ut-fit-label">Undertone Compatibility — Valentine</div>
+              <div class="ut-fit-row">
+                <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool ✓ Best</span>
+                <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Best</span>
+                <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Good</span>
+                <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span>
+              </div>
+              <p class="ut-fit-note">Valentine sits at the cool-leaning rosy-red point of the spectrum — the blue-red undertone means it reads as vibrant and fresh rather than warm-orange on the lips. On cool and neutral undertones, the rosy quality harmonises beautifully with the natural lip pigment, creating a polished, universally flattering look. On warm undertones, the cool cast creates a sophisticated contrast — the lips appear brighter and more intentional. On olive undertones, Valentine's depth and richness works with the earthy base to create a striking, editorial result. This is the most versatile bold shade in the collection.</p>
+            </div>
+            <div class="product-tags">
+              <span class="tag">SPF 25</span><span class="tag">Ceramide</span>
+              <span class="tag">Tinted Balm</span><span class="tag">UV Protection</span>
+            </div>
+            <div class="where-to-buy"><span class="wtb-label">Where to Buy</span><div class="wtb-stores"><a class="wtb-btn" href="https://www.tokopedia.com/search?st=product&q=SOMETHINC+Ceraplump+Tinted+Lip+Balm+SPF25" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Tokopedia</a><a class="wtb-btn" href="https://shopee.co.id/search?keyword=SOMETHINC+Ceraplump+Tinted+Lip+Balm" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Shopee</a><a class="wtb-btn" href="https://www.watsons.co.id/search?q=SOMETHINC+Ceraplump" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Watsons</a></div><div class="price-disclaimer">Prices are approximate and may vary across sellers, platforms, and promotions. Always check the official store for the most current pricing.</div></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -2277,6 +2327,57 @@
             <div class="where-to-buy"><span class="wtb-label">Where to Buy</span><div class="wtb-stores"><a class="wtb-btn" href="https://www.tokopedia.com/search?st=product&q=Time+Phoria+Stellar+Dust+Lip+Stain" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Tokopedia</a><a class="wtb-btn" href="https://shopee.co.id/search?keyword=Time+Phoria+Lip+Stain" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Shopee</a></div><div class="price-disclaimer">Prices are approximate and may vary across sellers, platforms, and promotions. Always check the official store for the most current pricing.</div></div>
           </div>
         </div>
+        <div class="lip-card reveal">
+          <div class="lip-swatch-header">
+            <div class="lip-swatch-bar" style="background:linear-gradient(90deg,#9B3050,#C84068,#E8A8B8);"></div>
+            <div class="lip-cat">◈ SPF Tinted · Lip Balm</div>
+            <div class="lip-brand">SOMETHINC</div>
+            <div class="lip-name">Ceraplump Tinted Lip Balm SPF 25 PA+++</div>
+            <div class="lip-shade-row">
+              <div class="lip-shade-swatch" style="background:linear-gradient(135deg,#C84068,#D85878);"></div>
+              <span class="lip-shade-name">Valentine</span>
+              <span class="lip-finish-badge">Glossy Balm</span>
+            </div>
+            <div class="lip-price-tier tier-affordable"><span class="price-tier-dot" style="background:#1A6090;"></span>Affordable · Rp 99.000–149.000</div>
+            <div class="shade-gallery"><span class="shade-gallery-label">Available Shades</span><div class="shade-swatches"><div class="shade-swatch-item" title="Rabbit"><div class="shade-swatch-circle" style="background:#E8C4BE;"></div><span class="shade-swatch-name">Rabbit</span></div><div class="shade-swatch-item" title="Sorbet"><div class="shade-swatch-circle" style="background:#F0A8A0;"></div><span class="shade-swatch-name">Sorbet</span></div><div class="shade-swatch-item" title="Pecan"><div class="shade-swatch-circle" style="background:#D4A090;"></div><span class="shade-swatch-name">Pecan</span></div><div class="shade-swatch-item" title="Lace"><div class="shade-swatch-circle" style="background:#EBC8C4;"></div><span class="shade-swatch-name">Lace</span></div><div class="shade-swatch-item" title="Sangria"><div class="shade-swatch-circle" style="background:#9B3050;"></div><span class="shade-swatch-name">Sangria</span></div><div class="shade-swatch-item owned" title="Valentine"><div class="shade-swatch-circle" style="background:#C84068;"></div><span class="shade-swatch-name">Valentine</span></div><div class="shade-swatch-item" title="Ballet"><div class="shade-swatch-circle" style="background:#E8A8B8;"></div><span class="shade-swatch-name">Ballet</span></div><div class="shade-swatch-item" title="Ribbon"><div class="shade-swatch-circle" style="background:#D88898;"></div><span class="shade-swatch-name">Ribbon</span></div><div class="shade-swatch-item" title="Sakura"><div class="shade-swatch-circle" style="background:#EAB0C0;"></div><span class="shade-swatch-name">Sakura</span></div><div class="shade-swatch-item" title="Walnut"><div class="shade-swatch-circle" style="background:#9E6055;"></div><span class="shade-swatch-name">Walnut</span></div><div class="shade-swatch-item" title="Raisin"><div class="shade-swatch-circle" style="background:#7A3548;"></div><span class="shade-swatch-name">Raisin</span></div><div class="shade-swatch-item" title="Coquette"><div class="shade-swatch-circle" style="background:#C07888;"></div><span class="shade-swatch-name">Coquette</span></div></div></div>
+          </div>
+          <div class="lip-body">
+            <p class="lip-desc">A ceramide-powered SPF tinted lip balm that does triple duty — protecting lips from UV damage, strengthening the lip barrier, and delivering a juicy buildable colour. Valentine is a versatile rosy-red that flatters almost every undertone, making it the most wearable bold shade in this collection. With Peptide, Vitamin C, and Laminaria extract, every swipe is a treatment.</p>
+            <div>
+              <div class="lip-benefit-label">Key Benefits</div>
+              <ul class="lip-benefits">
+                <li>SPF 25 PA+++ UV protection makes this the only lip product in the collection that actively shields lips from sun damage and UV-induced darkening</li>
+                <li>Ceramide complex strengthens the lip barrier with every use — reducing dryness, cracking, and long-term hyperpigmentation</li>
+                <li>Peptide and Vitamin C brighten natural lip tone over time while Laminaria extract plumps the lip surface</li>
+                <li>Avocado Oil and Hyaluronic Acid deliver immediate deep moisture — lips feel soft and plump within minutes of application</li>
+                <li>Buildable from a sheer rosy flush (1 layer) to a rich, juicy berry-red (3 layers) — adapts to any occasion</li>
+                <li>100% Vegan formula — no animal-derived ingredients, gentle on sensitive lips</li>
+                <li>The clicker applicator dispenses minimal product (0.1 cm) for precise, waste-free application</li>
+              </ul>
+            </div>
+            <div class="lip-application">
+              <div class="lip-application-title">✦ Application &amp; Routine</div>
+              <p><strong>Everyday SPF lip:</strong> Apply over the Glad2Glow serum as your colour + SPF step. Valentine's rosy-red provides enough colour payoff to work as a standalone lip look while simultaneously protecting lips from UV exposure — uniquely valuable in Indonesia's year-round sun.<br><br><strong>Layered look:</strong> Apply 1 layer of Ceraplump as a tinted base, allow 30 seconds to set, then apply Time Phoria Cherrion on top for a deeply pigmented cherry-red with the moisturising comfort of the balm underneath. This combination eliminates the dryness that matte stains can cause.</p>
+            </div>
+            <div class="lip-layer-tip">💡 Because this contains SPF, it works best as your midday lip refresh — reapply Ceraplump over any faded colour to simultaneously restore colour, hydration, and UV protection in a single step.</div>
+            <div class="lip-undertone-fit">
+              <div class="ut-fit-label">Undertone Compatibility — Valentine</div>
+              <div class="ut-fit-row">
+                <span class="ut-badge ut-cool-badge"><span class="ut-badge-dot" style="background:#7B8EC1;"></span>Cool ✓ Best</span>
+                <span class="ut-badge ut-neutral-badge"><span class="ut-badge-dot" style="background:#A89070;"></span>Neutral ✓ Best</span>
+                <span class="ut-badge ut-warm-badge"><span class="ut-badge-dot" style="background:#C17B3E;"></span>Warm ✓ Good</span>
+                <span class="ut-badge ut-olive-badge"><span class="ut-badge-dot" style="background:#7A8C60;"></span>Olive ✓ Good</span>
+              </div>
+              <p class="ut-fit-note">Valentine sits at the cool-leaning rosy-red point of the spectrum — the blue-red undertone means it reads as vibrant and fresh rather than warm-orange on the lips. On cool and neutral undertones, the rosy quality harmonises beautifully with the natural lip pigment, creating a polished, universally flattering look. On warm undertones, the cool cast creates a sophisticated contrast — the lips appear brighter and more intentional. On olive undertones, Valentine's depth and richness works with the earthy base to create a striking, editorial result. This is the most versatile bold shade in the collection.</p>
+            </div>
+            <div class="product-tags">
+              <span class="tag">SPF 25</span><span class="tag">Ceramide</span>
+              <span class="tag">Tinted Balm</span><span class="tag">UV Protection</span>
+            </div>
+            <div class="where-to-buy"><span class="wtb-label">Where to Buy</span><div class="wtb-stores"><a class="wtb-btn" href="https://www.tokopedia.com/search?st=product&q=SOMETHINC+Ceraplump+Tinted+Lip+Balm+SPF25" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Tokopedia</a><a class="wtb-btn" href="https://shopee.co.id/search?keyword=SOMETHINC+Ceraplump+Tinted+Lip+Balm" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Shopee</a><a class="wtb-btn" href="https://www.watsons.co.id/search?q=SOMETHINC+Ceraplump" target="_blank" rel="noopener"><span class="wtb-icon">🛒</span>Watsons</a></div><div class="price-disclaimer">Prices are approximate and may vary across sellers, platforms, and promotions. Always check the official store for the most current pricing.</div></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -2331,6 +2432,15 @@
               <td data-label="Wear">6–8 hrs</td>
               <td data-label="Undertone">Cool · Neutral · Warm</td>
               <td data-label="Best For">Statement colour — Final colour step</td>
+            </tr>
+            <tr>
+              <td data-label="Product"><span class="lct-name">SOMETHINC Ceraplump Tinted Lip Balm SPF 25</span></td>
+              <td data-label="Shade"><span class="lct-swatch" style="background:#C84068;"></span>Valentine</td>
+              <td data-label="Finish">Glossy Balm</td>
+              <td data-label="Coverage">Sheer–Medium</td>
+              <td data-label="Wear">2–3 hrs</td>
+              <td data-label="Undertone">All Undertones</td>
+              <td data-label="Best For">SPF colour + midday refresh</td>
             </tr>
           </tbody>
         </table>
