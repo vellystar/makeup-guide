@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>✦ Vellya's Beauty Grimoire ✦</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Nunito:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Bebas+Neue&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Nunito:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Bebas+Neue&family=Josefin+Sans:wght@300;400;600;700&family=Cinzel:wght@400;600;700;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root[data-theme="dark"] {
   --bg-primary: #080311;
@@ -216,7 +216,7 @@ section + section { border-top: 1px solid var(--color-border); }
 }
 
 /* ── INFO CARDS ── */
-.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px; }
 .info-card {
   background: var(--gradient-card);
   border: 1px solid var(--color-border);
@@ -233,8 +233,8 @@ section + section { border-top: 1px solid var(--color-border); }
 .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card), var(--shadow-glow); border-color: var(--color-border-glow); }
 .info-card-icon { font-size: 1.8rem; margin-bottom: 14px; }
 .info-card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem; font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem; font-weight: 700;
   color: var(--color-text); margin-bottom: 10px;
 }
 .info-card p, .info-card li { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7; }
@@ -242,7 +242,7 @@ section + section { border-top: 1px solid var(--color-border); }
 .info-card li { margin-bottom: 4px; }
 
 /* ── PRODUCT CARDS ── */
-.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 24px; }
 
 .product-card {
   background: var(--gradient-card);
@@ -275,12 +275,11 @@ section + section { border-top: 1px solid var(--color-border); }
   text-transform: uppercase; margin-bottom: 4px;
 }
 .product-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
   font-weight: 600;
-  font-style: italic;
-  letter-spacing: 0.2px;
-  line-height: 1.3;
+  letter-spacing: 0.5px;
+  line-height: 1.35;
   color: var(--color-text);
 }
 .product-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
@@ -451,8 +450,8 @@ section + section { border-top: 1px solid var(--color-border); }
   margin-top: 20px;
 }
 .palette-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; font-weight: 700;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; font-weight: 600;
   color: var(--color-text); margin-bottom: 6px;
 }
 .palette-brand { font-size: 0.75rem; color: var(--color-primary); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
@@ -530,11 +529,11 @@ section + section { border-top: 1px solid var(--color-border); }
 .undertone-card.cool { border-color: rgba(147,197,253,0.4); background: rgba(147,197,253,0.05); }
 .undertone-card.neutral { border-color: rgba(196,181,196,0.4); background: rgba(196,181,196,0.05); }
 .undertone-emoji { font-size: 2rem; margin-bottom: 8px; }
-.undertone-type { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--color-text); margin-bottom: 6px; }
+.undertone-type { font-family: 'Quicksand', sans-serif; font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
 .undertone-desc { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.6; }
 
 /* ── MIDDAY TIPS ── */
-.tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 20px; }
 .tip-card {
   background: var(--gradient-card);
   border: 1px solid var(--color-border);
@@ -548,7 +547,7 @@ section + section { border-top: 1px solid var(--color-border); }
   font-size: 0.85rem; font-weight: 700;
   margin-bottom: 12px;
 }
-.tip-card-title { font-family: 'Playfair Display', serif; font-size: 0.98rem; font-weight: 600; color: var(--color-text); margin-bottom: 8px; }
+.tip-card-title { font-family: 'Quicksand', sans-serif; font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 8px; }
 .tip-card p { font-size: 0.83rem; color: var(--color-text-muted); line-height: 1.7; }
 
 /* ── SKIN GUIDE ── */
@@ -593,6 +592,10 @@ section + section { border-top: 1px solid var(--color-border); }
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+/* Fallback: ensure content never stays hidden if JS is delayed */
+.product-card, .info-card, .finish-card, .routine-step, .tip-card {
+  animation: card-rise 0.5s ease both;
+}
 
 /* ── FOOTER ── */
 footer {
@@ -604,6 +607,38 @@ footer {
 footer span { color: var(--color-primary); }
 
 
+
+
+/* ── TYPE SUITABILITY ROW ── */
+.type-suit {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
+  margin: 6px 0 12px; padding: 7px 10px;
+  border-radius: 10px; border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.02);
+}
+.ts-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--color-text-dim); margin-right: 3px; flex-shrink: 0; }
+.ts-chip { font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 50px; letter-spacing: 0.2px; white-space: normal; word-break: break-word; }
+.ts-skin-good { background: rgba(134,239,172,0.1); border: 1px solid rgba(134,239,172,0.3); color: #86efac; }
+.ts-skin-ok   { background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.3); color: #d4a843; }
+.ts-skin-bad  { background: rgba(233,30,140,0.08); border: 1px solid rgba(233,30,140,0.25); color: #e91e8c; }
+.ts-shape     { background: rgba(196,181,253,0.1); border: 1px solid rgba(196,181,253,0.3); color: #c4b5fd; }
+.ts-shape-ok  { background: rgba(196,181,253,0.05); border: 1px solid rgba(196,181,253,0.2); color: #a8a0d0; }
+.ts-occ-day   { background: rgba(110,231,183,0.1); border: 1px solid rgba(110,231,183,0.3); color: #6ee7b7; }
+.ts-occ-eve   { background: rgba(249,168,212,0.1); border: 1px solid rgba(249,168,212,0.3); color: #f9a8d4; }
+.ts-occ-all   { background: rgba(233,30,140,0.08); border: 1px solid rgba(233,30,140,0.25); color: #ff4db2; }
+.ts-skill-beg { background: rgba(134,239,172,0.1); border: 1px solid rgba(134,239,172,0.3); color: #86efac; }
+.ts-skill-mid { background: rgba(253,224,71,0.1);  border: 1px solid rgba(253,224,71,0.3);  color: #fde047; }
+.ts-skill-adv { background: rgba(249,168,212,0.1); border: 1px solid rgba(249,168,212,0.3); color: #f9a8d4; }
+[data-theme="light"] .ts-skin-good { background: rgba(22,163,74,0.08);  border-color: rgba(22,163,74,0.25);  color: #16a34a; }
+[data-theme="light"] .ts-skin-ok   { background: rgba(161,98,7,0.08);   border-color: rgba(161,98,7,0.25);   color: #a16207; }
+[data-theme="light"] .ts-skin-bad  { background: rgba(190,24,93,0.08);  border-color: rgba(190,24,93,0.25);  color: #be185d; }
+[data-theme="light"] .ts-shape     { background: rgba(109,40,217,0.08); border-color: rgba(109,40,217,0.25); color: #6d28d9; }
+[data-theme="light"] .ts-shape-ok  { background: rgba(109,40,217,0.04); border-color: rgba(109,40,217,0.15); color: #8b5cf6; }
+[data-theme="light"] .ts-occ-day   { background: rgba(5,150,105,0.08);  border-color: rgba(5,150,105,0.25);  color: #059669; }
+[data-theme="light"] .ts-occ-eve   { background: rgba(190,24,93,0.08);  border-color: rgba(190,24,93,0.25);  color: #be185d; }
+[data-theme="light"] .ts-skill-beg { background: rgba(22,163,74,0.08);  border-color: rgba(22,163,74,0.25);  color: #16a34a; }
+[data-theme="light"] .ts-skill-mid { background: rgba(161,98,7,0.08);   border-color: rgba(161,98,7,0.25);   color: #a16207; }
+[data-theme="light"] .ts-skill-adv { background: rgba(190,24,93,0.08);  border-color: rgba(190,24,93,0.25);  color: #be185d; }
 
 /* ── UNDERTONE ROW ── */
 .undertone-row {
@@ -633,7 +668,7 @@ footer span { color: var(--color-primary); }
 .st-badge.bad  { background: rgba(233,30,140,0.08); border: 1px solid rgba(233,30,140,0.25); color: var(--color-primary); }
 
 /* ── FINISH CARDS ── */
-.finish-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 18px; }
+.finish-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 18px; }
 .finish-card {
   background: var(--gradient-card); border: 1px solid var(--color-border);
   border-radius: 20px; padding: 22px; box-shadow: var(--shadow-card);
@@ -643,7 +678,7 @@ footer span { color: var(--color-primary); }
 .finish-card.visible { animation: card-rise 0.5s ease both; }
 .finish-card:hover { transform: translateY(-4px); border-color: var(--color-border-glow); }
 .finish-preview { height: 36px; border-radius: 10px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.07); }
-.finish-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
+.finish-name { font-family: 'Quicksand', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
 .finish-tag { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 50px; margin-bottom: 8px; background: var(--gradient-main); color: white; }
 .finish-desc { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.65; margin-bottom: 10px; }
 .finish-products { font-size: 0.7rem; font-weight: 700; color: var(--color-primary); letter-spacing: 0.3px; }
@@ -655,17 +690,142 @@ footer span { color: var(--color-primary); }
 ::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; opacity: 0.6; }
 
 /* ── RESPONSIVE ── */
+
+/* Tablet — 768px */
 @media (max-width: 768px) {
+  /* Header */
+  header { padding: 56px 16px 36px; }
+  .header-top { top: 12px; right: 12px; }
+  .theme-toggle { padding: 6px 14px; font-size: 0.78rem; }
+
+  /* Nav */
+  .nav-btn { padding: 6px 11px; font-size: 0.73rem; }
+
+  /* Main */
+  main { padding: 0 14px 60px; }
+  section { padding: 44px 0; }
+
+  /* Grids → single column */
   .products-grid { grid-template-columns: 1fr; }
-  .routine-step { flex-direction: column; }
+  .info-grid     { grid-template-columns: 1fr; }
+  .finish-grid   { grid-template-columns: 1fr; }
+  .tips-grid     { grid-template-columns: 1fr; }
+  .undertone-grid { grid-template-columns: 1fr 1fr; }
   .do-avoid-grid { grid-template-columns: 1fr; }
+
+  /* Palette */
   .palette-grid { grid-template-columns: repeat(3, 1fr); }
+  .palette-container { padding: 20px 16px; }
+
+  /* Routine steps */
+  .routine-step { flex-direction: column; gap: 12px; padding: 18px; }
+  .step-number { width: 36px; height: 36px; font-size: 1rem; }
+
+  /* Shade chips — allow full wrap */
+  .shade-row { gap: 6px; }
+  .shade-chip { font-size: 0.68rem; padding: 4px 8px; }
+
+  /* Shop buttons */
+  .shop-row { flex-wrap: wrap; }
+  .shop-btn { min-width: 0; flex: 1 1 calc(50% - 4px); }
+
+  /* Section title */
+  .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+
+  /* Type suitability rows */
+  .type-suit { padding: 6px 8px; gap: 3px; }
+  .ts-label { font-size: 0.55rem; }
+  .ts-chip { font-size: 0.58rem; padding: 2px 6px; }
+
+  /* Finish cards */
+  .finish-card { padding: 18px; }
+  .finish-name { font-size: 0.95rem; }
 }
+
+/* Large phone — 600px */
+@media (max-width: 600px) {
+  .undertone-grid { grid-template-columns: 1fr; }
+  .do-avoid-grid  { grid-template-columns: 1fr; }
+
+  /* Price row stacks */
+  .price-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .price-note { justify-content: flex-start; text-align: left; }
+
+  /* Skin/undertone rows wrap tighter */
+  .skin-type-row, .undertone-row { padding: 8px 10px; gap: 4px; }
+  .st-label, .ut-label { width: 100%; margin-bottom: 2px; }
+
+  /* Type suit rows — labels on own line */
+  .type-suit { padding: 6px 8px; }
+  .ts-label { width: 100%; margin-bottom: 2px; margin-right: 0; }
+}
+
+/* Small phone — 480px */
 @media (max-width: 480px) {
-  header { padding: 50px 16px 40px; }
-  .palette-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .shade-color { height: 48px; }
+  /* Header — ensure toggle doesn't crash into title */
+  header { padding: 64px 14px 32px; }
+  .header-top { top: 10px; right: 10px; }
+  .theme-toggle { padding: 5px 11px; font-size: 0.72rem; gap: 4px; }
+  .header-eyebrow { font-size: 0.82rem; }
+  .header-sub { font-size: 0.82rem; }
+
+  /* Nav */
+  .nav-inner { gap: 3px; padding: 6px 0; }
+  .nav-btn { padding: 5px 9px; font-size: 0.68rem; }
+
+  /* Main */
+  main { padding: 0 10px 48px; }
+  section { padding: 36px 0; }
+
+  /* Cards */
+  .product-card-header { padding: 16px 16px 14px; }
+  .product-card-body   { padding: 14px 16px; }
+  .product-name { font-size: 0.85rem; letter-spacing: 0.2px; }
+  .info-card { padding: 20px; }
+  .finish-card { padding: 16px; }
+  .tip-card { padding: 18px; }
+  .info-card-title { font-size: 0.9rem; }
+  .finish-name { font-size: 0.9rem; }
+
+  /* Palette */
+  .palette-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .shade-color { height: 44px; }
+  .shade-info { padding: 6px 8px; }
+  .shade-info-name { font-size: 0.65rem; }
+  .shade-info-finish { font-size: 0.55rem; }
+
+  /* Steps */
+  .routine-step { padding: 14px; }
+  .step-title { font-size: 0.95rem; }
+  .step-desc { font-size: 0.82rem; }
+
+  /* Tabs */
+  .tab-header { font-size: 0.74rem; }
+
+  /* Shop buttons — full width on very small screens */
+  .shop-btn { flex: 1 1 100%; }
+
+  /* Orbs — reduce for performance */
+  .orb { filter: blur(60px); opacity: 0.08; }
+  .orb-1 { width: 280px; height: 280px; }
+  .orb-2 { width: 220px; height: 220px; }
+  .orb-3 { width: 180px; height: 180px; }
+  .orb-4 { width: 150px; height: 150px; }
 }
+
+/* Very small — 360px (older Android, SE-size) */
+@media (max-width: 360px) {
+  .header-title { font-size: 2rem; }
+  .nav-btn { padding: 5px 7px; font-size: 0.64rem; }
+  main { padding: 0 8px 40px; }
+  .product-card-header, .product-card-body { padding: 12px; }
+  .product-name { font-size: 0.78rem; }
+  .shade-chip { font-size: 0.62rem; padding: 3px 6px; }
+  .shade-dot { width: 10px; height: 10px; }
+  .ts-chip { font-size: 0.55rem; padding: 2px 5px; }
+  .info-card-title, .finish-name { font-size: 0.85rem; }
+}
+
 </style>
 </head>
 <body>
@@ -692,12 +852,15 @@ footer span { color: var(--color-primary); }
 <nav id="section-nav">
   <div class="nav-inner">
     <button class="nav-btn active" data-target="skin">🌿 Skin Guide</button>
-    <button class="nav-btn" data-target="finishes">💎 Finishes</button>
+    <button class="nav-btn" data-target="formulas">🧬 Formulas</button>
     <button class="nav-btn" data-target="face">💫 Face Base</button>
     <button class="nav-btn" data-target="eyes">👁️ Eyes</button>
     <button class="nav-btn" data-target="brows">✏️ Brows</button>
     <button class="nav-btn" data-target="lips">💋 Lips</button>
+    <button class="nav-btn" data-target="powders">🌫️ Powders</button>
     <button class="nav-btn" data-target="setting">✨ Setting</button>
+    <button class="nav-btn" data-target="styles">🎭 Styles</button>
+    <button class="nav-btn" data-target="finishes">💎 Finishes</button>
     <button class="nav-btn" data-target="makeup">💄 Makeup</button>
     <button class="nav-btn" data-target="removal">🧴 Removal</button>
     <button class="nav-btn" data-target="midday">🔆 Touch-Up</button>
@@ -851,119 +1014,332 @@ footer span { color: var(--color-primary); }
   </div>
 </section>
 
-<!-- ═══════════ MAKEUP FINISHES ═══════════ -->
-<section id="finishes">
+<!-- ═══════════ FORMULAS GUIDE ═══════════ -->
+<section id="formulas">
   <div class="section-header fade-in">
-    <p class="section-tag">✦ Texture &amp; Finish Guide</p>
-    <h2 class="section-title">Types of Makeup <em>Finishes</em></h2>
-    <p class="section-desc">Understanding finish types helps you pick the right product for every mood, occasion, and skin zone.</p>
+    <p class="section-tag">✦ Product Type Encyclopedia</p>
+    <h2 class="section-title">Foundation, Concealer, Highlighter <em>&amp; Contour</em></h2>
+    <p class="section-desc">Every formula type explained — what it does, who it's for, how to apply it, and which of your products fit each category.</p>
   </div>
 
-  <div class="finish-grid">
+  <!-- ─── FOUNDATION TYPES ─── -->
+  <div class="section-header fade-in" style="margin-top:0;margin-bottom:28px">
+    <p class="section-tag" style="color:var(--color-primary)">✦ Foundation</p>
+    <h3 class="section-title" style="font-size:clamp(1.3rem,3vw,2rem)">Types of <em>Foundation</em></h3>
+    <p class="section-desc">Foundation is the base of every makeup look. Understanding each formula helps you choose the right one for your skin, occasion, and desired finish.</p>
+  </div>
 
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#c8c0b8,#d8d0c8)"></div>
-      <div class="finish-name">Matte</div>
-      <span class="finish-tag">Flat · No Shine</span>
-      <p class="finish-desc">Zero light reflection — absorbs oil and cancels shine completely. Creates a flat, velvety, editorial look. Best for oily and combination T-zones. Can look flat or aging on dry skin if over-applied.</p>
-      <p class="finish-products">Your products: TIMEPHORIA Matte Cushion · Second Date Powder · PIXY Matte Mist · Pramy Matte Mist</p>
-      <p class="finish-best">Best for: Oily · Combo (T-zone) · Long days outdoors</p>
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💧</div>
+      <div class="info-card-title">Liquid Foundation</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>The most versatile formula. Water or silicone base with pigment suspended throughout. Available in every coverage level and finish — sheer, medium, or full; matte, satin, or dewy.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All skin types · Customisable coverage</li>
+        <li><strong style="color:var(--color-accent)">Finish:</strong> Varies by formula</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Pump onto fingertips or a damp beauty blender. Dot onto forehead, cheeks, nose, chin, and blend outward from the centre. Use circular buffing for full coverage; stippling for lighter, skin-like coverage. Work quickly before it starts to set.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Use a mattifying liquid on T-zone and a hydrating formula on cheeks, or blend both together for balance.</li>
+      </ul>
     </div>
 
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#d8cec8,#e8e0d8,#f0e8e2)"></div>
-      <div class="finish-name">Satin</div>
-      <span class="finish-tag">Soft Sheen · Skin-Like</span>
-      <p class="finish-desc">Sits between matte and dewy — a smooth, refined sheen that mimics healthy natural skin. The most universally flattering finish. Doesn't look flat or greasy. Forgives texture and dryness equally well.</p>
-      <p class="finish-products">Your products: SKINTIFIC Cover Glow Cushion (glow-satin) · ONLYOU BB Cream</p>
-      <p class="finish-best">Best for: All skin types · Everyday wear · Versatile events</p>
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🪞</div>
+      <div class="info-card-title">Cushion Foundation</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>A liquid formula saturated into a sponge cushion and applied with a puff. Delivers a skin-like, buildable coverage with a natural-to-glowing finish. Extremely popular in Korean beauty.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Normal · Dry · Combination skin</li>
+        <li><strong style="color:var(--color-accent)">Finish:</strong> Natural, satin, or glowing</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Press puff gently into the cushion (don't rub). Pat — never swipe — from the centre of the face outward. Build in thin layers. Clean the puff regularly to prevent product buildup. Apply lighter on T-zone, build more on cheeks and areas needing coverage.</li>
+        <li><strong style="color:var(--color-accent)">Your products:</strong> TIRTIR Mask Fit · SKINTIFIC Cover Glow · TIMEPHORIA Lumina Matte</li>
+      </ul>
     </div>
 
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#e8e0d4,#f4ece0,#fdf6ee)"></div>
-      <div class="finish-name">Natural / Skin-Like</div>
-      <span class="finish-tag">Seamless · Second Skin</span>
-      <p class="finish-desc">Lets your real skin show through — looks like you're not wearing makeup at all. Sheer-to-light coverage with a skin-blurring effect. Imperfections are softened, not hidden. The "no-makeup makeup" ideal.</p>
-      <p class="finish-products">Your products: ESQA Minimalist Serum Skin Tint · TIRTIR Mask Fit (skin-meld effect)</p>
-      <p class="finish-best">Best for: Good skin days · Normal · Minimal makeup moments</p>
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌫️</div>
+      <div class="info-card-title">Powder Foundation</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-bad">Dry ✗</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-ok">Normal ~</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Pigment suspended in powder form — pressed or loose. Provides light-to-medium coverage with an instant matte finish. Great for quick touch-ups and oily skin control but can look cakey on dry skin.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Oily · Combination (T-zone) · Quick application</li>
+        <li><strong style="color:var(--color-accent)">Finish:</strong> Matte to soft-matte</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Use a flat powder puff for fuller coverage or a large powder brush for sheer. Press into skin and buff in circular motions. Always apply to prepped, moisturised skin. Avoid over-applying on dry areas.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Use only on T-zone if used as a finishing product over liquid base.</li>
+      </ul>
     </div>
 
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#f8d8c0,#fce8d4,#fff0e8)"></div>
-      <div class="finish-name">Dewy / Luminous</div>
-      <span class="finish-tag">Glow · Radiant · Fresh</span>
-      <p class="finish-desc">Reflects light softly for a healthy, hydrated glow. Skin looks plump and lit-from-within. Great for dry and normal skin. For combination skin, apply only on cheeks and dry zones — keep T-zone matte to avoid looking oily.</p>
-      <p class="finish-products">Your products: ESQA Skin Tint · NPure Glow Oil (cheeks) · L'Oreal Setting Mist (luminous lock)</p>
-      <p class="finish-best">Best for: Dry · Normal · Combo cheeks only</p>
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🧴</div>
+      <div class="info-card-title">Serum Foundation / Skin Tint</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>A hybrid of skincare and makeup — infused with active ingredients like hyaluronic acid, niacinamide, or vitamins. Delivers sheer to light coverage with a skin-blurring effect that improves skin over time with consistent use.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Normal · Dry · Sensitive · Good skin days</li>
+        <li><strong style="color:var(--color-accent)">Finish:</strong> Natural, luminous, skin-like</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Pump a small amount and blend with fingertips (warmth from fingers helps merge with skin) or a damp beauty blender. Press into skin rather than buffing. Layer with a cushion over it for added coverage where needed.</li>
+        <li><strong style="color:var(--color-accent)">Your product:</strong> ESQA Minimalist Blurring Serum Skin Tint</li>
+      </ul>
     </div>
 
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#f0e8d8,#f8f2e8,#fffaf4)"></div>
-      <div class="finish-name">Soft Matte / Lumina Matte</div>
-      <span class="finish-tag">Velvety · Refined Glow</span>
-      <p class="finish-desc">A modern evolved matte — controls shine without looking flat. Has a very subtle inner radiance that prevents the powdery, aged look of traditional matte. The best of both worlds for combination skin.</p>
-      <p class="finish-products">Your products: TIMEPHORIA Timeless Lumina Matte Cushion (signature finish)</p>
-      <p class="finish-best">Best for: Combo · Oily · Warm climates (Jakarta humidity)</p>
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🧈</div>
+      <div class="info-card-title">BB Cream / CC Cream</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p><strong>BB (Blemish Balm):</strong> Tinted moisturiser with light coverage and skin benefits. <strong>CC (Colour Correcting):</strong> Corrects redness and uneven tone while providing coverage. Both sit lighter than foundation and work as multi-tasking daily base products.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All skin types · Minimal makeup days</li>
+        <li><strong style="color:var(--color-accent)">Finish:</strong> Natural, skin-like</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Apply with fingers using press-and-blend motions. Can be used all over or just on uneven areas. Blend edges at the hairline and jaw carefully. Layer concealer on top for targeted coverage.</li>
+        <li><strong style="color:var(--color-accent)">Your product:</strong> ONLYOU Concealer Brightening &amp; Isolating BB Cream</li>
+      </ul>
     </div>
 
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#e8c8d8,#f0d8e8,#f8e8f2)"></div>
-      <div class="finish-name">Shimmer / Frost</div>
-      <span class="finish-tag">Sparkle · Dimensional</span>
-      <p class="finish-desc">Fine shimmer particles catch and reflect light for a glittery, dimensional effect. Used on eyes and lips for drama and depth. "Frost" variants have a cooler, icy shimmer quality. Best used on non-oily areas to prevent glitter migration.</p>
-      <p class="finish-products">Your products: JADED Palette (shades 01, 03, 05, 09) · Glad2Glow Pumpkin Frost · Time Phoria Stellar Dust</p>
-      <p class="finish-best">Best for: Eyes &amp; Lips · Evening looks · Targeted highlight application</p>
-    </div>
-
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#d4b870,#e8cc88,#f4dea0)"></div>
-      <div class="finish-name">Metallic / Foil</div>
-      <span class="finish-tag">Mirror-Like · Bold</span>
-      <p class="finish-desc">High-intensity, mirror-like reflection. Unlike shimmer, metallic finishes are opaque and foiled — they completely coat the surface. Used on eyes for maximum drama and editorial impact. Apply with a flat brush or fingertip for the highest intensity.</p>
-      <p class="finish-products">Your products: JADED Palette shade 05 Copper Glow (duochrome metallic effect)</p>
-      <p class="finish-best">Best for: Evening · Events · Statement eye looks</p>
-    </div>
-
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#e8d0d8,#f0dce4,#faeef4)"></div>
-      <div class="finish-name">Glossy / Glassy</div>
-      <span class="finish-tag">Juicy · Shine · Plumping</span>
-      <p class="finish-desc">A wet, high-shine finish that makes lips look plumper and fuller. Glossy finishes reflect a lot of light, creating a "glass lip" effect. Usually paired with a matte or stained lip underneath for longevity. The most youthful of lip finishes.</p>
-      <p class="finish-products">Your products: NPure Glow Oil (lips) · Glad2Glow Lip Serum (glassy tint) · Nivea Rich Care &amp; Color</p>
-      <p class="finish-best">Best for: Daytime · Romantic looks · Layering over stains</p>
-    </div>
-
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#c8b8d0,#d8c8e0,#e8d8f0)"></div>
-      <div class="finish-name">Stain / Blotted</div>
-      <span class="finish-tag">Diffused · Long-Lasting</span>
-      <p class="finish-desc">Color that sinks into the skin or lips for a lived-in, effortless look. Applied and blotted for a natural flush effect with exceptional wear. Unlike lipstick, stains don't sit on top — they become part of the skin. Resistant to eating, drinking, and touching.</p>
-      <p class="finish-products">Your products: Time Phoria Stellar Dust Lip Stain (Cherrion) · SOMETHINC Ceraplump (sheer stain)</p>
-      <p class="finish-best">Best for: Long wear · Natural makeup · Active days</p>
-    </div>
-
-    <div class="finish-card fade-in">
-      <div class="finish-preview" style="background:linear-gradient(135deg,#d0d8e8,#e0e8f4,#eef4ff)"></div>
-      <div class="finish-name">Duochrome / Multichrome</div>
-      <span class="finish-tag">Colour-Shifting · Unique</span>
-      <p class="finish-desc">Shifts between two or more colors depending on the angle of light. Creates a dimensional, otherworldly effect. Most visible on the eyes. Looks different in sunlight vs. artificial light — always test before an event.</p>
-      <p class="finish-products">Your products: JADED Palette shade 05 Copper Glow (gold-to-copper duochrome shift)</p>
-      <p class="finish-best">Best for: Creative looks · Events · Photography</p>
+    <div class="info-card fade-in">
+      <div class="info-card-icon">✨</div>
+      <div class="info-card-title">Stick Foundation</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-bad">Oily ✗</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Solid foundation in a stick or bullet form. High coverage, transfer-resistant, and very portable. Can be creamy or waxy in texture. Great for spot-application and on-the-go use. Sets to a semi-matte or satin finish.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Normal · Dry · Full coverage needs</li>
+        <li><strong style="color:var(--color-accent)">Finish:</strong> Satin to semi-matte</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Swipe directly onto the face in short strokes. Blend immediately with a beauty blender or brush — it sets quickly. Use lightly on T-zone for combo skin as the creamy formula can emphasise oiliness.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Set with translucent powder immediately after blending to prevent sliding.</li>
+      </ul>
     </div>
 
   </div>
 
-  <div class="info-card fade-in" style="margin-top:28px;max-width:100%">
-    <div class="info-card-icon">🎨</div>
-    <div class="info-card-title">Finish Layering Strategy for Combination Skin</div>
+  <!-- ─── COVERAGE GUIDE ─── -->
+  <div class="info-card fade-in" style="margin-top:24px;max-width:100%">
+    <div class="info-card-icon">📊</div>
+    <div class="info-card-title">Coverage Levels Explained</div>
     <ul>
-      <li><strong style="color:var(--color-accent)">T-Zone:</strong> Always matte or soft-matte. Use TIMEPHORIA or finish with Second Date Powder + PIXY/Pramy mist.</li>
-      <li><strong style="color:var(--color-accent)">Cheeks:</strong> Satin or dewy — SKINTIFIC glow cushion or NPure Oil pressed only here.</li>
-      <li><strong style="color:var(--color-accent)">Eyes:</strong> Matte in the crease, shimmer/metallic on the lid, stain or matte on lower lash.</li>
-      <li><strong style="color:var(--color-accent)">Lips:</strong> Stain base (Time Phoria) + gloss top (NPure Oil) = longest-wearing glossy stain result.</li>
-      <li><strong style="color:var(--color-accent)">Overall seal:</strong> L'Oreal Setting Mist locks finishes in place without disturbing them.</li>
+      <li><strong style="color:var(--color-accent)">Sheer:</strong> Skin shows through — evens tone without hiding features. Best for great skin days. (ESQA Skin Tint)</li>
+      <li><strong style="color:var(--color-accent)">Light:</strong> Slightly more pigment — softens imperfections, not hides them. (ONLYOU BB Cream)</li>
+      <li><strong style="color:var(--color-accent)">Medium:</strong> Covers most blemishes and redness with one to two layers. Most versatile everyday coverage. (SKINTIFIC · TIMEPHORIA)</li>
+      <li><strong style="color:var(--color-accent)">Full:</strong> Completely masks blemishes, discolouration, and texture. One layer does the work. (TIRTIR Mask Fit)</li>
+      <li><strong style="color:var(--color-accent)">Buildable:</strong> Starts light and builds to full coverage with layers — the most flexible approach. (Most cushions)</li>
     </ul>
   </div>
+
+  <!-- ─── CONCEALER TYPES ─── -->
+  <div class="section-header fade-in" style="margin-top:52px;margin-bottom:28px">
+    <p class="section-tag" style="color:var(--color-primary)">✦ Concealer</p>
+    <h3 class="section-title" style="font-size:clamp(1.3rem,3vw,2rem)">Types of <em>Concealer</em></h3>
+    <p class="section-desc">Concealer provides targeted, spot coverage where foundation alone isn't enough — under-eyes, blemishes, redness, and hyperpigmentation.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💧</div>
+      <div class="info-card-title">Liquid Concealer</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>The most common formula — fluid consistency that blends seamlessly and sets to a natural or matte finish. Available in full or medium coverage. The most versatile type for all areas of the face.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Under-eyes · Blemishes · All skin types</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Dot under the eye in an inverted triangle shape, reaching down to the top of the cheekbone. Pat — never drag — with the ring finger or a damp beauty blender. For blemishes, apply a small dot and stipple the edges to blend. Set with a light dusting of translucent powder to prevent creasing.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Avoid over-applying around the nose — can settle into pores.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🖊️</div>
+      <div class="info-card-title">Stick / Pencil Concealer</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Solid concealer in stick or pencil form. Very high coverage, easy to target specific spots. More creamy and less blendable than liquid — better for isolated blemishes than large areas like under-eyes.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Spot coverage · Blemishes · Dark spots · Travel</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Apply directly to the blemish or spot. Tap with a fingertip to blend the edges into the surrounding skin. Don't rub — this removes the product from where you need it most. Set with powder to extend wear.</li>
+        <li><strong style="color:var(--color-accent)">Your product:</strong> ONLYOU Concealer &amp; Isolating BB Cream (dual-function)</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🟡</div>
+      <div class="info-card-title">Colour Correcting Concealer</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Uses colour theory to neutralise specific discolourations before applying skin-toned concealer on top. Each corrector colour cancels a specific tone: peach/orange cancels purple/blue dark circles; green cancels red; yellow cancels purple veins.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Peach/Salmon:</strong> Under-eye dark circles (fair to medium skin)</li>
+        <li><strong style="color:var(--color-accent)">Orange:</strong> Under-eye circles (medium to deep skin)</li>
+        <li><strong style="color:var(--color-accent)">Green:</strong> Redness, blemishes, broken capillaries</li>
+        <li><strong style="color:var(--color-accent)">Yellow:</strong> Purple veins, bruising, dull skin</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Apply a thin layer of corrector first, press into skin, let it settle, then apply your regular concealer on top. Always use less than you think you need — correctors are highly pigmented.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🧴</div>
+      <div class="info-card-title">Brightening Concealer</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>Contains light-reflecting particles or illuminating agents to brighten and lift the under-eye area. Not just for coverage — creates a luminous, awake effect. Often a shade or two lighter than your foundation shade.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Under-eyes · Brow bone highlight · Bridge of nose · Inner corners</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Apply in an inverted triangle from the inner corner of the eye down to the top of the cheekbone. Blend upward. Also tap onto the brow bone and inner corner of the eye. For a natural look, use only one shade lighter than your skin. For a highlighted look, go two shades lighter and set with a shimmer powder.</li>
+        <li><strong style="color:var(--color-accent)">Your product:</strong> ONLYOU Concealer Brightening &amp; Isolating BB Cream (brightening function)</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="info-card fade-in" style="margin-top:24px;max-width:100%">
+    <div class="info-card-icon">🔺</div>
+    <div class="info-card-title">Concealer Application Order &amp; Techniques</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">After foundation:</strong> Always apply concealer after foundation — foundation provides a base that reduces how much concealer you need, preventing a cakey result.</li>
+      <li><strong style="color:var(--color-accent)">The inverted triangle:</strong> For under-eyes, apply in an upside-down triangle shape (not just a crescent under the eye). This brightens the full under-eye area and creates a natural lifted look.</li>
+      <li><strong style="color:var(--color-accent)">Baking technique:</strong> Apply concealer, press a generous amount of translucent powder on top, leave for 2–3 minutes, then dust off. Sets concealer for all-day crease-free wear — ideal for combo skin.</li>
+      <li><strong style="color:var(--color-accent)">Blending tools:</strong> Ring finger = softest pressure for under-eyes. Small brush = precision on blemishes. Damp beauty blender = most natural, seamless finish overall.</li>
+      <li><strong style="color:var(--color-accent)">Setting:</strong> Always set concealer with Second Date Translucent Powder to prevent creasing, especially under the eyes.</li>
+    </ul>
+  </div>
+
+  <!-- ─── HIGHLIGHTER TYPES ─── -->
+  <div class="section-header fade-in" style="margin-top:52px;margin-bottom:28px">
+    <p class="section-tag" style="color:var(--color-primary)">✦ Highlighter</p>
+    <h3 class="section-title" style="font-size:clamp(1.3rem,3vw,2rem)">Types of <em>Highlighter</em></h3>
+    <p class="section-desc">Highlighter catches and reflects light to create the illusion of lifted, glowing, three-dimensional skin. Placement is everything.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">✨</div>
+      <div class="info-card-title">Powder Highlighter</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>The most common type — pressed shimmer powder applied with a brush. Intense, buildable, and easy to control. Creates a bold, noticeable glow. Available in fine shimmer (natural) or chunky glitter (editorial).</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Oily · Combination · Layering over powder makeup</li>
+        <li><strong style="color:var(--color-accent)">Placement:</strong> Tops of cheekbones · Brow bone · Bridge of nose · Cupid's bow · Inner corners of eyes · Tip of nose (optional)</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Use a small fan brush or tapered highlighter brush. Lightly swirl into the pan, tap off excess, and apply with a light feathery stroke on the highest points of the face. Build gradually — you can always add more but you can't take it back. For intense highlight, use a flat finger or brush to press and pack the product.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Apply only on dry cheekbone area — avoid the T-zone entirely to prevent looking oily rather than glowy.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💧</div>
+      <div class="info-card-title">Liquid / Oil Highlighter</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-bad">Oily ✗</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>Gives a natural, skin-from-within glow that looks less like product and more like genuinely luminous skin. Can be mixed into foundation, applied directly to skin, or pressed onto cheekbones. The most natural-looking highlight formula.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Dry · Normal · "No makeup makeup" looks</li>
+        <li><strong style="color:var(--color-accent)">Placement:</strong> Cheekbones · Temples · Bridge of nose · Eyelids · Collarbones</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Warm 1–2 drops between fingertips and press gently onto the tops of cheekbones. Alternatively, mix one drop into your foundation before application for an all-over luminous base. For targeted application, use a flat brush to press onto specific areas after foundation is set.</li>
+        <li><strong style="color:var(--color-accent)">Your product:</strong> NPure Power Series Glow Up Oil — Marigold Peach on cheekbones creates a warm, sun-kissed oil-highlighter effect. Apply only on cheeks and dry zones.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🧴</div>
+      <div class="info-card-title">Cream Highlighter</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-bad">Oily ✗</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>A creamy, balm-like formula that delivers an intense, molten-skin glow. Blends into skin before setting, leaving a luminous satin finish. More intense than liquid but softer than powder. Best applied before powder products.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Dry · Normal · Dewy makeup looks</li>
+        <li><strong style="color:var(--color-accent)">Placement:</strong> Tops of cheekbones · Inner eye corners · Brow bone · Cupid's bow</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Dab with a fingertip directly onto cheekbones after foundation but before powder. Blend with a tapping motion — not rubbing — to work it into the skin. It should look seamless, not patchy. Set lightly with a fine translucent powder if you have oily skin.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Apply before setting powder — cream under powder creates a natural-looking glow that doesn't slide. Avoid on T-zone.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌟</div>
+      <div class="info-card-title">Highlighter Shade Guide</div>
+      <p>Choosing the right highlight shade for your undertone creates a natural, skin-harmonious glow rather than looking mismatched or ashy.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Warm undertone:</strong> Gold, bronze, peach, copper — warm metallic shades harmonise naturally. (Suits you with Vanilla and Marigold Peach)</li>
+        <li><strong style="color:var(--color-accent)">Cool undertone:</strong> Silver, icy pink, rose gold, lavender — cool light tones. (Suits your 17C Porcelain shade)</li>
+        <li><strong style="color:var(--color-accent)">Neutral undertone:</strong> Champagne, soft gold, nude shimmer — the most versatile. Flattering on nearly everyone.</li>
+        <li><strong style="color:var(--color-accent)">JADED Palette highlight shades:</strong> Shade 01 Butter Cream (champagne shimmer) works as an eye highlight. Shade 05 Copper Glow can double as a warm cheek highlight.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ─── CONTOUR TYPES ─── -->
+  <div class="section-header fade-in" style="margin-top:52px;margin-bottom:28px">
+    <p class="section-tag" style="color:var(--color-primary)">✦ Contour</p>
+    <h3 class="section-title" style="font-size:clamp(1.3rem,3vw,2rem)">Types of <em>Contour</em></h3>
+    <p class="section-desc">Contouring uses shadow to create the illusion of depth, definition, and dimension — sculpting the face without changing its actual structure.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🖌️</div>
+      <div class="info-card-title">Powder Contour</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>The most beginner-friendly type — a cool-toned matte powder applied with a brush. Buildable, blendable, and easy to correct mistakes. Sits over powder makeup seamlessly. Matte is essential — any shimmer in a contour reads as highlight rather than shadow.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Oily · Combination · Beginners · Everyday use</li>
+        <li><strong style="color:var(--color-accent)">Shade rule:</strong> Always 2–3 shades darker than your foundation with a cool, grey-brown (not orange or warm) undertone to mimic natural shadow</li>
+        <li><strong style="color:var(--color-accent)">Placement:</strong> Below cheekbones · Temples · Jawline · Sides of nose · Hairline</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Use a angled contour brush or fluffy blending brush. Suck in cheeks and apply the product in the hollow below the cheekbone. Blend upward toward the temples. For the jaw, apply underneath the jawline and blend downward onto the neck. For the nose, apply two thin lines down the sides using a small brush and blend with a fingertip. Always blend — no harsh lines.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Powder contour is ideal — it naturally absorbs oil and layers well over matte base products like TIMEPHORIA and Second Date Powder.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🧴</div>
+      <div class="info-card-title">Cream / Stick Contour</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-bad">Oily ✗</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Intense, highly pigmented formula that blends into skin before setting. Creates a more natural, skin-melded shadow effect than powder. More difficult to blend but more photo-realistic. Applied before powder products in the makeup order.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Dry · Normal · Photography · Professional looks</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Swipe directly below the cheekbone hollow. Blend immediately with a damp beauty blender using stippling (not wiping) motions — work fast before the formula sets. Apply under the chin for jawline definition. Set with a translucent powder after blending to prevent sliding. For combo skin, always set cream contour with powder to prevent melting on the T-zone.</li>
+        <li><strong style="color:var(--color-accent)">Common mistake:</strong> Blending too slowly — cream contour grabs once it starts to dry. Work in small sections.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🎨</div>
+      <div class="info-card-title">Bronzer vs. Contour</div>
+      <p>Often confused but fundamentally different in purpose and tone. Knowing the difference prevents the common mistake of using the wrong product for sculpting.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Bronzer:</strong> Warm-toned, often shimmer-infused. Used to add sun-kissed warmth and colour to the face — not to sculpt or shadow. Applied to where the sun would naturally hit: forehead, cheeks, nose. Can have a golden or peachy tone.</li>
+        <li><strong style="color:var(--color-accent)">Contour:</strong> Cool-toned, always matte. Used to create the illusion of shadow and depth — hollowing cheeks, sharpening the jaw, slimming the nose. Never warm or shimmery.</li>
+        <li><strong style="color:var(--color-accent)">Rule:</strong> Bronzer adds warmth and life to the face. Contour adds structure and definition. You can use both — bronzer first for warmth, contour second for sculpt, highlight last for dimension.</li>
+        <li><strong style="color:var(--color-accent)">For your undertone:</strong> With neutral-to-cool undertones, lean toward cool-toned contour (taupe, grey-brown) to avoid looking muddy. Warm bronzers like Marigold Peach (NPure) work for warmth on the cheeks.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">👤</div>
+      <div class="info-card-title">Contouring by Face Shape</div>
+      <p>The placement of contour and highlight varies depending on your face shape — the goal is always to create balance and the illusion of an oval shape.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Oval:</strong> Already balanced — minimal contour needed. Light contour below cheekbones and at temples. Highlight centre of forehead, nose bridge, and chin.</li>
+        <li><strong style="color:var(--color-accent)">Round:</strong> Contour the sides of the forehead, below cheekbones, and along the jawline. Highlight the centre of the forehead and under-eye area to elongate.</li>
+        <li><strong style="color:var(--color-accent)">Square:</strong> Soften the corners — contour temples, jaw corners, and sides of forehead. Highlight the centre of the face to draw the eye inward.</li>
+        <li><strong style="color:var(--color-accent)">Heart:</strong> Contour the wide forehead and temples. Highlight the chin to balance the narrower lower face.</li>
+        <li><strong style="color:var(--color-accent)">Long/Oblong:</strong> Contour the forehead hairline and chin to visually shorten. Highlight horizontally across the cheeks to add width.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ─── ORDER OF APPLICATION ─── -->
+  <div class="info-card fade-in" style="margin-top:24px;max-width:100%">
+    <div class="info-card-icon">📋</div>
+    <div class="info-card-title">Complete Face Sculpting Order of Application</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">Step 1 — Skincare &amp; SPF:</strong> Fully absorbed before any makeup.</li>
+      <li><strong style="color:var(--color-accent)">Step 2 — Colour Corrector</strong> (if needed): Target dark circles or redness before foundation.</li>
+      <li><strong style="color:var(--color-accent)">Step 3 — Foundation / Cushion:</strong> Even base layer all over. Your ESQA Skin Tint, TIRTIR, SKINTIFIC, or TIMEPHORIA.</li>
+      <li><strong style="color:var(--color-accent)">Step 4 — Concealer:</strong> After foundation — under-eyes, blemishes, brow bone. ONLYOU applied and blended.</li>
+      <li><strong style="color:var(--color-accent)">Step 5 — Cream Contour</strong> (if using): Blend before any powder products.</li>
+      <li><strong style="color:var(--color-accent)">Step 6 — Setting Powder:</strong> Second Date N00 Translucent on T-zone and under-eyes to set everything.</li>
+      <li><strong style="color:var(--color-accent)">Step 7 — Powder Contour / Bronzer:</strong> Sculpt cheeks, temples, jaw. Always after powder — this is where powder contour shines.</li>
+      <li><strong style="color:var(--color-accent)">Step 8 — Blush:</strong> Apply after contour — on the apples of the cheeks and blending toward temples.</li>
+      <li><strong style="color:var(--color-accent)">Step 9 — Highlight:</strong> Final face step. Powder highlight on cheekbones, inner corners. NPure Glow Oil pressed on cheeks for liquid glow.</li>
+      <li><strong style="color:var(--color-accent)">Step 10 — Eyes, Brows, Lips:</strong> Complete the rest of your look.</li>
+      <li><strong style="color:var(--color-accent)">Step 11 — Setting Spray:</strong> Pramy → PIXY → L'Oreal Infallible to lock everything in place.</li>
+    </ul>
+  </div>
+
 </section>
 
 
@@ -1407,7 +1783,7 @@ footer span { color: var(--color-primary); }
       <div class="palette-shade"><div class="shade-color" style="background:linear-gradient(135deg,#3a1830,#4a2040)"></div><div class="shade-info"><div class="shade-info-name">09 · Midnight Plum</div><div class="shade-info-finish">Shimmer · Drama</div></div></div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(200px,100%), 1fr));gap:16px">
       <div>
         <p style="font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--color-text-dim);margin-bottom:8px">Everyday Look Combo</p>
         <p style="font-size:0.82rem;color:var(--color-text-muted);line-height:1.7">01 highlight inner corner → 02 transition blended → 03 on lid → 04 crease blend → small amount 08 outer V. Soft, wearable daily eye.</p>
@@ -1473,9 +1849,8 @@ footer span { color: var(--color-primary); }
           <div class="shade-row">
             <div class="shade-chip owned"><div class="shade-dot" style="background:#0a0a0a"></div>Black</div>
             <div class="shade-chip"><div class="shade-dot" style="background:#4a3020"></div>Brown</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#1a1428"></div>Navy</div>
           </div>
-          <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Black = Universal · Deepest definition · Owned ✦ · Brown = softer day look · Navy = subtle depth</p>
+          <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Black = Bold definition · Owned ✦ · Brown = Softer, more natural everyday look</p>
         </div>
         <div class="tabs">
           <div class="tab-header" onclick="toggleTab(this)">Benefits <span class="chevron">▾</span></div>
@@ -1521,6 +1896,175 @@ footer span { color: var(--color-primary); }
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- ─── MASCARA & LASH GUIDE ─── -->
+  <div class="section-header fade-in" style="margin-top:52px; margin-bottom:28px">
+    <p class="section-tag" style="color:var(--color-primary)">✦ Lash Guide</p>
+    <h3 class="section-title" style="font-size:clamp(1.3rem,3vw,2rem)">Mascara &amp; <em>False Lashes</em></h3>
+    <p class="section-desc">A complete reference for choosing, applying, and layering lash products — from everyday mascara to full false lash sets.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🖌️</div>
+      <div class="info-card-title">Volumising Mascara</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Thickens and builds fullness on each lash using a dense, creamy formula. The brush has tightly packed bristles that coat every lash from root to tip. Creates a bold, wide-eyed effect. Best for naturally sparse or thin lashes.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Thin · Sparse · Short lashes · Dramatic everyday look</li>
+        <li><strong style="color:var(--color-accent)">Wand shape:</strong> Thick, full, cylindrical brush · Dense bristles</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Wiggle the wand at the base of the lashes and pull upward in a zigzag motion — this deposits the most product at the root where volume is needed most. Apply 2–3 coats, letting each coat dry for 30 seconds before the next. Wipe excess off the wand before the first stroke to prevent clumping.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Look for oil-free, waterproof-friendly formulas — skin oils can travel up to the eye area and cause mascara to smudge under the lash line throughout the day.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">↕️</div>
+      <div class="info-card-title">Lengthening Mascara</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>Extends lashes with a fibrous or silicone-enriched formula that grips each lash and draws it out. Creates a fanned-out, separated, elongated effect. The brush is usually a thin comb or tapered wand for precise separation.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Short · Already full lashes · Natural, clean-girl look</li>
+        <li><strong style="color:var(--color-accent)">Wand shape:</strong> Thin comb · Tapered · Hourglass</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Start from the root and draw the wand upward in a slow, steady stroke — don't rush. Use the tip of the wand for lower lashes and inner corner lashes. Comb through with a clean spoolie between coats to prevent clumping and maintain separation.</li>
+        <li><strong style="color:var(--color-accent)">Layering tip:</strong> Apply lengthening mascara first, then a coat of volumising mascara on top for the best of both formulas — length and body simultaneously.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌊</div>
+      <div class="info-card-title">Curling Mascara</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Contains polymers that hold a curl in the lashes throughout the day, lifting the eye and making it appear more open and awake. Especially useful for straight or downward-pointing lashes that lose curl quickly.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Straight · Monolid · Hooded lashes</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Always curl lashes with a lash curler <em>before</em> applying mascara — mascara makes lashes brittle and curling after can cause breakage. Hold the curler at the base for 10 seconds, then at the middle for 5 seconds, then at the tips for 5 seconds (triple-curl technique) for a natural, gradual curve rather than a 90° kink. Apply mascara immediately while the curl is warm and fresh.</li>
+        <li><strong style="color:var(--color-accent)">Pro tip:</strong> Warm your lash curler for 5–10 seconds with a hair dryer before use — the warmth sets the curl more effectively, like a hair curler on a cooler temperature.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💧</div>
+      <div class="info-card-title">Waterproof Mascara</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-bad">Sensitive ✗</span></div>
+      <p>Uses wax-based or silicone polymers that form a water-resistant film around each lash. Holds curl, prevents smudging in humidity, sweat, or tears, and resists the natural oils that cause regular mascara to migrate below the eye.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Humid climates · Oily skin · Long events · Jakarta daily wear</li>
+        <li><strong style="color:var(--color-accent)">Important:</strong> Always use a dedicated oil-based eye makeup remover for waterproof mascara — never tug or rub. Soak a cotton pad, press over closed lashes for 10–15 seconds, then gently slide downward. Repeated tugging without proper removal causes lash breakage over time.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Waterproof formula is highly recommended for combination skin in Jakarta's humidity — oils from the T-zone can transfer to the eye area and cause even regular mascara to smudge by midday.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌸</div>
+      <div class="info-card-title">Tubing Mascara</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>A different technology — instead of coating lashes with pigment, tubing mascara forms tiny polymer tubes around each individual lash. The "tubes" slide off cleanly with warm water and gentle pressure, leaving zero panda eyes throughout the day. No smudging, no flaking.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Sensitive eyes · Contact lens wearers · Oily skin · Anyone prone to smudging</li>
+        <li><strong style="color:var(--color-accent)">How to remove:</strong> Wet fingertips with warm water, press gently over closed lashes and slide downward. The tubes come off whole — you'll see tiny cylinders on your fingertips. No makeup remover needed.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Excellent choice for oily-lid skin types — the tube formula doesn't interact with skin oils the way traditional wax mascaras do, making it one of the most smudge-proof options for combination skin.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">✨</div>
+      <div class="info-card-title">Mascara Application — Master Technique</div>
+      <p>Regardless of formula, the technique you use determines 80% of the final result. These fundamentals apply to every mascara type.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Pull, don't pump:</strong> Never pump the wand in and out of the tube — this pushes air in, dries out the formula faster, and creates clumps. Instead, swirl the wand inside the tube to pick up product.</li>
+        <li><strong style="color:var(--color-accent)">Wiggle at root:</strong> Start the wand at the very base of the lashes and wiggle back and forth before pulling upward — this deposits product where it matters most and prevents the "spider leg" look at the tips.</li>
+        <li><strong style="color:var(--color-accent)">Lower lashes:</strong> Hold the wand vertically and use the tip of the brush in a light dabbing motion. Apply after upper lashes to avoid transfer.</li>
+        <li><strong style="color:var(--color-accent)">Prevent clumping:</strong> Comb through immediately with a clean spoolie while the mascara is still wet. Once it dries, don't touch — dried mascara breaks lashes.</li>
+        <li><strong style="color:var(--color-accent)">Apply mascara last:</strong> Always do all eye makeup — eyeshadow, eyeliner, and brows — before mascara. Fallout from eyeshadow can stick to wet mascara and create a mess.</li>
+        <li><strong style="color:var(--color-accent)">With PIXY liner:</strong> Apply PIXY Eyeliner Pencil before mascara. The wiggle motion of mascara application can transfer liner if it hasn't set yet — give liner 30 seconds to dry before applying mascara.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FALSE LASHES -->
+  <div class="section-header fade-in" style="margin-top:44px; margin-bottom:24px">
+    <p class="section-tag" style="color:var(--color-gold)">✦ False Lashes</p>
+    <h3 class="section-title" style="font-size:clamp(1.2rem,3vw,1.8rem)">Types of <em>False Lashes</em></h3>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌾</div>
+      <div class="info-card-title">Strip Lashes</div>
+      <div class="type-suit"><span class="ts-label">Skill</span><span class="ts-chip ts-skill-mid">Intermediate</span><span class="ts-label" style="margin-left:4px">Occasions</span><span class="ts-chip ts-occ-day">Dates</span><span class="ts-chip ts-occ-eve">Events</span><span class="ts-chip ts-occ-eve">Night Out</span></div>
+      <p>A full strip of lashes on a single band applied across the entire lash line in one piece. The most common and beginner-accessible type. Reusable up to 15–25 times with proper care.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Styles:</strong> Natural · Wispy · Dramatic · Mega Volume · Cat-eye · Doll-eye</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong>
+          <ol style="padding-left:18px;margin-top:6px">
+            <li>Measure the strip against your eye and trim from the outer edge if too long — never the inner corner.</li>
+            <li>Apply a thin layer of lash glue to the band. Wait 30–45 seconds until the glue becomes tacky (not wet) — this is the most important step. Wet glue slides; tacky glue grips.</li>
+            <li>Look downward into a mirror. Place the lash strip as close to your natural lash line as possible, starting from the centre, then pressing down the inner and outer corners.</li>
+            <li>Press along the band with a lash applicator or the pointed end of a tweezer. Hold for 10 seconds.</li>
+            <li>Once set, apply PIXY Black liner along the lash band to conceal any glue and seamlessly blend the false lash with your natural lash line.</li>
+          </ol>
+        </li>
+        <li><strong style="color:var(--color-accent)">Common mistake:</strong> Applying glue when still wet — always wait for it to turn tacky first.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌿</div>
+      <div class="info-card-title">Individual / Cluster Lashes</div>
+      <div class="type-suit"><span class="ts-label">Skill</span><span class="ts-chip ts-skill-beg">Beginner</span><span class="ts-label" style="margin-left:4px">Occasions</span><span class="ts-chip ts-occ-day">Everyday</span><span class="ts-chip ts-occ-day">Dates</span><span class="ts-chip ts-occ-eve">Events</span></div>
+      <p>Small clusters or individual lash tufts applied to specific areas of the lash line rather than all at once. More natural looking and customisable than strip lashes — you control placement and density.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Styles:</strong> Individual single lashes · Micro-clusters (3–5 lashes) · Lash clusters (6–10 lashes)</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Apply a small dot of lash glue to the base of each cluster. Let it become tacky. Using tweezers, place clusters just above your natural lash line (not on the skin — on the lashes themselves for the most natural look). Start from the outer corner working inward. Concentrate clusters at the outer third for a cat-eye lift, or place throughout for even fullness.</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Natural, customised looks · Filling sparse outer corners · Building toward strip lashes gradually</li>
+        <li><strong style="color:var(--color-accent)">Removal:</strong> Soak in oil-based remover or micellar water. Never pull — gently slide the cluster off with a saturated cotton bud at the base.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🏷️</div>
+      <div class="info-card-title">Lash Styles by Eye Shape</div>
+      <p>Choosing the right lash style for your eye shape creates harmony rather than working against your natural features.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Almond eyes:</strong> Most versatile — nearly every style works. Cat-eye and wispy styles are particularly flattering.</li>
+        <li><strong style="color:var(--color-accent)">Round eyes:</strong> Cat-eye strips with longer outer corners elongate and add elegance. Avoid round doll-eye styles that can make eyes look wider.</li>
+        <li><strong style="color:var(--color-accent)">Monolid eyes:</strong> Criss-cross wispy styles create dimension and the illusion of a crease. Avoid overly thick or heavy strips that can weigh down the lid.</li>
+        <li><strong style="color:var(--color-accent)">Hooded eyes:</strong> Shorter-length, natural styles — heavy volume can disappear under the hood. Concentrate length at the outer corner to open up the eye.</li>
+        <li><strong style="color:var(--color-accent)">Deep-set eyes:</strong> Natural, lightweight styles — avoid very dramatic or heavy lashes that can make eyes appear to recede further.</li>
+        <li><strong style="color:var(--color-accent)">Wide-set eyes:</strong> Longer inner-corner lashes balance by drawing attention inward toward the nose bridge.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🧼</div>
+      <div class="info-card-title">False Lash Care &amp; Removal</div>
+      <p>Proper care extends the life of reusable lashes and protects your natural lashes during removal.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Removal:</strong> Soak a cotton pad in oil-based makeup remover. Press gently along the lash band for 20–30 seconds to dissolve the glue. Peel from the outer corner inward — never rip from the inner corner, which is closest to sensitive eye tissue.</li>
+        <li><strong style="color:var(--color-accent)">Cleaning:</strong> Peel the dried glue off the band gently with tweezers. Dip a cotton bud in micellar water and swipe along the lash band to remove mascara or makeup residue. Never soak the full lash in water — it warps the shape.</li>
+        <li><strong style="color:var(--color-accent)">Storage:</strong> Return to the original tray after cleaning — this maintains the lash curve. Store in a dry, dust-free case.</li>
+        <li><strong style="color:var(--color-accent)">Natural lash care:</strong> Always apply a lash serum or conditioning oil (like the NPure Glow Up Oil) to your natural lashes after removal — extended false lash wear can weaken the natural lash roots over time. Give your lashes rest days between applications.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Pairing guide -->
+  <div class="info-card fade-in" style="margin-top:24px;max-width:100%">
+    <div class="info-card-icon">👁️</div>
+    <div class="info-card-title">Pairing Lashes with Your Eye Collection</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">Everyday mascara + JADED everyday look:</strong> Lengthening mascara on upper lashes only, 01 Butter Cream inner corner, 03 Peach Bliss lid, PIXY liner along upper lash line. Clean, awake, and natural.</li>
+      <li><strong style="color:var(--color-accent)">Volumising mascara + dramatic JADED look:</strong> Max volume mascara after 05 Copper Glow lid + 08 Dark Chocolate outer V + PIXY winged liner. Bold, high-impact editorial eye.</li>
+      <li><strong style="color:var(--color-accent)">Wispy strip lashes + Midnight Plum:</strong> JADED shade 09 at the inner corner peeking under a wispy strip lash creates a dimensional, romantic night look — the shimmer glows through the gaps between the lash clusters.</li>
+      <li><strong style="color:var(--color-accent)">Natural cluster lashes + no mascara:</strong> Clusters at the outer third + PIXY liner tight to the lash line + JADED 03 Peach Bliss for a doe-eyed, effortless everyday finish. Skip mascara when using clusters to avoid clashing textures.</li>
+      <li><strong style="color:var(--color-accent)">Mascara application order within your full routine:</strong> Eyeshadow → PIXY eyeliner (let set 30 sec) → curl lashes → mascara → false lashes last if using. Never apply mascara over false lashes — apply to natural lashes first, let dry, then apply false lashes on top and they blend seamlessly.</li>
+    </ul>
   </div>
 
 </section>
@@ -1695,6 +2239,106 @@ footer span { color: var(--color-primary); }
       <li><strong style="color:var(--color-accent)">Bold Look:</strong> All three used progressively from root to tail</li>
     </ul>
   </div>
+
+  <!-- ─── BROW TYPES GUIDE ─── -->
+  <div class="section-header fade-in" style="margin-top:52px;margin-bottom:28px">
+    <p class="section-tag" style="color:var(--color-primary)">✦ Brow Shape Encyclopedia</p>
+    <h3 class="section-title" style="font-size:clamp(1.3rem,3vw,2rem)">Types of <em>Eyebrows</em></h3>
+    <p class="section-desc">Eyebrow shape frames the entire face. Understanding each shape — and how to achieve and maintain it — transforms your everyday look.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🏔️</div>
+      <div class="info-card-title">Arched Brows</div>
+      <div class="type-suit"><span class="ts-label">Face Shape</span><span class="ts-chip ts-shape">Round ✓</span><span class="ts-chip ts-shape">Square ✓</span><span class="ts-chip ts-shape">Oval ✓</span><span class="ts-chip ts-shape-ok">Long ~</span><span class="ts-chip ts-shape-ok">Heart ~</span></div>
+      <p>The most classically elegant brow shape — features a defined peak at the arch point above the outer iris. Creates immediate lift and a polished, put-together appearance. The arch height determines the intensity of the look.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">High arch:</strong> Dramatic, editorial, striking — adds drama to minimal makeup</li>
+        <li><strong style="color:var(--color-accent)">Soft arch:</strong> Natural-looking elegance — the most universally flattering everyday arch</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Round · Square · Long face shapes (lifts and elongates)</li>
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong> Using Azarine Eyettention, draw hair-like strokes following the natural brow direction up to the arch point. Build the peak by concentrating more product and slightly darker shade (Luxcrime Dark Brown) at the apex. Tail should angle slightly downward from the arch peak — never lower than the starting point of the brow head. Feather and blend the front with a spoolie.</li>
+        <li><strong style="color:var(--color-accent)">Common mistake:</strong> Placing the arch too close to the inner corner — this creates an angry expression. The arch should sit above the outer edge of the iris or slightly beyond.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">〰️</div>
+      <div class="info-card-title">Straight / Flat Brows</div>
+      <div class="type-suit"><span class="ts-label">Face Shape</span><span class="ts-chip ts-shape">Long ✓</span><span class="ts-chip ts-shape">Oval ✓</span><span class="ts-chip ts-shape">Oblong ✓</span><span class="ts-chip ts-shape-ok">Round ~</span><span class="ts-chip ts-shape-ok">Square ~</span></div>
+      <p>Minimal to no arch — the brow runs horizontally across the face with a subtle or completely flat curve. A defining feature of Korean and East Asian beauty aesthetics. Creates a youthful, soft, approachable expression and can visually shorten a long face.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Long · Oval · Oblong face shapes · Youthful aesthetic</li>
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong> Draw strokes in a straight horizontal direction — resist the urge to curve upward at the arch. Keep the brow slightly thicker throughout the body with only a subtle taper at the tail. Use Hanasui Brown for a soft, blended version or Azarine Eyeppuccino for a more defined flat brow. Comb upward with spoolie and trim any hairs that grow upward to maintain the flat illusion.</li>
+        <li><strong style="color:var(--color-accent)">Key tip:</strong> The tail still angles very slightly downward — a completely flat horizontal brow can read as unnatural. A 2–5° downward angle at the tail maintains realism while keeping the youthful straight effect.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌿</div>
+      <div class="info-card-title">Natural / Feathered Brows</div>
+      <div class="type-suit"><span class="ts-label">Face Shape</span><span class="ts-chip ts-shape">All Face Shapes ✓</span></div>
+      <p>The "your brows but better" approach — enhances and fills existing brow growth without imposing a structured shape. Looks effortless and uncontrived. Hair strokes mimic real brow hairs so precisely that no one can tell you're wearing product.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All face shapes · Everyday wear · Minimal makeup looks · Thick natural brows</li>
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong> Use the ultra-fine tip of Azarine Eyettention to draw individual hair-like strokes exclusively in the direction of your natural hair growth — never against it. Focus on filling sparse gaps only. Keep the product minimal at the front (heaviest hand = fake look). Brush upward and slightly outward with spoolie to blend. Add Luxcrime Dark Brown only at the tail for subtle depth.</li>
+        <li><strong style="color:var(--color-accent)">The golden rule:</strong> If you can see each individual stroke clearly, you've nailed it. If it looks solid and filled-in, you've gone too far.</li>
+        <li><strong style="color:var(--color-accent)">Lamination effect:</strong> Brush all hairs upward with a clear spoolie gel to create the trendy "soap brow" or brow lamination look without the treatment.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🎯</div>
+      <div class="info-card-title">Defined / Structured Brows</div>
+      <div class="type-suit"><span class="ts-label">Face Shape</span><span class="ts-chip ts-shape">Oval ✓</span><span class="ts-chip ts-shape">Square ✓</span><span class="ts-chip ts-shape">Heart ✓</span><span class="ts-chip ts-shape-ok">Round ~</span><span class="ts-chip ts-shape-ok">Long ~</span></div>
+      <p>Clean, crisp edges with a precise, intentional shape. Brows are mapped and drawn with purpose — more polished than natural brows but not as dramatic as editorial shapes. The go-to for professional settings and events.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All face shapes · Events · Professional settings · Defined makeup looks</li>
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong> Use the three-point mapping method: (1) Inner start — directly above the inner corner of the eye. (2) Arch peak — above the outer edge of the iris or the outer third of the eye. (3) Tail end — where a line from the outer nostril through the outer corner of the eye meets the brow. Mark these three points lightly, connect them with light strokes, then fill in. Use Luxcrime Dark Brown to define the upper and lower edges for clean lines. Blend interior strokes with spoolie.</li>
+        <li><strong style="color:var(--color-accent)">Cleanup:</strong> Dip a cotton bud in concealer and run along the lower brow edge for a razor-sharp defined finish.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🪶</div>
+      <div class="info-card-title">Soft Rounded Brows</div>
+      <div class="type-suit"><span class="ts-label">Face Shape</span><span class="ts-chip ts-shape">Square ✓</span><span class="ts-chip ts-shape">Heart ✓</span><span class="ts-chip ts-shape">Angular ✓</span><span class="ts-chip ts-shape-ok">Oval ~</span><span class="ts-chip ts-shape-ok">Round ~</span></div>
+      <p>A gentle curve throughout with no sharp arch peak — the brow follows a soft dome shape. Gives a sweet, approachable, and youthful expression. Less angular than an arched brow, softer than a straight brow.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Square · Angular · Heart face shapes (softens sharp features)</li>
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong> Follow the natural rounded curve of your brow bone rather than building to a defined peak. Keep strokes soft and the arch point low — almost at the midpoint of the brow rather than the outer third. Blend heavily with spoolie. Avoid sharp or angular lines at the tail. Use Hanasui Brown for a soft, diffused rounded look — it's the most blendable of your trio.</li>
+        <li><strong style="color:var(--color-accent)">Expression effect:</strong> Rounded brows create a softer, more open expression — ideal for counterbalancing strong jaw or cheekbone structure.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">📐</div>
+      <div class="info-card-title">Brow Mapping — The 3-Point Method</div>
+      <p>The universal technique for finding where your brows should start, peak, and end — creating perfectly symmetrical, face-flattering brows every time regardless of shape preference.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Point 1 — Start:</strong> Hold a pencil vertically alongside the outer edge of your nose. Where it intersects the brow is where your brow should begin. Hairs before this point can be removed or left for a fuller look.</li>
+        <li><strong style="color:var(--color-accent)">Point 2 — Arch:</strong> Angle the pencil from the outer edge of your nostril through the outer edge of your iris and extend upward. Where it meets the brow is your arch peak. Mark lightly.</li>
+        <li><strong style="color:var(--color-accent)">Point 3 — End:</strong> Angle the pencil from the outer edge of your nostril through the outer corner of your eye and extend upward. Where it meets the brow is where your tail should end.</li>
+        <li><strong style="color:var(--color-accent)">Application:</strong> Connect the three points with light feathery strokes — the shape between these anchors is your personalised ideal brow for your face structure. Fill using your Azarine, Luxcrime, and Hanasui pencils in layers.</li>
+        <li><strong style="color:var(--color-accent)">Symmetry check:</strong> After drawing both brows, hold a mirror at arm's length and compare — it's easier to spot asymmetry from a distance than up close.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="info-card fade-in" style="margin-top:24px;max-width:100%">
+    <div class="info-card-icon">✂️</div>
+    <div class="info-card-title">Brow Maintenance — Grooming Guide</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">Tweezing:</strong> Always tweeze after a warm shower when pores are open — less painful, cleaner removal. Pull in the direction of hair growth. Remove one hair at a time and step back frequently to check symmetry. Only remove hairs clearly outside your mapped brow shape.</li>
+      <li><strong style="color:var(--color-accent)">Trimming:</strong> Comb brow hairs upward with spoolie. Any hairs that extend above your desired brow shape should be trimmed with small, curved scissors — cut parallel to the upper brow edge, never straight across. Over-trimming is the most common grooming mistake.</li>
+      <li><strong style="color:var(--color-accent)">Threading vs. waxing:</strong> Threading offers more precision — ideal for detailed arch shaping. Waxing removes larger areas faster but can remove too much if done quickly. Both should be done by a professional for the initial shaping — maintenance tweezing at home after.</li>
+      <li><strong style="color:var(--color-accent)">Regrowth:</strong> Put down the tweezers for 6–8 weeks to let all hairs grow back fully before re-shaping. Over-plucked brows need this reset period. Fill with Hanasui Light Brown during regrowth to keep brows looking intentional.</li>
+      <li><strong style="color:var(--color-accent)">Your pencil pairings by brow shape:</strong> Natural/Feathered → Azarine Eyeppuccino alone. Arched/Defined → Azarine base + Luxcrime Dark Brown for peak and tail. Soft/Straight → Hanasui Brown throughout, spoolie-blended. Bold/Structured → all three layered progressively.</li>
+    </ul>
+  </div>
+
 </section>
 
 <!-- ═══════════ SECTION 5: LIPS ═══════════ -->
@@ -2000,6 +2644,381 @@ footer span { color: var(--color-primary); }
     </div>
 
   </div>
+
+  <!-- ─── LIP TYPES GUIDE ─── -->
+  <div class="section-header fade-in" style="margin-top:52px;margin-bottom:28px">
+    <p class="section-tag" style="color:var(--color-primary)">✦ Lip Shape Encyclopedia</p>
+    <h3 class="section-title" style="font-size:clamp(1.3rem,3vw,2rem)">Types of <em>Lips &amp; Techniques</em></h3>
+    <p class="section-desc">Understanding your natural lip shape helps you choose the right technique — whether you're enhancing what you have or creating an entirely new look.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💋</div>
+      <div class="info-card-title">Full / Pillowy Lips</div>
+      <p>Naturally plump with balanced volume in both upper and lower lips. The most versatile canvas — virtually every lip technique and product type works beautifully. Both lips are well-defined and proportional.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Best techniques:</strong> Any product works — from a sheer tint to a full bold lip</li>
+        <li><strong style="color:var(--color-accent)">Enhance naturally:</strong> Apply SOMETHINC Ceraplump (Valentine) all over for plumping + SPF. Top with NPure Glow Oil for a juicy, amplified fullness.</li>
+        <li><strong style="color:var(--color-accent)">Bold lip:</strong> Apply Time Phoria Cherrion in thin layers from the outer edges inward. Full lips carry bold colours effortlessly — no liner needed for definition.</li>
+        <li><strong style="color:var(--color-accent)">Avoid:</strong> Overlining dramatically — full lips don't need it and over-lining can look unnatural on an already full shape.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌙</div>
+      <div class="info-card-title">Thin / Narrow Lips</div>
+      <p>Less natural volume with a thinner profile. Upper and lower lips are close in size but with less projection and fullness. Can appear to recede with dark or matte colours. Respond extremely well to plumping techniques and strategic colour placement.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Techniques to add volume:</strong></li>
+        <li><strong style="color:var(--color-accent)">Overlining:</strong> Using a lip liner just outside the natural lip line — no more than 1–2mm. Follow the natural shape; don't create corners where there aren't any.</li>
+        <li><strong style="color:var(--color-accent)">Ombre technique:</strong> Apply a darker shade at the outer edges and a lighter or nude shade at the centre — creates the illusion of projection and depth.</li>
+        <li><strong style="color:var(--color-accent)">Your products:</strong> SOMETHINC Ceraplump is ideal — the ceramide plumping formula visibly increases lip fullness over time. Apply NPure Glow Oil at the centre of lips for a dimensional, forward-projecting highlight. Avoid very dark, flat matte colours which minimise apparent lip size.</li>
+        <li><strong style="color:var(--color-accent)">Avoid:</strong> Lining inside the natural lip line · Very dark matte shades with no centre highlight · Overlining the corners (creates a clown effect)</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🔼</div>
+      <div class="info-card-title">Top-Heavy Lips (Fuller Upper)</div>
+      <p>The upper lip is significantly more prominent than the lower lip. Uncommon naturally — usually the lower lip is fuller. When the upper dominates, the lips can appear pouty but unbalanced.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Balancing technique:</strong> Apply a slightly lighter or brighter shade on the lower lip to visually bring it forward. Add a touch of NPure Glow Oil or Glad2Glow Pumpkin Frost only on the lower lip centre to create the illusion of more volume below.</li>
+        <li><strong style="color:var(--color-accent)">Liner:</strong> Follow the natural upper lip edge precisely without overlining. You can very subtly overline only the lower lip to bring it forward and balance both halves.</li>
+        <li><strong style="color:var(--color-accent)">Shade choice:</strong> Medium-depth cool tones like Time Phoria Cherrion or SOMETHINC Valentine balance naturally — neither too light (which emphasises the upper lip more) nor too dark.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🔽</div>
+      <div class="info-card-title">Bottom-Heavy Lips (Fuller Lower)</div>
+      <p>The most common natural proportion — lower lip is naturally more voluminous than the upper. A beautiful, sensual shape that responds well to techniques that enhance the upper lip without diminishing the lower.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Enhancing technique:</strong> Focus slightly more product on the upper lip. Overline only the upper cupid's bow — enhancing the Cupid's bow peaks and the centre of the upper lip creates balance with the fuller lower lip.</li>
+        <li><strong style="color:var(--color-accent)">Cupid's bow definition:</strong> Use Azarine or a fine lip liner to draw two sharp peaks at the Cupid's bow before filling in. This creates a structured upper lip that balances the natural fullness below.</li>
+        <li><strong style="color:var(--color-accent)">Highlight trick:</strong> A small tap of Glad2Glow Pumpkin Frost at the centre of the upper lip catches light and visually draws the upper lip forward to meet the fuller lower lip.</li>
+        <li><strong style="color:var(--color-accent)">Best shades:</strong> All of your lip products work — this is a naturally balanced and beautiful shape. Time Phoria Cherrion's stain formula is especially flattering, concentrating colour at the bow for a natural gradient.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🏹</div>
+      <div class="info-card-title">Defined Cupid's Bow</div>
+      <p>A sharply defined double-peak at the centre of the upper lip. A classically beautiful and highly desirable lip shape associated with elegance and precision. Enhancing the Cupid's bow is one of the most impactful lip techniques.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">To enhance an existing bow:</strong> Use a fine-tipped liner or the Azarine Eyeppuccino pencil repurposed as a lip liner in a matching shade — define each peak with a precise V shape. Connect the peaks across the centre of the upper lip in a smooth curve.</li>
+        <li><strong style="color:var(--color-accent)">To create a more defined bow:</strong> Apply concealer to blur the natural upper lip edge first. Draw a sharper, more defined bow shape on top. Fill with your lip colour — Time Phoria Cherrion applied with a small brush gives the most controlled bow definition of all your products.</li>
+        <li><strong style="color:var(--color-accent)">Highlight:</strong> A tiny touch of Glad2Glow Pearl Sparkle (clear shimmer) on just the two bow peaks catches light and dramatically sharpens the Cupid's bow shape — an advanced technique with a stunning result.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">↔️</div>
+      <div class="info-card-title">Wide / Narrow Lips (Width)</div>
+      <p>Width of the lips in relation to the face affects which techniques create proportion. Wide lips extend toward or beyond the outer corners of the eyes. Narrow lips sit well within this boundary.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Wide lips:</strong> Avoid lining to the very outer corners — keep the colour slightly inside the natural corner for a more proportional look. Deeper, rich shades like Time Phoria Cherrion or SOMETHINC Sangria work beautifully — they add intimacy and bring focus to the centre. Avoid very bright or light shades which emphasise width.</li>
+        <li><strong style="color:var(--color-accent)">Narrow lips:</strong> Slightly overline the outer corners of both lips — just 1mm outward — to create a wider appearance. Apply lipstick or stain all the way to the natural corner for maximum width. Bright, warm shades like Glad2Glow Pumpkin Frost draw attention outward and create a wider impression.</li>
+        <li><strong style="color:var(--color-accent)">Gradient technique for both:</strong> Concentrating the deepest colour at the centre of the lips and blending outward to a lighter shade creates a forward-projecting illusion that de-emphasises width and adds dimensional fullness.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Lip application techniques -->
+  <div class="section-header fade-in" style="margin-top:44px;margin-bottom:24px">
+    <p class="section-tag" style="color:var(--color-gold)">✦ Application Techniques</p>
+    <h3 class="section-title" style="font-size:clamp(1.2rem,3vw,1.8rem)">Lip <em>Techniques</em></h3>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🎨</div>
+      <div class="info-card-title">Gradient / Ombré Lips</div>
+      <div class="type-suit"><span class="ts-label">Skill</span><span class="ts-chip ts-skill-beg">Beginner</span><span class="ts-label" style="margin-left:4px">Occasions</span><span class="ts-chip ts-occ-day">Everyday</span><span class="ts-chip ts-occ-day">Dates</span><span class="ts-chip ts-occ-eve">Events</span></div>
+      <p>A Korean-inspired technique where colour is concentrated at the centre of the lips and diffuses outward, creating a soft, dimensional, blurred effect. One of the most wearable and universally flattering lip looks.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong>
+          <ol style="padding-left:18px;margin-top:6px">
+            <li>Apply SOMETHINC Ceraplump (Valentine) all over lips as a base — blurs the lip line and adds moisture.</li>
+            <li>Apply Time Phoria Cherrion concentrated only on the centre of the lips using your fingertip, dabbing in circular motions. Do not pull toward the edges.</li>
+            <li>Press your lips together gently and re-dab the centre to intensify the colour.</li>
+            <li>Top with a small amount of NPure Glow Oil or Glad2Glow Pumpkin Frost at the very centre only for a lit-from-within gradient finish.</li>
+          </ol>
+        </li>
+        <li><strong style="color:var(--color-accent)">Effect:</strong> Makes lips appear naturally flushed and fuller — the dark centre creates the illusion of depth and projection.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🖊️</div>
+      <div class="info-card-title">Blotted / Stained Lips</div>
+      <div class="type-suit"><span class="ts-label">Skill</span><span class="ts-chip ts-skill-beg">Beginner</span><span class="ts-label" style="margin-left:4px">Occasions</span><span class="ts-chip ts-occ-all">All Occasions</span></div>
+      <p>Apply lip colour, press lips together, then blot with a tissue. Repeat once or twice. The result is a lived-in, effortless flush of colour that looks like naturally tinted lips with exceptional all-day wear.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong> Apply Time Phoria Stellar Dust (Cherrion) in one thin layer. Press a tissue between your lips and blot firmly. Reapply a second thin layer. Blot again. The stain formula grips and stays — the blotting removes the top layer of excess product and leaves the stain behind.</li>
+        <li><strong style="color:var(--color-accent)">Longevity:</strong> The blotted stain technique is the most transfer-resistant lip look possible — eating, drinking, and hours of wear barely affect it. Top with Nivea Smoky Rose for comfort without losing the stain.</li>
+        <li><strong style="color:var(--color-accent)">Finish:</strong> Matte-stained, natural, effortless. Add Glad2Glow Pumpkin Frost on top to convert from matte stain to glossy stain.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">✨</div>
+      <div class="info-card-title">Glossy / Glass Lips</div>
+      <div class="type-suit"><span class="ts-label">Skill</span><span class="ts-chip ts-skill-beg">Beginner</span><span class="ts-label" style="margin-left:4px">Occasions</span><span class="ts-chip ts-occ-day">Everyday</span><span class="ts-chip ts-occ-day">Dates</span><span class="ts-chip ts-occ-day">Quick</span></div>
+      <p>High-shine, reflective lips that look hydrated, plump, and dimensional. The glossy finish catches and reflects light for a youthful, luscious effect. Best layered over a stain or balm base for both colour and longevity.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong>
+          <ol style="padding-left:18px;margin-top:6px">
+            <li>Apply SOMETHINC Ceraplump (Valentine) as the base — the plumping formula preps and conditions.</li>
+            <li>Optional: apply one thin layer of Time Phoria Cherrion for a tinted base and let dry completely.</li>
+            <li>Apply NPure Glow Up Oil (Marigold Peach) generously over the entire lip — the warm peachy shimmer creates a glass-like effect, especially over cherry-toned stain beneath.</li>
+            <li>Alternatively, top with Glad2Glow Pumpkin Frost for a different gloss dimension — coral-frosted over cherry stain creates a unique dimensional colour.</li>
+          </ol>
+        </li>
+        <li><strong style="color:var(--color-accent)">Longevity tip:</strong> Gloss fades quickly from eating and drinking — carry Glad2Glow or NPure Oil for touch-ups throughout the day.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💄</div>
+      <div class="info-card-title">Bold Full Lip</div>
+      <div class="type-suit"><span class="ts-label">Skill</span><span class="ts-chip ts-skill-mid">Intermediate</span><span class="ts-label" style="margin-left:4px">Occasions</span><span class="ts-chip ts-occ-day">Dates</span><span class="ts-chip ts-occ-eve">Events</span><span class="ts-chip ts-occ-eve">Night Out</span></div>
+      <p>A precise, fully opaque lip with clean edges — the most statement-making lip look. Requires care in application but commands attention and photographs beautifully. Works best with minimal eye makeup so the two don't compete.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">How to achieve:</strong>
+          <ol style="padding-left:18px;margin-top:6px">
+            <li>Apply concealer around the lip line to blur natural edges and create a clean canvas.</li>
+            <li>Line lips precisely with a matching lip liner — define the Cupid's bow first, then the lower lip. This creates the border you'll fill within.</li>
+            <li>Apply Time Phoria Cherrion in 2–3 thin layers using the applicator or a small flat brush for precision at the edges, letting each layer dry.</li>
+            <li>Top with Glad2Glow Berry Soda or leave matte after blotting for maximum drama.</li>
+            <li>Press a folded tissue between the lips and bite down to remove excess from the inner lip and prevent transfer.</li>
+          </ol>
+        </li>
+        <li><strong style="color:var(--color-accent)">Balance rule:</strong> Bold lips + minimal eyes (only brows + mascara). Bold eyes + subtle lips. Both bold simultaneously overwhelms.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="info-card fade-in" style="margin-top:24px;max-width:100%">
+    <div class="info-card-icon">💋</div>
+    <div class="info-card-title">Lip Product Layering Cheatsheet — Your Collection</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">Everyday MLBB:</strong> Nivea Smoky Rose alone · or SOMETHINC Valentine alone · Cool-neutral flush that looks like your own lips</li>
+      <li><strong style="color:var(--color-accent)">Brightening daily care:</strong> Glad2Glow Pumpkin Frost as a serum-balm all day · Brightens pigmentation with consistent wear · Sheer warm tint</li>
+      <li><strong style="color:var(--color-accent)">Gradient everyday:</strong> SOMETHINC Valentine all over → Time Phoria Cherrion dabbed at centre only → NPure Oil at centre peak</li>
+      <li><strong style="color:var(--color-accent)">Glossy stain:</strong> Time Phoria Cherrion (blotted, 2 layers) → Glad2Glow Pumpkin Frost on top · Warm coral gloss over deep cherry stain</li>
+      <li><strong style="color:var(--color-accent)">Long-wear event lip:</strong> SOMETHINC Valentine base → Time Phoria Cherrion (2 layers, each blotted) → SPF top coat with SOMETHINC or Nivea · Hours of wear even through eating</li>
+      <li><strong style="color:var(--color-accent)">Night out:</strong> Time Phoria Cherrion full coverage, precise edges → NPure Oil centre only → Glad2Glow Berry Soda gloss on top · Deep, dimensional, glossy cherry</li>
+      <li><strong style="color:var(--color-accent)">Overnight treatment:</strong> Glad2Glow Pumpkin Frost or Nivea Smoky Rose generously as a sleeping mask · Brightens and conditions lips while you sleep</li>
+    </ul>
+  </div>
+
+</section>
+
+
+<!-- ═══════════ POWDERS GUIDE ═══════════ -->
+<section id="powders">
+  <div class="section-header fade-in">
+    <p class="section-tag">✦ Powder Encyclopedia</p>
+    <h2 class="section-title">Types of Makeup <em>Powder</em></h2>
+    <p class="section-desc">Powder is the most misunderstood makeup category — there are over a dozen distinct types, each with a different purpose, formula, and technique. Knowing which to use (and when) is the key to a polished, long-lasting finish.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌫️</div>
+      <div class="info-card-title">Translucent / Setting Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>A colourless, ultra-fine powder that sets foundation and concealer without adding coverage or shifting the colour of your base. The most essential powder for all skin types. "Translucent" means it works on any skin tone.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Sets liquid/cream products · Prevents creasing · Extends wear · Reduces transfer</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All skin types as a setting step · Combination skin on T-zone specifically</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Using a large fluffy brush, swirl and tap off excess, then lightly dust over foundation. Apply with a velour puff pressed (not rubbed) under the eyes for baking. Use a light hand — translucent powder can still look powdery or flatten skin if over-applied.</li>
+        <li><strong style="color:var(--color-accent)">Baking technique:</strong> Press a generous amount under eyes with a damp puff, leave 3–5 minutes while completing other makeup, then dust off. Sets concealer for all-day crease-free wear.</li>
+        <li><strong style="color:var(--color-accent)">Your product:</strong> Second Date N00 Translucent Loose Powder — the finest option in your collection. N00P Rose Radiance adds a pink-brightening effect for fairer skin.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Apply only on the T-zone and under eyes. Leaving the cheeks unpowdered maintains a natural, skin-like finish on drier areas.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🪨</div>
+      <div class="info-card-title">Pressed Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-bad">Dry ✗</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Finely milled powder compressed into a compact. Provides light coverage, controls shine, and evens skin tone. More portable than loose powder and easier to apply on-the-go. Can be used as a standalone base on low-coverage days or over foundation for setting.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Light coverage · On-the-go touch-ups · Mattifying · Portable setting</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Oily · Combination · Quick application days</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Press (don't rub) the included puff into the pan and pat onto skin in a pressing motion. For sheerer application, use a fluffy powder brush. As a touch-up, always blot excess oil first with Clean & Clear Oil Control Film before reapplying — pressing powder over oil creates a cakey buildup.</li>
+        <li><strong style="color:var(--color-accent)">Coverage note:</strong> Pressed powder is buildable but reaches a ceiling — more layers create cake rather than coverage. For full coverage, always start with liquid or cushion foundation underneath.</li>
+        <li><strong style="color:var(--color-accent)">Shade matching:</strong> Choose 1 shade that matches your skin tone (not translucent) for coverage. Translucent pressed powder is purely a setter with no coverage benefit.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌟</div>
+      <div class="info-card-title">Loose Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>The same formula as pressed powder but in a loose, free-flowing state. More finely milled than pressed, gives the most airbrushed, professional finish of any powder type. Preferred by makeup artists for its blendability and natural look.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Professional setting · Extreme airbrushed finish · Baking · Long-wear events</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All skin types · Photography · Events · Combination skin</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Dip a large fluffy brush or velour puff, tap off all excess inside the container before removing. Apply with light sweeping or pressing motions. For baking — pack heavily under eyes with a damp sponge. Never blow excess powder off your face as it redistributes unevenly.</li>
+        <li><strong style="color:var(--color-accent)">Storage note:</strong> Always tap the lid before opening to settle the powder and prevent spillage. Store upright. Sieve caps dispense evenly — don't remove the sieve.</li>
+        <li><strong style="color:var(--color-accent)">Your product:</strong> Second Date Loose Powder (N00 Translucent) — the star of your collection. Used correctly it creates a flawless, non-cakey finish over any base.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌅</div>
+      <div class="info-card-title">Bronzer Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>A warm-toned powder — golden, peachy, or brown — that adds a sun-kissed warmth and healthy colour to the face. Not for sculpting or shadowing (that's contour's job). Creates the appearance of a natural tan and a warm, sun-touched glow.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Warmth · Healthy glow · Sun-kissed colour · Complement blush</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All skin types · Fair skin with warm or neutral undertones</li>
+        <li><strong style="color:var(--color-accent)">Placement (the 3 rule):</strong> Apply in a "3" shape on each side of the face — starting at the temple, sweeping down the cheekbones, and curving to the chin. Also apply lightly across the nose bridge and forehead for a natural sun-touched look.</li>
+        <li><strong style="color:var(--color-accent)">Shade selection:</strong> For fair skin (your range), choose a bronzer only 1–2 shades deeper than your skin tone. A bronze too dark reads as muddy rather than warm.</li>
+        <li><strong style="color:var(--color-accent)">Undertone rule:</strong> For neutral-to-cool undertones, choose a cool-toned or taupe-warm bronzer — avoid orange-heavy formulas that clash with pink undertones. Peach-gold bronzers are the most flattering.</li>
+        <li><strong style="color:var(--color-accent)">Application brush:</strong> Large, fluffy, dome-shaped brush — swirl and tap off excess before applying.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌸</div>
+      <div class="info-card-title">Blush Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>Pigmented powder in pink, peach, berry, or coral tones applied to the cheeks to add colour, warmth, and a healthy flush. One of the most impactful products for creating a youthful, lively appearance — skin without blush can appear flat and dull.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Adds life and colour · Completes any makeup look · Creates facial dimension</li>
+        <li><strong style="color:var(--color-accent)">Placement by look:</strong></li>
+        <li><strong style="color:var(--color-accent)">Natural flush:</strong> Smile and apply on the apples of cheeks, blend upward toward temples. Round, youthful appearance.</li>
+        <li><strong style="color:var(--color-accent)">Lifted/sculpted:</strong> Apply from the temples sweeping across the cheekbones without hitting the apples. More angular and editorial.</li>
+        <li><strong style="color:var(--color-accent)">Draping:</strong> Apply blush across the cheekbones and lightly up to the temples and eye socket — a bold, fashion-forward monochromatic technique.</li>
+        <li><strong style="color:var(--color-accent)">Shade for your undertone:</strong> Cool-neutral undertone (your profile): rose, mauve, cool pink, berry. Warm shades: peach and coral. Avoid very orange-toned blushes which can clash with cool-neutral skin.</li>
+        <li><strong style="color:var(--color-accent)">Brush:</strong> Angled or dome blush brush for precise placement · Fluffy brush for blended diffused flush.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌑</div>
+      <div class="info-card-title">Contour Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>A matte, cool-toned brown powder 2–3 shades deeper than skin tone used to sculpt and define facial structure by creating the illusion of shadow. Always matte — any shimmer reads as highlight, not shadow. The most technique-dependent powder in makeup.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Sculpt · Define · Add shadow and depth · Slim features</li>
+        <li><strong style="color:var(--color-accent)">Placement:</strong> Below cheekbones (in the hollow) · Temples · Hairline · Jawline · Sides of nose</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Use an angled contour brush or a small fluffy blending brush. Apply in the hollow below the cheekbone (suck in cheeks to find it) and blend upward toward the temples. For the jaw, apply underneath the jawline and blend downward. Blend until no harsh lines remain — contour should be undetectable up close.</li>
+        <li><strong style="color:var(--color-accent)">Shade rule for your skin:</strong> Fair-light skin needs a very light hand and a taupe-grey-brown (not orange-brown) contour. Too dark a shade on fair skin reads as dirt, not shadow.</li>
+        <li><strong style="color:var(--color-accent)">Order:</strong> Always apply contour after setting powder but before highlighter.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">✨</div>
+      <div class="info-card-title">Highlighter Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-bad">Oily ✗</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>A shimmer or glitter-infused powder that catches and reflects light at the highest points of the face. Creates a luminous, three-dimensional, lit-from-within glow effect that makes skin appear elevated and radiant.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Adds light · Creates dimension · Lifts features · Luminous glow</li>
+        <li><strong style="color:var(--color-accent)">Placement:</strong> Tops of cheekbones (highest point) · Inner eye corners · Brow bone · Bridge of nose · Cupid's bow · Tip of nose (optional)</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Fan brush for precise placement or a small tapered brush packed with product then pressed onto cheekbones. The less you blend, the more intense the highlight. For a diffused glow, blend with a fluffy brush. For a blinding highlight, pack with a flat brush or fingertip.</li>
+        <li><strong style="color:var(--color-accent)">Shimmer size guide:</strong> Fine shimmer = natural everyday glow. Medium shimmer = glam events. Chunky glitter = editorial/creative looks only.</li>
+        <li><strong style="color:var(--color-accent)">Undertone pairing:</strong> Gold/champagne for warm-neutral (your Vanilla base days) · Silver/pearl for cool days (17C Porcelain). Rose gold works for both.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Apply highlighter only on dry cheekbone areas — never on the T-zone or areas prone to oiliness, where shimmer amplifies rather than illuminates.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🌸✨</div>
+      <div class="info-card-title">HD / Micro-Fine Finishing Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>An ultra-ultra-fine powder with particles so small they're virtually invisible to the naked eye and camera alike. Specifically engineered to blur fine lines, pores, and texture without adding coverage or weight. Originally developed for high-definition film and television.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Blurs pores and texture · Invisible finish · Flash-photography ready · No-powder look</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> All skin types · Photography · Video · Naturally glowy looks where you don't want visible powder</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Always use a fluffy brush with the very lightest possible hand. Less is genuinely more — HD powders are designed to be barely there. Apply only where needed (T-zone and under eyes). Over-application creates a chalky, white-cast effect especially in flash photography.</li>
+        <li><strong style="color:var(--color-accent)">Flash warning:</strong> Some HD powders contain silica that causes a white cast in flash photography. Always test before an event with a camera flash.</li>
+        <li><strong style="color:var(--color-accent)">Difference from translucent:</strong> HD powder blurs texture; translucent powder sets and mattifies. HD is finishing; translucent is setting. Use translucent first, HD last if desired.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🍌</div>
+      <div class="info-card-title">Banana Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-ok">Normal ~</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>A yellow-toned loose powder originally formulated to colour-correct purple under-eye circles on deeper skin tones. On fair skin, it adds a warm, brightening effect and cancels any redness beneath the eye. The name comes from the yellow-banana hue.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Colour-corrects purple/blue under-eye circles · Brightens under eyes · Sets concealer with a warm-brightening effect</li>
+        <li><strong style="color:var(--color-accent)">Best for:</strong> Medium to deep skin tones (primarily) · Fair skin for light brightening and purple circle correction</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Pack under the eye over concealer using a flat puff or brush. Let sit 3–5 minutes (baking), then dust off. On fair skin, use extremely sparingly — too much creates a visible yellow cast. Use only if you have strong blue-purple under-eye circles to correct.</li>
+        <li><strong style="color:var(--color-accent)">For your skin:</strong> On your fair-light neutral-to-cool tone, use only under eyes and with a very light touch. A micro-dusting adds subtle warmth and corrects circles without making skin look yellow.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💜</div>
+      <div class="info-card-title">Colour-Correcting Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Tinted powders that use colour theory to neutralise and correct specific skin concerns before or after foundation. Each colour targets a different issue on the face — more buildable and forgiving than liquid correctors.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Green:</strong> Cancels redness, blemishes, and broken capillaries</li>
+        <li><strong style="color:var(--color-accent)">Peach/Salmon:</strong> Brightens under-eye circles (fair to medium skin)</li>
+        <li><strong style="color:var(--color-accent)">Yellow:</strong> Neutralises purple veins and blue circles (banana powder)</li>
+        <li><strong style="color:var(--color-accent)">Lavender/Purple:</strong> Brightens sallow or yellow-toned skin — adds a cool, luminous finish (especially useful over Vanilla-toned bases)</li>
+        <li><strong style="color:var(--color-accent)">White:</strong> Brightens, lightens, and extends other powders. Use sparingly — flash photography risk.</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Apply after foundation but before setting. Use a small, precise brush. Apply lightly over the specific area needing correction — apply the matching skin-tone powder over the top to tone down the corrector colour and blend seamlessly.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">🔮</div>
+      <div class="info-card-title">Finishing / Luminising Powder</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-bad">Oily ✗</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <p>The very final powder step — applied over completed makeup to add a veil of radiance, blur any remaining imperfections, and unify all the products on the face into one cohesive, polished look. Often contains light-diffusing particles.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">Purpose:</strong> Unifies makeup · Adds a final luminous veil · Blurs texture · Refines the overall finish</li>
+        <li><strong style="color:var(--color-accent)">Difference from setting powder:</strong> Setting powder locks products in place and mattifies. Finishing powder is applied last over everything for an aesthetic effect — glow, blur, or unification.</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Large fluffy brush, very light dusting all over the face — the lightest hand of any powder in your routine. This should add a dimension or glow, not be visible as product. Apply after highlighter and blush.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Luminising finishing powder is best applied only on dry cheek areas. Keep the T-zone powder-free at this step or it will look overly powdered by the end of your routine.</li>
+      </ul>
+    </div>
+
+    <div class="info-card fade-in">
+      <div class="info-card-icon">💎</div>
+      <div class="info-card-title">Baking Powder (Technique)</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-bad">Dry ✗</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <p>Not a specific product type — baking is a setting technique using any loose or translucent powder applied in a generous amount and left on the face for several minutes before being dusted off. Originally a drag and stage makeup technique now widely used.</p>
+      <ul style="margin-top:10px">
+        <li><strong style="color:var(--color-accent)">How it works:</strong> Body heat "bakes" or sets the concealer and foundation beneath the powder layer while the excess powder sits on top. When you dust it off after 3–5 minutes, the makeup underneath is perfectly locked and any creasing is prevented.</li>
+        <li><strong style="color:var(--color-accent)">Best areas for baking:</strong> Under eyes (over brightening concealer) · T-zone (over foundation to prevent shine) · Chin</li>
+        <li><strong style="color:var(--color-accent)">How to apply:</strong> Dampen a beauty blender or velour puff. Press into Second Date N00 Translucent Powder. Press firmly onto under-eye area — do not blend, just press and leave in place. Complete your eye makeup and brows. After 3–5 minutes, use a large fluffy brush to dust off the excess in downward strokes.</li>
+        <li><strong style="color:var(--color-accent)">Combo skin tip:</strong> Baking under the eyes and on the T-zone gives combination skin the longest-lasting, crease-free base possible. This is an essential technique for long events or humid days in Jakarta.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Powder order guide -->
+  <div class="info-card fade-in" style="margin-top:24px;max-width:100%">
+    <div class="info-card-icon">📋</div>
+    <div class="info-card-title">Complete Powder Application Order</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">Step 1 — Colour Corrector Powder:</strong> If needed, on specific areas before setting. Target redness (green), circles (peach), or sallowness (lavender).</li>
+      <li><strong style="color:var(--color-accent)">Step 2 — Setting / Translucent Powder:</strong> Second Date N00 Translucent on T-zone and baked under eyes. Locks foundation and concealer in place.</li>
+      <li><strong style="color:var(--color-accent)">Step 3 — Bronzer:</strong> After setting powder, in the 3-shape across cheeks and temples for warmth. Light hand on fair skin.</li>
+      <li><strong style="color:var(--color-accent)">Step 4 — Contour Powder:</strong> Cool-toned matte below cheekbones, temples, and jaw. Blend thoroughly.</li>
+      <li><strong style="color:var(--color-accent)">Step 5 — Blush Powder:</strong> On the apples of cheeks or along cheekbones, blending toward temples. Layered over or alongside bronzer.</li>
+      <li><strong style="color:var(--color-accent)">Step 6 — Highlight Powder:</strong> Tops of cheekbones, inner corners, brow bone, Cupid's bow. Pressed on for intensity, blended for diffusion.</li>
+      <li><strong style="color:var(--color-accent)">Step 7 — HD or Finishing Powder:</strong> Optional final veil over the entire face. Ultra-light. Adds glow and unification.</li>
+      <li><strong style="color:var(--color-accent)">Final — Setting Spray:</strong> Pramy → PIXY → L'Oreal Infallible. Melts powders together for a skin-like, long-wearing finish.</li>
+    </ul>
+  </div>
+
 </section>
 
 <!-- ═══════════ SECTION 6: SETTING ═══════════ -->
@@ -2195,6 +3214,361 @@ footer span { color: var(--color-primary); }
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ═══════════ MAKEUP STYLES ═══════════ -->
+<section id="styles">
+  <div class="section-header fade-in">
+    <p class="section-tag">✦ Aesthetic Encyclopedia</p>
+    <h2 class="section-title">Makeup <em>Styles</em></h2>
+    <p class="section-desc">Every makeup aesthetic has a language — a specific combination of techniques, finishes, and products that creates a recognisable look. Learn the code for each style and how to achieve it with your existing collection.</p>
+  </div>
+
+  <div class="finish-grid">
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f9e4e4,#fce8f0,#faf0f8)"></div>
+      <div class="finish-name">Clean Girl</div>
+      <span class="finish-tag">Effortless · Minimal · Glowy</span>
+      <p class="finish-desc">The defining aesthetic of the 2020s — skin that looks expensive and well-cared-for with barely any product. The goal is appearing as though you woke up like this. Slicked brows, dewy skin, fluffy lashes, a flushed cheek, and glossy lips are the hallmarks.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>ESQA Skin Tint (Vanilla) — sheer, skin-like base</li>
+        <li>ONLYOU concealer — spot-correct only where needed</li>
+        <li>SOMETHINC Ceraplump (Valentine) — glossy flush on lips</li>
+        <li>NPure Glow Oil — pressed on cheekbones for dewy glow</li>
+        <li>Azarine Eyeppuccino — lightly brush through brows, spoolie upward</li>
+      </ul>
+      <p class="finish-best">Finish: Dewy · Coverage: Sheer–Light · Time: 5–10 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f8e8d0,#f4f0e8,#fffff8)"></div>
+      <div class="finish-name">No-Makeup Makeup</div>
+      <span class="finish-tag">Invisible · Enhanced · Natural</span>
+      <p class="finish-desc">Looks like bare skin but is actually a carefully constructed illusion. Every feature is subtly enhanced — concealer and colour correction give a flawless complexion, mascara opens the eyes, a neutral lip adds definition — but nothing is detectable as product.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>TIRTIR 17C Porcelain — skin-meld full coverage base, thin layer</li>
+        <li>ONLYOU — under eyes and spot concealing only</li>
+        <li>Second Date N00 — light T-zone set, no all-over powder</li>
+        <li>Hanasui Brown brows — very light strokes, heavily spoolie-blended</li>
+        <li>Nivea Smoky Rose — MLBB lip, barely-there colour</li>
+      </ul>
+      <p class="finish-best">Finish: Natural–Satin · Coverage: Light–Medium · Time: 10–15 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f0e0f0,#e8d0f8,#f8eeff)"></div>
+      <div class="finish-name">Glass Skin</div>
+      <span class="finish-tag">Translucent · Luminous · K-Beauty</span>
+      <p class="finish-desc">Originated from Korean beauty — skin so hydrated and well-cared-for it appears transparent and reflective like glass. Zero texture, zero pores, lit from within. Requires excellent skincare as a foundation. Heavy on layered skincare, light on makeup.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>SKINTIFIC Cover Glow Cushion (Vanilla) — glow-satin base layer</li>
+        <li>ESQA Skin Tint mixed into foundation for more luminosity</li>
+        <li>NPure Glow Oil over cheekbones — the glass-skin finishing touch</li>
+        <li>Minimal powder — T-zone only with second date, no cheeks</li>
+        <li>SOMETHINC Ceraplump (Valentine) — glassy glossy lip</li>
+      </ul>
+      <p class="finish-best">Finish: High Glow · Coverage: Light–Medium · Time: 10–20 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#2a0a1e,#3d1040,#1a0828)"></div>
+      <div class="finish-name">Glam / Full Beat</div>
+      <span class="finish-tag">Bold · Dramatic · Polished</span>
+      <p class="finish-desc">Maximum drama — full coverage base, contoured and sculpted face, bold eye with liner, high-shine highlight, and a statement lip. Associated with red carpet, nightlife, and events. Every feature is intentionally amplified. Nothing is understated.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>TIRTIR 17C — full-coverage base, built up in layers</li>
+        <li>ONLYOU — thorough concealing and baking under eyes</li>
+        <li>Second Date — full-face powder + baking technique</li>
+        <li>JADED 05 Copper + 08 Dark Choc + 09 Midnight Plum — drama eye</li>
+        <li>PIXY liner — precise wing + tight-lined waterline</li>
+        <li>Time Phoria Cherrion — bold, full lip</li>
+        <li>Luxcrime Dark Brown — sharp, defined brows</li>
+      </ul>
+      <p class="finish-best">Finish: Satin–Matte · Coverage: Full · Time: 30–60 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f8e0e8,#f4d0e0,#f0c8d8)"></div>
+      <div class="finish-name">Soft Glam</div>
+      <span class="finish-tag">Polished · Wearable · Romantic</span>
+      <p class="finish-desc">The most universally wearable elevated look — the sweet spot between everyday natural and full glam. Medium-full coverage base, a warm shimmer eye, defined but not dramatic liner, sculpted cheeks, and a romantic lip. Beautiful for dates, dinners, and events where you want to look "done" but not overdone.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>TIRTIR or SKINTIFIC — polished base</li>
+        <li>Second Date — T-zone + under-eye bake</li>
+        <li>JADED 02 Warm Linen + 03 Peach Bliss + 05 Copper Glow lid</li>
+        <li>PIXY liner — thin upper lash line, no wing</li>
+        <li>Azarine Eyeppuccino — defined structured brows</li>
+        <li>Time Phoria Cherrion (gradient) + Glad2Glow Pumpkin Frost</li>
+      </ul>
+      <p class="finish-best">Finish: Satin · Coverage: Medium–Full · Time: 20–35 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f0d8f0,#e8c8f0,#ffe0f8)"></div>
+      <div class="finish-name">Monochromatic</div>
+      <span class="finish-tag">Cohesive · Artistic · Modern</span>
+      <p class="finish-desc">One colour family used across lips, cheeks, and eyes for a tonal, editorial effect. The intentional repetition of a single hue across the face creates a graphic, fashion-forward look that always photographs beautifully. The easiest way to look deliberately styled.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li><strong>Rose mono:</strong> SOMETHINC Valentine (lips) + rose blush powder on cheeks + JADED 03 Peach Bliss on lids</li>
+        <li><strong>Berry mono:</strong> Time Phoria Cherrion (lips) + berry blush + JADED 09 Midnight Plum eye</li>
+        <li><strong>Peach mono:</strong> Glad2Glow Pumpkin Frost (lips) + peach blush + JADED 03 Peach Bliss lid</li>
+        <li>Keep base neutral and skin-like so the mono colour story stands out</li>
+      </ul>
+      <p class="finish-best">Finish: Varies · Coverage: Light–Medium · Time: 15–25 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#e8f0f8,#d8e8f8,#f0f4ff)"></div>
+      <div class="finish-name">Old Money / Quiet Luxury</div>
+      <span class="finish-tag">Refined · Understated · Classic</span>
+      <p class="finish-desc">Polished, expensive-looking, and completely devoid of trend. Perfectly blended, medium coverage base, neutral brows, neutral eyes, a barely-there lip, and a faint glow. Nothing bold, nothing trendy — just immaculate, timeless grooming that whispers wealth rather than screams it.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>TIRTIR 17C — flawless, skin-melded base</li>
+        <li>ONLYOU — precise concealing, zero trace</li>
+        <li>Second Date — seamless T-zone set</li>
+        <li>Hanasui Brown — soft, natural, perfectly groomed brows</li>
+        <li>JADED 02 Warm Linen only — the most neutral, invisible eye</li>
+        <li>Nivea Smoky Rose — cool muted lip · NPure Glow Oil — subtle cheek</li>
+      </ul>
+      <p class="finish-best">Finish: Satin · Coverage: Medium · Time: 15–25 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#ffd4e8,#ffb8d8,#ff9ec8)"></div>
+      <div class="finish-name">Coquette / Dollette</div>
+      <span class="finish-tag">Feminine · Whimsical · Soft</span>
+      <p class="finish-desc">Hyper-femininity with a doe-eyed, porcelain-skin aesthetic. Cherry-red or dusty rose lips, flushed apple cheeks, wide-open bright eyes with fluttery lashes, and a flawless porcelain base. Ribbons and bows optional but encouraged. Heavy on pink, light on drama.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>TIRTIR 17C (cool porcelain base) — doll-like flawless skin</li>
+        <li>ONLYOU under-eyes — bright, awake, no circles</li>
+        <li>SOMETHINC Valentine or Nivea Smoky Rose — soft rosy lip</li>
+        <li>Time Phoria Cherrion dab on cheeks — flushed apple cheeks</li>
+        <li>JADED 03 Peach Bliss — soft sheer lid shimmer</li>
+        <li>Azarine Eyeppuccino — soft natural brows, rounded shape</li>
+      </ul>
+      <p class="finish-best">Finish: Satin–Dewy · Coverage: Light–Medium · Time: 15–20 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#1a1a2e,#2a1a3e,#0d0d1a)"></div>
+      <div class="finish-name">Dark / Gothic Glam</div>
+      <span class="finish-tag">Dramatic · Moody · Intense</span>
+      <p class="finish-desc">Deep, saturated colours and strong contrasts. A flawless matte base sets off dark, intense eyes and lips. Think smoky blacks and purples, precise winged liner, and deep berry or vampiric lips. Polished and intentional, never messy — the darkness is controlled and deliberate.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>TIMEPHORIA Matte Cushion — full matte flawless base</li>
+        <li>Second Date — heavy set, baked under-eyes</li>
+        <li>JADED 08 Dark Chocolate + 09 Midnight Plum — deep, smoky eye</li>
+        <li>PIXY Black liner — precise extended wing + lower waterline</li>
+        <li>Luxcrime Dark Brown — sharp, strong brow architecture</li>
+        <li>Time Phoria Cherrion or SOMETHINC Sangria — dark vampy lip</li>
+      </ul>
+      <p class="finish-best">Finish: Matte · Coverage: Full · Time: 30–45 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f4d8a8,#f8e8b8,#fff8e8)"></div>
+      <div class="finish-name">Y2K / Retro Glam</div>
+      <span class="finish-tag">Nostalgic · Fun · Iridescent</span>
+      <p class="finish-desc">Early 2000s revival — glossy lips, iridescent shimmer, graphic liner, and bold colour used with a playful, maximalist spirit. Think Britney Spears and Paris Hilton. Frosted highlights, glitter, and an unapologetically fun approach to colour. Lip gloss is non-negotiable.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>SKINTIFIC Cover Glow — luminous, glowy base (Y2K loved glow)</li>
+        <li>JADED 01 Butter Cream and 05 Copper Glow — iridescent shimmer lids</li>
+        <li>PIXY Black liner — graphic, precise, extended</li>
+        <li>Glad2Glow Pumpkin Frost or Pearl Sparkle — maximum gloss</li>
+        <li>NPure Glow Oil — frosted shimmer highlight on cheeks</li>
+        <li>SOMETHINC Valentine — bubblegum-pink cheek blush effect</li>
+      </ul>
+      <p class="finish-best">Finish: Glossy–Shimmery · Coverage: Light–Medium · Time: 20–30 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#e8d4c0,#d4c0a8,#c0a888)"></div>
+      <div class="finish-name">Editorial / Avant-Garde</div>
+      <span class="finish-tag">Artistic · Conceptual · Runway</span>
+      <p class="finish-desc">Makeup as art — no rules, no "flattering" requirements. Graphic shapes, unexpected colour placement, exaggerated proportions, and conceptual choices. Inspired by runway shows and artistic photoshoots. The goal is expression, not beauty in the conventional sense.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>JADED 09 Midnight Plum — used on eyes, or as a graphic liner on lids</li>
+        <li>PIXY Black liner — graphic geometric shapes, dot art</li>
+        <li>Time Phoria Cherrion — on eyes as eyeshadow, on lips, on cheeks</li>
+        <li>JADED 05 Copper Glow — metallic foil effect across lids or brow bone</li>
+        <li>NPure Glow Oil — applied unconventionally for texture and shine</li>
+        <li>Concept: break placement rules intentionally for effect</li>
+      </ul>
+      <p class="finish-best">Finish: Any · Coverage: Any · Time: 20–60 min</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#d4e8f8,#c8ddf0,#e8f4ff)"></div>
+      <div class="finish-name">Douyin / TikTok Makeup</div>
+      <span class="finish-tag">Lifted · Flushed · Cute · Viral</span>
+      <p class="finish-desc">Named after the Chinese version of TikTok where it originated — a specific style featuring a lifted, bright-eyed look using blush applied high on the face (under the eyes and onto the nose bridge), glossy glass skin, subtle shadow for a lifted lid effect, and a glossy or stained lip.</p>
+      <p class="finish-products" style="margin-top:8px"><strong>Key products from your collection:</strong></p>
+      <ul style="font-size:0.78rem;color:var(--color-text-muted);padding-left:16px;margin-top:4px;line-height:1.7">
+        <li>TIRTIR 17C — flawless cool base ideal for this high-lifted look</li>
+        <li>ONLYOU — bright under-eyes for maximum light reflection</li>
+        <li>Time Phoria Cherrion — tapped as blush under the eyes and on the nose</li>
+        <li>SOMETHINC Valentine — dewy gradient lip</li>
+        <li>NPure Glow Oil — glass skin finish over cheeks</li>
+        <li>JADED 01 Butter Cream inner corner — wide, bright, lifted effect</li>
+      </ul>
+      <p class="finish-best">Finish: Dewy · Coverage: Light–Medium · Time: 10–20 min</p>
+    </div>
+
+  </div>
+
+  <div class="info-card fade-in" style="margin-top:28px;max-width:100%">
+    <div class="info-card-icon">🎭</div>
+    <div class="info-card-title">Choosing Your Style — Quick Reference</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">5 minutes:</strong> Clean Girl — ESQA Skin Tint + SOMETHINC Valentine + spoolie brows</li>
+      <li><strong style="color:var(--color-accent)">10–15 minutes:</strong> No-Makeup Makeup or Glass Skin — more steps but still minimal-looking</li>
+      <li><strong style="color:var(--color-accent)">15–25 minutes:</strong> Soft Glam, Old Money, Coquette, Monochromatic — complete looks</li>
+      <li><strong style="color:var(--color-accent)">30–60 minutes:</strong> Full Glam, Dark Glam, Y2K, Editorial — maximum impact</li>
+      <li><strong style="color:var(--color-accent)">Everyday:</strong> Clean Girl · No-Makeup Makeup · Soft Glam</li>
+      <li><strong style="color:var(--color-accent)">Dates &amp; events:</strong> Soft Glam · Coquette · Monochromatic · Old Money</li>
+      <li><strong style="color:var(--color-accent)">Night out:</strong> Full Glam · Dark Glam · Y2K</li>
+      <li><strong style="color:var(--color-accent)">Creative / shoots:</strong> Douyin · Monochromatic · Editorial</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ═══════════ MAKEUP FINISHES ═══════════ -->
+<section id="finishes">
+  <div class="section-header fade-in">
+    <p class="section-tag">✦ Texture &amp; Finish Guide</p>
+    <h2 class="section-title">Types of Makeup <em>Finishes</em></h2>
+    <p class="section-desc">Understanding finish types helps you pick the right product for every mood, occasion, and skin zone.</p>
+  </div>
+
+  <div class="finish-grid">
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#c8c0b8,#d8d0c8)"></div>
+      <div class="finish-name">Matte</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-bad">Dry ✗</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-ok">Normal ~</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <span class="finish-tag">Flat · No Shine</span>
+      <p class="finish-desc">Zero light reflection — absorbs oil and cancels shine completely. Creates a flat, velvety, editorial look. Best for oily and combination T-zones. Can look flat or aging on dry skin if over-applied.</p>
+      <p class="finish-products">Your products: TIMEPHORIA Matte Cushion · Second Date Powder · PIXY Matte Mist · Pramy Matte Mist</p>
+      <p class="finish-best">Best for: Oily · Combo (T-zone) · Long days outdoors</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#d8cec8,#e8e0d8,#f0e8e2)"></div>
+      <div class="finish-name">Satin</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <span class="finish-tag">Soft Sheen · Skin-Like</span>
+      <p class="finish-desc">Sits between matte and dewy — a smooth, refined sheen that mimics healthy natural skin. The most universally flattering finish. Doesn't look flat or greasy. Forgives texture and dryness equally well.</p>
+      <p class="finish-products">Your products: SKINTIFIC Cover Glow Cushion (glow-satin) · ONLYOU BB Cream</p>
+      <p class="finish-best">Best for: All skin types · Everyday wear · Versatile events</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#e8e0d4,#f4ece0,#fdf6ee)"></div>
+      <div class="finish-name">Natural / Skin-Like</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <span class="finish-tag">Seamless · Second Skin</span>
+      <p class="finish-desc">Lets your real skin show through — looks like you're not wearing makeup at all. Sheer-to-light coverage with a skin-blurring effect. Imperfections are softened, not hidden. The "no-makeup makeup" ideal.</p>
+      <p class="finish-products">Your products: ESQA Minimalist Serum Skin Tint · TIRTIR Mask Fit (skin-meld effect)</p>
+      <p class="finish-best">Best for: Good skin days · Normal · Minimal makeup moments</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f8d8c0,#fce8d4,#fff0e8)"></div>
+      <div class="finish-name">Dewy / Luminous</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-bad">Oily ✗</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <span class="finish-tag">Glow · Radiant · Fresh</span>
+      <p class="finish-desc">Reflects light softly for a healthy, hydrated glow. Skin looks plump and lit-from-within. Great for dry and normal skin. For combination skin, apply only on cheeks and dry zones — keep T-zone matte to avoid looking oily.</p>
+      <p class="finish-products">Your products: ESQA Skin Tint · NPure Glow Oil (cheeks) · L'Oreal Setting Mist (luminous lock)</p>
+      <p class="finish-best">Best for: Dry · Normal · Combo cheeks only</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#f0e8d8,#f8f2e8,#fffaf4)"></div>
+      <div class="finish-name">Soft Matte / Lumina Matte</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <span class="finish-tag">Velvety · Refined Glow</span>
+      <p class="finish-desc">A modern evolved matte — controls shine without looking flat. Has a very subtle inner radiance that prevents the powdery, aged look of traditional matte. The best of both worlds for combination skin.</p>
+      <p class="finish-products">Your products: TIMEPHORIA Timeless Lumina Matte Cushion (signature finish)</p>
+      <p class="finish-best">Best for: Combo · Oily · Warm climates (Jakarta humidity)</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#e8c8d8,#f0d8e8,#f8e8f2)"></div>
+      <div class="finish-name">Shimmer / Frost</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <span class="finish-tag">Sparkle · Dimensional</span>
+      <p class="finish-desc">Fine shimmer particles catch and reflect light for a glittery, dimensional effect. Used on eyes and lips for drama and depth. "Frost" variants have a cooler, icy shimmer quality. Best used on non-oily areas to prevent glitter migration.</p>
+      <p class="finish-products">Your products: JADED Palette (shades 01, 03, 05, 09) · Glad2Glow Pumpkin Frost · Time Phoria Stellar Dust</p>
+      <p class="finish-best">Best for: Eyes &amp; Lips · Evening looks · Targeted highlight application</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#d4b870,#e8cc88,#f4dea0)"></div>
+      <div class="finish-name">Metallic / Foil</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <span class="finish-tag">Mirror-Like · Bold</span>
+      <p class="finish-desc">High-intensity, mirror-like reflection. Unlike shimmer, metallic finishes are opaque and foiled — they completely coat the surface. Used on eyes for maximum drama and editorial impact. Apply with a flat brush or fingertip for the highest intensity.</p>
+      <p class="finish-products">Your products: JADED Palette shade 05 Copper Glow (duochrome metallic effect)</p>
+      <p class="finish-best">Best for: Evening · Events · Statement eye looks</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#e8d0d8,#f0dce4,#faeef4)"></div>
+      <div class="finish-name">Glossy / Glassy</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-good">Sensitive ✓</span></div>
+      <span class="finish-tag">Juicy · Shine · Plumping</span>
+      <p class="finish-desc">A wet, high-shine finish that makes lips look plumper and fuller. Glossy finishes reflect a lot of light, creating a "glass lip" effect. Usually paired with a matte or stained lip underneath for longevity. The most youthful of lip finishes.</p>
+      <p class="finish-products">Your products: NPure Glow Oil (lips) · Glad2Glow Lip Serum (glassy tint) · Nivea Rich Care &amp; Color</p>
+      <p class="finish-best">Best for: Daytime · Romantic looks · Layering over stains</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#c8b8d0,#d8c8e0,#e8d8f0)"></div>
+      <div class="finish-name">Stain / Blotted</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-good">Oily ✓</span><span class="ts-chip ts-skin-ok">Dry ~</span><span class="ts-chip ts-skin-good">Combo ✓</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <span class="finish-tag">Diffused · Long-Lasting</span>
+      <p class="finish-desc">Color that sinks into the skin or lips for a lived-in, effortless look. Applied and blotted for a natural flush effect with exceptional wear. Unlike lipstick, stains don't sit on top — they become part of the skin. Resistant to eating, drinking, and touching.</p>
+      <p class="finish-products">Your products: Time Phoria Stellar Dust Lip Stain (Cherrion) · SOMETHINC Ceraplump (sheer stain)</p>
+      <p class="finish-best">Best for: Long wear · Natural makeup · Active days</p>
+    </div>
+
+    <div class="finish-card fade-in">
+      <div class="finish-preview" style="background:linear-gradient(135deg,#d0d8e8,#e0e8f4,#eef4ff)"></div>
+      <div class="finish-name">Duochrome / Multichrome</div>
+      <div class="type-suit"><span class="ts-label">Skin Type</span><span class="ts-chip ts-skin-ok">Oily ~</span><span class="ts-chip ts-skin-good">Dry ✓</span><span class="ts-chip ts-skin-ok">Combo ~</span><span class="ts-chip ts-skin-good">Normal ✓</span><span class="ts-chip ts-skin-ok">Sensitive ~</span></div>
+      <span class="finish-tag">Colour-Shifting · Unique</span>
+      <p class="finish-desc">Shifts between two or more colors depending on the angle of light. Creates a dimensional, otherworldly effect. Most visible on the eyes. Looks different in sunlight vs. artificial light — always test before an event.</p>
+      <p class="finish-products">Your products: JADED Palette shade 05 Copper Glow (gold-to-copper duochrome shift)</p>
+      <p class="finish-best">Best for: Creative looks · Events · Photography</p>
+    </div>
+
+  </div>
+
+  <div class="info-card fade-in" style="margin-top:28px;max-width:100%">
+    <div class="info-card-icon">🎨</div>
+    <div class="info-card-title">Finish Layering Strategy for Combination Skin</div>
+    <ul>
+      <li><strong style="color:var(--color-accent)">T-Zone:</strong> Always matte or soft-matte. Use TIMEPHORIA or finish with Second Date Powder + PIXY/Pramy mist.</li>
+      <li><strong style="color:var(--color-accent)">Cheeks:</strong> Satin or dewy — SKINTIFIC glow cushion or NPure Oil pressed only here.</li>
+      <li><strong style="color:var(--color-accent)">Eyes:</strong> Matte in the crease, shimmer/metallic on the lid, stain or matte on lower lash.</li>
+      <li><strong style="color:var(--color-accent)">Lips:</strong> Stain base (Time Phoria) + gloss top (NPure Oil) = longest-wearing glossy stain result.</li>
+      <li><strong style="color:var(--color-accent)">Overall seal:</strong> L'Oreal Setting Mist locks finishes in place without disturbing them.</li>
+    </ul>
   </div>
 </section>
 
@@ -2609,40 +3983,54 @@ document.querySelectorAll('.fade-in, .product-card, .info-card, .routine-step, .
 
 // ── ACTIVE NAV ON SCROLL ──
 const sections = document.querySelectorAll('section[id]');
-const navBtns = document.querySelectorAll('.nav-btn');
+const navBtns  = document.querySelectorAll('.nav-btn');
 
-let isScrolling = false;
-let scrollTimer = null;
+let isNavClick   = false;
+let navClickTimer = null;
+let lastActive   = null;
 
 function setActiveNav(id) {
+  if (id === lastActive) return;
+  lastActive = id;
   navBtns.forEach(btn => btn.classList.remove('active'));
   const activeBtn = document.querySelector(`.nav-btn[data-target="${id}"]`);
-  if (activeBtn) {
-    activeBtn.classList.add('active');
-    // Scroll the nav bar horizontally to show active btn — use instant scroll on the scrollbar only
-    const nav = document.querySelector('.nav-inner');
-    const btnLeft = activeBtn.offsetLeft;
-    const btnWidth = activeBtn.offsetWidth;
-    const navWidth = nav.offsetWidth;
-    const scrollTarget = btnLeft - (navWidth / 2) + (btnWidth / 2);
-    nav.scrollTo({ left: scrollTarget, behavior: 'smooth' });
-  }
+  if (!activeBtn) return;
+  activeBtn.classList.add('active');
+  // Scroll the nav bar to show the active button
+  const nav = document.querySelector('.nav-inner');
+  const btnLeft  = activeBtn.offsetLeft;
+  const btnWidth = activeBtn.offsetWidth;
+  const navWidth = nav.offsetWidth;
+  nav.scrollTo({ left: btnLeft - navWidth / 2 + btnWidth / 2, behavior: 'smooth' });
 }
 
-const sectionObserver = new IntersectionObserver((entries) => {
-  if (isScrolling) return; // ignore observer firing during programmatic scroll
+function getActiveSection() {
+  const navH = document.getElementById('section-nav').offsetHeight;
+  // The section whose top edge is closest to (but at or above) 40% down the viewport
+  const trigger = navH + window.innerHeight * 0.4;
   let best = null;
-  let bestRatio = 0;
-  entries.forEach(entry => {
-    if (entry.isIntersecting && entry.intersectionRatio > bestRatio) {
-      bestRatio = entry.intersectionRatio;
-      best = entry.target.id;
-    }
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top <= trigger) best = sec.id;
   });
-  if (best) setActiveNav(best);
-}, { threshold: [0.15, 0.4] });
+  return best;
+}
 
-sections.forEach(s => sectionObserver.observe(s));
+// Throttled scroll handler via rAF
+let rafPending = false;
+window.addEventListener('scroll', () => {
+  if (isNavClick) return;
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    const active = getActiveSection();
+    if (active) setActiveNav(active);
+    rafPending = false;
+  });
+}, { passive: true });
+
+// Set on page load/initial position
+setActiveNav(getActiveSection() || 'skin');
 
 // Nav click scroll
 navBtns.forEach(btn => {
@@ -2650,20 +4038,18 @@ navBtns.forEach(btn => {
     const target = document.getElementById(btn.dataset.target);
     if (!target) return;
 
-    // Set flag to suppress observer during scroll
-    isScrolling = true;
-    clearTimeout(scrollTimer);
+    // Lock out scroll listener briefly so click doesn't fight with scroll events
+    isNavClick = true;
+    clearTimeout(navClickTimer);
 
-    // Immediately update active state
     setActiveNav(btn.dataset.target);
 
-    // Scroll the page — use scrollTop instead of scrollIntoView to avoid fighting
-    const navHeight = document.getElementById('section-nav').offsetHeight;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
-    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    const navH  = document.getElementById('section-nav').offsetHeight;
+    const top   = target.getBoundingClientRect().top + window.scrollY - navH - 6;
+    window.scrollTo({ top, behavior: 'smooth' });
 
-    // Release flag after scroll settles (~700ms is enough for smooth scroll)
-    scrollTimer = setTimeout(() => { isScrolling = false; }, 800);
+    // Release lock after scroll animation settles (~800ms)
+    navClickTimer = setTimeout(() => { isNavClick = false; }, 800);
   });
 });
 </script>
