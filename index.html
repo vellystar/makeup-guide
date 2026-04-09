@@ -299,7 +299,28 @@ section + section { border-top: 1px solid var(--color-border); }
 
 /* Shade section */
 .shade-section { margin-bottom: 18px; }
-.shade-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--color-text-dim); margin-bottom: 10px; }
+.shade-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--color-text-dim);
+  margin-bottom: 6px;
+}
+.shade-legend {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 5px;
+  margin-bottom: 10px; padding: 5px 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+.shade-legend-label {
+  font-size: 0.55rem; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--color-text-dim);
+  margin-right: 2px; flex-shrink: 0;
+}
+.shade-legend-item {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 0.58rem; color: var(--color-text-dim);
+}
+.shade-legend-item .ut-tag { margin-left: 0; font-size: 0.5rem; }
 .shade-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .shade-chip {
   display: flex; align-items: center; gap: 6px;
@@ -609,6 +630,25 @@ footer span { color: var(--color-primary); }
 
 
 
+
+/* ── SHADE UNDERTONE TAG ── */
+.ut-tag {
+  display: inline-block;
+  font-size: 0.5rem; font-weight: 800;
+  padding: 1px 4px; border-radius: 4px;
+  margin-left: 4px; vertical-align: middle;
+  letter-spacing: 0.3px; line-height: 1.4;
+  flex-shrink: 0;
+}
+.ut-W { background: rgba(212,168,67,0.2); border: 1px solid rgba(212,168,67,0.5); color: #d4a843; }
+.ut-C { background: rgba(147,197,253,0.15); border: 1px solid rgba(147,197,253,0.5); color: #7dd3fc; }
+.ut-N { background: rgba(196,181,253,0.15); border: 1px solid rgba(196,181,253,0.5); color: #c4b5fd; }
+.ut-A { background: rgba(233,30,140,0.1); border: 1px solid rgba(233,30,140,0.35); color: #f9a8d4; }
+[data-theme="light"] .ut-W { background: rgba(161,98,7,0.1);   border-color: rgba(161,98,7,0.4);   color: #92400e; }
+[data-theme="light"] .ut-C { background: rgba(29,78,216,0.08); border-color: rgba(29,78,216,0.3);  color: #1d4ed8; }
+[data-theme="light"] .ut-N { background: rgba(109,40,217,0.1); border-color: rgba(109,40,217,0.4); color: #6d28d9; }
+[data-theme="light"] .ut-A { background: rgba(190,24,93,0.08); border-color: rgba(190,24,93,0.3);  color: #be185d; }
+
 /* ── TYPE SUITABILITY ROW ── */
 .type-suit {
   display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
@@ -737,6 +777,12 @@ footer span { color: var(--color-primary); }
   .ts-label { font-size: 0.55rem; }
   .ts-chip { font-size: 0.58rem; padding: 2px 6px; }
 
+  /* Shade legend */
+  .shade-legend { padding: 4px 7px; gap: 4px; }
+  .shade-legend-label { font-size: 0.5rem; }
+  .shade-legend-item { font-size: 0.55rem; }
+  .ut-tag { font-size: 0.48rem; padding: 1px 3px; }
+
   /* Finish cards */
   .finish-card { padding: 18px; }
   .finish-name { font-size: 0.95rem; }
@@ -758,6 +804,10 @@ footer span { color: var(--color-primary); }
   /* Type suit rows — labels on own line */
   .type-suit { padding: 6px 8px; }
   .ts-label { width: 100%; margin-bottom: 2px; margin-right: 0; }
+
+  /* Shade legend stacks tighter */
+  .shade-legend { flex-wrap: wrap; padding: 4px 6px; gap: 4px; }
+  .shade-legend-label { width: 100%; margin-bottom: 1px; }
 }
 
 /* Small phone — 480px */
@@ -786,6 +836,13 @@ footer span { color: var(--color-primary); }
   .tip-card { padding: 18px; }
   .info-card-title { font-size: 0.9rem; }
   .finish-name { font-size: 0.9rem; }
+
+  /* Shade legend & undertone tags */
+  .shade-legend { padding: 4px 6px; gap: 3px; }
+  .shade-legend-item { font-size: 0.52rem; gap: 2px; }
+  .shade-legend-label { font-size: 0.48rem; }
+  .ut-tag { font-size: 0.45rem; padding: 1px 3px; margin-left: 2px; }
+  .shade-chip { font-size: 0.68rem; padding: 4px 8px; gap: 4px; }
 
   /* Palette */
   .palette-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
@@ -820,10 +877,12 @@ footer span { color: var(--color-primary); }
   main { padding: 0 8px 40px; }
   .product-card-header, .product-card-body { padding: 12px; }
   .product-name { font-size: 0.78rem; }
-  .shade-chip { font-size: 0.62rem; padding: 3px 6px; }
+  .shade-chip { font-size: 0.62rem; padding: 3px 6px; gap: 3px; }
   .shade-dot { width: 10px; height: 10px; }
+  .ut-tag { font-size: 0.42rem; padding: 1px 2px; margin-left: 1px; }
   .ts-chip { font-size: 0.55rem; padding: 2px 5px; }
   .info-card-title, .finish-name { font-size: 0.85rem; }
+  .shade-legend { display: none; } /* hide legend on tiny screens — tags are self-explanatory */
 }
 
 </style>
@@ -1374,16 +1433,16 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#f8ede2"></div>00 Porcelain</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f8ede2"></div>00 Porcelain<span class="ut-tag ut-C">C</span></div>
         <div class="undertone-row"><span class="ut-label">Undertone</span><span style="font-size:0.63rem;font-weight:700;color:var(--color-text-muted);margin-right:4px">Shade: 01 Vanilla</span><span class="ut-badge ut-warm">Warm</span><span class="ut-badge ut-neutral">Neutral</span><span style="font-size:0.62rem;color:var(--color-text-dim);margin-left:4px">· Best for warm & neutral undertones · 00 Porcelain suits cool-neutral</span></div>
         
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0dfc8"></div>01 Vanilla</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#ebd5b8"></div>02 Ivory</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0d0d0"></div>03 Petal</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d8b898"></div>03A Almond</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c8a880"></div>04 Beige</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b89060"></div>05 Sand</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#a87848"></div>06 Honey</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0dfc8"></div>01 Vanilla<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#ebd5b8"></div>02 Ivory<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0d0d0"></div>03 Petal<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d8b898"></div>03A Almond<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c8a880"></div>04 Beige<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b89060"></div>05 Sand<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#a87848"></div>06 Honey<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">01 Vanilla = Warm-Neutral Undertone · Fair-Light Depth · 03 Petal = Pink-toned fair</p>
         </div>
@@ -1443,22 +1502,22 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades (No. = Depth · C=Cool · N=Neutral · W=Warm)</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#faf0e8"></div>13C Fair</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f8ede0"></div>13N Fair Ivory</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f5e8dc"></div>15C Fair Porcelain</div>
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0e0d0"></div>17C Porcelain</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0dcc8"></div>17N Vanilla</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#ead5c4"></div>21C Cool Ivory</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#e8d0b8"></div>21N Ivory</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#e8ceb0"></div>21W Natural Ivory</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#dfc5a8"></div>23N Sand</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d8bc9c"></div>24N Latte</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d5b898"></div>24W Soft Beige</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#ccb090"></div>25N Mocha</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c4a888"></div>27C Cool Beige</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c0a280"></div>27N Camel</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b89870"></div>29N Natural Beige</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#a88860"></div>30N Rich Honey</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#faf0e8"></div>13C Fair<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f8ede0"></div>13N Fair Ivory<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f5e8dc"></div>15C Fair Porcelain<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0e0d0"></div>17C Porcelain<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0dcc8"></div>17N Vanilla<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#ead5c4"></div>21C Cool Ivory<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#e8d0b8"></div>21N Ivory<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#e8ceb0"></div>21W Natural Ivory<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#dfc5a8"></div>23N Sand<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d8bc9c"></div>24N Latte<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d5b898"></div>24W Soft Beige<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#ccb090"></div>25N Mocha<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c4a888"></div>27C Cool Beige<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c0a280"></div>27N Camel<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b89870"></div>29N Natural Beige<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#a88860"></div>30N Rich Honey<span class="ut-tag ut-N">N</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">17C Porcelain = Cool/Pink undertone · Fair-Light depth · Neutralizes redness naturally</p>
         </div>
@@ -1516,18 +1575,18 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#f8f0e8"></div>Milkshake</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f8f0e8"></div>Milkshake<span class="ut-tag ut-N">N</span></div>
         <div class="undertone-row"><span class="ut-label">Undertone</span><span style="font-size:0.63rem;font-weight:700;color:var(--color-text-muted);margin-right:4px">Shade: Vanilla</span><span class="ut-badge ut-warm">Warm</span><span class="ut-badge ut-neutral">Neutral</span><span style="font-size:0.62rem;color:var(--color-text-dim);margin-left:4px">· Dessert shade range reads warm-neutral across depths</span></div>
         
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0dfc4"></div>Vanilla</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#e8d5ac"></div>Custard</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d8c090"></div>Granola</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c8a870"></div>Caramel</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c0a060"></div>Biscuit</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b89050"></div>Pancake</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#907040"></div>Truffle</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#806030"></div>Toffee</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#603818"></div>Latte</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0dfc4"></div>Vanilla<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#e8d5ac"></div>Custard<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d8c090"></div>Granola<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c8a870"></div>Caramel<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c0a060"></div>Biscuit<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b89050"></div>Pancake<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#907040"></div>Truffle<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#806030"></div>Toffee<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#603818"></div>Latte<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Vanilla = Warm-Neutral · Fair-Light Depth · Dessert-themed shade range (Milkshake → Latte)</p>
         </div>
@@ -1587,11 +1646,11 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip owned"><div class="shade-dot" style="background:rgba(245,240,234,0.55);border:1px solid #c8b8b0"></div>N00 Translucent</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0dfc8"></div>N10 Light Beige</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#e4caa8"></div>N20 Warm Beige</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f5ede0"></div>C10 Light Ivory</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0d8d8"></div>N00P Rose Radiance</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:rgba(245,240,234,0.55);border:1px solid #c8b8b0"></div>N00 Translucent<span class="ut-tag ut-A">A</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0dfc8"></div>N10 Light Beige<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#e4caa8"></div>N20 Warm Beige<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f5ede0"></div>C10 Light Ivory<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0d8d8"></div>N00P Rose Radiance<span class="ut-tag ut-C">C</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">N00 Translucent = Universal · No color shift on any skin tone · N=Neutral · C=Cool · P=Pink</p>
         </div>
@@ -1650,7 +1709,7 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Product Notes</div>
           <div class="shade-row">
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0dfc8"></div>Standard (Owned)</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0dfc8"></div>Standard (Owned)<span class="ut-tag ut-N">N</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Dual-function: use as standalone BB cream or as concealer over foundation</p>
         </div>
@@ -1707,16 +1766,16 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#f6ece2"></div>00 Bare</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#f6ece2"></div>00 Bare<span class="ut-tag ut-C">C</span></div>
         <div class="undertone-row"><span class="ut-label">Undertone</span><span style="font-size:0.63rem;font-weight:700;color:var(--color-text-muted);margin-right:4px">00 Bare · 01 Creme</span><span class="ut-badge ut-cool">Cool–Neutral</span><span class="ut-badge ut-warm">Warm–Neutral</span><span style="font-size:0.62rem;color:var(--color-text-dim);margin-left:4px">· 00 Bare = cooler days · 01 Creme = warmer tone · Mix for true neutral</span></div>
         
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#edd8c0"></div>01 Creme</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#e4cdb0"></div>02 Birch</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d8b898"></div>03 Fawn</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d4b088"></div>03W Warm Fawn</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c8a070"></div>04 Beige</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b08050"></div>05 Tan</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#7a5030"></div>06 Cacao</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#edd8c0"></div>01 Creme<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#e4cdb0"></div>02 Birch<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d8b898"></div>03 Fawn<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d4b088"></div>03W Warm Fawn<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c8a070"></div>04 Beige<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b08050"></div>05 Tan<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#7a5030"></div>06 Cacao<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">00 Bare = Fairest · Cool-Neutral · 01 Creme = Fair-Light Warm · Both owned ✦</p>
         </div>
@@ -1847,8 +1906,8 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#0a0a0a"></div>Black</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#4a3020"></div>Brown</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#0a0a0a"></div>Black<span class="ut-tag ut-A">A</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#4a3020"></div>Brown<span class="ut-tag ut-N">N</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Black = Bold definition · Owned ✦ · Brown = Softer, more natural everyday look</p>
         </div>
@@ -2096,11 +2155,11 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#888080"></div>Ash</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#888080"></div>Ash<span class="ut-tag ut-C">C</span></div>
         <div class="undertone-row"><span class="ut-label">Undertone</span><span style="font-size:0.63rem;font-weight:700;color:var(--color-text-muted);margin-right:4px">Shade: Dark Brown</span><span class="ut-badge ut-warm">Warm</span><span class="ut-badge ut-neutral">Neutral</span><span style="font-size:0.62rem;color:var(--color-text-dim);margin-left:4px">· Ash shade suits cool undertones · Brown suits neutral</span></div>
         
-            <div class="shade-chip"><div class="shade-dot" style="background:#7a5530"></div>Brown</div>
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#4a2c10"></div>Dark Brown</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#7a5530"></div>Brown<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#4a2c10"></div>Dark Brown<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Dark Brown = Rich warm-neutral dark brown · Ash = Cool grey for unique brow looks</p>
         </div>
@@ -2145,11 +2204,11 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#7a5030"></div>01 Eyeppuccino</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#7a5030"></div>01 Eyeppuccino<span class="ut-tag ut-W">W</span></div>
         <div class="undertone-row"><span class="ut-label">Undertone</span><span style="font-size:0.63rem;font-weight:700;color:var(--color-text-muted);margin-right:4px">Shade: 01 Eyeppuccino</span><span class="ut-badge ut-warm">Warm</span><span style="font-size:0.62rem;color:var(--color-text-dim);margin-left:4px">· Coffee-warm tones · 03 Eyespresso also suits cool-neutral dark hair</span></div>
         
-            <div class="shade-chip"><div class="shade-dot" style="background:#5a3818"></div>02 Eyecchiato</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#3a2008"></div>03 Eyespresso</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#5a3818"></div>02 Eyecchiato<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#3a2008"></div>03 Eyespresso<span class="ut-tag ut-N">N</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">01 Eyeppuccino = Cappuccino warm brown · 02 Eyecchiato = Deeper · 03 Eyespresso = Darkest</p>
         </div>
@@ -2198,9 +2257,9 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#181010"></div>Black</div>
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#6a4530"></div>Brown</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#a07850"></div>Light Brown</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#181010"></div>Black<span class="ut-tag ut-A">A</span></div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#6a4530"></div>Brown<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#a07850"></div>Light Brown<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Brown = Neutral warm brown · Bridges Azarine Eyeppuccino and Luxcrime Dark Brown depth</p>
         </div>
@@ -2371,13 +2430,13 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0a8b8"></div>Strawberry Glaze</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0c0a0"></div>Peach Pie</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c06080"></div>Berry Soda</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:rgba(248,245,255,0.5);border:1px solid #c8b8d0"></div>Pearl Sparkle</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#a06080"></div>Grape Jelly</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c83040"></div>Cherry Pop</div>
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#d88860"></div>Pumpkin Frost</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0a8b8"></div>Strawberry Glaze<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0c0a0"></div>Peach Pie<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c06080"></div>Berry Soda<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:rgba(248,245,255,0.5);border:1px solid #c8b8d0"></div>Pearl Sparkle<span class="ut-tag ut-A">A</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#a06080"></div>Grape Jelly<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c83040"></div>Cherry Pop<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#d88860"></div>Pumpkin Frost<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Pumpkin Frost = Muted coral-orange with shimmer frost · Warm, sun-kissed flush</p>
         </div>
@@ -2426,11 +2485,11 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0c8c8"></div>French Pink</div>
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#c09098"></div>Smoky Rose</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b82838"></div>Ruby Red</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#7a1828"></div>Bordeaux</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d86060"></div>Sheer Red</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0c8c8"></div>French Pink<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#c09098"></div>Smoky Rose<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b82838"></div>Ruby Red<span class="ut-tag ut-A">A</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#7a1828"></div>Bordeaux<span class="ut-tag ut-A">A</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d86060"></div>Sheer Red<span class="ut-tag ut-N">N</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Smoky Rose = Dusty muted mauve-rose · Cool-neutral · Versatile MLBB everyday shade</p>
         </div>
@@ -2479,27 +2538,27 @@ footer span { color: var(--color-primary); }
         <div class="undertone-row"><span class="ut-label">Undertone</span><span style="font-size:0.63rem;font-weight:700;color:var(--color-text-muted);margin-right:4px">Shade: 04 Cherrion</span><span class="ut-badge ut-cool">Cool</span><span class="ut-badge ut-neutral">Neutral</span><span style="font-size:0.62rem;color:var(--color-text-dim);margin-left:4px">· 001–003 & 17 Eros = warm-neutral · 04, 13, 14 = cool · 16 Ares, 18 Terra = warm-deep · Mixed range</span></div>
         
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#f5c0a0"></div>001 Nova</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#e8a8b8"></div>002 Gemini</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0b8c0"></div>003 Lynn</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b888a8"></div>004 Mauvion</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f08870"></div>01 Calyptra</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#e09050"></div>02 Solaris</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d87080"></div>03 Luxia</div>
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#a03050"></div>04 Cherrion</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d04080"></div>05 Electra</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b83060"></div>06 Nerose</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#90285a"></div>07 Quanta</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#a01830"></div>08 Rubion</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#702050"></div>09 Enigma</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#601840"></div>10 Axion</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#501030"></div>11 Futura</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#804070"></div>12 Pulse</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#6a1848"></div>13 Berrion</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#5a1060"></div>14 Entropia</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#b81828"></div>16 Ares</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c83858"></div>17 Eros</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#a04030"></div>18 Terra</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f5c0a0"></div>001 Nova<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#e8a8b8"></div>002 Gemini<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0b8c0"></div>003 Lynn<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b888a8"></div>004 Mauvion<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f08870"></div>01 Calyptra<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#e09050"></div>02 Solaris<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d87080"></div>03 Luxia<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#a03050"></div>04 Cherrion<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d04080"></div>05 Electra<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b83060"></div>06 Nerose<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#90285a"></div>07 Quanta<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#a01830"></div>08 Rubion<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#702050"></div>09 Enigma<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#601840"></div>10 Axion<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#501030"></div>11 Futura<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#804070"></div>12 Pulse<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#6a1848"></div>13 Berrion<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#5a1060"></div>14 Entropia<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#b81828"></div>16 Ares<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c83858"></div>17 Eros<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#a04030"></div>18 Terra<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">04 Cherrion (owned ✦) · 21 shades total · 001–004 = Original series · 01–18 = Stellar collection</p>
         </div>
@@ -2549,21 +2608,21 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades (15 shades)</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#f5c8c0"></div>01 Rabbit</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0a890"></div>02 Sorbet</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c89070"></div>03 Pecan</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0d8c8"></div>04 Lace</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#8a2030"></div>05 Sangria</div>
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#e09098"></div>06 Valentine</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#edb0b8"></div>07 Ballet</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d88090"></div>08 Ribbon</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0a8b8"></div>09 Sakura</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#a06848"></div>10 Walnut</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#6a2040"></div>11 Raisin</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c87888"></div>12 Coquette</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#d04060"></div>13 Flirty</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0b8c8"></div>15 Petal</div>
-            <div class="shade-chip"><div class="shade-dot" style="background:#c02840"></div>16 Cherry</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f5c8c0"></div>01 Rabbit<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0a890"></div>02 Sorbet<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c89070"></div>03 Pecan<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0d8c8"></div>04 Lace<span class="ut-tag ut-N">N</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#8a2030"></div>05 Sangria<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#e09098"></div>06 Valentine<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#edb0b8"></div>07 Ballet<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d88090"></div>08 Ribbon<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0a8b8"></div>09 Sakura<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#a06848"></div>10 Walnut<span class="ut-tag ut-W">W</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#6a2040"></div>11 Raisin<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c87888"></div>12 Coquette<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#d04060"></div>13 Flirty<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0b8c8"></div>15 Petal<span class="ut-tag ut-C">C</span></div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#c02840"></div>16 Cherry<span class="ut-tag ut-C">C</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">06 Valentine = Soft rosy pink · Cool-neutral undertone · Natural MLBB flush</p>
         </div>
@@ -2611,10 +2670,10 @@ footer span { color: var(--color-primary); }
         <div class="shade-section">
           <div class="shade-label">Available Shades</div>
           <div class="shade-row">
-            <div class="shade-chip"><div class="shade-dot" style="background:#f0a8b8"></div>Rose Pink</div>
+            <div class="shade-chip"><div class="shade-dot" style="background:#f0a8b8"></div>Rose Pink<span class="ut-tag ut-C">C</span></div>
         <div class="undertone-row"><span class="ut-label">Undertone</span><span style="font-size:0.63rem;font-weight:700;color:var(--color-text-muted);margin-right:4px">Shade: Marigold Peach</span><span class="ut-badge ut-warm">Warm</span><span style="font-size:0.62rem;color:var(--color-text-dim);margin-left:4px">· Marigold Peach = warm golden glow · Rose Pink = cool-neutral luminosity</span></div>
         
-            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0b070"></div>Marigold Peach</div>
+            <div class="shade-chip owned"><div class="shade-dot" style="background:#f0b070"></div>Marigold Peach<span class="ut-tag ut-W">W</span></div>
           </div>
           <p style="font-size:0.73rem;color:var(--color-text-dim);margin-top:8px">Marigold Peach = Warm golden-peach · Adds sun-kissed radiance to skin and lips</p>
         </div>
@@ -3888,6 +3947,19 @@ footer span { color: var(--color-primary); }
 </footer>
 
 <script>
+// ── SHADE UNDERTONE LEGEND ──
+const legendHTML = `
+  <div class="shade-legend">
+    <span class="shade-legend-label">Undertone Key</span>
+    <span class="shade-legend-item"><span class="ut-tag ut-W">W</span> Warm</span>
+    <span class="shade-legend-item"><span class="ut-tag ut-C">C</span> Cool</span>
+    <span class="shade-legend-item"><span class="ut-tag ut-N">N</span> Neutral</span>
+    <span class="shade-legend-item"><span class="ut-tag ut-A">A</span> All / Universal</span>
+  </div>`;
+document.querySelectorAll('.shade-label').forEach(label => {
+  label.insertAdjacentHTML('afterend', legendHTML);
+});
+
 // ── REORDER: undertone-row always above shade-section ──
 document.querySelectorAll('.product-card-body, .palette-container').forEach(body => {
   const shade = body.querySelector('.shade-section');
